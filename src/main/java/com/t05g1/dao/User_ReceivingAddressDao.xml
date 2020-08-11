@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.t05g1.dao.User_ReceivingAddressDao">
+	
+    <select id="showReceivingAddressByuid" resultType="com.t05g1.pojo.User_ReceivingAddress">
+    	SELECT * FROM jd_receivingaddress WHERE uid=#{u_id}
+    </select>
+    
+    <insert id="addReceivingAddress">
+    	INSERT INTO jd_receivingaddress VALUES(NULL,#{rAddress.name},#{rAddress.province},#{rAddress.city},#{rAddress.county},#{rAddress.detailedaddress},#{rAddress.phone},#{rAddress.postalcode},#{rAddress.uid})
+    </insert>
+    
+     <select id="ReceivingAddressByidInfo" resultType="com.t05g1.pojo.User_ReceivingAddress">
+    	SELECT * FROM jd_receivingaddress WHERE id=#{raid}
+    </select>
+    
+    <update id="updateReceivingAddress">
+    	UPDATE jd_receivingaddress SET `name`=#{rAddress.name},province=#{rAddress.province},city=#{rAddress.city},county=#{rAddress.county},detailedaddress=#{rAddress.detailedaddress},phone=#{rAddress.phone},postalcode=#{rAddress.postalcode} WHERE id=#{rAddress.id}
+    </update>
+    
+    <delete id="delReceivingAddress">
+    	DELETE FROM jd_receivingaddress WHERE id=#{raid}
+    </delete>
+</mapper> 

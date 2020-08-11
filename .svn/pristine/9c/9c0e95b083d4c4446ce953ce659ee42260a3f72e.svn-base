@@ -1,0 +1,236 @@
+*{
+	margin: 0rem;
+	padding: 0rem;
+}
+body,html{
+	font-size: 100px;
+	width: 100%;
+	
+}
+ul li{
+	list-style: none;
+}
+a{
+	text-decoration: none;
+	color: #333333;
+}
+#top p{
+	font-size: 0.14rem;
+	margin-top: 0.8rem;
+}
+#top span.lh{
+	display: inline-block;
+	width: 1.14rem;
+	height: 0.3rem;
+	
+	background-image: url(../img/l-hy.png);
+	
+}
+#top p span.cha{
+	display: inline-block;
+	width: 0.18rem;
+	height: 0.14rem;
+	background-image: url(../img/duanxin.png);
+	
+	margin-right: 5px;
+}
+
+#head{
+	background: #fff8f0;
+    width: 100%;
+    padding-top: 0.1rem;
+    padding-bottom: 0.1rem;
+    font-size: 0.14rem;
+    text-align: center;
+}
+#head .ht span,#main .ht span{
+	display: inline-block;
+	width: 0.16rem;
+	height: 0.16rem;
+	margin-right: 0.05rem;
+	vertical-align: middle;
+	background-image: url(../img/icon-tips.png);
+}
+
+#main{
+	width: 100%;
+	position: relative;
+  /*  height: 4.75rem; */
+    margin: 0.05rem 0 0.2rem;
+    z-index: 5;
+    font-size: 0.14rem;
+	background-color: #f02665;
+   
+}
+#main .m-conter{
+	background: url(../img/l-bg.jpg) 0rem 0rem no-repeat;
+   /* background-color: #f02665;*/
+    position: relative;
+    z-index: 3;
+    height: 4.75rem; 
+}
+#main .m-conter .ulist li{
+	float: left;
+	color: #666666;
+	margin-left: 0.35rem;
+	
+}
+#main .m-conter .ulist li span{
+	display: inline-block;
+	width: 0.25rem;
+	height: 0.25rem;
+	vertical-align: middle;
+	margin-right: 0.05rem;
+}
+#main .m-conter .ulist li:nth-child(1) span{
+	
+	background-image: url(../img/qr-coagent.png);
+	
+}
+#main .m-conter .ulist li:nth-child(2) span{
+	
+	background-image: url(../img/qr-coagent.png);
+	background-position: -0.24rem;
+}
+#main .m-conter .ulist li:nth-child(3) span{
+	
+	background-image: url(../img/qr-coagent.png);
+	background-position: -0.54rem;
+}	
+#main .login-form{
+	position: relative;
+    z-index: 4;
+    background: #fff;
+    float: right;
+    top :0.35rem;
+    width: 3.46rem;
+    /*height: 4rem;
+    border: 0.01rem solid #000000;*/
+}
+#main .login-form .login-top{
+	background: #fff8f0;
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+}
+#main .login-form .login-hd{
+	height: 0.54rem;
+	}
+#main .login-form .login-hd ul li{
+	height: 0.54rem;
+    font-size: 0.18rem;
+    float: left;
+    width: 1.7rem;
+    text-align: center;
+    border-bottom: 0.01rem solid #f4f4f4;
+    padding-top: 0.1rem;
+    background: #fff;
+    display: block;
+}
+#main .login-form .login-hd li.active a,#main .login-form .login-hd li a:hover{
+	font-weight: 700;
+    color: #e4393c;
+    text-decoration: none;
+}
+#main .login-form .items{
+	width: 3.2rem;
+	height: 2.3rem;
+	padding-top: 0.3rem;
+	
+	margin: 0rem auto;
+}
+.item-fore1,.item-fore2 {
+    border: 0.01rem solid #bdbdbd;
+    height: 0.38rem;
+    width: 3.04rem;
+   	margin: 0rem auto;
+  	
+
+}
+.item-fore2{
+	margin-top: 0.2rem;
+}
+.item-fore1 .login-label,.item-fore2 .login-label{
+    z-index: 3;
+    display: inline-block;
+    width: 0.38rem;
+    height: 0.35rem;
+    border-right: 0.01rem solid #bdbdbd;
+    
+}
+.item-fore1 .login-label{
+	background: url(../img/pwd-icons-new.png) no-repeat;
+}
+.item-fore2 .login-label{
+	background: url(../img/pwd-icons-new.png) no-repeat -0.5rem -0.5rem;
+}
+.itxt {
+    line-height: 0.35rem;
+    height: 0.35rem;
+    border: 0;
+   vertical-align: top;
+    width: 2.6rem;
+    font-size: 0.14rem;
+}
+#main input.itxt:focus{ outline:none; }
+#main .login-form .item-p input{
+	width: 3.02rem;
+    height: 0.31rem;
+    margin-left: 0.1rem;
+    border: 0.01rem solid #e85356;
+    background: #e4393c;
+    line-height: 0.31rem;
+    color: #fff;
+    font-size: 0.2rem;
+}
+#main .item-foot{
+	margin-bottom: 0rem;
+	height: 0.43rem;
+	background-color: #fcfcfc;
+	border-top: 1px solid #f4f4f4;
+}
+#main .item-foot ul li{
+	float: left;
+	margin-top: 0.1rem;
+	text-align: center;
+}
+#main .login-form .item-foot span.fs{
+	display: inline-block;
+	width: 0.19rem;
+	height: 0.18rem;
+	margin-left: 0.2rem;
+}
+#main .item-foot .qq{
+	background: url(../img/QQ-weixin.png) no-repeat;
+	vertical-align: middle;
+}
+#main .item-foot .wx{
+	background-image: url(../img/QQ-weixin.png);
+	background-position: 0.2rem 0rem;
+	vertical-align: middle;
+}
+#main .item-foot .li{
+	display: inline-block;
+	width: 0.16rem;
+	height: 0.16rem;
+	background: url(../img/pwd-icons-new.png) no-repeat -1.04rem -0.75rem;
+	vertical-align: middle;
+}
+
+#l-down ul li{
+	float: left;
+	font-size:0.14rem;
+	margin-left: 0.3rem;
+}
+#l-down ul li a:hover{
+	color: #E1251B;
+}
+#l-down ul li span{
+	margin-left: 0.1rem;
+	color: #333333;
+}
+#l-down p{
+	font-size: 0.14rem;
+	margin-top: 0.3rem;
+}

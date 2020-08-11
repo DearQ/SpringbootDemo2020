@@ -1,0 +1,29 @@
+package com.t05g1.service;
+
+
+import org.apache.ibatis.annotations.Param;
+
+import com.t05g1.pojo.Admins;
+
+public interface AdminService {
+	/**
+	 * 登录
+	 * @param name
+	 * @param passwords
+	 * @return
+	 */
+	 Admins adminLogin(String name,String passwords);
+	 
+	 /**
+	  * 
+	  * @param id
+	  * @return
+	  */
+	 Admins FindUserByUserId(Long id);
+    /***
+     * 
+     * @param admins
+     * @return
+     */
+	 int Update(Admins admins);
+}

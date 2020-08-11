@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+	<mapper namespace="com.t05g1.dao.RoleDao">
+	    <select id="listRolesByUserName"  parameterType="string" resultType="com.t05g1.pojo.Role">
+			SELECT r.id, r.name FROM jd_admin u 
+			LEFT JOIN jd_admin_user_role ur 
+			ON u.`a_id` = ur.`aid`
+			LEFT JOIN jd_admin_role r 
+			ON r.id = ur.`rid` 
+			WHERE u.`a_adminName` = #{0}
+		</select>
+	</mapper>
+

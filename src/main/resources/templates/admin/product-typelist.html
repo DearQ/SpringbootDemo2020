@@ -1,0 +1,201 @@
+<html class="x-admin-sm" xmlns:th="http://www.thymeleaf.org"  xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+  <head>
+    <meta charset="UTF-8">
+    <title>欢迎页面-X-admin2.1</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+    <link rel="stylesheet" href="/admin/css/font.css">
+    <link rel="stylesheet" href="/admin/css/xadmin.css">
+    <script type="text/javascript" src="/admin/js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="/admin/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/admin/js/xadmin.js"></script>
+    <script type="text/javascript" src="/admin/js/cookie.js"></script>
+    <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+      <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <style>
+   .layui-table-cell
+{
+  height:60px;
+  line-height:50px;
+}
+  .layui-table-cell .layui-form-checkbox[lay-skin="primary"]
+{
+     top: 50%;
+     transform: translateY(-50%);
+}
+  </style>
+  <body>
+    <div class="x-nav">
+      <span class="layui-breadcrumb">
+        <a href="">首页</a>
+        <a href="">演示</a>
+        <a>
+          <cite>导航元素</cite></a>
+      </span>
+      <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" href="javascript:location.replace(location.href);" title="刷新">
+        <i class="layui-icon" style="line-height:30px">ဂ</i></a>
+    </div>
+    <div class="x-body">
+      <div class="layui-row"  shiro:hasAnyRoles="productManager,admin">
+        <form class="layui-form layui-col-md12 x-so">
+          <input type="text" name="name"  placeholder="请输入类型名称" autocomplete="off" class="layui-input">
+          <button class="layui-btn"  lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
+        </form>
+      </div>
+      <xblock>
+        <button class="layui-btn layui-btn-danger"  shiro:hasAnyRoles="productManager,admin"  onclick="delAll()"><i class="layui-icon"></i>批量删除</button>
+        <button class="layui-btn"  shiro:hasAnyRoles="productManager,admin" onclick="x_admin_show('添加分类','/categorytadd.do',600,400)"><i class="layui-icon"></i>添加</button>
+      </xblock>
+      <div class="layui-card-body">
+    <table class="layui-hide" id="test" lay-filter="categoryTable"></table>
+	</div>
+<script>
+layui.use(['form','laydate','table','jquery','element','layer'], function(){
+	var form = layui.form 
+	,layer = layui.layer
+    ,table = layui.table;
+	$= layui.jquery,
+	element=layui.element,
+	laydate=layui.laydate,
+	//加载表格数据
+    tableIns=table.render({
+        elem: '#test'
+        ,height: 588
+        ,url:'/adminCommodity/showCategoryData.do'
+        ,limit:10//默认为10
+        ,cols: [
+	        	[
+	        	 {type:'checkbox', fixed: 'left'}
+	            ,{type:'numbers', width:'10%',title:'序号'}//sort：true页面可进行排序操作
+	            ,{field:'name', width:'20%', title: '分类名称'}
+	            ,{title:'商品管理',width:'20%', align:'center', toolbar: '#imgDemo'}
+	            ,{title:'属性管理', width:'20%', align:'center', toolbar: '#proDemo'}
+	            ,{fixed: 'right', width:'28%', align:'center', toolbar: '#optBar'}
+	            ]
+        	      ]
+        ,page: true
+        ,done:function(res, curr, count){
+            //数据的回调用，可不写
+        }
+    });
+    //监听搜索框
+    form.on('submit(sreach)', function(data){
+        //重新加载table
+        load(data);
+        return false;
+    });
+    //批量删除商品类型
+	  $("#delProduct").click(function(){
+		  //layer.alert(JSON.stringify(table.checkStatus('test').data));
+		  var array=table.checkStatus("test").data;
+  	     	if(array.length!=0){
+  	    		
+  	    		var c_id=[];//定义空数组
+  	    		for(var i in array){
+  	    			c_id.push(array[i].c_id);
+  	    		}
+  	    	    var strify = JSON.stringify(c_id);
+		        console.log(strify);
+  	    		console.log(c_id);
+  	    		layer.confirm('真的删除所选择行的商品么?删除后数据不能恢复！',{icon:3,title:'提示'}, function(index){
+  	    			$.post('/adminCommodity/delProductsById.do?c_id='+c_id,function(d){
+  		    			if(d.res>0){
+  		    				table.reload("test");
+  			  				layer.msg("操作成功！");
+  		    			}else{
+  		    				layer.msg("操作失败！");
+  		    			}
+  		    		},'json');
+  	    		})
+  	    		
+  	    	}else{
+  	    		layer.msg("请选择要删除的用户！");
+  	    	}
+  	    });   
+     //监听工具条
+     table.on('tool(categoryTable)', function(obj){ //注：tool 是工具条事件名，articleTable是 table 原始容器的属性 lay-  filter="对应的值"
+	      var data = obj.data //获得当前行数据
+	      var layEvent = obj.event; //获得 lay-event 对应的值
+	      if(layEvent === 'del'){
+	        layer.confirm('真的删除该商品类型吗?删除后数据不能恢复！',{icon:3,title:'提示'}, function(index){
+	        	$.post("/adminCommodity/delCategoryById.do",{"id":data.id},function(d){
+			  		if(d.res>0){
+			  			table.reload("test");
+			  			layer.msg("操作成功！");
+			  		}else{
+			  			layer.msg("操作失败！");
+			  		}
+			  	},"json");	
+	        });
+	      }else if (layEvent === 'property'){
+	    	  var index = layer.open({
+	    		  title : "属性管理",
+	    		  type : 2,
+	    		  area: ['100%', '100%'],
+	    		  content : "/showproperty.do",
+	    		  success:function(layero, index){
+	    			  console.log(data);
+	    			  layero.find('iframe').contents().find('input[name=cid]').val(data.id);
+					}
+	    		  })
+	    	   //layer.full(index);
+	      }else if(layEvent === 'product'){
+	    	  var index = layer.open({
+	    		  title : "商品管理",
+	    		  type : 2,
+	    		  area: ['100%', '100%'],
+	    		  content : "/categoryProduct.do",
+	    		  success:function(layero, index){
+	    			  console.log(data);
+	    			  layero.find('iframe').contents().find('input[name=c_categoryId]').val(data.id);
+					}
+	    		  })
+	    	   //layer.full(index); 
+	      } else if(layEvent === 'edit'){
+	    	  var index = layer.open({
+	    		  title : "编辑商品类型",
+	    		  type : 2,
+	    		  offset: 'auto',
+	    		  area: ['600px', '400px'],
+	    		  content : "/productupdateCategory.do",
+	    		  success:function(layero, index){
+	    			  console.log(data);
+	    			  layero.find('iframe').contents().find('input[name=id]').val(data.id);
+	    			  layero.find('iframe').contents().find('input[name=name]').val(data.name);
+					}
+	    		  })
+	    		  //layer.full(index);
+	      }
+	    });
+});
+//重新加载table
+function load(obj){
+    tableIns.reload({
+        where: obj.field
+        , page: {
+            curr: 1 //从当前页码开始
+        }
+    });
+}
+</script>
+<!-- 图片样式 -->
+ <script type="text/html" id="imgDemo">
+  <a lay-event="product"><i class="layui-icon layui-icon-list" style="font-size:24px; color: #1E9FFF;"></i></a>
+</script>
+<!-- 商品样式 -->
+<script type="text/html" id="proDemo">
+  <a lay-event="property"><i class="layui-icon layui-icon-set-sm" style="font-size:24px; color: #1E9FFF;"></i></a>
+</script>
+<!-- 操作样式 -->
+<script type="text/html" id="optBar"> 
+    <a class="layui-btn layui-btn-xs"  shiro:hasAnyRoles="admin,productManager" lay-event="edit">编辑</a>
+    <a class="layui-btn layui-btn-danger  shiro:hasAnyRoles="admin,productManager" layui-btn-xs" lay-event="del">删除</a>
+</script>
+  </body>
+
+</html>

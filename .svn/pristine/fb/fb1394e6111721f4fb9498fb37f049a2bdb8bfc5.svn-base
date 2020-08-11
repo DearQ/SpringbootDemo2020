@@ -1,0 +1,59 @@
+window.onload=function(){
+	// searchEffect();
+	timeBack();
+}
+// /*头部js效果*/
+// function searchEffect(){
+// 	/*头部搜索块js效果*/
+// 	/*1.获取当前banner的高度*/
+// 	var banner = document.querySelector(".jd_banner");
+// 	//console.log(banner);
+// 	var bannerHeight = banner.offsetHeight;
+// 	/*获取header搜索块*/
+// 	var search = document.querySelector(".jd_search");
+// 	//console.log(bannerHeight);
+// 	/*2.获取当前屏幕滚动时，banner滚动出屏幕的距离*/
+// 	//监听屏幕滚动
+// 	window.onscroll=function(){
+// 		var offsetTop = document.documentElement.scrollTop;
+// 		//console.log(offsetTop);
+// 		if (offsetTop<=bannerHeight) {
+// 			/*3.计算比例值 获取透明度，设置背景颜色样式*/
+// 			var opacity = 0;
+// 			opacity = offsetTop/bannerHeight;
+// 			search.style.backgroundColor="rgba(233,35,34,"+opacity+")";
+// 		}else{
+// 			//console.log("nothing");
+// 		}
+// 	}
+// }
+/*倒计时效果*/
+function timeBack(){
+	/*获取用于展示时间的span*/
+	var timespan = document.querySelector(".jd_ms_time").querySelectorAll("span");//数组结构
+	/*设置初始倒计时*/
+	var totalTime = 3700;//s为单位 1*60*60
+	/*开启定时器*/
+	var timerId = setInterval(function(){
+		totalTime--;
+		/*判断倒计时时间是否已完结*/
+		if (totalTime < 0) {
+			/*清除时钟*/
+			clearInterval(timerId);
+			return;
+		}
+		/*得到剩余时间中的时 分 秒*/
+		var hour = Math.floor(totalTime/3600);
+		var minute = Math.floor(totalTime%3600/60);
+		var second = Math.floor(totalTime%60);
+		/*赋值，将时间填充到span中*/
+		timespan[0].innerHTML = Math.floor(hour/10);
+		timespan[1].innerHTML = Math.floor(hour%10);
+
+		timespan[3].innerHTML = Math.floor(minute/10);
+		timespan[4].innerHTML = Math.floor(minute%10);
+
+		timespan[6].innerHTML = Math.floor(second/10);
+		timespan[7].innerHTML = Math.floor(second%10);
+	},1000);
+}

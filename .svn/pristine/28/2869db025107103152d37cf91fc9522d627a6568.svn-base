@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.t05g1.dao.CommodityDao">
+
+	<resultMap type="com.t05g1.pojo.Commodity" id="InfoMap">
+		 <id column="c_id" property="c_id" />
+		<result column="c_name" property="c_name" />
+	    <result column="c_title" property="c_title" />
+	    <result column="c_price"  property="c_price" />	   
+	    <result column="c_discountprice"  property="c_discountprice" />
+	    <result column="c_data"  property="c_data" />
+	    <result column="c_uri"  property="c_uri" />
+	    <result column="c_uriDa"  property="c_uriDa" />
+	    <result column="c_state"  property="c_state" />
+	   
+	     <result column="c_Stock"  property="c_Stock" />
+	    <result column="c_salesvolume"  property="c_salesvolume" />
+	    <result column="c_color"  property="c_color" />
+	    <result column="c_edition"  property="c_edition" />
+	    
+	    <result column="c_reduction"  property="c_reduction"/>
+	    <result column="c_categoryId"  property="c_categoryId" />
+	    <result column="c_brandId"  property="c_brandId"/>
+	   
+	    <association property="cat" javaType="com.t05g1.pojo.Category">
+	         <id column="id" property="id" />
+             <result column ="name" property="name"/>
+	    </association>
+	    
+	    <association property="brand" javaType="com.t05g1.pojo.Brand">
+	         <id column="b_id" property="b_id" />
+             <result column ="b_name" property="b_name"/>
+             <result column ="b_img" property="b_img"/>
+             
+	    </association>
+	
+	</resultMap>	
+	 
+	<select id="findAllcommodityList" resultMap="InfoMap">
+		SELECT com.*,cat.name,bra.b_name 
+        FROM jd_commodity com,jd_category cat,jd_brand bra       
+		<where>
+		 com.c_categoryId=cat.`id` AND bra.`b_id`=com.c_brandId
+		 <if test="c_name != null and c_name !=''">
+		AND com.c_name  = #{c_name}
+		</if>
+		<if test="c_categoryId != null and c_categoryId !=''">
+		AND com.c_categoryId  = #{c_categoryId}
+		</if>
+		</where>
+	</select>
+	
+	<select id="findAllcommodityListPage" resultMap="InfoMap">
+        SELECT com.*,cat.name,bra.b_name 
+        FROM jd_commodity com,jd_category cat,jd_brand bra
+        WHERE com.c_categoryId=cat.`id` AND bra.`b_id`=com.c_brandId
+    </select>
+    <select id="commodityAllCountxx" resultType="java.lang.Integer">
+        SELECT COUNT(*) FROM jd_commodity
+    </select>
+
+	<select id="queryAllDataFromTable" resultMap="InfoMap">
+	    select com.*,cat.name,bra.b_name  from jd_commodity com,jd_category cat,jd_brand bra
+	    <where>
+		 com.c_categoryId=cat.`id` AND bra.`b_id`=com.c_brandId
+	    <if test='c_name!="" or c_name!=null'>
+	     and com.c_name LIKE '%${c_name}%'
+	    </if>
+	    <if test='c_categoryId!=0'>
+	     and com.c_categoryId = #{c_categoryId}
+	    </if>
+	    </where>
+	     ORDER BY c_id desc
+	    limit #{curr},#{limit}	    
+	</select>
+    <select id="queryAllCount" resultType="java.lang.Integer">
+        select count(*) from jd_commodity
+        <where>
+        1=1
+        <if test='c_name!= "" and c_name != null'>
+         and c_name LIKE '%${c_name}%'
+        </if>
+         <if test='c_categoryId!=0'>
+	     and c_categoryId = #{c_categoryId}
+	    </if>
+	    </where>
+    </select>
+    
+    <insert id="addProduct">
+     insert jd_commodity value (null,#{c_name},#{c_title},#{c_price},#{c_discountprice},#{c_Stock},0,now(),#{c_uri},null,#{c_color},#{c_edition},#{c_categoryId},1,1,1,#{c_brandId})
+    </insert>
+
+</mapper> 

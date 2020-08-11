@@ -1,0 +1,443 @@
+/* 1.搜索块样式 */
+.jd_search {
+	width: 100%;
+	height: 0.35rem;
+	position: fixed;
+	background-color:#c22600;
+	max-width: 6.40rem;
+	z-index: 999;
+}
+.jd_logo {
+	width: 56px;
+	height: 30px;
+	position: absolute;
+	top: 8px;
+	left: 10px;
+	display: block;
+	background: url(../img/yuanImg/jd-sprites.png);
+	background-size: 200px 200px;
+	background-position: 0px -108px;
+	
+}
+.jd_searchBox {
+	width: 100%;
+	height: 100%;
+	padding-left: 76px;
+	padding-right: 50px;
+	
+}
+.jd_searchBox>input {
+	width: 100%;
+	height: 30px;
+	margin-top: 5px;
+	border-radius: 15px;
+	padding-left: 30px;
+	color: #666;
+}
+.jd_searchBox::before {
+	content: "";
+	width: 27px;
+	height: 23px;
+	position: absolute;
+	background: url(../img/yuanImg/jd-sprites.png);
+	background-size: 200px 200px;
+	background-position: -56px -108px;
+	left: 80px;
+	top: 9px;
+}
+.jd_login {
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+	color: #fff;
+	display: block;
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+/* 2.轮播图样式 */
+.top-ol{padding-top: 0.07rem;}
+.bac{background:url(../img/navigation/bac01.jpg) no-repeat;}
+.circular{
+	margin-top: 0.4rem;
+	/* 设置圆角边框 四个角 */
+	border-top-left-radius: 0.1rem;
+	border-top-right-radius: 0.1rem;
+	border-bottom-left-radius: 0.1rem;
+	border-bottom-right-radius: 0.1rem;
+}
+
+/* 导航块样式 */
+/* 触屏滑动1 */
+.top-navigation{
+	padding-top: 0.1rem;
+	height: 1.40rem;
+	overflow: hidden;
+	clear: both;
+}
+.clearfix{
+	float: left;
+	width: 20%;
+	margin-top: 5px;
+	text-align: center;
+}
+.clearfix a img {
+	width: 40px;
+
+}
+.clearfix a p{
+	line-height: 25px;
+	font-size: 13px;
+}
+.top-slither{
+	overflow: hidden;
+	clear: both; 
+}
+.top-slither li{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-flex-wrap: wrap;
+	-ms-flex-wrap: wrap;
+	/* flex-wrap属性指 轴线换行 (核心)*/
+	flex-wrap: wrap; 
+	float: left;
+}
+.dot-container{
+    width: 93%;
+    background:transparent;
+    position: absolute;
+    text-align:center;
+    bottom: 2.45rem;
+}
+
+.dot-container span{
+    background-color:#ddd;
+    border-radius: 50%;
+    width: 0.045rem;
+    height: 0.045rem;
+    display: inline-block;
+    margin:0 0.02rem;
+}
+
+.dot-container span.act{
+    background-color:#2196f3;
+}
+/*商品块 样式*/
+/* 1、京东秒杀 */
+.jd_discount{
+	width: 1.09rem;
+	height: 1.1rem;
+	
+}
+.jd_discount img{
+	width: 1.09rem;
+	height: 1rem;
+}
+.discount-left{
+	margin-left: -0.3rem;
+}
+/* 商品大框背景 设置 */
+.bac_commodity{
+	background-color: #c4021a;
+	margin-top: -0.1rem;
+	/* height: 2rem; */
+}
+.bac_commodity2{
+	background-color: #c4021a;
+	margin-top: -0.1rem;
+	height: 1.05rem;
+}
+.circular2{
+	width: 3rem;
+	height: 1.1rem;
+	margin-top: 0.05rem;
+	margin-left: 0.1rem;
+	background-color: white;
+	/* 设置圆角边框 四个角 */
+	border-top-left-radius: 0.1rem;
+	border-top-right-radius: 0.1rem;
+	border-bottom-left-radius: 0.1rem;
+	border-bottom-right-radius: 0.1rem;
+}
+/* 设置一个样式标记 秒杀块开始 */
+.jd_ms > .jd_pTip {
+	border-bottom:none;
+	padding-left: 0rem;
+}
+.jd_ms >.jd_pTip >.jd_left >.jd_ms_icon {
+	width: 0.16rem;
+	height: 0.20rem;
+	background: url(../img/yuanImg/seckill-icon.png) no-repeat;
+	background-size: 0.16rem 0.2rem;
+	margin-top: 0.001rem;
+}
+.jd_ms > .jd_pTip >.jd_left >.jd_zsms{
+	color: #F63515;
+	font-size: 0.13rem;
+}
+.jd_ms >.jd_pTip >.jd_left >.jd_ms_time >span{
+	width: 0.13rem;
+	height: 0.18rem;
+	line-height: 0.18rem;
+	color: #fff;
+	background-color: #000;
+	text-align: center;
+	display: inline-block;
+}
+.jd_ms >.jd_pTip >.jd_left >.jd_ms_time >span:nth-last-of-type(3n){
+	color: #000;
+	background-color: transparent;
+	width: 0.08rem;
+}
+.top_commodity{
+	margin-top: 0.3rem;
+	padding-left: 0.1rem;
+}
+/* 触屏滑动2 */
+
+/* .clearfix2 a p{
+	line-height: 25px;
+	font-size: 13px;
+	text-decoration: line-through;
+	color: #9D9D9D;
+} */
+ .jd_pContent{
+	padding:0.45rem;
+}
+.jd_pContent >ul {
+	width: 100%;
+}
+.jd_pContent >ul>li {
+	width: 30%;
+	float: left;
+	text-align: center;
+}
+.jd_pContent >ul>li img{
+	width: 90%;
+	display: inline-block;
+}
+.ul-top{
+	margin-top: -0.1rem;
+}
+/* 京东秒杀2 样式*/
+.jd_SecKill{
+	margin-left: -0.29rem;
+}
+.jd_SecKill img{
+	width: 1.65rem;
+	height: 1rem;
+	padding-top: 0.05rem;
+	padding-left: 0.2rem;
+}
+.jd_SecKill2 img{
+	width: 1.65rem;
+	height: 1rem;
+	padding-top: 0.05rem;
+	padding-left: 0.16rem;
+}
+.circular3{
+	width: 3rem;
+	height: 1.3rem;
+	margin-top: 0.05rem;
+	margin-left: 0.1rem;
+}
+/* 京东秒杀3 样式*/
+.jd_Sec{
+	width: 100%;
+	height: 0.6rem;
+	margin-top: -1.05rem;
+}	
+.jd_ms4 img{
+	width: 75%;
+	float: left;
+	margin-left: 0.1rem;
+	margin-top: -0.02rem;
+}
+.jd_ms3 span{
+	color: white;
+	text-align: center;
+	margin-left: 0.1rem;
+} 
+.jd_ms3 p{
+	color: white;
+	font-size: 0.12rem;
+	text-align: center;
+	line-height: 0.3rem;
+} 
+/* 东家小院 and 每日逛 样式 */
+.dj_court{
+	width: 100%;
+	margin-top: 0.3rem;
+}
+.circular4{
+	width: 3rem;
+	height: 1.17rem;
+	margin-top: 0.05rem;
+	margin-left: 0.1rem;
+	background-color: white;
+	/* 设置圆角边框 四个角 */
+	border-top-left-radius: 0.1rem;
+	border-top-right-radius: 0.1rem;
+	/* border-bottom-left-radius: 0.1rem;
+	border-bottom-right-radius: 0.1rem; */
+}
+.circular5{
+	width: 3rem;
+	height: 1rem;
+	margin-top: -0.06rem;
+	margin-left: 0.1rem;
+	background-color: white;
+	/* 设置圆角边框 四个角 */
+	/* border-top-left-radius: 0.1rem;
+	border-top-right-radius: 0.1rem; */
+	border-bottom-left-radius: 0.1rem;
+	border-bottom-right-radius: 0.1rem;
+}
+.jd_court{
+	height: 1.01rem;
+	border-right: 1px red solid;
+	border-bottom: 1px red solid;
+}
+.jd_court2{
+	height: 1.01rem;
+	border-bottom: 1px red solid;
+}
+.circular4 span{
+	font-size: 0.16rem;
+	font-weight: bold;
+	color: #1471FB;
+}
+.everyday-title span{
+	font-size: 0.125rem;
+	font-weight: bold;
+	color: #1471FB;
+	
+}
+.dj-left{
+	width: 45%; 
+}
+.dj-left2{
+	width: 45%; 
+	margin-left: 0.6rem;
+	margin-top: -0.56rem;
+}
+.dj-title{
+	height: 1rem;
+	border-right: 1px red solid;
+}
+.dj-title2{
+	height: 1rem;
+	/* border-right: 1px red solid; */
+}
+.circular5 span{
+	font-size: 0.125rem;
+	font-weight: bold;
+}
+.ev-bot{border-bottom: 1px red solid;}
+
+/* 为你推存 样式 */
+.rec-left{
+	height: 2.4rem;
+}
+.rec-left .rec-text{
+	box-sizing: border-box;
+	height: 0.31rem;
+	color: #232326;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	word-break: break-all;
+	margin-top: 0.01rem;
+	/* line-height: 0.1rem; */
+	margin-bottom: 0.03rem;
+	margin-left: -0.1rem;
+ 	padding: 0.03rem;
+	
+}
+.rec-left .rec-info{
+	/* overflow: hidden; */
+	position: relative;
+	height: 0.26rem;
+}
+.rec-left .rec-price{
+	color: #f23030;
+	display: inline-block;
+	padding: 0 1rem 0 0.01rem;
+	margin-left: -0.01rem;
+	position: relative;
+	top: -0.02rem;
+	height: 0.25rem;
+	/* width: 1rem; */
+	line-height: 0.25rem;
+}
+.rec-left .rec-tog{
+	color: #e4393c;
+	font-size: 0.01rem;
+	padding: 0 0.03rem;
+	margin-right: 0.4rem;
+	position: relative;
+	top: -0.3rem;
+	border: 1px #e4393c solid;
+}
+.rec-left .rec-button{
+	display: block;
+	position: absolute;
+	top: 0.055rem;
+	right: 0.05rem;
+	text-align: center;
+	color: #686868;
+	font-size: 0.1rem;
+	width: 0.45rem;
+	height: 0.16rem;
+	line-height: 0.15rem;
+	border: 1px #686868 solid;
+}
+
+/* 底部固定导航块 */
+.aui-footer {
+    width: 100%;
+	height: 0.4rem;
+    position: relative;
+    z-index: 100;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+	padding: 0.08rem 0.06rem 0.08rem 0.06rem;
+    background: #ffffff;
+	border-top: 1px #E3E3E3 solid;
+	/* 边框阴影 样式 */
+	box-shadow: 0 2px 20px 0 #babacd;
+}
+
+.aui-footer-fixed {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 49;
+}
+.aui-tabBar-item{
+	width: 19%;
+	height: 0.4rem;
+	margin: 0.09rem 0.05rem 0.08rem 0.05rem;
+}
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.t05g1.dao.User_CommtypepricrDao">
+
+	<select id="showCommtypepricrCommId" resultType="com.t05g1.pojo.User_Commtypepricr">
+		SELECT id,`type`,price FROM jd_commtypepricr WHERE commId=#{cId}
+	</select>
+	
+	<select id="CommtypepricrByprive" resultType="com.t05g1.pojo.User_Commtypepricr">
+		SELECT * FROM jd_commtypepricr WHERE id=#{typeId}
+	</select>
+
+</mapper>

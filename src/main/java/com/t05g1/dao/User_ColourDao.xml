@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.t05g1.dao.User_ColourDao">
+	<select id="showColourBycommId" resultType="com.t05g1.pojo.User_Colour">
+		SELECT id,`name` FROM jd_colour WHERE commId=#{cId}
+	</select>
+      
+</mapper>

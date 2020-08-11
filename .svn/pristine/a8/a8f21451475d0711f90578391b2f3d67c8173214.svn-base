@@ -1,0 +1,141 @@
+/**
+ * 公共样式
+ */
+#jdIndex{background-color: #f6f6f6;}
+.jd_ms3 img{width: 100%;}
+.s{border: 1px #000000 solid;}
+
+/* 1.样式重置 */
+*{
+	padding: 0;
+	margin: 0;
+}
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+html,body {
+    color: #333;
+    margin: 0;
+    height: 100%;
+	font-family: "微软雅黑",sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: normal;
+}
+
+html, body, div, dl, dt, dd, ol, ul, li, h1, h2, h3, h4, h5, h6, p, blockquote, pre, button, fieldset, form, input, legend, textarea, th, td {
+    margin: 0;
+    padding: 0;
+}
+a, label, button, input, select {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+a,a:hover {
+	color: #666;
+	text-decoration: none;
+}
+ul li{
+	list-style: none;
+}
+button {
+    outline: 0;
+}
+
+img {
+    border: 0;
+}
+button,input,optgroup,select,textarea {
+    margin: 0;
+    font: inherit;
+    color: inherit;
+    outline: none;
+}
+input {
+	/*清除文本框获取焦点时默认的边框阴影*/
+	outline: none;
+	/*去除边框*/
+	border: none;
+	/*添加边框*/
+	border:1px solid #ccc;
+}
+/*清除浮动*/
+.clearfix::after {
+    clear: both;
+    content: ".";
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+
+/* 浮动 */
+.float_left {
+	float: left;
+}
+.float_right {
+	float: right;
+}
+.m_left10 {
+	margin-left: 10px;
+}
+.m_right10 {
+	margin-right: 10px;
+}
+
+/* 2.自适应-必要布局样式css */
+.aui-flexView {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+
+.aui-scrollView {
+    width: 100%;
+    height: 100%;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    position: relative;
+    margin-top: 44px;
+    margin-bottom: 60px;
+}
+.aui-navBar {
+    height: 44px;
+    position: relative;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    z-index: 516;
+    /* background: #ffffff; */
+}
+
+.aui-navBar:after {
+    content: '';
+    position: absolute;
+    z-index: 2;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    border-bottom: 1px solid #f7f7f7;
+    -webkit-transform: scaleY(0.5);
+    transform: scaleY(0.5);
+    -webkit-transform-origin: 0 100%;
+    transform-origin: 0 100%;
+}

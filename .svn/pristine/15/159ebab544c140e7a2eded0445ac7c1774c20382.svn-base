@@ -1,0 +1,60 @@
+package com.t05g1.service.impl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.t05g1.dao.BrandDao;
+import com.t05g1.pojo.Brand;
+import com.t05g1.service.BrandService;
+
+@Service
+public class BrandServiceImpl implements BrandService {
+	
+	@Autowired
+	private BrandDao brandDao;
+
+	@Override
+	public int deleteByPrimaryKey(Integer b_id) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int insert(Brand record) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int insertSelective(Brand record) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public List<Brand> selectByExample() {
+		// TODO Auto-generated method stub
+		return brandDao.selectByExample();
+	}
+
+	@Override
+	public Brand selectByPrimaryKey(Integer b_id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int updateByPrimaryKeySelective(Brand record) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int updateByPrimaryKey(Brand record) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+}

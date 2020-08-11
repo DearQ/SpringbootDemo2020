@@ -1,0 +1,714 @@
+package com.t05g1.controller;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Random;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+
+import com.t05g1.annotation.Log;
+import com.t05g1.enums.OperationType;
+import com.t05g1.enums.OperationUnit;
+import com.t05g1.pojo.Admins;
+import com.t05g1.pojo.Brand;
+import com.t05g1.pojo.Category;
+import com.t05g1.pojo.Colour;
+import com.t05g1.pojo.Commodity;
+import com.t05g1.pojo.Images;
+import com.t05g1.pojo.Property;
+import com.t05g1.pojo.PropertyValue;
+import com.t05g1.service.BrandService;
+import com.t05g1.service.CategoryService;
+import com.t05g1.service.ColourService;
+import com.t05g1.service.CommodityService;
+import com.t05g1.service.ImagesService;
+import com.t05g1.service.PropertyService;
+import com.t05g1.service.PropertyValueService;
+
+@Controller
+@RequestMapping("/adminCommodity")
+public class Admin_CommodityMG_Controller {
+
+	@Autowired
+	private CommodityService commodityService;
+
+	@Autowired
+	private CategoryService categoryService;
+
+	@Autowired
+	private BrandService brandService;
+
+	@Autowired
+	private PropertyService propertyService;
+
+	@Autowired
+	private PropertyValueService propertyValueService;
+
+	@Autowired
+	private ImagesService imagesService;
+	
+	@Autowired
+	private ColourService colourService;
+
+	/** 上传地址 */
+	@Value("${file.upload.path}")
+	private String filePath;
+
+	/**
+	 *  商品列表带分页 qzs	
+	 * @param curr
+	 * @param limit
+	 * @param c_name
+	 * @param c_categoryId
+	 * @param c_brandId
+	 * @return
+	 */
+	
+	@ResponseBody
+	@RequestMapping("showData.do")
+	public Map<String, Object> methodx(@RequestParam(value = "page", required = false, defaultValue = "1") int curr,
+			@RequestParam(value = "limit", required = false, defaultValue = "10") int limit,
+			@RequestParam(value = "c_name", required = false) String c_name,
+			@RequestParam(value = "c_categoryId", required = false, defaultValue = "0") int c_categoryId,
+			@RequestParam(value = "c_brandId", required = false, defaultValue = "0") int c_brandId) {
+		List<Commodity> datas = commodityService.queryAllDataFromTable(curr, limit, c_name, c_categoryId, c_brandId);
+		int countx = commodityService.queryAllCount(c_name, c_categoryId);
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("code", 0);
+		map.put("msg", "");
+		map.put("count", countx);
+		map.put("data", datas);
+		return map;
+	}
+	
+
+	/**
+	 * 商品图片上传 qzs
+	 * @param file
+	 * @param request
+	 * @return
+	 * @throws IllegalStateException
+	 * @throws IOException
+	 */
+	@Log(detail = "上传商品图片",level = 1,operationUnit = OperationUnit.COMMODITY,operationType = OperationType.INSERT)
+	@RequestMapping(value = "updateProductImg.do")
+	public @ResponseBody String updatePersonal(@RequestParam("file") MultipartFile file, HttpServletRequest request)
+			throws IllegalStateException, IOException {
+		// 获取上传文件名
+		String oldName = file.getOriginalFilename();
+		// 定义上传文件路径
+		String path = filePath + "productPhoto/";
+		// 改名卡已取消
+		String fileName = oldName;
+		
+		// 文件相对路径
+		String rappendix = "/img/upload/productPhoto/" + fileName;
+		// 文件绝对路径
+		fileName = path + File.separator + fileName;
+		// 新建文件
+		File file1 = new File(fileName);
+		if (!file1.exists()) {
+			// 先得到文件的上级目录，并创建上级目录，在创建文件
+			file1.getParentFile().mkdir();
+			try {
+				// 创建文件
+				file1.createNewFile();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		// 写入文件
+		file.transferTo(file1);
+
+		String str = "{\"code\": 0,\"msg\": \"\",\"data\": {\"src\":\"" + rappendix + "\"}}";
+		System.out.println(str);
+		System.out.println(file1);
+		return str;
+
+	}
+
+	// 改名卡
+	public static String changeName(String oldName) {
+
+		Random r = new Random();
+
+		Date d = new Date();
+
+		String newName = oldName.substring(oldName.indexOf('.'));
+
+		newName = r.nextInt(99999999) + d.getTime() + newName;
+		System.out.println(newName);
+		return newName;
+
+	}
+
+	
+	/**
+	 * 添加商品 qzs
+	 * @param commodity
+	 * @return
+	 */
+	@Log(detail = "添加商品操作",level = 1,operationUnit = OperationUnit.COMMODITY,operationType = OperationType.INSERT)
+	@ResponseBody
+	@RequestMapping(value = "addproduct.do")
+	public Map<String, Object> addProduct(@ModelAttribute Commodity commodity) {
+
+		Map<String, Object> map = new HashMap<>();
+
+		int res = commodityService.addProduct(commodity);
+		
+		Commodity comm= commodityService.selectId(commodity.getC_name());
+		
+		//添加商品款式
+		Colour record = new Colour();
+		record.setCommId(comm.getC_id());
+		record.setName(commodity.getC_color());		
+		colourService.insertSelective(record);
+
+		map.put("res", res);
+
+		return map;
+
+	}
+
+	
+	/**
+	 * 修改商品 qzs
+	 * @param commodity
+	 * @return
+	 */
+	@Log(detail = "修改商品操作",level = 1,operationUnit = OperationUnit.COMMODITY,operationType = OperationType.UPDATE)
+	@ResponseBody
+	@RequestMapping(value = "updateproduct.do")
+	public Map<String, Object> updateProduct(@ModelAttribute Commodity commodity) {
+
+		Map<String, Object> map = new HashMap<>();
+
+		int res = commodityService.updateProduct(commodity);
+
+		map.put("res", res);
+
+		return map;
+
+	}
+
+	/**
+	 * 删除商品 qzs
+	 * @param c_id
+	 * @return
+	 */
+	@Log(detail = "删除商品操作",level = 1,operationUnit = OperationUnit.COMMODITY,operationType = OperationType.DELETE)
+	@ResponseBody
+	@RequestMapping(value = "delProductById.do")
+	public Map<String, Object> delProductById(Integer c_id) {
+
+		Map<String, Object> map = new HashMap<>();
+
+		int res = commodityService.deleteProductById(c_id);
+
+		map.put("res", res);
+		return map;
+
+	}
+
+	/**
+	 *  批量删除商品
+	 * @param c_id
+	 * @return
+	 */
+	@Log(detail = "批量删除商品操作",level = 1,operationUnit = OperationUnit.COMMODITY,operationType = OperationType.DELETE)
+	@ResponseBody
+	@RequestMapping(value = "delProductsById.do")
+	public Map<String, Object> deleteByIds(String c_id) {
+
+		Map<String, Object> map = new HashMap<>();
+		String[] a = c_id.split(",");
+		// System.out.println(c_id);
+		try {
+
+			for (int i = 0; i < a.length; i++) {
+				commodityService.deleteProductsById(a[i]);
+				map.put("code", 1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			map.put("code", -1);
+		}
+
+		return map;
+
+	}
+
+	/**
+	 *  改变商品状态
+	 * @param c_id
+	 * @param c_state
+	 * @return
+	 */
+	@Log(detail = "改变商品状态操作",level = 1,operationUnit = OperationUnit.COMMODITY,operationType = OperationType.UPDATE)
+	@ResponseBody
+	@RequestMapping(value = "isStateStart.do")
+	public Map<String, Object> isState(Integer c_id, String c_state) {
+
+		Map<String, Object> map = new HashMap<>();
+
+		System.out.println(c_id + c_state);
+
+		int res = commodityService.isState(c_id, c_state);
+
+		map.put("res", res);
+
+		return map;
+
+	}
+	
+
+	/**
+	 *  没有属性就添加
+	 * @param pv
+	 * @return
+	 */
+	@Log(detail = "添加商品属性值操作",level = 1,operationUnit = OperationUnit.COMMODITY,operationType = OperationType.UPDATE)
+	@ResponseBody
+	@RequestMapping("propertyValue_update.do")
+	public String update(PropertyValue pv) {
+		propertyValueService.update(pv);
+		return "success";
+	}
+
+	
+
+	/**
+	 *  图片管理带分页
+	 * @param curr
+	 * @param limit
+	 * @param commId
+	 * @return
+	 */	
+	@ResponseBody
+	@RequestMapping("showImagesData.do")
+	public Map<String, Object> showImages(@RequestParam(value = "page", required = false, defaultValue = "1") int curr,
+			@RequestParam(value = "limit", required = false, defaultValue = "10") int limit,
+			@RequestParam(value = "commId", required = false, defaultValue = "0") int commId) {
+		List<Images> datas = imagesService.selectById(curr, limit, commId);
+		int count = imagesService.queryAllCount(commId);
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("code", 0);
+		map.put("msg", "");
+		map.put("count", count);
+		map.put("data", datas);
+		return map;
+	}
+
+	/**
+	 *  测试多图上传 qzs
+	 * @param colourId
+	 * @param commId
+	 * @param imgUrls
+	 * @return
+	 */
+	@Log(detail = "添加商品图片操作",level = 1,operationUnit = OperationUnit.COMMODITY,operationType = OperationType.INSERT)
+	@ResponseBody
+	@RequestMapping(value="saveGoods.do",method = RequestMethod.POST)
+	public Map<String, Object> saveImgInfo(int colourId, int commId, String imgUrls) {
+		String[] urls = imgUrls.split(",");
+
+		Map<String, Object> map = new HashMap<>();
+        
+        Integer res =imagesService.insertByAll(colourId, commId, urls[0], urls[1], urls[2]);
+
+		map.put("res", res);
+		return map;
+	}
+
+	//文件路径
+	public static final String FILEPATH ="D:/SpringBoot/JDHD3.0/src/main/resources/static";
+	/**
+	 *  删除图片文件，只是删除文件，不删除数据库信息
+	 * @param paths
+	 * @return
+	 */
+	@Log(detail = "删除商品图片操作",level = 1,operationUnit = OperationUnit.COMMODITY,operationType = OperationType.DELETE)
+	@RequestMapping("deleteProductFile.do")
+	@ResponseBody
+	public String delFile(String paths) {
+		// 上篇中前端穿过来的是/imctemp-rainy/*.jpg格式的，只需要取出最后的文件名，写死路径，就可以准确找到文件了
+		// 前端页面处理路径，
+		String[] imgpath = paths.split(",");
+		 String resultInfo = null;
+		for (int i = 0; i < imgpath.length; i++) {
+			
+			  //int lastIndexOf = path.lastIndexOf("/");
+			  String img_path =imgpath[i];//.substring(lastIndexOf + 1, path.length());
+			  System.out.println(img_path); 
+			  img_path =FILEPATH + img_path;
+			  System.out.println(img_path);//输出测试一下文件路径是否正确 
+			  File file = new File(img_path);			  
+			  if (file.exists()) {//文件是否存在 
+				if (file.delete()) {//存在就删了，返回1
+				   resultInfo = "1";
+				   } else {
+					   resultInfo = "0";
+					   } 
+			  } else {
+				resultInfo ="1";
+				  }
+		}
+		 
+		  return resultInfo;		 
+	}
+
+	// 删除数据库图片信息
+	@ResponseBody
+	@RequestMapping(value = "delImageById.do")
+	public Map<String, Object> delImageById(int id) {
+
+		Map<String, Object> map = new HashMap<>();
+
+		int res = imagesService.deleteByPrimaryKey(id);
+
+		map.put("res", res);
+
+		return map;
+	}
+  
+	/***
+	 * 商品类型管理----------------------------------------------------------------------
+	 */	
+	/**
+	 *  商品类型列表
+	 * @param curr
+	 * @param limit
+	 * @param name
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping("showCategoryData.do")
+	public Map<String, Object> showCategory(
+			@RequestParam(value = "page", required = false, defaultValue = "1") int curr,
+			@RequestParam(value = "limit", required = false, defaultValue = "10") int limit,
+			@RequestParam(value = "name", required = false) String name) {
+
+		List<Category> datas = categoryService.queryAllDataFromTable(curr, limit, name);
+		int countx = categoryService.queryAllCount(name);
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("code", 0);
+		map.put("msg", "");
+		map.put("count", countx);
+		map.put("data", datas);
+
+		return map;
+	}	
+
+	/**
+	 *  添加商品类型
+	 * @param category
+	 * @return
+	 */
+	@Log(detail = "添加商品类型操作",level = 1,operationUnit = OperationUnit.COMMODITY,operationType = OperationType.INSERT)
+	@ResponseBody
+	@RequestMapping(value = "addcategory.do")
+	public Map<String, Object> addCategory(@ModelAttribute Category category) {
+
+		Map<String, Object> map = new HashMap<>();
+
+		int res = categoryService.insert(category);
+
+		map.put("res", res);
+
+		return map;
+	}
+
+	/**
+	 *  删除商品类型
+	 * @param id
+	 * @return
+	 */
+	@Log(detail = "删除商品类型操作",level = 1,operationUnit = OperationUnit.COMMODITY,operationType = OperationType.DELETE)
+	@ResponseBody
+	@RequestMapping(value = "delCategoryById.do")
+	public Map<String, Object> delCategoryById(Integer id) {
+
+		Map<String, Object> map = new HashMap<>();
+
+		int res = categoryService.deleteByPrimaryKey(id);
+
+		map.put("res", res);
+
+		return map;
+
+	}
+	
+	/**
+	 *  修改商品
+	 * @param category
+	 * @return
+	 */
+	@Log(detail = "修改商品操作",level = 1,operationUnit = OperationUnit.COMMODITY,operationType = OperationType.UPDATE)
+	@ResponseBody
+	@RequestMapping(value = "updateCategory.do")
+	public Map<String, Object> updateCategory(@ModelAttribute Category category) {
+
+		Map<String, Object> map = new HashMap<>();
+
+		int res = categoryService.updateByPrimaryKeySelective(category);
+
+		map.put("res", res);
+
+		return map;
+
+	}
+
+	/***
+	 * 品牌管理-------------------------------------------------------------------
+	 */
+	/**
+	 *  品牌列表
+	 * @param curr
+	 * @param limit
+	 * @param b_name
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping("showBrandData.do")
+	public Map<String, Object> showBrand(@RequestParam(value = "page", required = false, defaultValue = "1") int curr,
+			@RequestParam(value = "limit", required = false, defaultValue = "10") int limit,
+			@RequestParam(value = "b_name", required = false) String b_name) {
+
+		List<Brand> datas = brandService.queryAllDataFromTable(curr, limit, b_name);
+		int countx = brandService.queryAllCount(b_name);
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("code", 0);
+		map.put("msg", "");
+		map.put("count", countx);
+		map.put("data", datas);
+
+		return map;
+	}
+	
+	/**
+	 *  品牌图片上传
+	 * @param file
+	 * @param ui
+	 * @param request
+	 * @return
+	 * @throws IllegalStateException
+	 * @throws IOException
+	 */
+	@Log(detail = "添加品牌操作",level = 1,operationUnit = OperationUnit.COMMODITY,operationType = OperationType.INSERT)
+	@RequestMapping(value = "updateBrandImg.do")
+	public @ResponseBody String updateBrand(@RequestParam("file") MultipartFile file, @ModelAttribute Admins ui,
+			HttpServletRequest request) throws IllegalStateException, IOException {
+		// 获取上传文件名
+		String oldName = file.getOriginalFilename();
+		// 定义上传文件路径
+		String path = filePath + "brandPhoto/";
+		// 改名卡
+		String fileName = changeName(oldName);
+		// 文件相对路径
+		String rappendix = "/img/upload/brandPhoto/" + fileName;
+		// 文件绝对路径
+		fileName = path + File.separator + fileName;
+		// 新建文件
+		File file1 = new File(fileName);
+		if (!file1.exists()) {
+			// 先得到文件的上级目录，并创建上级目录，在创建文件
+			file1.getParentFile().mkdir();
+			try {
+				// 创建文件
+				file1.createNewFile();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		// 写入文件
+		file.transferTo(file1);
+
+		String str = "{\"code\": 0,\"msg\": \"\",\"data\": {\"src\":\"" + rappendix + "\"}}";
+		System.out.println(str);
+		System.out.println(file1);
+		return str;
+
+	}
+
+	/**
+	 *  添加品牌 qzs
+	 * @param brand
+	 * @return
+	 */
+	@Log(detail = "添加品牌操作",level = 1,operationUnit = OperationUnit.COMMODITY,operationType = OperationType.INSERT)
+	@ResponseBody
+	@RequestMapping(value = "addbrand.do")
+	public Map<String, Object> addBrand(@ModelAttribute Brand brand) {
+
+		Map<String, Object> map = new HashMap<>();
+
+		int res = brandService.insert(brand);
+
+		map.put("res", res);
+
+		return map;
+
+	}
+
+	/**
+	 *  改变品牌状态
+	 * @param brand
+	 * @return
+	 */
+	@Log(detail = "改变品牌状态操作",level = 1,operationUnit = OperationUnit.COMMODITY,operationType = OperationType.DELETE)
+	@ResponseBody
+	@RequestMapping(value = "isanditStatus.do")
+	public Map<String, Object> isitStatus(@ModelAttribute Brand brand) {
+
+		Map<String, Object> map = new HashMap<>();
+
+		int res = brandService.updateByPrimaryKeySelective(brand);
+
+		map.put("res", res);
+
+		return map;
+
+	}
+
+	/**
+	 * 删除品牌
+	 * @param b_id
+	 * @return
+	 */
+	@Log(detail = "删除品牌操作",level = 1,operationUnit = OperationUnit.COMMODITY,operationType = OperationType.DELETE)
+	@ResponseBody
+	@RequestMapping(value = "delBrandById.do")
+	public Map<String, Object> delBrandById(Integer b_id) {
+
+		Map<String, Object> map = new HashMap<>();
+
+		int res = brandService.deleteByPrimaryKey(b_id);
+
+		map.put("res", res);
+
+		return map;
+	}
+
+	/**
+	 *  修改品牌
+	 * @param brand
+	 * @return
+	 */
+	@Log(detail = "修改品牌操作",level = 1,operationUnit = OperationUnit.COMMODITY,operationType = OperationType.UPDATE)
+	@ResponseBody
+	@RequestMapping(value = "updateBrandById.do")
+	public Map<String, Object> updatebrand(@ModelAttribute Brand brand) {
+
+		Map<String, Object> map = new HashMap<>();
+
+		int res = brandService.update(brand);
+
+		map.put("res", res);
+
+		return map;
+
+	}
+
+	/****
+	 * 属性管理---------------------------------------------------------------------------------------
+	 */	
+	/**
+	 *  商品属性列表
+	 * @param curr
+	 * @param limit
+	 * @param cid
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping(value = "showPropertyData.do", produces = "application/json;charset=UTF-8")
+	public Map<String, Object> showPropertyById(
+			@RequestParam(value = "page", required = false, defaultValue = "1") int curr,
+			@RequestParam(value = "limit", required = false, defaultValue = "10") int limit,
+			@RequestParam(value = "cid", required = false) Integer cid) {
+
+		List<Property> datas = propertyService.queryAllDataFromTable(curr, limit, cid);
+		int countx = propertyService.queryAllCount(cid);
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("code", 0);
+		map.put("msg", "");
+		map.put("count", countx);
+		map.put("data", datas);
+		return map;
+	}	
+
+	/**
+	 *  添加属性
+	 * @param property
+	 * @return
+	 */
+	@Log(detail = "添加商品属性操作",level = 1,operationUnit = OperationUnit.COMMODITY,operationType = OperationType.INSERT)
+	@ResponseBody
+	@RequestMapping(value = "addpropertyBycid.do")
+	public Map<String, Object> addPropertyBycid(Property property) {
+
+		Map<String, Object> map = new HashMap<>();
+
+		int res = propertyService.insertSelective(property);
+
+		map.put("res", res);
+
+		return map;
+
+	}
+
+	/**
+	 *  删除属性
+	 * @param id
+	 * @return
+	 */
+	@Log(detail = "删除商品属性操作",level = 1,operationUnit = OperationUnit.COMMODITY,operationType = OperationType.DELETE)
+	@ResponseBody
+	@RequestMapping(value = "delPropertyById.do")
+	public Map<String, Object> delPropertyById(Integer id) {
+
+		Map<String, Object> map = new HashMap<>();
+
+		int res = propertyService.deleteByPrimaryKey(id);
+
+		map.put("res", res);
+
+		return map;
+
+	}	
+
+	/**
+	 *  编辑属性
+	 * @param property
+	 * @return
+	 */
+	@Log(detail = "修改商品属性操作",level = 1,operationUnit = OperationUnit.COMMODITY,operationType = OperationType.UPDATE)
+	@ResponseBody
+	@RequestMapping(value = "updatePropertyById.do")
+	public Map<String, Object> updatePropertyById(Property property) {
+
+		Map<String, Object> map = new HashMap<>();
+
+		int res = propertyService.updateByPrimaryKeySelective(property);
+
+		map.put("res", res);
+
+		return map;
+
+	}	
+
+}

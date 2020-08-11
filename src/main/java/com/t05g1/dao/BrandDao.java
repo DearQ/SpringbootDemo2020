@@ -1,0 +1,43 @@
+package com.t05g1.dao;
+
+import com.t05g1.pojo.Brand;
+import com.t05g1.pojo.Category;
+
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
+public interface BrandDao {
+	/**
+     * 查看商品类型列表带分页
+     * @param page
+     * @param limit
+     * @param keyWord
+     * @return
+     */
+    List<Brand> queryAllDataFromTable(@Param("curr") int curr, @Param("limit") int limit, @Param("b_name") String b_name);
+    /**
+     * 统计商品分类总数
+     * @param keyWord
+     * @return
+     */
+    int queryAllCount(@Param("b_name") String b_name);
+	
+    int deleteByPrimaryKey(Integer b_id);
+
+    int insert(Brand record);
+
+    int insertSelective(Brand record);
+
+    List<Brand> selectByExample();
+
+    Brand selectByPrimaryKey(Integer b_id);
+
+    int updateByPrimaryKeySelective(Brand record);
+
+    int updateByPrimaryKey(Brand record);
+    
+    int update(Brand record);
+    
+    
+}

@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.t05g1.dao.Admin_UsersDao">
+  <resultMap id="BaseResultMap" type="com.t05g1.pojo.Admin_Users">
+    <id column="u_id" jdbcType="INTEGER" property="u_id" />
+    <result column="u_user" jdbcType="VARCHAR" property="u_user" />
+    <result column="u_pwd" jdbcType="VARCHAR" property="u_pwd" />
+    <result column="u_name" jdbcType="VARCHAR" property="u_name" />
+    <result column="u_addres" jdbcType="VARCHAR" property="u_addres" />
+    <result column="u_type" jdbcType="INTEGER" property="u_type" />
+    <result column="u_phone" jdbcType="VARCHAR" property="u_phone" />
+    <result column="u_email" jdbcType="VARCHAR" property="u_email" />
+    <result column="u_photo" jdbcType="VARCHAR" property="u_photo" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    u_id, u_user, u_pwd, u_name, u_addres, u_type, u_phone, u_email
+  </sql>
+  <select id="selectByExample" parameterType="com.t05g1.pojo.Admin_UsersExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from jd_user
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from jd_user
+    where u_id = #{u_id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from jd_user
+    where u_id = #{u_id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.t05g1.pojo.Admin_Users">
+    insert into jd_user (u_id, u_user, u_pwd, 
+      u_name, u_addres, u_type, 
+      u_phone, u_email)
+    values (#{u_id,jdbcType=INTEGER}, #{u_user,jdbcType=VARCHAR}, #{u_pwd,jdbcType=VARCHAR}, 
+      #{u_name,jdbcType=VARCHAR}, #{u_addres,jdbcType=VARCHAR}, #{u_type,jdbcType=INTEGER}, 
+      #{u_phone,jdbcType=VARCHAR}, #{u_email,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.t05g1.pojo.Admin_Users">
+    insert into jd_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="u_id != null">
+        u_id,
+      </if>
+      <if test="u_user != null">
+        u_user,
+      </if>
+      <if test="u_pwd != null">
+        u_pwd,
+      </if>
+      <if test="u_name != null">
+        u_name,
+      </if>
+      <if test="u_addres != null">
+        u_addres,
+      </if>
+      <if test="u_type != null">
+        u_type,
+      </if>
+      <if test="u_phone != null">
+        u_phone,
+      </if>
+      <if test="u_email != null">
+        u_email,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="u_id != null">
+        #{u_id,jdbcType=INTEGER},
+      </if>
+      <if test="u_user != null">
+        #{u_user,jdbcType=VARCHAR},
+      </if>
+      <if test="u_pwd != null">
+        #{u_pwd,jdbcType=VARCHAR},
+      </if>
+      <if test="u_name != null">
+        #{u_name,jdbcType=VARCHAR},
+      </if>
+      <if test="u_addres != null">
+        #{u_addres,jdbcType=VARCHAR},
+      </if>
+      <if test="u_type != null">
+        #{u_type,jdbcType=INTEGER},
+      </if>
+      <if test="u_phone != null">
+        #{u_phone,jdbcType=VARCHAR},
+      </if>
+      <if test="u_email != null">
+        #{u_email,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.t05g1.pojo.Admin_Users">
+    update jd_user
+    <set>
+      <if test="u_user != null">
+        u_user = #{u_user,jdbcType=VARCHAR},
+      </if>
+      <if test="u_pwd != null">
+        u_pwd = #{u_pwd,jdbcType=VARCHAR},
+      </if>
+      <if test="u_name != null">
+        u_name = #{u_name,jdbcType=VARCHAR},
+      </if>
+      <if test="u_addres != null">
+        u_addres = #{u_addres,jdbcType=VARCHAR},
+      </if>
+      <if test="u_type != null">
+        u_type = #{u_type,jdbcType=INTEGER},
+      </if>
+      <if test="u_phone != null">
+        u_phone = #{u_phone,jdbcType=VARCHAR},
+      </if>
+      <if test="u_email != null">
+        u_email = #{u_email,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where u_id = #{u_id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.t05g1.pojo.Admin_Users">
+    update jd_user
+    set u_user = #{u_user,jdbcType=VARCHAR},
+      u_pwd = #{u_pwd,jdbcType=VARCHAR},
+      u_name = #{u_name,jdbcType=VARCHAR},
+      u_addres = #{u_addres,jdbcType=VARCHAR},
+      u_type = #{u_type,jdbcType=INTEGER},
+      u_phone = #{u_phone,jdbcType=VARCHAR},
+      u_email = #{u_email,jdbcType=VARCHAR}
+    where u_id = #{u_id,jdbcType=INTEGER}
+  </update>
+  <select id="queryAllDataFromByUsersTable" resultMap="BaseResultMap">
+	    SELECT * FROM jd_user	
+	    <where>	
+	     1=1	
+	    <if test='u_type !=-1'>
+	      and u_type = #{u_type}
+	    </if>
+	    <if test='u_name !="" or u_name !=null'>
+	      and u_name LIKE '%${u_name}%'
+	    </if>
+	    </where>
+	     ORDER BY u_id desc
+	    limit #{curr},#{limit}	    
+	</select>
+	
+    <select id="queryAllByUsersCount" resultType="java.lang.Integer">
+        select count(*) from jd_user
+        <where>
+        1=1
+         <if test='u_type !=null'>
+	      and u_type = #{u_type}
+	    </if>
+	    <if test='u_name !="" or u_name !=null'>
+	      and u_name LIKE '%${u_name}%'
+	    </if>
+	    </where>
+    </select>
+    
+    <select id="selectId" resultType="int">
+	select count(1) from jd_user 
+	</select>
+	
+	<update id="UserBlockOrStart">
+	update jd_user
+	<set>
+		<if test="u_type !=0">
+		  u_type = 0,
+		</if>
+		<if test="u_type !=1">
+		  u_type = 1,
+		</if>
+	</set>
+	 where u_id = #{u_id}
+	</update>
+</mapper>

@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.t05g1.dao.AdminsDao">
+  <resultMap id="BaseResultMap" type="com.t05g1.pojo.Admins">
+    <id column="a_id" jdbcType="INTEGER" property="a_id" />
+    <result column="a_adminName" jdbcType="VARCHAR" property="a_adminName" />
+    <result column="a_password" jdbcType="VARCHAR" property="a_password" />
+    <result column="a_holder" jdbcType="VARCHAR" property="a_holder" />
+    <result column="salt" jdbcType="VARCHAR" property="salt" />
+    <result column="a_headportrait" jdbcType="VARCHAR" property="a_headportrait" />
+    
+    <association property="role" javaType="com.t05g1.pojo.Role">
+         <id column="id" jdbcType="BIGINT" property="id" />
+	    <result column="name" jdbcType="VARCHAR" property="name" />
+	    <result column="desc_" jdbcType="VARCHAR" property="desc_" />
+	    <result column="url" jdbcType="VARCHAR" property="url" />
+    </association>
+    
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    a_id, a_adminName, a_password, a_holder, salt, a_headportrait
+  </sql>
+  <select id="selectByExample" parameterType="com.t05g1.pojo.AdminsExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from jd_admin
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from jd_admin
+    where a_id = #{a_id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from jd_admin
+    where a_id = #{a_id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.t05g1.pojo.Admins">
+    insert into jd_admin (a_id, a_adminName, a_password, 
+      a_holder, salt, a_headportrait
+      )
+    values (#{a_id,jdbcType=INTEGER}, #{a_adminName,jdbcType=VARCHAR}, #{a_password,jdbcType=VARCHAR}, 
+      #{a_holder,jdbcType=VARCHAR}, #{salt,jdbcType=VARCHAR}, #{a_headportrait,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.t05g1.pojo.Admins">
+    insert into jd_admin
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="a_id != null">
+        a_id,
+      </if>
+      <if test="a_adminName != null">
+        a_adminName,
+      </if>
+      <if test="a_password != null">
+        a_password,
+      </if>
+      <if test="a_holder != null">
+        a_holder,
+      </if>
+      <if test="salt != null">
+        salt,
+      </if>
+      <if test="a_headportrait != null">
+        a_headportrait,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="a_id != null">
+        #{a_id,jdbcType=INTEGER},
+      </if>
+      <if test="a_adminName != null">
+        #{a_adminName,jdbcType=VARCHAR},
+      </if>
+      <if test="a_password != null">
+        #{a_password,jdbcType=VARCHAR},
+      </if>
+      <if test="a_holder != null">
+        #{a_holder,jdbcType=VARCHAR},
+      </if>
+      <if test="salt != null">
+        #{salt,jdbcType=VARCHAR},
+      </if>
+      <if test="a_headportrait != null">
+        #{a_headportrait,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.t05g1.pojo.Admins">
+    update jd_admin
+    <set>
+      <if test="a_adminName != null">
+        a_adminName = #{a_adminName,jdbcType=VARCHAR},
+      </if>
+      <if test="a_password != null">
+        a_password = #{a_password,jdbcType=VARCHAR},
+      </if>
+      <if test="a_holder != null">
+        a_holder = #{a_holder,jdbcType=VARCHAR},
+      </if>
+      <if test="salt != null">
+        salt = #{salt,jdbcType=VARCHAR},
+      </if>
+      <if test="a_headportrait != null">
+        a_headportrait = #{a_headportrait,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where a_id = #{a_id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.t05g1.pojo.Admins">
+    update jd_admin
+    set a_adminName = #{a_adminName,jdbcType=VARCHAR},
+      a_password = #{a_password,jdbcType=VARCHAR},
+      a_holder = #{a_holder,jdbcType=VARCHAR},
+      salt = #{salt,jdbcType=VARCHAR},
+      a_headportrait = #{a_headportrait,jdbcType=VARCHAR}
+    where a_id = #{a_id,jdbcType=INTEGER}
+  </update>
+  	<select id="adminLogin" resultType="com.t05g1.pojo.Admins">
+		SELECT * FROM jd_admin WHERE a_adminName=#{name} AND a_password=#{password}
+	</select>
+	<select id="FindUserByUserId" resultMap="BaseResultMap">
+		SELECT a.*,role.* FROM jd_admin a,jd_admin_role role WHERE role.id = a.a_holder AND a.a_id = #{id}
+	</select>
+	<update id="Update" parameterType="com.t05g1.pojo.Admins">
+	 UPDATE jd_admin
+     SET a_adminName=#{a_adminName},a_password=#{a_password},a_holder=#{a_holder},a_permissions=#{a_permissions},a_headportrait=#{a_headportrait}
+     WHERE a_id=#{a_id}
+	</update>
+	<select id="queryAllDataFromTable" resultMap="BaseResultMap">
+	    SELECT * FROM jd_admin	
+	    <where>	
+	     1=1	
+	    <if test='a_id !="0"'>
+	      and a_id = #{a_id}
+	    </if>
+	    <if test='a_adminName !="" or a_adminName !=null'>
+	      and a_adminName LIKE '%${a_adminName}%'
+	    </if>
+	    </where>
+	     ORDER BY a_id desc
+	    limit #{curr},#{limit}	    
+	</select>
+    <select id="queryAllCount" resultType="java.lang.Integer">
+        select count(*) from jd_admin
+        <where>
+        1=1
+        <if test='a_id !="0"'>
+	     and a_id = #{a_id}
+	    </if>
+	    <if test='a_adminName !="" or a_adminName !=null'>
+	    and a_adminName LIKE '%${a_adminName}%'
+	    </if>
+	    </where>
+    </select>
+    
+     <update id="isState">
+      update jd_admin
+      <set>
+      <if test="a_holder !=0">
+        a_holder ='0'
+      </if>
+      <if test="a_holder !=1">
+        a_holder ='1'
+      </if>
+    </set>
+    where a_id = #{a_id}    
+    </update>
+</mapper>

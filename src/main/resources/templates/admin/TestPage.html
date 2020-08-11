@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/admin/lib/layui/css/layui.css">
+</head>
+<body>
+<div style="margin-top: 17px;margin-left: 1103px;">
+    <span>名称搜索：</span><input type="text" style="height: 27px;width: 220px;" id="sear1" placeholder="请输入班级进行模糊查询"/>
+</div>
+ 
+<div class="layui-card-body">
+    <table class="layui-hide" id="test" lay-data="{width: 892, height:330}"></table>
+</div>
+<script src="/admin/lib/layui/layui.js"></script>
+<script src="/admin/js/jquery-3.2.1.min.js"></script> 
+
+<script type="text/html" id="imgDemo">
+  <a href=""><i class="layui-icon layui-icon-picture" style="font-size:24px; color: #1E9FFF;"></i></a>
+</script>
+
+<script type="text/html" id="proDemo">
+  <a href=""><i class="layui-icon layui-icon-set-sm" style="font-size:24px; color: #1E9FFF;"></i></a>
+</script>
+
+<script type="text/html" id="barDemo">
+  <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>
+  <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+  <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+</script>
+
+<script id="createTime" type="text/html">
+    {{#
+    var date = new Date();
+    date.setTime(d.c_data);
+    return date.Format("yyyy-MM-dd");
+    }}
+</script>
+
+<script>
+layui.use('table', function(){
+
+    var table = layui.table;
+    var kwx = $('#sear1').val();
+     table.render({
+        elem: '#test'
+        ,url:'/adminCommodity/showData.do?keyWord='+kwx
+        ,limit:10//默认为10
+        ,cols: [
+	        	[
+	            {field:'c_id', width:100, title: '编号', sort: true} //sort：true页面可进行排序操作
+	            ,{field:'c_uri', width:170, title: '图片'}
+	            ,{field:'c_name', width:170, title: '商品名称'}
+	            ,{field:'brand', width:130, title: '品牌名称',templet: '<div>{{d.brand.b_name}}</div>'}
+	            ,{field:'cat',width:160, title: '类型名称',templet: '<div>{{d.cat.name}}</div>'}
+	            ,{field:'c_title', width:130, title: '标题'}
+	            ,{field:'c_price', width:100, title: '价格', sort: true}
+	            ,{field:'c_discountprice', width:100, title: '优惠价'}
+	            ,{field:'c_Stock', width:100, title: '是否满减'}
+	            ,{field:'c_data', width:120, title: '录入时间',templet:'<div>{{ Format(d.c_data,"yyyy-MM-dd")}}</div>',sort: true}
+	            ,{title:'图片',width:178, align:'center', toolbar: '#imgDemo'}
+	            ,{title:'属性管理', width:178, align:'center', toolbar: '#proDemo'}
+	            ,{fixed: 'right', width:178, align:'center', toolbar: '#barDemo'}
+	            ]
+        	      ]
+        ,page: true
+        ,done:function(res, curr, count){
+            //数据的回调用，可不写
+        }
+    });
+})
+//时间格式转换
+function Format(datetime,fmt) {
+  if (parseInt(datetime)==datetime) {
+    if (datetime.length==10) {
+      datetime=parseInt(datetime)*1000;
+    } else if(datetime.length==13) {
+      datetime=parseInt(datetime);
+    }
+  }
+  datetime=new Date(datetime);
+  var o = {
+  "M+" : datetime.getMonth()+1,                 //月份   
+  "d+" : datetime.getDate(),                    //日   
+  "h+" : datetime.getHours(),                   //小时   
+  "m+" : datetime.getMinutes(),                 //分   
+  "s+" : datetime.getSeconds(),                 //秒   
+  "q+" : Math.floor((datetime.getMonth()+3)/3), //季度   
+  "S"  : datetime.getMilliseconds()             //毫秒   
+  };   
+  if(/(y+)/.test(fmt))   
+  fmt=fmt.replace(RegExp.$1, (datetime.getFullYear()+"").substr(4 - RegExp.$1.length));   
+  for(var k in o)   
+  if(new RegExp("("+ k +")").test(fmt))   
+  fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));   
+  return fmt;
+}
+console.log(Format("1507353913000","yyyy-M-d h:m:s.S"));
+</script>
+
+</body>
+</html>

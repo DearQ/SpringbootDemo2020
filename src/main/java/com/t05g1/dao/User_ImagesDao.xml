@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.t05g1.dao.User_ImagesDao">
+    
+    <select id="showImagesBycommId" resultType="com.t05g1.pojo.User_Images">
+    	SELECT ima.`uriDa`,ima.`uriZ`,ima.`uriX`
+		FROM jd_images AS ima
+		WHERE commId=#{cId} AND uriType=2 LIMIT 0,5
+    </select>
+    
+    <select id="showImagesByUri" resultType="com.t05g1.pojo.User_Images">
+    	SELECT * FROM jd_images WHERE colourId=#{imgId} AND uriType=2 
+	</select>
+</mapper> 

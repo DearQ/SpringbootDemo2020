@@ -1,0 +1,550 @@
+.icon {
+    width: 20px;
+    height: 20px;
+    display: block;
+    border: none;
+    float: right;
+	background-size: 15px auto;
+    background-repeat: no-repeat;
+}
+.aui-scrollView2 {
+    width: 100%;
+    height: 100%;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    position: relative;
+}
+/* 头部导航-搜索块 样式 */
+.aui-navBar-item {
+    height: 40px;
+    min-width: 30%;
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 25%;
+    -ms-flex: 0 0 25%;
+    flex: 0 0 25%;
+    padding: 0 0.9rem;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    font-size: 0.7rem;
+    white-space: nowrap;
+    overflow: hidden;
+    color: #a0a0a0;
+    position: relative;
+}
+
+.aui-navBar-item:first-child {
+    -webkit-box-ordinal-group: 2;
+    -webkit-order: 1;
+    -ms-flex-order: 1;
+    order: 1;
+    margin-right: -32%;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.aui-navBar-item:last-child {
+    -webkit-box-ordinal-group: 4;
+    -webkit-order: 3;
+    -ms-flex-order: 3;
+    order: 3;
+    -webkit-box-pack: end;
+    -webkit-justify-content: flex-end;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
+}
+
+.aui-center {
+    -webkit-box-ordinal-group: 3;
+    -webkit-order: 2;
+    -ms-flex-order: 2;
+    order: 2;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    height: 44px;
+    width: 80%;
+    margin-left: 13%;
+	margin-right: -19%;
+}
+.jd_searchBox {
+	width: 100%;
+	height: 100%;
+	padding-left: -1rem;
+	padding-right: -1rem;
+	
+}
+.jd_searchBox>input {
+	width: 100%;
+	height: 30px;
+	margin-top: 5px;
+	border-radius: 15px;
+	padding-left: 35px;
+	color: #666;
+	background: #f7f7f7;
+	font-size: 1.3rem;
+}
+.jd_searchBox::before {
+	content: "";
+	width: 27px;
+	height: 23px;
+	position: absolute;
+	background: url(../img/yuanImg/jd-sprites.png);
+	background-size: 200px 200px;
+	background-position: -56px -108px;
+	left: 54px;
+	top: 9px;
+}
+
+.icon-return {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAAFPklEQVRoQ+XaS4gcRRgH8O/rnhkEFRMUEQVjogQv07vdvSoaZU2IEKOQoCZ6WMhJiOQSJBDF165ijCLoSePruqiXsNk8VlhZXdCITlf1zkUT1oOKZAnCqusjstX1SUENjGPNY3v6lc1cp6e7f1PV1f/6qhAusQ9eTN7BwcE1YRj+2s89XxRgBbVte5aI1gHABQA4yhjbGwdeeLDjOF65XD4KADc2gET0hxBiuF6vs5WiCw0eGBi4vVQqnQSAq5thRARSyjfCMHxy1YAdx7mnVCp9iIjXt6KIaFEIsXXVtLDnefsRcRQArjK04Dkp5Tjn/MBKW1cdX7gu7bruQcuyngGAKw2gBQB4KQiCt+JgCwf2PO8IAIwg4uWGbvwzALzIGHs3LrZQYM/zTgHAFkSsGLBnhBD76vX6p/1gCwP2PO84Im4DANsA+kkIsWNubo73i80drAPFDBENIOJ/xhNS7x6A76WUu8IwDJPA5gpWWMuyFGRdi1XdV0REX0gpd/QbJVv/qFxGacdx1pfL5SkA2Gh4Xv8BgDNSyuGksbm0sOu6Q4h4ChGvMWCXEHE2iqKRNLCZg13XvdOyrGMA8D8sAPwmpZzgnO9J6nk1nSezLu37/h4ieg0RrzW07HnVskEQ7EoTm1kL+75/gIheQMQr2gSKtxljL6eNzQTs+/6zRHSwDfYcAIwxxt7JAps62HXdE5ZlbQGAywwtO29Z1uFarfZBVthUwZ7nTSPiMACUDKCzQojHkkpPK/nDEh+0dKD4CADua01P6saI6Acp5c4k01NuYB0VGRGtb01POiqellLuywubaJeuVqtrK5VKjYg2GKKiUOkpiqK70woUvbZyIl26Wq365XJ5AhFvMAxOfwPAWSnlvXljE2lhx3HuKJVKKiquNWB/J6LjRKS6cV/15F5bsNtxfbWwLrR9jIjXGbCLlmXN1Gq1h7vdRJbfxwb3UGg7wTl/PEtML9eKBa5WqxsqlUoAAGtMURERD/VTaOvlxuMeEwvsuu4YIj5vePWcB4Dn+i20xcX08rtYYN/3nyKiQ4ZgIYjoc8bY1l4unscxscA6YHwLAKbBSmWMKc759jxA3a4ZC6xOqisX6t1rWgppFOBuK8rrqPFHxAarE+h09RURbTQ8z+qQH6WUA0VC9wVWIj1ZUDXjmwyRUh0yL4TYncfMyNS9+wY3oTvNkH4hovs557Vuz1ja3ycCbtzk0NDQNBG1mwMvSCkf4pyfThvV6fyJgtWFPM87iYib21Q5VLFuLM9QkjhYoTvVsVQ5lohGGWNv5tHSqYA1ulOlUqFf4Zy/mjU6NbBGq1r0621WGf4komnO+c4s0amC9Qi+ybbtidaNKRp5gYgmGWO7s0KnDlaQdrtx1HdEtGxZ1qwQ4pEsAkomYJ3K1JTyEwC4pbU1dYHvOynlXWmjMwM3BRTjmrBCI+LXURRtSxOdKbgJ/Q0A3GyqW6uCXxRFj6ZVys0c3OjOXfZ1LAghtqeRv3MD69fWFBFtbrNzZ56InuCcTyc5gucK1vPqI4ho3JsFAAs6lSW2upg7WKPb7r4jokTzdyHAetKxHwBGEdG4vxIAxoMgiLW/svmRKAxYB5QHbdt+r11hHwBmGGN9FfYLBVboTks3ALBERMcYYyNxB7LCgXUq67Q49xcifhYEwQNx0IUEa7Rafv2SiG411MqWoijaG4bh+ErRhQU3Uplt20HrmrPahomIh4MgeHpVgZvQk0S0qSmKqmfZY4zNrzpwA+S67vt6R9Di8vLyaL1en1wpVh1f6C4dB9TtN5cc+F8gEXVbHNRUBQAAAABJRU5ErkJggg==');
+}
+
+.icon-shr {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAADzElEQVRoQ+2bT2gdRRzHf9/ZBzHQBE1BSvXkHxAE9aBgSYqbnUlOFhVJpWDpzdaDFgRPiqVab4J/EA/20lapaBBF8ODLzO7Dg0IkiOJNwUNBESRP1B6q2fnJtqmU8pIddt4MC9m97ndmPp/5vheyfx5ohx3YYb7UCYdsfG5u7qaJiYlDRLQPwLS1drXX653v9/s/h1z32rmjNayUepCIviCi6WsB+MrxbJ7nb8eQjiIspdxfyQKY3Ebqea31a6GlowgrpX4kojvqZADcsrKy8ktdzud8cOHFxcWbrbW/uUAy82FjzPsu2aaZ4MJZlh0SQpx3AWTmd40xR12yTTPBhavvL4AvXQCZ+YQx5mWXbNNMcOE0TXtJkvwF4IY6SGvtQ3meO21O3VxbnQ8uXC2slCqIKK2BvLSxsbFrMBhsNJVxGRdFeH5+/m4hhAawZwuof6y1T+Z5vuwC7ZOJIlwBpml6a5IkHwHYdx3wBWZ+whjztY+I69howleB0jS9K0mS2epfy7IsV4ui+IqI2BXYNxdd2BfYd3wn7LuDbR/fNdz2hnz5uoZ9d7Dt47uGIzSELMtuE0JMD4fDH9bW1v6NsOb/S0RtWEr5MBG9AeD2TYI/mfnkzMzMm8vLy2UM8WjCSqmnieidUVLM/ElZlgdDXylVa0cRzrLsBSHEqZoGPx8Oh4+F/ogHF07T9MZerzd0+bhaaw+GvkQMLqyUqi78qxsAtQczv2KMeak26BEILiylPALgjCPjOa31Ecdso1gM4XsAfOdCx8zHjTFvuWSbZoILV2BSyt8B7K6DZOZ7jTHf1+V8zscSfhTAx0QktoE9rbV+ykfGZWwU4Qoky7LDAM4CGLXme5vf3eC3eqIJb0pnQohjzHz5cSkzrwL4QGtd/VGzLg35ZqIK+8KOY3wnPI5dbPMcXcNtbmccbF3D49jFNs/RNdzmdsbBFr3hHfP0UEq5G8CnRDR3XVPV8+HHjTHfjKPBujmiNLywsLCXmQdEdOcoIGb+G8ABrXWVCXpEEZZSngFQdyfjV6313qC2Me5aLi0tJevr60MAU3UyZVneXxTFWl3O53zwhqWUCwD6jpCvaq1fdMw2igUXzrLsgBDiMxc6a+3reZ4/55JtmgkuPDs7OzU5OflHze2dy/xlWT5SFIXT5rRWuAJTSn1LRPdtB1m9NJ0kyVS/37/YVMZlXPCGKwgp5QNElAPYtRWUtfaZGC+JRxG+Kg1Aj3ojHsBRrfVpl4Z8M9GEK9BRv3mw1n44GAx+8hVxHR9V2BUqZK4TDrm7bZh7xzX8HwiOM0xOIScDAAAAAElFTkSuQmCC');
+}
+.bor-bott{
+	border-bottom: 1px #f5f5f5 solid;
+}
+
+/* 商品筛选 样式 */
+.aui-white-box{
+    background:#fff;
+    /* border-radius:5px; */
+	border-bottom: 1px #f5f5f5 solid;
+    width:100%;
+    margin:0 auto 0.8rem;
+}
+.aui-palace {
+    padding: 0.5rem 0;
+    position: relative;
+    overflow: hidden;
+}
+.aui-palace-grid {
+    position: relative;
+    float: left;
+	right: -2.5rem;
+    padding: 1px;
+    width: 25%;
+    box-sizing: border-box;
+    margin: 5px 0;
+}
+.aui-palace-grid p{
+  font-size: 1.4rem;
+  color: red;
+}
+.aui-module-fr {
+    position: relative;
+    width: 100%;
+}
+.aui-module-fr:after {
+    content: " ";
+    display: inline-block;
+    height: 8px;
+    width: 8px;
+    border-width: 2px 2px 0 0;
+    border-color: #e93b3d;
+    border-style: solid;
+	/* transform属性 旋转div的元素 */
+    -webkit-transform: rotate(135deg);
+    transform: rotate(135deg);
+    top: -9px;
+    position: absolute;
+    top: 50%;
+    margin-top: -15px;
+    right: -0.5rem;
+    border-radius: 1px;
+}
+.aui-footer-flex {
+    display: -webkit-box;
+    display: box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+.aui-footer-flex1 {
+    display: block;
+    width: 38%;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    flex: 1;
+}
+.aui-footer-flex2 {
+    display: block;
+    width: 66%;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    flex: 1;
+}
+.aui-footer-flex3 {
+    display: block;
+    width: 95%;
+	top: -0.15rem;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    flex: 1;
+}
+/* 商品筛选2 样式 */
+.n-tabs {
+    width: 100%;
+    height: 41px;
+    overflow: hidden;
+    z-index: 1000;
+    background-color: #fff;
+	border-bottom: 1px #f5f5f5 solid;
+}
+.n-tabs .n-tabContainer {
+    -webkit-overflow-scrolling: touch;
+    position: relative;
+    top: 0;
+    left: 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-left: 16px;
+    height: 51px;
+    font-size: 14px;
+    color: #333;
+    white-space: nowrap;
+}
+.n-tabs .n-tabContainer .n-tabItem {
+    -webkit-box-flex: 1;
+    -webkit-flex-grow: 1;
+    flex-grow: 1;
+    -webkit-flex-shrink: 0;
+    flex-shrink: 0;
+    display: inline-block;
+    height: 25px;
+	width: 80px;
+    line-height: 25px;
+    text-align: center;
+    margin-left: 20px;
+	background-color: #f2f2f7;
+}
+
+.n-tabs .n-tabContainer .n-tabItem:first-child {
+    margin-left: 0;
+}
+
+.n-tabs .n-tabContainer .n-tabItem .current {
+    display: inline-block;
+    height: 41px;
+    /* border-bottom: 2px solid #ff3542; */
+    color: #ff3542;
+}
+
+/*  显示商品图片列表 样式*/
+.aui-list-theme-box {
+    padding: 8px 8px;
+	overflow: hidden;
+    position: relative;
+	background: #e7e7e7;
+	color: #666;
+}
+.aui-list-item {
+    width: 100%;
+    float: left;
+	margin-left: -0.7rem;
+    background:#fff;
+    display:block;
+    overflow:hidden;
+    border-bottom: 1px #f5f5f5 solid;
+}
+.aui-list-theme-img {
+    height: auto;
+    width: 100%;
+	position: absolute;
+	top: 0.2rem;
+	left: 1rem;
+	width: 10rem;
+	height: 10rem;
+}
+
+.aui-list-theme-img img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border: none;
+}
+.aui-list-theme-message {
+    background: #fff;
+    padding-top:0.5rem;
+	margin-left: 12rem;
+}
+.aui-list-theme-message .aui-flex {
+    padding:3px 10px 10px 10px;
+}
+
+.aui-list-theme-message .aui-flex-box h2 {
+    color: #f00d3a;
+    font-size: 1.8rem;
+    text-align:left;
+    margin-bottom:0.3rem;
+}
+.aui-list-theme-subtitle{
+    color: #323232;
+    font-size: 1.35rem;
+    font-weight: normal;
+    padding:0.5rem 0.5rem;
+    word-wrap: normal;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    text-align: justify;
+}
+.aui-flex {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    padding: 10px;
+    position: relative;
+	margin-top: -0.2rem;
+}
+.aui-flex2 {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    padding: 1px 5px;
+	margin-top: -0.3rem;
+    position: relative;
+}
+.aui-flex2 span{
+	padding: 1px 5px;
+	font-size: 1rem;
+	color: #999;
+	margin: 2.5px;
+    background-color: #f2f2f7;
+}
+.aui-flex-box {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    flex: 1;
+    min-width: 0;
+    font-size: 14px;
+    color: #333;
+}
+.aui-flex-box h2{
+    color:rgba(255,255,255,0.9);
+    font-weight:normal;
+    font-size:1.3rem;
+	line-height: 1.8rem;
+}
+.aui-flex-box h2 em {
+    color: #f31e4e;
+    font-style: normal;
+    font-size: 0.65rem;
+    font-weight: normal;
+}
+.aui-flex-box h2 i {
+    color: #747474;
+    text-decoration: line-through;
+    font-weight: normal;
+    font-style: normal;
+    font-size: 0.7rem;
+}
+
+
+.aui-flex-span{
+    color:#fff;
+	background-color: #e93b3d;
+    font-size:0.7rem;
+    padding:0.01rem 0.3rem;
+}
+.aui-flex-span2{
+	color:#999;
+	font-size: 1rem;
+	padding:0.01rem 0.3rem;
+}
+.aui-flex-span3{
+	color:#e93b3d;
+	font-size: 1rem;
+	line-height: 2rem;
+	padding:0 0.4rem;
+	word-wrap: normal;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+	text-align: justify;
+}
+
+/* <!-- 弹窗块 样式 公用 */
+.retrie .aui-palace a { overflow: hidden; }
+.retrie .aui-palace a .up {
+  color: #007ccf;
+  border-bottom: 2px solid #007ccf;
+}
+.retrie .aui-palace a .up:after {
+  margin-top: 0;
+  border: #007ccf solid;
+  border-width: 1px 1px 0 0;
+  -webkit-transform: rotate(-45deg);
+}
+.retrie dd { position: relative; }
+
+/* 弹出 有阴影 */
+.mask-black{
+    background-color: rgba(0, 0, 0, 0.4);
+    position: fixed;
+    z-index: 500;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    top: 0;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    z-index: 998;
+}
+/* ======== */
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1004;
+  display: none;
+  width: 100%;
+  overflow-y: auto;
+  background-color: #fff;
+}
+.slide2 {
+  position: absolute;
+  top: 20rem;
+  left: 0;
+  z-index: 1004;
+  display: none;
+  width: 100%;
+  overflow-y: auto;
+  background-color: #fff;
+}
+.slide li {
+  display: block;
+  height: 50px;
+  border-bottom: 1px solid #eee;
+}
+.slide li a {
+  display: block;
+  padding: 0 30px;
+  height: 50px;
+  background-color: transparent;
+  line-height: 50px;
+}
+.slide li a:hover,
+.slide li a.selected { background-color: #f6f6f6; }
+
+.slide li a.select { background-color: #fff; }
+
+/* 瀑布流 样式 */
+.more-a{
+	display: block;
+	text-align: center;
+	margin-top: 8%;
+}
+.more-a img{
+	width: 6%;
+}
+
+/*  */
+/* input 样式 */
+input[type="checkbox"] {
+	-webkit-appearance: none;
+	outline: none;
+}
+
+input.check {
+	background: url(../img/yuanImg/icon_radio3.png) no-repeat center left;
+	background-size: 20px 20px;
+	position: absolute;
+	/* top: 50%; */
+	left: 10px;
+	margin-top: 8.5px;
+	width: 20px;
+	height: 35px;
+	border: none;
+}
+input.check:checked {
+	background: url(../img/yuanImg/icon_radio4.png) no-repeat center left;
+	background-size: 20px 20px;
+}
+
+input.goodsCheck:checked {
+	background: url(../img/yuanImg/icon_radio4.png) no-repeat center left;
+	background-size: 20px 20px;
+}
+
+input.check:checked {
+	background: url(../img/yuanImg/icon_radio4.png) no-repeat center left;
+	background-size: 20px 20px;
+}
+
+.checked {
+	background: url(../img/yuanImg/icon_radio4.png) no-repeat left center;
+	background-size: 20px 20px;
+	position: absolute;
+	top: 50%;
+	left: 15px;
+	margin-top: -18px;
+	width: 20px;
+	height: 35px;
+}
+.aui-footer-group {
+    position: relative;
+	width: 100%;
+    height: 50px;
+}
+
+.aui-btn {
+    position: relative;
+    z-index: 10;
+    line-height: 50px;
+    text-align: center;
+    background: #e4393c;
+    color: #fff;
+    font-size: 1.5rem;
+    /* cursor: pointer; */
+    -webkit-user-select: none;
+    width: 100%;
+    font-weight: bold;
+}
+.aui-btn-white{
+	color: #e93b3d;
+	background-color: #fefefe;
+}
+.aui-btn-red {
+    background-color: #e93b3d;
+}

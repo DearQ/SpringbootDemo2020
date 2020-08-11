@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.t05g1.dao.AdminDao">
+     <!-- type一定要是全路径名，不然无法识别！！！！！ -->
+	<resultMap type="com.t05g1.pojo.Admins" id="adminInfoMap">
+		 <id column="a_id" property="a_id" />
+	    <result column="a_adminName" property="a_adminName" />
+	    <result column="a_password"  property="a_password" />	   
+	    <result column="a_holder"  property="a_holder" />
+	    <result column="a_permissions"  property="a_permissions" />
+	     <result column="a_headportrait"  property="a_headportrait" />
+	</resultMap>
+	 <!-- resultType一定要是全路径名，不然无法识别！！！！！ -->
+	<select id="adminLogin" resultType="com.t05g1.pojo.Admins">
+		SELECT * FROM jd_admin WHERE a_adminName=#{name} AND a_password=#{password}
+	</select>
+	<select id="FindUserByUserId" resultType="com.t05g1.pojo.Admins">
+		SELECT * FROM jd_admin WHERE a_id=#{id} 
+	</select>
+	<update id="Update" parameterType="com.t05g1.pojo.Admins">
+	 UPDATE jd_admin
+     SET a_adminName=#{a_adminName},a_password=#{a_password},a_holder=#{a_holder},a_permissions=#{a_permissions},a_headportrait=#{a_headportrait}
+     WHERE a_id=#{a_id}
+	</update>
+</mapper> 

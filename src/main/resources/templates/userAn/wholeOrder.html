@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport"/>
+		<title>京东商城-我的订单</title>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
+		<link rel="stylesheet" type="text/css" href="css/communalStyle.css"/>
+		<link rel="stylesheet" type="text/css" href="css/wholeOrder.css"/>
+	</head>
+	<body>
+		<section class="aui-flexView">
+			<!-- 头部导航块 -->
+			<header class="aui-navBar aui-navBar-fixed">
+			    <a href="../" class="aui-navBar-item">
+			        <i class="icon icon-return"></i>
+			    </a>
+			    <div class="aui-center">
+			        <span class="aui-center-title">我的订单</span>
+			    </div>
+			    <a href="javascript:;" class="aui-navBar-item">
+			        <i class="icon icon-xin"></i>
+			        <i class="icon icon-shr"></i>
+			    </a>
+			</header>
+			<section class="aui-scrollView2">
+				<div class="aui-tab" data-ydui-tab>
+					 <ul id="tit" class="tab-nav">
+						<li class="tab-nav-item tab-active sel">
+						    <a href="javascript:;">全部</a>
+						</li>
+						<li class="tab-nav-item">
+						    <a href="javascript:;">待付款</a>
+						</li>
+						<li class="tab-nav-item">
+						    <a href="javascript:;">待发货</a>
+						</li> 
+						<li class="tab-nav-item">
+						    <a href="javascript:;">待收货</a>
+						</li>
+						<li class="tab-nav-item">
+						    <a href="javascript:;">已完成</a>
+						</li>
+						
+					 </ul>
+					<div class="divHeight"></div>
+					<div id="con" class="tab-panel">
+						<!-- 查看全部订单 -->
+						<div id="1" class="tab-panel-item tab-active">
+							<div class="tab-item" th:each="infos:${orderList}">
+								<a href="javascript:void(0);" class="aui-well-item aui-well-item-clear">
+									<div class="aui-well-item-hd">
+									    <img src="img/yuanImg/logo-item.png" alt="">
+									</div>
+									<div class="aui-well-item-bd">
+									    <h3 th:text="${infos.productName}"></h3>
+									</div><!-- class="aui-well-item-fr" 已完成订单样式-->
+									<span class="aui-well-wait" th:if="${infos.payStatus==0}">等待支付</span>
+									<span class="aui-well-wait" th:if="${infos.orderStatus==0&&infos.payStatus==1}">等待发货</span>
+									<span class="aui-well-wait" th:if="${infos.orderStatus==1}">等待收货</span>
+								</a>
+								<div class="aui-mail-product" th:each="info:${infos.shoopc}">
+									<a href="javascript:;" class="aui-mail-product-item">
+									    <div class="aui-mail-product-item-hd">
+									        <img th:src="${info.uri}" th:alt="${info.name}">
+									    </div>
+									    <div class="aui-mail-product-item-bd">
+									        <p th:text="${info.name}">Apple 苹果 iPhone8 Plus 4G手机 深空灰 移动联通版64G裸机Apple 苹果 iPhone8 Plus 4G手机 深空灰 移动联通版64G裸机</p>
+									    </div>
+									</a>
+								</div>
+								<a href="javascript:;" class="aui-mail-payment">
+								    <p>
+								        共<em th:text="${infos.amount}">1</em>
+								        件商品 实付款: ￥<i th:text="${infos.money}">6899.00</i>
+								    </p>
+								</a>
+								<div class="aui-mail-button">
+								    <a href="javascript:;" th:if="${infos.payStatus==0}">去支付</a>
+								    <a href="javascript:;" th:if="${infos.orderStatus==0&&infos.payStatus==1}">提醒发货</a>
+								    <a href="javascript:;" th:if="${infos.orderStatus==1}">确认收货</a>
+								</div>
+								<div class="aui-mail-button" th:if="${infos.orderStatus==2}">
+								    <a href="javascript:;" >再次购买</a>
+								    <a href="javascript:;" class="aui-df-color">评价晒单</a>
+								    <a href="javascript:;" class="aui-df-color">查看发票</a>
+								</div>	 
+								<div class="divHeight"></div>
+							</div>
+							
+						</div>
+						<!-- tab-等待付款 -->
+						<div id="1" class="tab-panel-item tab-active">
+							<div class="tab-item" th:each="infos:${orderListPayStatus}">
+								<a href="javascript:void(0);" class="aui-well-item aui-well-item-clear">
+									<div class="aui-well-item-hd">
+									    <img src="img/yuanImg/logo-item.png" alt="">
+									</div>
+									<div class="aui-well-item-bd">
+									    <h3 th:text="${infos.productName}"></h3>
+									</div><!-- class="aui-well-item-fr" 已完成订单样式-->
+									<span class="aui-well-wait" th:if="${infos.payStatus==0}">等待支付</span>
+									<span class="aui-well-wait" th:if="${infos.orderStatus==0&&infos.payStatus==1}">等待发货</span>
+									<span class="aui-well-wait" th:if="${infos.orderStatus==1}">等待收货</span>
+								</a>
+								<div class="aui-mail-product" th:each="info:${infos.shoopc}">
+									<a href="javascript:;" class="aui-mail-product-item">
+									    <div class="aui-mail-product-item-hd">
+									        <img th:src="${info.uri}" th:alt="${info.name}">
+									    </div>
+									    <div class="aui-mail-product-item-bd">
+									        <p th:text="${info.name}">Apple 苹果 iPhone8 Plus 4G手机 深空灰 移动联通版64G裸机Apple 苹果 iPhone8 Plus 4G手机 深空灰 移动联通版64G裸机</p>
+									    </div>
+									</a>
+								</div>
+								<a href="javascript:;" class="aui-mail-payment">
+								    <p>
+								        共<em th:text="${infos.amount}">1</em>
+								        件商品 实付款: ￥<i th:text="${infos.money}">6899.00</i>
+								    </p>
+								</a>
+								<div class="aui-mail-button">
+								    <a href="javascript:;" th:if="${infos.payStatus==0}">去支付</a>
+								    <a href="javascript:;" th:if="${infos.orderStatus==0&&infos.payStatus==1}">提醒发货</a>
+								    <a href="javascript:;" th:if="${infos.orderStatus==1}">确认收货</a>
+								</div>
+								<div class="aui-mail-button" th:if="${infos.orderStatus==2}">
+								    <a href="javascript:;" >再次购买</a>
+								    <a href="javascript:;" class="aui-df-color">评价晒单</a>
+								    <a href="javascript:;" class="aui-df-color">查看发票</a>
+								</div>	 
+								<div class="divHeight"></div>
+							</div>
+							
+						</div>
+						<!-- tab-待发货 -->
+						<div id="1" class="tab-panel-item tab-active">
+							<div class="tab-item" th:each="infos:${orderListOrderStatus0}">
+								<a href="javascript:void(0);" class="aui-well-item aui-well-item-clear">
+									<div class="aui-well-item-hd">
+									    <img src="img/yuanImg/logo-item.png" alt="">
+									</div>
+									<div class="aui-well-item-bd">
+									    <h3 th:text="${infos.productName}"></h3>
+									</div><!-- class="aui-well-item-fr" 已完成订单样式-->
+									<span class="aui-well-wait" th:if="${infos.payStatus==0}">等待支付</span>
+									<span class="aui-well-wait" th:if="${infos.orderStatus==0&&infos.payStatus==1}">等待发货</span>
+									<span class="aui-well-wait" th:if="${infos.orderStatus==1}">等待收货</span>
+								</a>
+								<div class="aui-mail-product" th:each="info:${infos.shoopc}">
+									<a href="javascript:;" class="aui-mail-product-item">
+									    <div class="aui-mail-product-item-hd">
+									        <img th:src="${info.uri}" th:alt="${info.name}">
+									    </div>
+									    <div class="aui-mail-product-item-bd">
+									        <p th:text="${info.name}">Apple 苹果 iPhone8 Plus 4G手机 深空灰 移动联通版64G裸机Apple 苹果 iPhone8 Plus 4G手机 深空灰 移动联通版64G裸机</p>
+									    </div>
+									</a>
+								</div>
+								<a href="javascript:;" class="aui-mail-payment">
+								    <p>
+								        共<em th:text="${infos.amount}">1</em>
+								        件商品 实付款: ￥<i th:text="${infos.money}">6899.00</i>
+								    </p>
+								</a>
+								<div class="aui-mail-button">
+								    <a href="javascript:;" th:if="${infos.payStatus==0}">去支付</a>
+								    <a href="javascript:;" th:if="${infos.orderStatus==0&&infos.payStatus==1}">提醒发货</a>
+								    <a href="javascript:;" th:if="${infos.orderStatus==1}">确认收货</a>
+								</div>
+								<div class="aui-mail-button" th:if="${infos.orderStatus==2}">
+								    <a href="javascript:;" >再次购买</a>
+								    <a href="javascript:;" class="aui-df-color">评价晒单</a>
+								    <a href="javascript:;" class="aui-df-color">查看发票</a>
+								</div>	 
+								<div class="divHeight"></div>
+							</div>
+							
+						</div>
+						<!-- tab-待收货 -->
+						<div id="1" class="tab-panel-item tab-active">
+							<div class="tab-item" th:each="infos:${orderListOrderStatus1}">
+								<a href="javascript:void(0);" class="aui-well-item aui-well-item-clear">
+									<div class="aui-well-item-hd">
+									    <img src="img/yuanImg/logo-item.png" alt="">
+									</div>
+									<div class="aui-well-item-bd">
+									    <h3 th:text="${infos.productName}"></h3>
+									</div><!-- class="aui-well-item-fr" 已完成订单样式-->
+									<span class="aui-well-wait" th:if="${infos.payStatus==0}">等待支付</span>
+									<span class="aui-well-wait" th:if="${infos.orderStatus==0&&infos.payStatus==1}">等待发货</span>
+									<span class="aui-well-wait" th:if="${infos.orderStatus==1}">等待收货</span>
+								</a>
+								<div class="aui-mail-product" th:each="info:${infos.shoopc}">
+									<a href="javascript:;" class="aui-mail-product-item">
+									    <div class="aui-mail-product-item-hd">
+									        <img th:src="${info.uri}" th:alt="${info.name}">
+									    </div>
+									    <div class="aui-mail-product-item-bd">
+									        <p th:text="${info.name}">Apple 苹果 iPhone8 Plus 4G手机 深空灰 移动联通版64G裸机Apple 苹果 iPhone8 Plus 4G手机 深空灰 移动联通版64G裸机</p>
+									    </div>
+									</a>
+								</div>
+								<a href="javascript:;" class="aui-mail-payment">
+								    <p>
+								        共<em th:text="${infos.amount}">1</em>
+								        件商品 实付款: ￥<i th:text="${infos.money}">6899.00</i>
+								    </p>
+								</a>
+								<div class="aui-mail-button">
+								    <a href="javascript:;" th:if="${infos.payStatus==0}">去支付</a>
+								    <a href="javascript:;" th:if="${infos.orderStatus==0&&infos.payStatus==1}">提醒发货</a>
+								    <a href="javascript:;" th:if="${infos.orderStatus==1}">确认收货</a>
+								</div>
+								<div class="aui-mail-button" th:if="${infos.orderStatus==2}">
+								    <a href="javascript:;" >再次购买</a>
+								    <a href="javascript:;" class="aui-df-color">评价晒单</a>
+								    <a href="javascript:;" class="aui-df-color">查看发票</a>
+								</div>	 
+								<div class="divHeight"></div>
+							</div>
+							
+						</div>
+						<!-- tab-已完成 -->
+						<div id="1" class="tab-panel-item tab-active">
+							<!--订单空-->
+							<div class="kon-cat">
+								<div class="catkon">
+									<div class="kon-box">
+										<div class="kon-hz">
+											<div class="kon-img">
+												<img src="img/yuanImg/per16.png"/>
+											</div>
+											<span class="kon-wz">您暂时没有相关订单！</span>
+											<!-- <a href="###" class="kon-lj">去逛逛</a> -->
+										</div>
+									</div>
+								</div>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+			</section>
+			
+		</section>
+		<script src="js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/tab.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			// 获取 被访问是的 url
+			var ur = location.href;
+			// 获取该url， 后面的数字（id）
+			var type = ur.split('?')[1].split("=")[1];
+			// 使用传过来的 数字 （id） 来控制该选项卡的切换
+			$('#tit li').eq(type - 1).addClass('sel').siblings().removeClass('sel');
+			$('#con .tab-panel-item').eq(type - 1).show().siblings().hide();
+		</script>
+	</body>
+</html>

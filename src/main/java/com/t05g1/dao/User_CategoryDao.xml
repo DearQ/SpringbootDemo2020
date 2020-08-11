@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.t05g1.dao.User_CategoryDao">
+	<resultMap type="com.t05g1.pojo.User_Category" id="showCategoryResultMap">
+		<id column="id" property="id"/>
+		<result column="name" property="name"/>
+		<!-- 1对多 -->
+		<collection property="ucomm" ofType="com.t05g1.pojo.User_Commodity">
+			<id column="c_id" property="c_id"/>
+			<result column="c_price" property="c_price"/>
+			<result column="c_uri" property="c_uri"/>
+		</collection>
+	</resultMap>
+    <select id="showCategory" resultMap="showCategoryResultMap">
+    	SELECT ca.id,ca.name,com.c_id,com.c_price,com.c_uri
+		FROM jd_category AS ca,jd_commodity AS com
+		WHERE ca.id=com.c_categoryId
+    </select>
+</mapper> 

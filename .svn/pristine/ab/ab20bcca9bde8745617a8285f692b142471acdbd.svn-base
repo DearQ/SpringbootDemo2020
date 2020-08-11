@@ -1,0 +1,256 @@
+<html class="x-admin-sm" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8">
+    <title>欢迎页面-X-admin2.1</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+    <link rel="stylesheet" href="/admn/css/font.css">
+    <link rel="stylesheet" href="/admin/css/xadmin.css">
+    <script type="text/javascript" src="/admin/js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="/admin/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/admin/js/xadmin.js"></script>
+    <script type="text/javascript" src="admin/js/cookie.js"></script>
+    <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+      <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+<style>
+.layui-table-cell
+{
+  height:60px;
+  line-height:50px;
+}
+.layui-table-cell .layui-form-checkbox[lay-skin="primary"]{
+     top: 50%;
+     transform: translateY(-50%);
+}
+</style>
+  <body>
+        <form class="layui-form layui-col-md12 x-so">
+          <input type="hidden" id="c_id" name="c_id"  autocomplete="off" class="layui-input">
+        </form>
+
+      <xblock>
+        <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>
+        <button class="layui-btn" id="add"><i class="layui-icon"></i>添加</button>
+        <span class="x-right" style="line-height:40px">共有数据：88 条</span>
+      </xblock>
+      
+<!-- 数据显示 -->
+    <div class="layui-card-body">
+    <table class="layui-hide" id="test" lay-filter="brandTable"></table>
+	</div>    
+    
+<!-- 数据提取 -->
+<script>
+
+layui.use(['form','laydate','table','jquery','element','layer'], function(){
+	var form = layui.form 
+	,layer = layui.layer
+    ,table = layui.table;
+	$= layui.jquery,
+	element=layui.element,
+	laydate=layui.laydate,
+	//加载表格数据
+    tableIns=table.render({
+        elem: '#test'
+        ,height:660
+        ,url:'/adminCommodity/showImagesData.do'
+        ,where:
+        {
+         'commId':$("#c_id").val()
+        }
+        ,limit:10//默认为10
+        ,cols: [
+	        	[
+	        	 {type:'checkbox', fixed: 'left'}
+	            ,{type:'numbers', width:90,title:'序号'}//sort：true页面可进行排序操作
+	            ,{field:'name',width:'10%',align:'canter',title:'颜色',templet:'<div>{{d.colour.name}}</div>'}
+	            ,{field:'uriDa', width:'20%',align:'center',title: '大图(800*800)',templet:'#b_img'}
+	            ,{field:'uriZ', width:'15%',align:'center',title: '中图(450*450)',templet:'#Zimg'}
+	            ,{field:'uriX', width:'10%',align:'center',title: '小图(54*54)',templet:'#Ximg'}
+	            ,{field:'commId', width:'20%',align:'center',title: '商品ID'}
+	            ,{field:'colourId', width:'20%',align:'center',title: '颜色ID'}
+	            ,{fixed:'right',width:'20%',align:'center', toolbar: '#optBar'}
+	            ]
+        	      ]
+        ,page:true
+        ,done:function(res, curr, count){
+            //数据的回调用，可不写
+        }
+    });
+    //监听搜索框
+    form.on('submit(sreach)', function(data){
+        //重新加载table
+        load(data);
+        return false;
+    });
+    //删除商品
+	  $("#delProduct").click(function(){
+		  //layer.alert(JSON.stringify(table.checkStatus('test').data));
+		  var array=table.checkStatus("test").data;
+  	     	if(array.length!=0){
+  	    		
+  	    		var c_id=[];//定义空数组
+  	    		for(var i in array){
+  	    			c_id.push(array[i].c_id);
+  	    		}
+  	    	    var strify = JSON.stringify(c_id);
+		        console.log(strify);
+  	    		console.log(c_id);
+  	    		layer.confirm('真的删除所选择行的商品么?删除后数据不能恢复！',{icon:3,title:'提示'}, function(index){
+  	    			$.post('/adminCommodity/delProductsById.do?c_id='+c_id,function(d){
+  		    			if(d.res>0){
+  		    				table.reload("test");
+  			  				layer.msg("操作成功！");
+  		    			}else{
+  		    				layer.msg("操作失败！");
+  		    			}
+  		    		},'json');
+  	    		})
+  	    		
+  	    	}else{
+  	    		layer.msg("请选择要删除的用户！");
+  	    	}
+  	    }); 
+    //添加图片
+	$('#add').click(function(){
+		var ids = $("#c_id");
+		var id = ids.val();
+         if(id.length!=0){
+    	  var index = layer.open({
+    		  title : "添加图片",
+    		  type : 2,
+    		  offset: 'auto',
+    		  area: ['800px', '600px'],
+    		  content : "/adminCommodity/images.do?commId="+id,
+    		  success:function(layero, index){
+    			  console.log(id);
+				}
+    		  })
+    		  //layer.full(index);
+          }
+	});
+     //监听工具条
+     table.on('tool(brandTable)', function(obj){ //注：tool 是工具条事件名，articleTable是 table 原始容器的属性 lay-  filter="对应的值"
+	      var data = obj.data //获得当前行数据
+	      var layEvent = obj.event; //获得 lay-event 对应的值
+	      //删除
+	    
+	      if(layEvent === 'del'){
+	     layer.confirm('真的删除该商品图片吗?删除后数据不能恢复！',{icon:3,title:'提示'}, function(index){
+	    	  var path = [data.uriDa,data.uriZ,data.uriX];//用数组存储获取图片路径
+	    	  var strify = JSON.stringify(path);//解析图片成json
+	        	$.post("/adminCommodity/deleteProductFile.do?paths="+path,function(d){ 
+	        		if(d=="1"){
+	        	    $.post("/adminCommodity/delImageById.do",{"id":data.id},function(d){
+					  	if(d.res>0){
+					  			table.reload("test");
+					  			layer.msg("操作成功！");
+					  		}else{
+					  			layer.msg("操作失败！");
+					  		}
+					  	},"json")
+	        		}else{
+	        			layer.msg("操作失败！");
+	        		}
+	        	},"json");	
+	        	
+	        });
+	      }else if(layEvent === 'block'){
+	    	  layer.confirm('是否真的停用？停用后该商品将无法使用！',{icon:3,title:'提示'}, function(index){
+	    		  $.post("/adminCommodity/isanditStatus.do",{"b_id":data.b_id,"b_anditStatus":data.b_anditStatus},function(d){
+				  		if(d.res>0){
+				  			table.reload("test");
+				  			layer.msg("该品牌已停用！");
+				  		}else{
+				  			layer.msg("操作失败！");
+				  		}
+				  	},"json");
+	    	  })
+	    	  
+	      }else if(layEvent === 'start'){
+	    	  $.post("/adminCommodity/isanditStatus.do",{"b_id":data.b_id,"b_anditStatus":data.b_anditStatus},function(d){
+			  		if(d.res>0){
+			  			table.reload("test");
+			  			layer.msg("该商品已启用！");
+			  		}else{
+			  			layer.msg("操作失败！");
+			  		}
+			  	},"json");
+	      }
+	    });
+});
+//重新加载table
+function load(obj){
+    tableIns.reload({
+        where: obj.field
+        , page: {
+            curr: 1 //从当前页码开始
+        }
+    });
+}
+
+//时间格式转换
+function Format(datetime,fmt) {
+		  if (parseInt(datetime)==datetime) {
+		    if (datetime.length==10) {
+		      datetime=parseInt(datetime)*1000;
+		    } else if(datetime.length==13) {
+		      datetime=parseInt(datetime);
+		    }
+		  }
+		  datetime=new Date(datetime);
+		  var o = {
+		  "M+" : datetime.getMonth()+1,                 //月份   
+		  "d+" : datetime.getDate(),                    //日   
+		  "h+" : datetime.getHours(),                   //小时   
+		  "m+" : datetime.getMinutes(),                 //分   
+		  "s+" : datetime.getSeconds(),                 //秒   
+		  "q+" : Math.floor((datetime.getMonth()+3)/3), //季度   
+		  "S"  : datetime.getMilliseconds()             //毫秒   
+		  };   
+		  if(/(y+)/.test(fmt))   
+		  fmt=fmt.replace(RegExp.$1, (datetime.getFullYear()+"").substr(4 - RegExp.$1.length));   
+		  for(var k in o)   
+		  if(new RegExp("("+ k +")").test(fmt))   
+		  fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));   
+		  return fmt;
+		}
+		console.log(Format("1507353913000","yyyy-M-d h:m:s.S"));
+</script>
+<!-- 操作样式 -->
+<script type="text/html" id="optBar"> 
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+</script>
+
+<!-- 显示图片 -->
+<script type="text/html" id="b_img">
+{{#  if(d.uriDa!=null&&d.uriDa!= ""){ }}
+    	 <img src="{{d.uriDa}}" style="width:800px;"/>
+{{#  } else{ }}
+	暂无图片...
+{{#  } }}
+</script>
+<!-- 显示图片 -->
+<script type="text/html" id="Zimg">
+{{#  if(d.uriZ!=null&&d.uriZ!= ""){ }}
+    	 <img src="{{d.uriZ}}" style="width:450px;"/>
+{{#  } else{ }}
+	暂无图片...
+{{#  } }}
+</script>
+<!-- 显示图片 -->
+<script type="text/html" id="Ximg">
+{{#  if(d.uriX!=null&&d.uriX!= ""){ }}
+    	 <img src="{{d.uriX}}" style="width:54px;"/>
+{{#  } else{ }}
+	暂无图片...
+{{#  } }}
+</script>
+</body>
+
+</html>

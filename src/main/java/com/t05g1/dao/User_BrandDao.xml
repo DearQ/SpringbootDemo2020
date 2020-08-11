@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.t05g1.dao.User_BrandDao">
+     
+	<select id="showBrand" resultType="com.t05g1.pojo.User_Brand">
+		 SELECT b_id,b_name,b_img FROM jd_brand WHERE b_img IS NOT NULL AND b_img != '' LIMIT 0,9
+	</select>
+</mapper> 

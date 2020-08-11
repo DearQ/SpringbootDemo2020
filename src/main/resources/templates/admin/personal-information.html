@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html class="x-admin-sm">
+  
+  <head>
+    <meta charset="UTF-8">
+    <title>欢迎页面-X-admin2.1</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+    <link rel="stylesheet" href="/admin/css/font.css">
+    <link rel="stylesheet" href="/admin/css/xadmin.css">
+    <script type="text/javascript" src="/admin/js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="/admin/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/admin/js/xadmin.js"></script>
+    <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+      <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  
+  <body>
+    <div class="x-body">
+        <form class="layui-form" style="text-align: center;">
+        	 <div class="layui-form-item">
+                 <label class="layui-form-label"><i class="layui-icon layui-icon-friends"></i>基本信息</label>
+          </div>
+          <hr>
+          <div class="layui-form-item"> 
+          	<div class="layui-inline">
+							<div class="layui-upload">
+							  <div class="layui-upload-list">
+							    <img class="layui-upload-img" id="demo1" src="assets/avatars/avatar.png">
+							    <p id="demoText"></p>
+							  </div>
+							  <button type="button" class="layui-btn" id="test1">更换头像</button>
+							</div> 
+						</div>
+         </div>
+          <div class="layui-form-item"> 
+            <div class="layui-inline">
+							 <label for="L_username" class="layui-form-label">用户名</label>
+							 <div class="layui-input-block">
+                  <input type="text" id="L_username" name="username" required="" lay-verify="nikename"
+                     placeholder="请输入产品标题"   autocomplete="off" class="layui-input">
+              </div>
+						</div>
+          </div> 
+          <div class="layui-form-item"> 
+            <div class="layui-inline">
+							 <label class="layui-form-label">权限</label>
+							 <div class="layui-input-block">
+                <input type="text" name="username"  lay-verify="nikename" value="超级管理员" class="layui-input" disabled="disabled"/>
+              </div>
+						</div>
+          </div>
+          <div class="layui-form-item">
+                 <label class="layui-form-label"><i class="layui-icon layui-icon-password"></i>修改密码</label>							 
+          </div>
+          <hr>
+          <div class="layui-form-item"> 
+            <div class="layui-inline">
+							 <label class="layui-form-label">当前密码</label>
+							 <div class="layui-input-block">
+                  <input type="password" name="username" value="8888888"  lay-verify="nikename" class="layui-input"/>
+              </div>
+						</div>
+          </div>
+          <div class="layui-form-item"> 
+            <div class="layui-inline">
+							 <label class="layui-form-label">新密码</label>
+							 <div class="layui-input-block">
+                  <input type="password" name="username" value="8888888"  lay-verify="nikename" class="layui-input"/>
+              </div>
+						</div>
+          </div>
+          <div class="layui-form-item"> 
+            <div class="layui-inline">
+							 <label class="layui-form-label">确认密码</label>
+							 <div class="layui-input-block">
+                  <input type="password" name="username" value="8888888"  lay-verify="nikename" class="layui-input"/>
+              </div>
+						</div>
+          </div>
+          <div class="layui-form-item"> 
+            <div class="layui-inline">
+							 <div class="layui-input-block">
+                  <input type="submit" name="username" value="保存"  lay-verify="nikename" class="layui-btn"/>
+              </div>
+						</div>
+          </div>
+      </form>
+    </div>
+    <script>
+        layui.use(['form','layer'], function(){
+            $ = layui.jquery;
+          var form = layui.form
+          ,layer = layui.layer;
+        
+          //自定义验证规则
+          form.verify({
+            nikename: function(value){
+              if(value.length < 5){
+                return '昵称至少得5个字符啊';
+              }
+            }
+            ,pass: [/(.+){6,12}$/, '密码必须6到12位']
+            ,repass: function(value){
+                if($('#L_pass').val()!=$('#L_repass').val()){
+                    return '两次密码不一致';
+                }
+            }
+          });
+
+          //监听提交
+          form.on('submit(add)', function(data){
+            console.log(data);
+            //发异步，把数据提交给php
+            layer.alert("增加成功", {icon: 6},function () {
+                //关闭当前frame
+                x_admin_close();
+
+                // 可以对父窗口进行刷新 
+                x_admin_father_reload();
+            });
+            return false;
+          });
+          
+          
+        });
+    </script>
+   <script>
+layui.use('upload', function(){
+  var $ = layui.jquery
+  ,upload = layui.upload;
+  
+  //普通图片上传
+  var uploadInst = upload.render({
+    elem: '#test1'
+    ,url: '/upload/'
+    ,before: function(obj){
+      //预读本地文件示例，不支持ie8
+      obj.preview(function(index, file, result){
+        $('#demo1').attr('src', result); //图片链接（base64）
+      });
+    }
+    ,done: function(res){
+      //如果上传失败
+      if(res.code > 0){
+        return layer.msg('上传失败');
+      }
+      //上传成功
+    }
+    ,error: function(){
+      //演示失败状态，并实现重传
+      var demoText = $('#demoText');
+      demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
+      demoText.find('.demo-reload').on('click', function(){
+        uploadInst.upload();
+      });
+    }
+  });
+  //设定文件大小限制
+  upload.render({
+    elem: '#test7'
+    ,url: '/upload/'
+    ,size: 60 //限制文件大小，单位 KB
+    ,done: function(res){
+      console.log(res)
+    }
+  });
+  
+  //同时绑定多个元素，并将属性设定在元素上
+  upload.render({
+    elem: '.demoMore'
+    ,before: function(){
+      layer.tips('接口地址：'+ this.url, this.item, {tips: 1});
+    }
+    ,done: function(res, index, upload){
+      var item = this.item;
+      console.log(item); //获取当前触发上传的元素，layui 2.1.0 新增
+    }
+  })
+  
+  //多文件列表示例
+  var demoListView = $('#demoList')
+  ,uploadListIns = upload.render({
+    elem: '#testList'
+    ,url: '/upload/'
+    ,accept: 'file'
+    ,multiple: true
+    ,auto: false
+    ,bindAction: '#testListAction'
+    ,choose: function(obj){   
+      var files = this.files = obj.pushFile(); //将每次选择的文件追加到文件队列
+      //读取本地文件
+      obj.preview(function(index, file, result){
+        var tr = $(['<tr id="upload-'+ index +'">'
+          ,'<td>'+ file.name +'</td>'
+          ,'<td>'+ (file.size/1014).toFixed(1) +'kb</td>'
+          ,'<td>等待上传</td>'
+          ,'<td>'
+            ,'<button class="layui-btn layui-btn-xs demo-reload layui-hide">重传</button>'
+            ,'<button class="layui-btn layui-btn-xs layui-btn-danger demo-delete">删除</button>'
+          ,'</td>'
+        ,'</tr>'].join(''));
+        
+        //单个重传
+        tr.find('.demo-reload').on('click', function(){
+          obj.upload(index, file);
+        });
+        
+        //删除
+        tr.find('.demo-delete').on('click', function(){
+          delete files[index]; //删除对应的文件
+          tr.remove();
+          uploadListIns.config.elem.next()[0].value = ''; //清空 input file 值，以免删除后出现同名文件不可选
+        });
+        
+        demoListView.append(tr);
+      });
+    }
+    ,done: function(res, index, upload){
+      if(res.code == 0){ //上传成功
+        var tr = demoListView.find('tr#upload-'+ index)
+        ,tds = tr.children();
+        tds.eq(2).html('<span style="color: #5FB878;">上传成功</span>');
+        tds.eq(3).html(''); //清空操作
+        return delete this.files[index]; //删除文件队列已经上传成功的文件
+      }
+      this.error(index, upload);
+    }
+    ,error: function(index, upload){
+      var tr = demoListView.find('tr#upload-'+ index)
+      ,tds = tr.children();
+      tds.eq(2).html('<span style="color: #FF5722;">上传失败</span>');
+      tds.eq(3).find('.demo-reload').removeClass('layui-hide'); //显示重传
+    }
+  });
+  
+  //绑定原始文件域
+  upload.render({
+    elem: '#test20'
+    ,url: '/upload/'
+    ,done: function(res){
+      console.log(res)
+    }
+  });
+  
+});
+</script>
+  </body>
+
+</html>

@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.t05g1.dao.BrandDao">
+  <resultMap id="BaseResultMap" type="com.t05g1.pojo.Brand">
+    <id column="b_id" jdbcType="INTEGER" property="b_id" />
+    <result column="b_name" jdbcType="VARCHAR" property="b_name" />
+    <result column="b_img" jdbcType="VARCHAR" property="b_img" />
+    <result column="b_area" jdbcType="VARCHAR" property="b_area" />
+    <result column="b_describe" jdbcType="VARCHAR" property="b_describe" />
+    <result column="b_joinData" jdbcType="DATE" property="b_joinData" />
+    <result column="b_anditStatus" jdbcType="VARCHAR" property="b_anditStatus" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    b_id, b_name, b_img, b_area,  b_describe, b_joinData, b_anditStatus
+  </sql>
+  <select id="selectByExample"  resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from jd_brand
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from jd_brand
+    where b_id = #{b_id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from jd_brand
+    where b_id = #{b_id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert">
+    insert into jd_brand (b_id, b_name, b_img,b_area,b_describe,b_joinData,b_anditStatus
+      )
+    values (null, #{b_name}, #{b_img}, #{b_area}, #{b_describe},now(),0
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.t05g1.pojo.Brand">
+    insert into jd_brand
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="b_id != null">
+        b_id,
+      </if>
+      <if test="b_name != null">
+        b_name,
+      </if>
+      <if test="b_img != null">
+        b_img,
+      </if>
+      <if test="b_area != null">
+        b_area, 
+      </if>
+      <if test="b_describe != null">
+        b_describe,
+      </if> 
+      <if test="b_joinData != null">
+        b_joinData, 
+      </if>
+      <if test="b_anditStatus != null">
+        b_anditStatus,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="b_id != null">
+        #{b_id,jdbcType=INTEGER},
+      </if>
+      <if test="b_name != null">
+        #{b_name,jdbcType=VARCHAR},
+      </if>
+      <if test="b_img != null">
+        #{b_img,jdbcType=VARCHAR},
+      </if>
+       <if test="b_area != null">
+        #{b_area,jdbcType=VARCHAR},
+        </if>
+       <if test="b_describe != null">
+        #{b_describe,jdbcType=VARCHAR},
+       </if>
+       <if test="b_joinData != null">
+        #{b_joinData,jdbcType=DATE},
+       </if>
+       <if test="b_anditStatus != null">
+        #{b_anditStatus,jdbcType=VARCHAR},
+       </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective">
+    update jd_brand
+    <set>
+       <if test="b_name != null">
+        b_name = #{b_name,jdbcType=VARCHAR},
+       </if>
+       <if test="b_img != null">
+        b_img = #{b_img,jdbcType=VARCHAR},
+       </if>
+       <if test="b_area != null">
+        b_area =  #{b_area,jdbcType=VARCHAR},
+       </if>
+        <if test="b_describe != null">
+        b_describe =  #{b_describe,jdbcType=VARCHAR},
+      </if> 
+      <if test="b_joinData != null">
+        b_joinData = #{b_joinData,jdbcType=DATE}, 
+      </if>
+      <if test="b_anditStatus !=0">
+        b_anditStatus =0,
+      </if>
+      <if test="b_anditStatus !=1">
+        b_anditStatus =1,
+      </if>
+    </set>
+    where b_id = #{b_id}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.t05g1.pojo.Brand">
+    update jd_brand
+    set b_name = #{b_name,jdbcType=VARCHAR},
+      b_img = #{b_img,jdbcType=VARCHAR},
+      b_area =  #{b_area,jdbcType=VARCHAR},
+      b_describe =  #{b_describe,jdbcType=VARCHAR},
+      b_joinData = #{b_joinData,jdbcType=DATE},
+      b_anditStatus = #{b_anditStatus,jdbcType=VARCHAR}, 
+    where b_id = #{b_id,jdbcType=INTEGER}
+  </update>
+  
+   <select id="queryAllDataFromTable" resultMap="BaseResultMap">
+	    select * from jd_brand
+	    <where>
+	    <if test='b_name!="" or b_name!=null'>
+	     b_name LIKE '%${b_name}%'
+	    </if>
+	    </where>
+	     ORDER BY b_id desc
+	    limit #{curr},#{limit}	    
+	</select>
+	<select id="queryAllCount" resultType="java.lang.Integer">
+        select count(1) from jd_brand
+        <where>
+        <if test='b_name!= "" and b_name != null'>
+           b_name LIKE '%${b_name}%'
+        </if>
+	    </where>
+    </select>
+</mapper>

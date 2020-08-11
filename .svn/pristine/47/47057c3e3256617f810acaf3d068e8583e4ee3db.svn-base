@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport"/>
+		<title>京东商城-商品列表页面</title>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
+		<link rel="stylesheet" type="text/css" href="css/communalStyle.css"/>
+		<link rel="stylesheet" type="text/css" href="css/proList.css"/>
+	</head>
+	<body>
+		<section class="aui-flexView" style="height: auto;">
+					<!-- 1.搜索块-->
+					<header class="aui-navBar aui-navBar-fixed bor-bott">
+					    <a href="javascript:;" class="aui-navBar-item">
+					        <i class="icon icon-return"></i>
+					    </a>
+					    <div class="aui-center">
+					        <form action="" class="jd_searchBox">
+					        	<input type="text" name="" placeholder="redmi note 8 Pro">
+					        </form>
+					    </div>
+					    <a href="javascript:;" class="aui-navBar-item">
+					        <i class="icon icon-xin"></i>
+					        <i class="icon icon-shr"></i>
+					    </a>
+					</header>
+					<section class="aui-scrollView2">
+						<div class="retrie">
+							<!-- 商品筛选-text -->
+							<div class="aui-white-box">
+								<div class="aui-palace">
+									<a href="javascript:;" id="area" class="aui-palace-grid">
+										<p>综合</p>
+										<div class="aui-module-fr aui-footer-flex1"></div>
+									</a>
+									<a href="javascript:;" class="aui-palace-grid">
+										<p style="color: #101010">销量</p>
+									</a>
+									<a href="javascript:;" id="area2" class="aui-palace-grid">
+										<p>有货优先</p>
+										<div class="aui-module-fr aui-footer-flex2"></div>
+									</a>
+									<a href="javascript:;" class="aui-palace-grid">
+										<p style="color: #101010">筛选</p>			
+									</a>
+								</div>
+							</div>
+							<!-- 下拉列表选项导航1 综合 -->
+							<dd class="area">
+								<ul class="slide downlist">
+									<li><a href="#">综合</a></li> 
+									<li><a href="#">最新上架</a></li> 
+									<li><a href="#">价格最低</a></li> 
+									<li><a href="#">价格最高</a></li> 
+									<li><a href="#">评价最多</a></li> 
+								</ul> 
+							</dd>
+							<!-- 下拉列表选项导航2 有货优先 -->
+							<dd class="area2">
+								<ul class="slide downlist2">
+									<li>
+										<input type="checkbox" class="check goods-check goodsCheck">
+										<a href="#" style="padding: 0 10px 0 40px;">有货优先</a>
+									</li> 
+									<li>
+										<input type="checkbox" class="check goods-check goodsCheck">
+										<a href="#" style="padding: 0 10px 0 40px;">货到付款</a>
+									</li> 
+									<li>
+										<input type="checkbox" class="check goods-check goodsCheck">
+										<a href="#" style="padding: 0 10px 0 40px;">京东国际</a>
+									</li> 
+									<li>
+										<input type="checkbox" class="check goods-check goodsCheck">
+										<a href="#" style="padding: 0 10px 0 40px;">PLUS专享促销</a>
+									</li> 
+									<li>
+										<input type="checkbox" class="check goods-check goodsCheck">
+										<a href="#" style="padding: 0 10px 0 40px;">促销商品</a>
+									</li>
+									<li>
+										<input type="checkbox" class="check goods-check goodsCheck">
+										<a href="#" style="padding: 0 10px 0 40px;">配送全球</a>
+									</li> 
+									<div class="aui-footer-group aui-footer-flex1">
+									    <div class="aui-footer-flex">
+									        <div class="aui-btn aui-btn-white">
+									            <span>重置</span>
+									        </div>
+											<div class="aui-btn aui-btn-red">
+											    <span>确认</span>
+											</div>
+									    </div>
+									</div>
+								</ul> 
+							</dd>
+						</div>
+						<!-- 商品筛选2-text -->
+						<div class="n-tabs">
+							<ul class="n-tabContainer">
+								 <li class="n-tabItem" data-id="homepage">
+									 <a href="#" id="homepage" class="current">京东物流</a> 
+								 </li>
+								 <li class="n-tabItem" data-id="homepage">
+									<a href="#">品牌</a> 
+								 </li>
+								 <li class="n-tabItem" data-id="homepage">
+									<a href="#">运行内存</a> 
+								 </li>
+								 <li class="n-tabItem" data-id="homepage">
+									<a href="#">电池容量</a> 
+								 </li>
+								 <li class="n-tabItem" data-id="homepage">
+									<a href="#">游戏配置</a> 
+								 </li>
+								 <li class="n-tabItem" data-id="homepage">
+									<a href="#">机身颜色</a> 
+								 </li>
+								 <li class="n-tabItem" data-id="homepage">
+									<a href="#">CPU品牌</a> 
+								 </li>
+								 <li class="n-tabItem" data-id="homepage">
+									<a href="#">4G LTE网...</a> 
+								 </li> 
+							</ul>
+							
+						</div>
+						<!--显示商品图片列表 块 瀑布流样式开始 -->
+						<div class="aui-list-theme-box sa-grid ">		
+							<a th:each="info:${commList}" th:href="@{/commodityInfo.do(cId=${info.c_id})}" class="aui-list-item sa-grid-item">
+								<div class="aui-list-theme-img ">
+									<img th:src="${info.c_uri}" alt="">
+								</div>
+								<div class="aui-list-theme-message">
+									<h3 class="aui-list-theme-subtitle" th:text="${info.c_name}">Apple iPhone Xs Max </h3>
+									<div class="aui-flex2 ">
+										<span>满减</span>
+										<span >赠礼</span>
+										<span>免运费</span>
+									</div>
+									<div class="aui-flex">
+										<div class="aui-flex-box">
+											<h2><em></em><em th:text="${info.c_price}" style="font-size: 1.8rem"></em><i></i></h2>
+											<span class="aui-flex-span">自营</span>
+											<span class="aui-flex-span2">108万条评价</span>
+											<div class="aui-flex-span3">Apple产品京东自营旗舰店</div>
+										</div>
+									</div>
+								</div>
+							</a>	
+						</div>
+						<!-- 加载小圆圈 -->
+						<a href="javascript:;" class="more-a">
+							<img src="img/yuanImg/ic_loading.gif" />
+						</a>
+					</section>
+				</section>
+				<div class="aui-goTop">
+		   			 <a href="javascript:;" title="返回顶部"></a>
+				</div>
+		<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+		<script type="text/javascript" src="js/imagesloaded.pkgd.min.js"></script>
+		<script type="text/javascript" src="js/masonry.pkgd.min.js"></script>
+		<script type="text/javascript" src="js/swiper.min.js"></script>
+		<script type="text/javascript" src="js/sault.js"></script>
+		<script type="text/javascript" src="js/layer.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				$('#area').click(function(){
+					var $t=$(this);
+					if($t.hasClass('up')){
+						$("#area").removeClass('up');
+						$('.downlist').hide();
+						// $('.mask').hide();
+					}else{
+						$("#area").removeClass('up');
+						$('.downlist').hide();
+						$t.addClass('up');
+						$('.downlist').eq($("#area").index($(this)[0])).show();
+						// $('.mask').show();
+					}
+				});
+				$(".area ul li a:contains('"+$('#area').text()+"')").addClass('selected');
+				$(".wage ul li a:contains('"+$('#wage').text()+"')").addClass('selected');
+			});
+			$(function(){
+				$('#area2').click(function(){
+					var $t=$(this);
+					if($t.hasClass('up')){
+						$("#area2").removeClass('up');
+						$('.downlist2').hide();
+						// $('.mask').hide();
+					}else{
+						$("#area2").removeClass('up');
+						$('.downlist2').hide();
+						$t.addClass('up');
+						$('.downlist2').eq($("#area2").index($(this)[0])).show();
+						// $('.mask').show();
+					}
+				});
+				$(".area ul li a:contains('"+$('#area').text()+"')").addClass('selected');
+				$(".wage ul li a:contains('"+$('#wage').text()+"')").addClass('selected');
+			});
+			$(function(){
+				$('#area3').click(function(){
+					var $t=$(this);
+					if($t.hasClass('up')){
+						$("#area3").removeClass('up');
+						$('.downlist3').hide();
+						// $('.mask').hide();
+					}else{
+						$("#area3").removeClass('up');
+						$('.downlist3').hide();
+						$t.addClass('up');
+						$('.downlist3').eq($("#area3").index($(this)[0])).show();
+						// $('.mask').show();
+					}
+				});
+				$(".area ul li a:contains('"+$('#area').text()+"')").addClass('selected');
+				$(".wage ul li a:contains('"+$('#wage').text()+"')").addClass('selected');
+			});
+			$(document).ready(function(){
+				// 返回顶部
+				$(window).scroll(function(){
+					if ($(window).scrollTop() >= 100) {
+					    //当滑动栏向下滑动时，按钮渐现的时间
+						$('.aui-goTop').fadeIn(300);
+					} else {
+						//当页面回到顶部时，按钮渐隐的时间
+					    $('.aui-goTop').fadeOut(300);
+					}
+				});		
+				$('.aui-goTop').click(function() {	
+				    $('html,body').animate({
+				        scrollTop: '0px'
+				    }, 800); //返回顶部所用的时间
+				});
+			});
+		</script>
+			
+	</body>
+</html>

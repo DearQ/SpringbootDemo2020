@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport"/>
+		<title>京东商城-确认订单</title>
+		<link rel="stylesheet" type="text/css" href="/userAn/css/bootstrap.css"/>
+		<link rel="stylesheet" type="text/css" href="/userAn/css/communalStyle.css"/>
+		<link rel="stylesheet" type="text/css" href="/userAn/css/myOrder.css"/>
+		<link rel="stylesheet" type="text/css" href="/userAn/css/address.css"/>
+	</head>
+	<body>
+		<section class="aui-flexView">
+			<!-- 头部导航块 -->
+			<header class="aui-navBar aui-navBar-fixed">
+			    <a href="javascript:;" class="aui-navBar-item">
+			        <i class="icon icon-return"></i>
+			    </a>
+			    <div class="aui-center">
+			        <span class="aui-center-title">确认订单</span>
+			    </div>
+			    <a href="javascript:;" class="aui-navBar-item">
+			        <i class="icon icon-xin"></i>
+			        <i class="icon icon-shr"></i>
+			    </a>
+			</header>
+			<section class="aui-scrollView2">
+				<div class="aui-flex address_border">
+					<div class="aui-flex-add">
+						<a href="javascript:;" data-ydui-actionsheet="{target:'#actionSheet',closeElement:'#cancel'}">
+						    <i class="icon icon-addr"></i>
+						    <p class="addressi"></p>
+						</a>
+					</div> 
+				</div>
+				<div class="divHeight"></div>
+				<div class="aui-flex">
+					<div class="aui-shop-item">
+						<img src="img/yuanImg/logo-item.png" alt="">
+					</div>
+					<div class="aui-shop-item-arrow">京东商城自营旗舰店</div>
+				</div>
+				<div class="shop-info" th:each="info:${shoopcList}">
+					<div class="shop-info-img">
+						<a href="#"><img th:src="${info.uri}" /></a>
+					</div>
+					<div class="shop-info-text">
+						<h4 th:text="${info.name}">Apple MacBook Pro 13.3英寸笔记本电脑 银色(Core i5 处理器/8GB内存/128GB SSD闪存/Retina屏 MF839CH/A)</h4>
+						<div class="shop-brief">
+							<span th:text="${info.colour}">颜色:标配版</span>
+							<span th:text="${info.edition}">版本:13.3英寸</span>
+						</div>
+						<div class="shop-price">
+							<div class="shop-pices">￥<b class="price" th:text="${info.price}">100.00</b></div>
+							<div class="shop-arithmetic">
+								<span>x<em th:text="${info.amount}"></em></span>
+							</div>
+						</div>
+						<div class="shop-price">
+							<span class="order-img"><img src="img/yuanImg/per14.png" /></span>
+							<span class="order-explain" >支持7天无理由退货 价格说明</span>
+						</div>
+					</div>
+				</div>
+				<div class="divHeight"></div>
+				<!-- 运费险 块 -->
+				<div class="aui-flex aui-insurance-box b-line">
+					<div class="aui-shop-item">
+					    <img src="img/yuanImg/icon-bx.png" alt="">
+					</div> 
+					<div class="aui-flex-box">
+					    <h4>运费险</h4>
+					    <h5>确认收货前退货可理赔</h5>
+					</div>
+					<div class="aui-flex-box-price">
+					    <h5>￥00.00</h5>
+					    <p class="aui-sml-text">x00</p>
+					</div>
+				</div>
+				<div class="aui-cp-edu b-line">
+					<div class="aui-san-sml"></div>
+					<div class="aui-flex aui-flex-ed">
+					    <div class="aui-flex-box">
+					        商品总价 <em>￥<span th:text="${countPrice}"></em>
+					    </div>
+					</div>
+					<div class="aui-flex aui-flex-ed">
+					    <div class="aui-flex-box">
+					        运费 (快递)  <em>￥0.00</em>
+					    </div>
+					</div>
+					<div class="aui-flex aui-flex-ed">
+					    <div class="aui-flex-box">
+					        运费险(卖家赠送)  <em>￥0.00</em>
+					    </div>
+					</div>
+					<div class="aui-flex aui-flex-ed">
+					    <div class="aui-flex-box" style="color:#333; font-size:1.5rem;">
+					        订单总价<em style="color:#e93b3d; font-size:1.7rem;">￥<span th:text="${countPrice}" class="countPrice"></span></em>
+					    </div>
+					</div>
+				</div>
+				<div class="divHeight"></div>
+				<!-- 订单编号 & 联系客服块 -->
+				<div class="aui-flex aui-flex-text-sml b-line">
+					<div class="aui-flex-box">
+						<p>
+							<em>商品积分:</em>
+							可以获得30积分
+						</p>
+						<p>
+							<em>订单编号:</em>
+							120848234387344378734
+						</p>
+						<p>
+							<em>交易编号:</em>
+							2018090886654545233444
+						</p>
+						<p>
+							<em>下单时间:</em>
+							2018-08-22 02:12:22
+						</p>
+					</div>
+					<div class="aui-btn-copy">复制</div>	
+				</div>
+				<div class="aui-confirm-flex">
+				    <a href="javascript:;" class="aui-modify-btn modify">
+				        <i class="icon icon-kf"></i>
+				        联系客服
+				    </a>
+				    <a href="javascript:;" class="aui-modify-btn delete">
+				        <i class="icon icon-dh"></i>
+				        拨打电话
+				    </a>
+				</div> 
+				
+				<!-- 添加地址 -->
+				<div class="m-actionsheet" id="actionSheet">
+				    <div class="aui-show-box">
+				        <div class="aui-show-box-title aui-footer-flex">
+				            <div class="aui-footer-flex1">请添加收货地址</div>
+				            <div>
+				                <a href="javascript:;" id="cancel" class="">
+				                    <i class="icon icon-close"></i>
+				                </a>
+				            </div>
+				        </div>
+				        <div class="aui-text-info">
+				           <p class="aui-show-box-title">
+							   <span>收货人</span>
+							   <input type="text" name="ra_Name" placeholder="姓名"/>
+						   </p>
+						   <p class="aui-show-box-title">
+						   		<span>联系方式</span>
+						   		<input type="text" name="ra_Phone" placeholder="手机号码"/>
+						   </p>
+						   <p class="aui-show-box-title ">
+							   <span style="font-size: 1.4rem; font-weight: normal; color: #333;">所在地区：</span>
+						   		<label for="Addr" id="areaLabel" class="address">
+						   			<textarea type="text" name="Addr" id="Addr" style="1.3rem; font-weight: normal; color: #999;" readonly placeholder="请所在选择地区"></textarea>
+						   		</label>
+						   </p>
+						   <p class="aui-show-box-title">
+						   		<span>详细地址：</span>
+						   		<textarea type="text" name="ra_Detailedaddress" placeholder="需填写楼栋、楼层或房间号信息"></textarea>
+						   </p>
+						   <p class="aui-show-box-title">
+						   		<span>地址标签</span>
+						   		<input type="text" name="" placeholder="如公司、学校等关键字"/>
+						   </p>
+				        </div>
+				        <div class="aui-footer-group aui-footer-flex1">
+				            <div class="aui-footer-flex">
+				                <div class="aui-btn">
+				                    <span>确认</span>
+				                </div>
+				            </div>
+				        </div>
+				    </div>
+					<!-- 弹窗-选择地址 -->
+					<div id="addressSelectWrapper">
+						<div id="addressSelect">
+							<div class="tip aui-show-box-title aui-footer-flex">
+								<h3>所在地区</h3>
+								<div>
+								    <a href="javascript:;" id="cancel3" >
+								        <i class="icon icon-close"></i>
+								    </a>
+								</div>
+							</div>
+							<div id="address">
+								<ul class="selected-address">
+									<li class="lastarea" id="lastprovince">请选择</li>
+									<li class="lastarea" id="lastcity">请选择</li>
+									<li class="lastarea" id="lastarea">请选择</li>
+									<li class="lastarea" id="lasttown">请选择</li>
+								</ul>
+								<div class="address-content">
+									<ul id="province"></ul>
+									<ul id="city"></ul>
+									<ul id="area"></ul>
+									<ul id="town"></ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<footer class="aui-footer aui-footer-fixed">
+				<div class="aui-footer-text-info">
+				    <a href="javascript:;">朋友代付</a>
+				    <a href="javascript:;">取消订单</a>
+				    <input type="hidden" th:value="${amount}" name="amount"/>
+				    <input type="hidden" th:value="${str}" name="shid"/>
+				    <a href="javascript:;" class="aui-payment">去付款</a>
+				</div>
+			</footer>
+		</section>
+		<script src="js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="js/layer.js"></script>
+		<script type="text/javascript" src="js/city.js"></script>
+		<script type="text/javascript">
+			// 地址选择器遮罩层打开与关闭
+			$(function(){
+				$("#areaLabel").click(function(e){
+				    $("#addressSelectWrapper").show();
+					$(".aui-footer-group").hide();
+				    e.stopPropagation();
+				});
+				$(document).click(function () {
+			        $("#addressSelectWrapper").hide();
+					$(".aui-footer-group").show();
+			    });
+				$("#cancel3").click(function () {
+			        $("#addressSelectWrapper").hide();
+					$(".aui-footer-group").show();
+			    });
+			    $("#addressSelect").click(function (e) {
+					e.stopPropagation();
+					
+			    });
+			  	//初始化地址选择(加载数据的)
+			    initAddress();
+			    
+			  	//显示用户所有收货地址
+			    showAddress();
+			  	
+			    //显示要修改地址
+			    $("body").on("click",".aui-flex-add",function(){
+			    	var raid=$(".raid").val();
+			    	if(raid!=""||raid!=null){
+			    		$.post("/ReceivingAddressByidInfo.do",{"raid":raid},function(ret){
+			    			//console.log(ret)
+			    			$("input[name='ra_Name']").val(ret.name);
+					    	$("input[name='ra_Phone']").val(ret.phone);
+					    	$("[name='Addr']").val(ret.province+ret.city+ret.county);
+					    	$("[name='ra_Detailedaddress']").val(ret.detailedaddress);
+						})
+			    	}
+			    })
+			    //添加或修改收货地址
+			    $("body").on("click",".aui-btn",function(){
+			    	var raid=$(".raid").val();
+			    	var name=$("input[name='ra_Name']").val();
+			    	var province=$("#province .active").text();
+			    	var city=$("#city .active").text();
+			    	var county=$("#area .active").text();
+			    	var detailedaddress=$("[name='ra_Detailedaddress']").val();
+			    	var phone=$("input[name='ra_Phone']").val();
+			    	
+			    	
+			    	if(raid==""||raid==null){
+			    		//新增地址
+			    		var data={
+							"name":name,
+							"province":province,
+							"city":city,
+							"county":county,
+							"detailedaddress":detailedaddress,
+							"phone":phone,
+						}
+			    		$.post("/addReceivingAddress.do",data,function(ret){
+							if(ret=="ok"){
+								
+								$("#actionSheet").hide();
+								$(".mask-black").hide();
+								showAddress();
+							}else{
+								alert("系统异常,新增！")
+							}
+						})
+			    	}else{
+			    		//修改地址
+						var data={
+							"id":raid,
+							"name":name,
+							"province":province,
+							"city":city,
+							"county":county,
+							"detailedaddress":detailedaddress,
+							"phone":phone
+						}
+						$.post("/updateReceivingAddress.do",data,function(ret){
+							if(ret=="ok"){
+								
+								$("#actionSheet").hide();
+								$(".mask-black").hide();
+								showAddress();
+							}else{
+								alert("系统异常,修改失败！")
+							}
+						})
+			    	}
+			    })
+			    
+			    //用户去付款
+			    $("body").on("click",".aui-payment",function(){
+			    	let orderNumber=GetDateNow();
+					let productName="京东自营旗舰店";
+					let consignee=$(".ra_name").text();
+					let money=$(".countPrice").text();
+					let amount=$("input[name='amount']").val();
+					let shopAddress=$(".ra_province").text()+$(".ra_city").text()+$(".ra_county").text()+$(".ra_detailedaddress").text();
+					let phone=$(".ra_phone").val();
+					let str=$("input[name='shid']").val();
+					//alert(consignee)
+					var addKon = $(".addressi").html();
+			    	if(addKon == ""){
+						alert("请添加地址！");
+					}else{
+						window.location.href="addUserOrderAn.do?orderNumber="+orderNumber+"&productName="+productName+"&consignee="+consignee+"&money="+money+"&amount="+amount+"&shopAddress="+shopAddress+"&phone="+phone+"&str="+str;
+					}
+				})
+			    
+			});
+			//显示用户所有收货地址
+			function showAddress(){
+				var htmi="";
+				$(".addressi").html("");
+				//显示收货地址
+				$.post("/showReceivingAddressByuid.do",function(ret){
+					//console.log(ret)
+					//alert(ret=="")
+					 if(ret!=null||ret!=""){
+						 htmi += '<span class="ra_name">'+ret[0].name+'</span>&nbsp;&nbsp;';
+						 htmi += '<span class="ra_province">'+ret[0].province+'</span>';
+						 htmi += '<span class="ra_city">'+ret[0].city+'</span>';
+						 htmi += '<span class="ra_county">'+ret[0].county+'</span>';
+						 htmi += '<span class="ra_detailedaddress">'+ret[0].detailedaddress+'</span>';
+						 htmi += '<input type="hidden" value="'+ret[0].phone+'" class="ra_phone"/>';
+						 htmi += '<input type="hidden" value="'+ret[0].id+'" class="raid"/>';	
+					
+						 $(".addressi").append(htmi);
+					 }
+					
+				})
+			}
+			//初始化地址选择(加载数据的)
+			function initAddress() {
+			    $("#Addr").cityLinkage({
+			        containerId: 'addressSelectWrapper',
+			        getSelectedCode:function(){return $("#Addr").data("code");},
+			        callback:function(data) {
+			            $("#Addr").val(data.addr).data("code",data.town.code);
+						$(".aui-footer-group").show();
+			        }
+			    });
+			}
+			//生成订单编号
+			function GetDateNow() {
+				var vNow = new Date();
+				var sNow = "";
+				sNow += String(vNow.getFullYear());
+				sNow += String(vNow.getMonth() + 1);
+				sNow += String(vNow.getDate());
+				sNow += String(vNow.getHours());
+				sNow += String(vNow.getMinutes());
+				sNow += String(vNow.getSeconds());
+				sNow += String(vNow.getMilliseconds());
+				
+				return sNow;
+			}
+		</script>
+	</body>
+</html>

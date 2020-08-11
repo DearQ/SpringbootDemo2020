@@ -1,0 +1,13 @@
+package com.t05g1;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class T05g1Application {
+
+	public static void main(String[] args) {
+		SpringApplication.run(T05g1Application.class, args);
+	}
+
+}

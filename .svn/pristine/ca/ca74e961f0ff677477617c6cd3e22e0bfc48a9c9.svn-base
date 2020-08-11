@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.t05g1.dao.UserDao">
+	
+	<select id="login" resultType="com.t05g1.pojo.User">
+		SELECT u_id,u_user,u_pwd,u_name,u_addres,u_type,u_phone,u_email 
+		FROM jd_user
+		<trim prefix="where" prefixOverrides="and">
+			<if test="name!=null and name!=''">
+				and u_user=#{name}
+			</if>
+			<if test="phone!=null and phone!=''">
+				and u_phone=#{phone}
+			</if>
+			<if test="email!=null and email!=''">
+				and u_email=#{email}
+			</if>
+			and u_pwd=#{pwd}
+		</trim>
+	</select>
+	
+</mapper>

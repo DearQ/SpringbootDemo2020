@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.t05g1.dao.ImagesDao">
+  <resultMap id="BaseResultMap" type="com.t05g1.pojo.Images">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="uriDa" jdbcType="VARCHAR" property="uriDa" />
+    <result column="uriZ" jdbcType="VARCHAR" property="uriZ" />
+    <result column="uriX" jdbcType="VARCHAR" property="uriX" />
+    <result column="commId" jdbcType="INTEGER" property="commId" />
+    <result column="uriType" jdbcType="INTEGER" property="uriType" />
+    <result column="colourId" jdbcType="INTEGER" property="colourId" />
+    <association property="colour" javaType="com.t05g1.pojo.Colour">
+         <id column="id" property="id" />
+         <result column ="commId" property="commId"/>
+         <result column ="name" property="name"/>
+    </association>
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, uriDa, uriZ, uriX, commId, uriType
+  </sql>
+  <select id="selectByExample" parameterType="com.t05g1.pojo.ImagesExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from jd_images
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from jd_images
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  
+  <select id="selectById" resultMap="BaseResultMap">
+  SELECT col.`name`,ima.*  FROM jd_images ima,jd_colour col
+  <where>
+   col.`commId`=ima.`commId` AND col.`id`=ima.colourId 
+   <if test="commId !=null">
+   AND col.`commId`=#{commId}
+   </if>
+     ORDER BY id desc
+	 limit #{curr},#{limit}	   
+   </where>
+  </select>
+
+   <select id="queryAllCount" resultType="java.lang.Integer">
+        select count(*) from jd_images
+        <where>
+        1=1
+       <if test="commId != null">
+	   AND commId=#{commId}
+	   </if>      
+	    </where>
+    </select>
+    
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from jd_images
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.t05g1.pojo.Images" useGeneratedKeys="true">
+    insert into jd_images (uriDa, uriZ, uriX, 
+      commId, uriType)
+    values (#{uriDa,jdbcType=VARCHAR}, #{uriZ,jdbcType=VARCHAR}, #{uriX,jdbcType=VARCHAR}, 
+      #{commId,jdbcType=INTEGER}, #{uriType,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertByAll">
+    insert into jd_images (uriDa, uriZ, uriX, 
+      commId,colourId,uriType)
+    values (#{uriDa,jdbcType=VARCHAR}, #{uriZ,jdbcType=VARCHAR}, #{uriX,jdbcType=VARCHAR}, 
+      #{commId,jdbcType=INTEGER},#{colourId,jdbcType=INTEGER},2)
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.t05g1.pojo.Images" useGeneratedKeys="true">
+    insert into jd_images
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="uriDa != null">
+        uriDa,
+      </if>
+      <if test="uriZ != null">
+        uriZ,
+      </if>
+      <if test="uriX != null">
+        uriX,
+      </if>
+      <if test="commId != null">
+        commId,
+      </if>
+      <if test="uriType != null">
+        uriType,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="uriDa != null">
+        #{uriDa,jdbcType=VARCHAR},
+      </if>
+      <if test="uriZ != null">
+        #{uriZ,jdbcType=VARCHAR},
+      </if>
+      <if test="uriX != null">
+        #{uriX,jdbcType=VARCHAR},
+      </if>
+      <if test="commId != null">
+        #{commId,jdbcType=INTEGER},
+      </if>
+      <if test="uriType != null">
+        #{uriType,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.t05g1.pojo.Images">
+    update jd_images
+    <set>
+      <if test="uriDa != null">
+        uriDa = #{uriDa,jdbcType=VARCHAR},
+      </if>
+      <if test="uriZ != null">
+        uriZ = #{uriZ,jdbcType=VARCHAR},
+      </if>
+      <if test="uriX != null">
+        uriX = #{uriX,jdbcType=VARCHAR},
+      </if>
+      <if test="commId != null">
+        commId = #{commId,jdbcType=INTEGER},
+      </if>
+      <if test="uriType != null">
+        uriType = #{uriType,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.t05g1.pojo.Images">
+    update jd_images
+    set uriDa = #{uriDa,jdbcType=VARCHAR},
+      uriZ = #{uriZ,jdbcType=VARCHAR},
+      uriX = #{uriX,jdbcType=VARCHAR},
+      commId = #{commId,jdbcType=INTEGER},
+      uriType = #{uriType,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

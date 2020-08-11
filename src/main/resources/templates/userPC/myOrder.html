@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="/userPC/css/bootstrap.css"/>
+		<link rel="stylesheet" type="text/css" href="/userPC/css/myOrder.css"/>
+		<link rel="stylesheet" type="text/css" href="/userPC/css/header.css"/>
+	</head>
+	<body style="background-color: #f2f2f2">
+		<div id="order">
+			<div id="g-top">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-2 col-xs-2">
+						<ul class="g-left">
+							<li><span class="glyphicon glyphicon-home" aria-hidden="true"></span> <a href="../" target="_blank">京东首页</a>
+							</li>
+							<li><span class="glyphicon glyphicon-map-marker"></span> 广西
+							</li>
+						</ul>
+					</div>
+					<div class="col-md-10 col-xs-10">
+						<ul class="g-right">
+							<li><a href="userPC/login.html"
+								th:if="${session.user==null}">请登录</a></li>
+							<li class="my" th:if="${session.user!=null}">
+								<a href="#">
+									<a href="javasript:;" th:text="${session.user.u_user}"></a> <span></span>
+									<div class="downjian1"></div>
+								</a>
+								<div class="m-main">
+									<a href="#">
+										<div class="media" style="border-bottom: 0.01rem solid #DDDDDD; padding: 0.1rem 0.1rem;">
+											<div class="media-left">
+												<a href="#"> 
+												<img src="img/no-img_mid_.jpg" class="img-circle" style="width: 0.6rem; height: 0.6rem;" />
+												</a>
+											</div>
+											<div class="media-body">
+												<a href="#"><span class="g-hui"></span></a> 
+												<a href="logout.do" style="float: right;">退出</a>
+												<p>
+													<a href="#">开通PLUS 平均省1012元/年></a>
+												</p>
+											</div>
+										</div>
+									</a>
+									<div class="c">
+										<a href="javascript:;" class="left-arrow"></a> <a
+											href="javascript:;" class="right-arrow"></a>
+										<div class="hu_c">
+											<div class="m-down">
+												<ul>
+													<li><a href="#" class="als m1"> <span></span>
+															<p>免费使用</p>
+													</a></li>
+													<li><a href="#" class="als m2"> <span></span>
+															<p>运费单免</p>
+													</a></li>
+													<li><a href="#" class="als m3"> <span></span>
+															<p>生日特权</p>
+													</a></li>
+												</ul>
+											</div>
+											<div class="m-down">
+												<ul>
+													<li><a href="#" class="als m4"> <span></span>
+															<p>闪电退款</p>
+													</a></li>
+													<li><a href="#" class="als m5"> <span></span>
+															<p>上门换新</p>
+													</a></li>
+													<li><a href="#" class="als m6"> <span></span>
+															<p>京享值礼包</p>
+													</a></li>
+												</ul>
+											</div>
+
+											<div class="m-down">
+												<ul>
+													<li><a href="#" class="als m7"> <span></span>
+															<p>贵宾专线</p>
+													</a></li>
+													<li><a href="#" class="als m8"> <span></span>
+															<p>运费双免</p>
+													</a></li>
+												</ul>
+											</div>
+
+
+										</div>
+									</div>
+								</div>
+							</li>
+							<li><span>|</span></li>
+							<li><a href="../showOrder.do">我的订单</a></li>
+							<li><a href="#">我的京东</a></li>
+							<li><span>|</span></li>
+							<li><a href="#">京东会员</a></li>
+							<li><span>|</span></li>
+							<li><a href="#">企业采购</a></li>
+							<li><span>|</span></li>
+							<li class="kefu">
+								<div class="cun">
+									<div class="a1">
+										<div class="kefuhide">
+											<span>客户服务</span>
+											<div class="downjian1"></div>
+											<ul>
+												<li><a href="">帮助中心</a></li>
+												<li><a href="">售后服务</a></li>
+												<li><a href="">在线客服</a></li>
+												<li><a href="">投诉中心</a></li>
+												<li><a href="">客服邮箱</a></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</li>
+							<li><span>|</span></li>
+							<li class="wangzhan">
+								<div class="cun">
+									<span>网站导航</span>
+									<div class="downjian1"></div>
+								</div>
+								<div class="wangzhanhide">
+									<div class="tese">
+										<span>特色栏目</span>
+									</div>
+									<div class="tesemain">
+										<a href="">京东通信</a> <a href="">校园之星</a> <a href="">视频购物</a> <a
+											href="">京东社区</a> <a href="">在线读书</a> <a href="">装机大师</a> <a
+											href="">京东E卡 </a> <a href="">家装城</a> <a href="">搭配购 </a> <a
+											href="">我喜欢 </a> <a href="">游戏社区</a>
+									</div>
+									<div class="tese">
+										<span>企业服务</span>
+									</div>
+									<div class="tesemain1">
+										<a href="">企业采购</a> <a href="">办公直通车</a>
+									</div>
+									<div class="tese">
+										<span>旗下网站</span>
+									</div>
+									<div class="tesemain2">
+										<a href="">English Site</a>
+									</div>
+								</div>
+							</li>
+							<li><span>|</span></li>
+							<li class="hidetu">
+								<div class="cun">
+									<a href="" class="dong">手机京东</a>
+									<div class="phonetu"></div>
+									<div class="downjian11"></div>
+								</div>
+								<div class="erwei">
+									<div class="bo">
+										<div class="shoudan"></div>
+									</div>
+									<div class="span1">
+										<span>手机京东</span>
+									</div>
+									<div class="apple"></div>
+									<div class="andr"></div>
+									<div class="bo">
+										<div class="jd"></div>
+									</div>
+									<div class="span1">
+										<span>关注京东微信</span>
+										<p>打开微信扫一扫</p>
+									</div>
+									<div class="bo">
+										<div class="ewtu"></div>
+									</div>
+									<div class="span1">
+										<span>京东金融客户端</span>
+									</div>
+									<div class="apple"></div>
+									<div class="andr"></div>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+
+			<div id="o-head">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12 col-xs-12">
+							<nav class="navbar-inverse">
+								<div class="navbar-header">
+									<button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+										<span class="icon-bar"></span>
+										<span class="icon-bar"></span>
+										<span class="icon-bar"></span>
+										<span class="icon-bar"></span>
+									</button>
+									<a href="../"><img src="img/myLogo.png"></a>
+								</div>
+								<div class="collapse navbar-collapse navbar-left">
+									<ul class="nav navbar-nav">
+										<li>
+											<span style="display: block;font-size: 0.2rem;"><a href="my.html" class="active">我的京东</a></span>
+											<span class="return"><a href="index.html">返回京东首页</a></span>
+										</li>
+										<li><a href="#" class="active">首页</a></li>
+										<li><a href="#" class="active">账户设置<span class="o-left"></span></a></li>
+										<li><a href="#" class="active">评价<span class="o-right"></span></a></li>
+										<li><a href="#" class="active">消息</a></li>
+									</ul>
+								</div>
+								<form class="navbar-form navbar-right fo" role="search">
+									<div class="" style="width: 3.5rem;height: 0.4rem;margin-top: 0.1rem;">
+										<div class="sou">
+											<div class="sousuo"> <input type="text" class="kuang" style="color:#999;font-size:0.14rem" placeholder="跨界" />
+												<div class="souzi">
+													<a href="#" style="color: #333333;">搜索</a>
+												</div>
+											</div>
+										</div>
+										<div class="gouwuche">
+											<div class="chetu"></div>
+											<a href="">我的购物车</a>
+											<div class="jianleft"></div>
+											<div class="num">
+												<div class="numright"></div>
+												<div class="numzi"><span>0</span></div>
+											</div>
+											<div class="hideche">
+												<div class="kongche"></div> <span>购物车中还没有商品，赶紧选购吧！</span>
+											</div>
+										</div>
+									</div>
+								</form>
+							</nav>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="o-main" style="margin-top: 0.2rem;margin-bottom: 0.5rem;">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-2 col-xs-2">
+							<div class="m-m_left">
+								<ul>
+									<li>
+										<h3>订单中心</h3>
+									</li>
+									<li><a href="#">我的订单</a></li>
+									<li><a href="#">我的活动</a></li>
+									<li><a href="#">评价晒单</a></li>
+									<li><a href="#">我的常购商品</a></li>
+									<li><a href="#">代下单</a></li>
+								</ul>
+								<ul>
+									<li>
+										<h3>关注中心</h3>
+									</li>
+									<li><a href="#">关注商品</a></li>
+									<li><a href="#">关注店铺</a></li>
+									<li><a href="#">关注的专辑</a></li>
+									<li><a href="#">内容收藏</a></li>
+									<li><a href="#">关注的活动</a></li>
+								</ul>
+								<ul>
+									<li>
+										<h3>资产中心</h3>
+									</li>
+									<li><a href="#">小金库</a></li>
+									<li><a href="#">京东白条</a></li>
+									<li><a href="#">领货码</a></li>
+									<li><a href="#">余额</a></li>
+									<li><a href="#">红包</a></li>
+									<li><a href="#">银行卡></a></li>
+									<li><a href="#">优惠券</a></li>
+									<li><a href="#">礼品卡</a></li>
+									<li><a href="#">京豆</a></li>
+									<li><a href="#">京豆钢镚</a></li>
+								</ul>
+								
+							</div>
+						</div>
+						<div class="col-md-10 col-xs-10">
+							<div class="row">
+								<div class="col-md-12 col-xs-12" style="">
+									<p style="padding: 0.1rem 0.2rem 0.2rem;background-color: #fff;margin-bottom: 0.2rem;color: #000;font-size: 0.2rem;">我的订单</p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12 col-xs-12" style="padding: 0.2rem;background: #fff;">
+									<ul class="o-nav" role="tablist" style="">
+									    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">全部订单</a></li>
+									    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">待付款</a></li>
+									    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">待发货</a></li>
+									    <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">待收货</a></li>
+									  </ul>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12 col-xs-12">
+									<div class="tab-content">
+									    <div role="tabpanel" class="tab-pane active" id="home">
+									    	<!--显示商品信息-->
+											<div class="s-show" style="margin-top: 0.3rem;display:block;">
+												<table width="100%" border="0" cellspacing="0" cellpadding="0" id="shopping" th:each="infos:${orderList}">
+													<thead>
+														<tr style="background-color: #ececec; height: 40px;text-align: center;">
+															<td class="title_1" th:text="${infos.productName}"></td>
+															<td class="" colspan="2"></td>
+															<td class="title_4"></td>
+															<td class="title_5"></td>
+															<td class="title_6"><span th:if="${infos.payStatus==0}">待支付</span>
+															<span th:if="${infos.orderStatus==0&&infos.payStatus==1}">待发货</span>
+															<span th:if="${infos.orderStatus==1}">确定收货</span></td>
+														</tr>
+														<tr>
+															<td colspan="8" class="line"></td>
+														</tr>
+													</thead>
+													 <tbody class="bd settlement">
+														<tr id="product1 tr-check" style="background: #fff4e8;border-top: 0.02rem solid #DDDDDD;height: 1.3rem;" th:each="info:${infos.shoopc}">
+															<td class="cart_td_2 text-center"><img th:src="${info.uri}" width="80" height="80" th:alt="${info.name}" /></td>
+															<td class="" colspan="2">
+																<a href="#" th:text="${info.name}"></a>
+																<p><span th:text="${info.colour}"></span>&nbsp;&nbsp;&nbsp;<span th:text="${info.edition}"></span></p>
+															</td>
+															<td class="cart_td_5 text-center"></td>
+															<td class="cart_td_6 text-center" th:text="${info.price}"></td>
+															<td class="cart_td_7 text-center"><span>×</span><span th:text="${info.amount}"></span></td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+									    </div>
+									    <div role="tabpanel" class="tab-pane" id="profile">
+									    	<!--显示商品信息-->
+											<div class="s-show" style="margin-top: 0.3rem;display:block;">
+												<table width="100%" border="0" cellspacing="0" cellpadding="0" id="shopping" th:each="infos:${orderListPayStatus}">
+													<thead>
+														<tr style="background-color: #ececec; height: 40px;text-align: center;">
+															<td class="title_1" th:text="${infos.productName}"></td>
+															<td class="" colspan="2"></td>
+															<td class="title_4"></td>
+															<td class="title_5"></td>
+															<td class="title_6"><span th:if="${infos.payStatus==0}">去支付</span><span th:if="${infos.orderStatus==0&&infos.payStatus==1}">待发货</span><span th:if="${infos.orderStatus==1}">确定收货</span></td>
+														</tr>
+														<tr>
+															<td colspan="8" class="line"></td>
+														</tr>
+													</thead>
+													 <tbody class="bd settlement">
+														<tr id="product1 tr-check" style="background: #fff4e8;border-top: 0.02rem solid #DDDDDD;height: 1.3rem;" th:each="info:${infos.shoopc}">
+															<td class="cart_td_2 text-center"><img th:src="${info.uri}" width="80" height="80" th:alt="${info.name}" /></td>
+															<td class="" colspan="2">
+																<a href="#" th:text="${info.name}"></a>
+																<p><span th:text="${info.colour}"></span>&nbsp;&nbsp;&nbsp;<span th:text="${info.edition}"></span></p>
+															</td>
+															<td class="cart_td_5 text-center"></td>
+															<td class="cart_td_6 text-center" th:text="${info.price}"></td>
+															<td class="cart_td_7 text-center"><span>×</span><span th:text="${info.amount}"></span></td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+									    </div>
+									    <div role="tabpanel" class="tab-pane" id="messages">
+									    	<!--显示商品信息-->
+											<div class="s-show" style="margin-top: 0.3rem;display:block;">
+												<table width="100%" border="0" cellspacing="0" cellpadding="0" id="shopping" th:each="infos:${orderListOrderStatus0}">
+													<thead>
+														<tr style="background-color: #ececec; height: 40px;text-align: center;">
+															<td class="title_1" th:text="${infos.productName}"></td>
+															<td class="" colspan="2"></td>
+															<td class="title_4"></td>
+															<td class="title_5"></td>
+															<td class="title_6"><span th:if="${infos.payStatus==0}">待支付</span>
+															<span th:if="${infos.orderStatus==0&&infos.payStatus==1}">待发货</span>
+															<span th:if="${infos.orderStatus==1}">确定收货</span></td>
+														</tr>
+														<tr>
+															<td colspan="8" class="line"></td>
+														</tr>
+													</thead>
+													 <tbody class="bd settlement">
+														<tr id="product1 tr-check" style="background: #fff4e8;border-top: 0.02rem solid #DDDDDD;height: 1.3rem;" th:each="info:${infos.shoopc}">
+															<td class="cart_td_2 text-center"><img th:src="${info.uri}" width="80" height="80" th:alt="${info.name}" /></td>
+															<td class="" colspan="2">
+																<a href="#" th:text="${info.name}"></a>
+																<p><span th:text="${info.colour}"></span>&nbsp;&nbsp;&nbsp;<span th:text="${info.edition}"></span></p>
+															</td>
+															<td class="cart_td_5 text-center"></td>
+															<td class="cart_td_6 text-center" th:text="${info.price}"></td>
+															<td class="cart_td_7 text-center"><span>×</span><span th:text="${info.amount}"></span></td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+									    </div>
+									    <div role="tabpanel" class="tab-pane" id="settings">
+									    	<!--显示商品信息-->
+											<div class="s-show" style="margin-top: 0.3rem;display:block;">
+												<table width="100%" border="0" cellspacing="0" cellpadding="0" id="shopping" th:each="infos:${orderListOrderStatus1}">
+													<thead>
+														<tr style="background-color: #ececec; height: 40px;text-align: center;">
+															<td class="title_1" th:text="${infos.productName}"></td>
+															<td class="" colspan="2"></td>
+															<td class="title_4"></td>
+															<td class="title_5"></td>
+															<td class="title_6"><span th:if="${infos.payStatus==0}">待支付</span>
+															<span th:if="${infos.orderStatus==0&&infos.payStatus==1}">待发货</span>
+															<span th:if="${infos.orderStatus==1}">确定收货</span></td>
+														</tr>
+														<tr>
+															<td colspan="8" class="line"></td>
+														</tr>
+													</thead>
+													 <tbody class="bd settlement">
+														<tr id="product1 tr-check" style="background: #fff4e8;border-top: 0.02rem solid #DDDDDD;height: 1.3rem;" th:each="info:${infos.shoopc}">
+															<td class="cart_td_2 text-center"><img th:src="${info.uri}" width="80" height="80" th:alt="${info.name}" /></td>
+															<td class="" colspan="2">
+																<a href="#" th:text="${info.name}"></a>
+																<p><span th:text="${info.colour}"></span>&nbsp;&nbsp;&nbsp;<span th:text="${info.edition}"></span></p>
+															</td>
+															<td class="cart_td_5 text-center"></td>
+															<td class="cart_td_6 text-center" th:text="${info.price}"></td>
+															<td class="cart_td_7 text-center"><span>×</span><span th:text="${info.amount}"></span></td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+									    </div>
+									  </div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="foots"></div>
+		</div>
+		<script src="/userPC/js/jquery-1.12.4.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/userPC/js/bootstrap.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/userPC/js/header.js" type="text/javascript" charset="utf-8"></script>
+		<script>
+			$("#foots").load("footer.html");
+		</script>
+	</body>
+</html>

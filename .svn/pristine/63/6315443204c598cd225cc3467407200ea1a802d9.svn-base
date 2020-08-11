@@ -1,0 +1,128 @@
+/* 公共样式 */
+*{margin: 0; padding: 0;}
+html{font-size: 100px;}
+/* 去除边框焦点*/
+input{outline: none;}
+.q{border: 1px red solid;}
+
+/* 登录样式 */
+.top-text{
+	font-size: 0.16rem;
+	line-height: 0.4rem;
+}
+.s-left{
+	float: right;
+	left: -0.5rem;
+	line-height: 0.4rem;
+}
+.f-con{
+	border: none;
+	width: 2.36rem;
+	height: 0.4rem;
+	margin: 0 auto;
+	border-bottom: 1px red solid;
+}
+.a{
+	width: 80%;
+	margin: 0 auto;
+	padding-top: 0.1rem;
+}
+.a2{
+	width: 80%;
+	margin: 0 auto;
+	padding-top: 0.2rem;
+}
+.win{
+	width: 80%;
+	margin: 0 auto;
+	border-bottom: 1px red solid; 
+	padding-bottom: 0.1rem;
+}
+.w-img{
+	margin: 0 auto;
+	margin-right: 0.8rem;
+	float: right;
+}
+.w-img2{
+	margin: 0 auto;
+	margin-right: 1.3rem;
+	float: right;
+}
+.w-text{
+	margin: 0 auto;
+	float: right;
+	font-size: 0.12rem;
+}
+.w-text2{
+	width: 96%;
+	margin: 0 auto;
+	float: left;
+	text-align: center;
+	font-size: 0.12rem;
+}
+.pwd{
+	border: none;
+	width: 1.6rem;
+	height: 0.2rem;
+	margin: 0 auto;
+	border-right: 1px red solid;
+}
+.p-top{
+	margin: 0 auto;
+	padding-top: 0.2rem;
+}
+.but{
+	width: 80%;
+	margin: 0 auto;
+	padding-top: 0.1rem;
+}
+.but2{
+	width: 80%;
+	margin: 0 auto;
+	padding-top: 0.4rem;
+}
+.btn{
+	width: 90%; 
+	font-size: 0.14rem;
+	margin-left: 0.13rem;
+}
+.d-log{
+	width: 80%;
+	margin: 0 auto;
+	float: right;
+	padding-top: 0.15rem;
+}
+.log{
+	float: left;
+	left: -0.2rem;
+}
+.top-bor{
+	border-top: 1px red solid;
+}
+.d-log2{
+	width: 80%;
+	margin: 0 auto;
+	padding-top: 0.5rem;
+	margin-right: 0.2rem;
+}
+.log-text{
+	text-align: center;
+	margin-top: -0.1rem;
+}
+.d-log3{
+	width: 80%;
+	margin: 0 auto;
+	padding-top: 0.8rem;
+	margin-left: 0.7rem;
+}
+.msg{
+	color: red;
+	font-weight: 500px;
+	text-align: center;
+}
+
+
+
+
+
+

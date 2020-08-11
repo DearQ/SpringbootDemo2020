@@ -1,0 +1,37 @@
+package com.t05g1.service.impl;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.t05g1.dao.AdminDao;
+import com.t05g1.pojo.Admins;
+import com.t05g1.service.AdminService;
+
+@Service
+public class AdminServiceImpl implements AdminService{
+
+	@Autowired
+	private AdminDao adminDao;
+	
+	//登录
+	@Override
+	public Admins adminLogin(String name, String passwords) {
+		
+		return adminDao.adminLogin(name, passwords);
+	}
+
+	@Override
+	public Admins FindUserByUserId(Long id) {
+		// TODO Auto-generated method stub
+		return adminDao.FindUserByUserId(id);
+	}
+
+	@Override
+	public int Update(Admins admins) {
+		// TODO Auto-generated method stub
+		return adminDao.Update(admins);
+	}
+
+	
+
+}

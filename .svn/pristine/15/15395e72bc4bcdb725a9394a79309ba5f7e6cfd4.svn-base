@@ -1,0 +1,164 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>个人资料</title>
+
+<link href="/admin/lib/layui/css/layui.css"   rel="stylesheet" />
+
+</head>
+
+<body>
+
+    <form class="layui-form" >
+        <input type="hidden" name="a_id" lay-verify="required" th:value="${admins.a_id}"  autocomplete="off" class="layui-input">
+			<div class="layui-upload">
+                <label class="layui-form-label">头像:</label>
+                <div class="layui-upload layui-input-block">
+               <div style="width:60px;"><img th:src="@{${admins.a_headportrait}}" id ="demo1"/></div>
+                    <input type="hidden" name="a_headportrait"  required lay-verify="required" />
+                    <button type="button" class="layui-btn layui-btn-primary" id="fileBtn"><i class="layui-icon">&#xe67c;</i>选择文件</button>
+                    <button type="button" class="layui-btn layui-btn-warm" id="uploadBtn">开始上传</button>
+                </div>
+            </div>
+           <div class="layui-form-item" style="margin-top: 20px;">
+
+            <label class="layui-form-label">登录名</label>
+
+            <div class="layui-input-block">
+
+              <input type="text" name="a_adminName" required  lay-verify="required" th:value="${admins.a_adminName}" autocomplete="off"  class="layui-input">
+
+            </div>
+
+          </div>
+
+           <div class="layui-form-item" style="margin-top: 20px;">
+
+            <label class="layui-form-label">密码</label>
+
+            <div class="layui-input-block">
+
+              <input type="password" name="a_password" required  lay-verify="required" th:value="${admins.a_password}" autocomplete="off" class="layui-input">
+
+            </div>
+
+          </div>       
+              <input type="hidden" name="a_holder"  lay-verify="required" th:value="${admins.a_holder}" autocomplete="off" class="layui-input">
+           <div class="layui-form-item" style="margin-top: 20px;">
+
+            <label class="layui-form-label">角色：</label>
+
+            <div class="layui-input-block">
+
+              <input type="text" name="a_permissions" lay-verify="required" th:value="${admins.role.desc_}"  autocomplete="off" class="layui-input" disabled="disabled">
+
+            </div>
+
+          </div>
+
+             <div class="layui-form-item" style="margin-top: 20px;">
+
+                  <div class="layui-input-block">
+
+                  <button class="layui-btn"  lay-filter="formDemo" lay-submit>提交</button>
+
+                  <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+
+                </div>
+
+             </div>
+
+           
+
+    </form>
+
+</body>
+<script src="/admin/lib/layui/layui.js" charset="utf-8"></script>
+
+<script src="/admin/js/jquery-3.2.1.min.js"></script>
+
+<script type="text/javascript">
+
+        layui.use(['form','layer','upload'],function(){
+
+            var upload = layui.upload;
+            $ = layui.jquery;
+            var form = layui.form
+            ,layer = layui.layer;
+          //头像上传
+            upload.render({
+
+                elem: '#fileBtn'
+
+                ,url: '/admin/updatePersonalById.do'
+
+                ,accept: 'file'
+
+                ,auto: false
+
+                ,bindAction: '#uploadBtn'
+
+                ,before: function(obj){
+                	
+                        //预读本地文件示例，不支持ie8
+                       obj.preview(function(index, file, result){
+                           $('#demo1').attr('src', result); //图片链接（base64）
+                         });
+                       }
+                
+                ,done: function(res){
+
+                    alert(res.data.src);
+
+                    $("[name=a_headportrait]").val(res.data.src);
+
+                }
+
+            });
+
+            //监听提交
+            form.on('submit(formDemo)', function(data){
+              console.log(data.elem);
+              console.log(data.field);
+              
+              $.ajax({
+                  type: 'POST',
+                  url: '/admin/updatePersonalByIdSuccess.do',
+                  async: false,
+                  data: {
+                	  'a_id': $("[name=a_id]").val(),
+                      'a_headportrait': $("[name=a_headportrait]").val(),
+                      'a_adminName': $("[name=a_adminName]").val(),
+                      'a_password': $("[name=a_password]").val(),                    
+                      'a_holder': $("[name=a_holder]").val(),                     
+                  },
+                  success: function (data) {
+                      if (data.code >0) {
+
+                          layer.alert("修改成功", 
+                        	  {icon:0,
+                        	  yes:function () {
+                        		  //关闭当前frame
+                          		 var index=parent.layer.getFrameIndex(window.name);//获取当前弹出层的层级
+                                  parent.layer.close(index);//关闭弹出层
+                        		  }
+                          });
+                          
+                      }else {
+                          layer.alert('修改失败',{time: 2000, icon:5})
+                      }
+                  }
+              });
+
+              return false;
+            });
+
+        });
+
+    </script>
+</html>

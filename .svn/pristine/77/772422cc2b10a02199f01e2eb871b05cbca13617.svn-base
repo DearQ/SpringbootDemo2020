@@ -1,0 +1,23 @@
+package com.t05g1.service.impl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.t05g1.dao.User_CommodityDao;
+import com.t05g1.pojo.User_Commodity;
+import com.t05g1.service.User_CommodityService;
+
+@Service
+public class User_CommodityServiceImpl implements User_CommodityService {
+	
+	@Autowired
+	private User_CommodityDao ucomDao;
+	@Override
+	public List<User_Commodity> showcommodity() {
+		
+		return ucomDao.showcommodity();
+	}
+
+}

@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		
+		<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport"/>
+		<title>京东商城-个人中心页面</title>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
+		<link rel="stylesheet" type="text/css" href="css/communalStyle.css"/>
+		<link rel="stylesheet" type="text/css" href="css/perCore.css"/>
+	</head>
+	<body>
+		<section class="aui-flexView">
+			<!-- 头部导航块 -->
+			<header class="aui-navBar aui-navBar-fixed">
+			    <a href="javascript:;" class="aui-navBar-item">
+			        <i class="icon icon-return"></i>
+			    </a>
+			    <div class="aui-center">
+			        <span class="aui-center-title">我的京东</span>
+			    </div>
+			    <a href="javascript:;" class="aui-navBar-item">
+			        <i class="icon icon-xin"></i>
+			        <i class="icon icon-shr"></i>
+			    </a>
+			</header>
+			<section class="aui-scrollView2">
+				<div class="aui-head-chang">
+					<div class="aui-flex">
+						<div class="aui-user-img">
+							<img src="img/perCoreImg/user.png" alt="">
+						</div>
+						<div class="aui-flex-box" th:if="${user!=null}">
+							<h2 th:text="${user.u_name}">jd_zhangsan</h2>
+							<h2 th:text="${user.u_user}">用户名：jd_zhangsan</h2>
+						</div>
+						<div class="aui-a">
+							<a href="logoutAn.do" th:if="${user!=null}"><i class="icon icon-in"></i> 退出</a>
+							<a href="logoutAn.do" th:if="${user==null}"><i class="icon icon-in"></i> 登录</a>
+						</div>
+					</div>
+				</div>
+				<div class="aui-head-top">
+					<div class="aui-flex">
+						<div class="aui-sml-img">
+							<img src="img/perCoreImg/sd.png" alt="">
+						</div>
+						<div class="aui-flex-box">
+							<h3>免费试用 立领1张运费卷<img src="img/perCoreImg/ar.png" alt=""></h3>
+						</div>
+						<div class="aui-day">0<em>元试用</em></div>
+					</div>
+				</div>
+				<!-- 我的订单块 -->
+				<div class="aui-white-box">
+					<div class="aui-palace">
+						<a href="../showOrder.do" class="aui-palace-grid">
+							<div class="aui-palace-grid-icon">
+								<img src="img/perCoreImg/per03.png" alt="">
+							</div>
+							<div class="aui-palace-grid-text">
+								<h2>待付款</h2>
+							</div>
+						</a>
+						<a href="../showOrder.do" class="aui-palace-grid">
+							<div class="aui-palace-grid-icon">
+								<img src="img/perCoreImg/per02.png" alt="">
+							</div>
+							<div class="aui-palace-grid-text">
+								<h2>待收货</h2>
+							</div>
+						</a>
+						<a href="../showOrder.do" class="aui-palace-grid">
+							<div class="aui-palace-grid-icon">
+								<img src="img/perCoreImg/per04.png" alt="">
+							</div>
+							<div class="aui-palace-grid-text">
+								<h2>退换/售后</h2>
+							</div>
+						</a>
+						<a href="../showOrder.do" class="aui-palace-grid">
+							<div class="aui-palace-grid-icon">
+								<img src="img/perCoreImg/per08.png" alt="">
+							</div>
+							<div class="aui-palace-grid-text">
+								<h2>全部订单</h2>
+							</div>
+						</a>
+					</div>
+				</div>
+				<!-- 我的资产块 -->
+				<div class="aui-white-box">
+					<div class="aui-palace aui-palace-one">
+						<a href="javascript:;" class="aui-palace-grid1">
+							<div class="aui-palace-grid-text">
+								<p>0 <em>张</em></p>
+								<h2>京东券</h2>
+							</div>
+						</a>
+						<a href="javascript:;" class="aui-palace-grid1">
+							<div class="aui-palace-grid-text">
+								<p><em>开通会员</em></p>
+								<h2>白条</h2>
+							</div>
+						</a>
+						<a href="javascript:;" class="aui-palace-grid1">
+							<div class="aui-palace-grid-text">
+								<p>0<em>个</em></p>
+								<h2>京豆</h2>
+							</div>
+						</a>
+						<a href="javascript:;" class="aui-palace-grid1">
+							<div class="aui-palace-grid-text">
+								<p>0<em>元</em></p>
+								<h2>红包</h2>
+							</div>
+						</a>
+						<a href="javascript:;" class="aui-palace-grid1">
+							<div class="aui-palace-grid-icon">
+								<img src="img/perCoreImg/per05.png" alt="">
+							</div>
+							<div class="aui-palace-grid-text">
+								<h2>我的资产</h2>
+							</div>
+						</a>
+					</div>
+				</div>
+				<!-- 我的收藏、足迹块 -->
+				<div class="aui-white-box">
+					<div class="aui-palace aui-palace-one">
+						<a href="javascript:;" class="aui-palace-grid2">
+							<div class="aui-palace-grid-text">
+								<p>0</p>
+								<h2>商品收藏</h2>
+							</div>
+						</a>
+						<a href="javascript:;" class="aui-palace-grid2">
+							<div class="aui-palace-grid-text">
+								<p>0</p>
+								<h2>店铺收藏</h2>
+							</div>
+						</a>
+						<a href="javascript:;" class="aui-palace-grid2">
+							<div class="aui-palace-grid-text">
+								<p>0</p>
+								<h2>我的足迹</h2>
+							</div>
+						</a>
+					</div>
+				</div>
+				<!-- 我的预订块 -->
+				<div class="aui-white-box">
+					<div class="aui-palace">
+						<a href="javascript:;" class="aui-palace-grid">
+							<div class="aui-palace-grid-icon">
+								<img src="img/perCoreImg/per09.png" alt="">
+							</div>
+							<div class="aui-palace-grid-text">
+								<h2>我的预约</h2>
+							</div>
+						</a>
+						<a href="javascript:;" class="aui-palace-grid">
+							<div class="aui-palace-grid-icon">
+								<img src="img/perCoreImg/per11.png" alt="">
+							</div>
+							<div class="aui-palace-grid-text">
+								<h2>京东火车票</h2>
+							</div>
+						</a>
+						<a href="javascript:;" class="aui-palace-grid">
+							<div class="aui-palace-grid-icon">
+								<img src="img/perCoreImg/per12.png" alt="">
+							</div>
+							<div class="aui-palace-grid-text">
+								<h2>应用推荐</h2>
+							</div>
+						</a>
+						<a href="javascript:;" class="aui-palace-grid">
+							<div class="aui-palace-grid-icon">
+								<img src="img/perCoreImg/per10.png" alt="">
+							</div>
+							<div class="aui-palace-grid-text">
+								<h2>京东机票</h2>
+							</div>
+						</a>
+						<a href="javascript:;" class="aui-palace-grid">
+							<div class="aui-palace-grid-icon">
+								<img src="img/perCoreImg/per13.png" alt="">
+							</div>
+							<div class="aui-palace-grid-text">
+								<h2>京东酒店</h2>
+							</div>
+						</a>
+					</div>
+				</div>
+				<!-- 客户服务 -->
+				<div class="aui-white-box">
+					<div class="aui-flex">
+						<div class="aui-flex-boxUser">
+							<h2>客户服务</h2>
+						</div>
+					</div>
+				</div>
+				<div class="aui-six-title">
+					<h1>专属推荐</h1>
+				</div>
+				<!-- 推荐商品图片 块 -->
+				<div class="aui-list-theme-box">
+					<a href="javascript:;" class="aui-list-item">
+						<div class="aui-list-theme-img">
+							<img src="img/perCoreImg/ad-001.png" alt="">
+						</div>
+						<div class="aui-list-theme-message">
+							<h3 class="aui-list-theme-subtitle"> Levi's李维斯男士黑色Box Logo 印花短袖</h3>
+							<div class="aui-flex">
+								<div class="aui-flex-box">
+									<h2><em>￥</em>648 <i>￥899</i></h2>
+									<span>满折</span>
+								</div>
+							</div>
+						</div>
+					</a>
+					<a href="javascript:;" class="aui-list-item">
+						<div class="aui-list-theme-img">
+							<img src="img/perCoreImg/ad-002.png" alt="">
+						</div>
+						<div class="aui-list-theme-message">
+							<h3 class="aui-list-theme-subtitle"> Levi's李维斯男士黑色Box Logo 印花短袖</h3>
+							<div class="aui-flex">
+								<div class="aui-flex-box">
+									<h2><em>￥</em>648 <i>￥899</i></h2>
+									<span>超值一口价</span>
+								</div>
+							</div>
+						</div>
+					</a>
+					<a href="javascript:;" class="aui-list-item">
+						<div class="aui-list-theme-img">
+							<img src="img/perCoreImg/ad-003.png" alt="">
+						</div>
+						<div class="aui-list-theme-message">
+							<h3 class="aui-list-theme-subtitle"> Levi's李维斯男士黑色Box Logo 印花短袖</h3>
+							<div class="aui-flex">
+								<div class="aui-flex-box">
+									<h2><em>￥</em>648 <i>￥899</i></h2>
+									<span>满折</span>
+								</div>
+							</div>
+						</div>
+					</a>
+					<a href="javascript:;" class="aui-list-item">
+						<div class="aui-list-theme-img">
+							<img src="img/perCoreImg/ad-004.png" alt="">
+						</div>
+						<div class="aui-list-theme-message">
+							<h3 class="aui-list-theme-subtitle"> Levi's李维斯男士黑色Box Logo 印花短袖</h3>
+							<div class="aui-flex">
+								<div class="aui-flex-box">
+									<h2><em>￥</em>648 <i>￥899</i></h2>
+									<span>超值一口价</span>
+								</div>
+							</div>
+						</div>
+					</a>
+					<a href="javascript:;" class="aui-list-item">
+						<div class="aui-list-theme-img">
+							<img src="img/perCoreImg/ad-005.png" alt="">
+						</div>
+						<div class="aui-list-theme-message">
+							<h3 class="aui-list-theme-subtitle"> Levi's李维斯男士黑色Box Logo 印花短袖</h3>
+							<div class="aui-flex">
+								<div class="aui-flex-box">
+									<h2><em>￥</em>648 <i>￥899</i></h2>
+									<span>满折</span>
+								</div>
+							</div>
+						</div>
+					</a>
+					<a href="javascript:;" class="aui-list-item">
+						<div class="aui-list-theme-img">
+							<img src="img/perCoreImg/ad-006.png" alt="">
+						</div>
+						<div class="aui-list-theme-message">
+							<h3 class="aui-list-theme-subtitle"> Levi's李维斯男士黑色Box Logo 印花短袖</h3>
+							<div class="aui-flex">
+								<div class="aui-flex-box">
+									<h2><em>￥</em>648 <i>￥899</i></h2>
+									<span>超值一口价</span>
+								</div>
+							</div>
+						</div>
+					</a>
+				</div>
+			</section>
+			<!-- 底部固定导航块 -->
+			<footer class="aui-footer aui-footer-fixed">
+			    <a href="../" class="aui-tabBar-item jd_ms3">
+					<img src="img/yuanImg/bottomImg01.png"/>
+			    </a>
+				<a href="../showCategory.do" class="aui-tabBar-item jd_ms3">
+					<img src="img/yuanImg/bottomImg02.png"/>
+				</a>
+				<a href="javascript:;" class="aui-tabBar-item jd_ms3">
+					<img src="img/yuanImg/bottomImg03.gif"/>
+				</a>
+				<a href="../userIdByShoopcInfo.do" class="aui-tabBar-item jd_ms3">
+					<img src="img/yuanImg/bottomImg04.png"/>
+				</a>
+				<a href="../showOrder.do" class="aui-tabBar-item jd_ms3" th:if="${session.user == null}">
+					<img src="img/yuanImg/bottomImg05.png"/>
+				</a>
+				
+				<a href="../showUserInfo.do" class="aui-tabBar-item jd_ms3" th:if="${session.user != null}">
+					<img src="img/yuanImg/bottomImg10.png"/>
+				</a>
+			</footer>
+		</section>
+	</body>
+</html>

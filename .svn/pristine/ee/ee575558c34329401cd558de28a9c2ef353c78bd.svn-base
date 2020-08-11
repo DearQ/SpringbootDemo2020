@@ -1,0 +1,544 @@
+body {
+    background: #e7e7e7;
+    color: #666;
+}
+img {
+    width:100%;
+    height:auto;
+    display:block;
+    border: 0;
+}
+.aui-scrollView2 {
+    width: 100%;
+    height: 100%;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    position: relative;
+}
+.icon {
+    width: 20px;
+    height: 20px;
+    display: block;
+    border: none;
+    float: left;
+    background-size: 20px;
+    background-repeat: no-repeat;
+}
+/* 头部导航 样式 */
+.aui-navBar-item {
+    height: 44px;
+    min-width: 25%;
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 25%;
+    -ms-flex: 0 0 25%;
+    flex: 0 0 25%;
+    padding: 0 0.9rem;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    font-size: 0.7rem;
+    white-space: nowrap;
+    overflow: hidden;
+    color: #a0a0a0;
+    position: relative;
+}
+
+.aui-navBar-item:first-child {
+    -webkit-box-ordinal-group: 2;
+    -webkit-order: 1;
+    -ms-flex-order: 1;
+    order: 1;
+    margin-right: -25%;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.aui-navBar-item:last-child {
+    -webkit-box-ordinal-group: 4;
+    -webkit-order: 3;
+    -ms-flex-order: 3;
+    order: 3;
+    -webkit-box-pack: end;
+    -webkit-justify-content: flex-end;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
+}
+
+.aui-center {
+    -webkit-box-ordinal-group: 3;
+    -webkit-order: 2;
+    -ms-flex-order: 2;
+    order: 2;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    height: 44px;
+    width: 50%;
+    margin-left: 25%;
+}
+
+.aui-center-title {
+   font-size: 1.6rem;
+   text-align: center;
+}
+
+.icon-return {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAAFPklEQVRoQ+XaS4gcRRgH8O/rnhkEFRMUEQVjogQv07vdvSoaZU2IEKOQoCZ6WMhJiOQSJBDF165ijCLoSePruqiXsNk8VlhZXdCITlf1zkUT1oOKZAnCqusjstX1SUENjGPNY3v6lc1cp6e7f1PV1f/6qhAusQ9eTN7BwcE1YRj+2s89XxRgBbVte5aI1gHABQA4yhjbGwdeeLDjOF65XD4KADc2gET0hxBiuF6vs5WiCw0eGBi4vVQqnQSAq5thRARSyjfCMHxy1YAdx7mnVCp9iIjXt6KIaFEIsXXVtLDnefsRcRQArjK04Dkp5Tjn/MBKW1cdX7gu7bruQcuyngGAKw2gBQB4KQiCt+JgCwf2PO8IAIwg4uWGbvwzALzIGHs3LrZQYM/zTgHAFkSsGLBnhBD76vX6p/1gCwP2PO84Im4DANsA+kkIsWNubo73i80drAPFDBENIOJ/xhNS7x6A76WUu8IwDJPA5gpWWMuyFGRdi1XdV0REX0gpd/QbJVv/qFxGacdx1pfL5SkA2Gh4Xv8BgDNSyuGksbm0sOu6Q4h4ChGvMWCXEHE2iqKRNLCZg13XvdOyrGMA8D8sAPwmpZzgnO9J6nk1nSezLu37/h4ieg0RrzW07HnVskEQ7EoTm1kL+75/gIheQMQr2gSKtxljL6eNzQTs+/6zRHSwDfYcAIwxxt7JAps62HXdE5ZlbQGAywwtO29Z1uFarfZBVthUwZ7nTSPiMACUDKCzQojHkkpPK/nDEh+0dKD4CADua01P6saI6Acp5c4k01NuYB0VGRGtb01POiqellLuywubaJeuVqtrK5VKjYg2GKKiUOkpiqK70woUvbZyIl26Wq365XJ5AhFvMAxOfwPAWSnlvXljE2lhx3HuKJVKKiquNWB/J6LjRKS6cV/15F5bsNtxfbWwLrR9jIjXGbCLlmXN1Gq1h7vdRJbfxwb3UGg7wTl/PEtML9eKBa5WqxsqlUoAAGtMURERD/VTaOvlxuMeEwvsuu4YIj5vePWcB4Dn+i20xcX08rtYYN/3nyKiQ4ZgIYjoc8bY1l4unscxscA6YHwLAKbBSmWMKc759jxA3a4ZC6xOqisX6t1rWgppFOBuK8rrqPFHxAarE+h09RURbTQ8z+qQH6WUA0VC9wVWIj1ZUDXjmwyRUh0yL4TYncfMyNS9+wY3oTvNkH4hovs557Vuz1ja3ycCbtzk0NDQNBG1mwMvSCkf4pyfThvV6fyJgtWFPM87iYib21Q5VLFuLM9QkjhYoTvVsVQ5lohGGWNv5tHSqYA1ulOlUqFf4Zy/mjU6NbBGq1r0621WGf4komnO+c4s0amC9Qi+ybbtidaNKRp5gYgmGWO7s0KnDlaQdrtx1HdEtGxZ1qwQ4pEsAkomYJ3K1JTyEwC4pbU1dYHvOynlXWmjMwM3BRTjmrBCI+LXURRtSxOdKbgJ/Q0A3GyqW6uCXxRFj6ZVys0c3OjOXfZ1LAghtqeRv3MD69fWFBFtbrNzZ56InuCcTyc5gucK1vPqI4ho3JsFAAs6lSW2upg7WKPb7r4jokTzdyHAetKxHwBGEdG4vxIAxoMgiLW/svmRKAxYB5QHbdt+r11hHwBmGGN9FfYLBVboTks3ALBERMcYYyNxB7LCgXUq67Q49xcifhYEwQNx0IUEa7Rafv2SiG411MqWoijaG4bh+ErRhQU3Uplt20HrmrPahomIh4MgeHpVgZvQk0S0qSmKqmfZY4zNrzpwA+S67vt6R9Di8vLyaL1en1wpVh1f6C4dB9TtN5cc+F8gEXVbHNRUBQAAAABJRU5ErkJggg==');
+}
+
+.icon-shr {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAADzElEQVRoQ+2bT2gdRRzHf9/ZBzHQBE1BSvXkHxAE9aBgSYqbnUlOFhVJpWDpzdaDFgRPiqVab4J/EA/20lapaBBF8ODLzO7Dg0IkiOJNwUNBESRP1B6q2fnJtqmU8pIddt4MC9m97ndmPp/5vheyfx5ohx3YYb7UCYdsfG5u7qaJiYlDRLQPwLS1drXX653v9/s/h1z32rmjNayUepCIviCi6WsB+MrxbJ7nb8eQjiIspdxfyQKY3Ebqea31a6GlowgrpX4kojvqZADcsrKy8ktdzud8cOHFxcWbrbW/uUAy82FjzPsu2aaZ4MJZlh0SQpx3AWTmd40xR12yTTPBhavvL4AvXQCZ+YQx5mWXbNNMcOE0TXtJkvwF4IY6SGvtQ3meO21O3VxbnQ8uXC2slCqIKK2BvLSxsbFrMBhsNJVxGRdFeH5+/m4hhAawZwuof6y1T+Z5vuwC7ZOJIlwBpml6a5IkHwHYdx3wBWZ+whjztY+I69howleB0jS9K0mS2epfy7IsV4ui+IqI2BXYNxdd2BfYd3wn7LuDbR/fNdz2hnz5uoZ9d7Dt47uGIzSELMtuE0JMD4fDH9bW1v6NsOb/S0RtWEr5MBG9AeD2TYI/mfnkzMzMm8vLy2UM8WjCSqmnieidUVLM/ElZlgdDXylVa0cRzrLsBSHEqZoGPx8Oh4+F/ogHF07T9MZerzd0+bhaaw+GvkQMLqyUqi78qxsAtQczv2KMeak26BEILiylPALgjCPjOa31Ecdso1gM4XsAfOdCx8zHjTFvuWSbZoILV2BSyt8B7K6DZOZ7jTHf1+V8zscSfhTAx0QktoE9rbV+ykfGZWwU4Qoky7LDAM4CGLXme5vf3eC3eqIJb0pnQohjzHz5cSkzrwL4QGtd/VGzLg35ZqIK+8KOY3wnPI5dbPMcXcNtbmccbF3D49jFNs/RNdzmdsbBFr3hHfP0UEq5G8CnRDR3XVPV8+HHjTHfjKPBujmiNLywsLCXmQdEdOcoIGb+G8ABrXWVCXpEEZZSngFQdyfjV6313qC2Me5aLi0tJevr60MAU3UyZVneXxTFWl3O53zwhqWUCwD6jpCvaq1fdMw2igUXzrLsgBDiMxc6a+3reZ4/55JtmgkuPDs7OzU5OflHze2dy/xlWT5SFIXT5rRWuAJTSn1LRPdtB1m9NJ0kyVS/37/YVMZlXPCGKwgp5QNElAPYtRWUtfaZGC+JRxG+Kg1Aj3ojHsBRrfVpl4Z8M9GEK9BRv3mw1n44GAx+8hVxHR9V2BUqZK4TDrm7bZh7xzX8HwiOM0xOIScDAAAAAElFTkSuQmCC');
+}
+
+/* 主体块 样式 */
+/* 1 头部块 */
+.aui-head-chang{
+    background: -webkit-linear-gradient(left, #dfc48e , #c4a566);
+    background: -o-linear-gradient(right, #dfc48e , #c4a566); 
+    background: -moz-linear-gradient(right, #dfc48e , #c4a566); 
+    background: linear-gradient(to right, #dfc48e , #c4a566); 
+    background-color:#d7bc85;
+    padding:1rem 0 2rem 0;
+}
+.aui-flex {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    padding: 15px;
+    position: relative;
+}
+.aui-user-img{
+    width: 50px;
+   height: 50px;
+    border-radius:100%;
+    overflow:hidden;
+    border:2px solid rgba(255,255,255,0.7);
+    margin-right:1.2rem;
+}
+.aui-flex-box {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    flex: 1;
+    min-width: 0;
+    font-size: 14px;
+    color: #333;
+}
+.aui-flex-box h2{
+    color:rgba(255,255,255,0.9);
+    font-weight:normal;
+    font-size:1.3rem;
+	line-height: 1.8rem;
+}
+
+.aui-a a{
+    background:#bb9951;
+    border:none;
+    color:#fff;
+    font-size:0.8rem;
+    border-radius:22px;
+    padding:0.15rem 0.8rem 0.15rem 1.5rem;
+    position:relative;
+	top: -2.5rem;	
+}
+.icon-in{
+    background-image:url(../img/perCoreImg/per01.png);
+	background-size:12px;
+    width:15px;
+    height:15px;
+    position:absolute;
+    left:0.3rem;
+    top:0.3rem;
+}
+.aui-head-top{
+    background-image: url("../img/perCoreImg/per06.png");
+    background-size:100%;
+    background-repeat:no-repeat;
+    width:94%;
+    margin: -2rem auto 0.9rem;
+    border-radius:10px;
+}
+.aui-sml-img{
+    width:22px;
+    height: 22px;
+    margin-right:0.5rem;
+}
+.aui-flex-box h3{
+    color:#f1debd;
+    font-size:0.9rem;
+    position:relative;
+    width:68%;
+}
+
+.aui-flex-box h3 img{
+    width:15px;
+    height: 15px;
+    position:absolute;
+    right:0;
+    top:-0.2rem;
+}
+.aui-flex-box p{
+    color:#f1debd;
+    font-size:0.7rem;
+}
+
+.aui-day{
+    color:#3a2506;
+    background: -webkit-linear-gradient(left, #c7a260 , #f1d5ab); 
+    background: -o-linear-gradient(right, #c7a260 , #f1d5ab); 
+    background: -moz-linear-gradient(right, #c7a260 , #f1d5ab);
+    background: linear-gradient(to right, #c7a260 , #f1d5ab); 
+    background-color:#c7a260;
+    border-radius:3px;
+    padding:0.15rem 0.4rem;
+    border:1px solid #d5be9c;
+}
+
+.aui-day em{
+    color:#331700;
+    font-style:normal;
+    font-size:0.6rem;
+
+}
+
+/* 我的订单块 样式 */
+.aui-white-box{
+    background:#fff;
+    border-radius:5px;
+    width:94%;
+    margin:0 auto 0.8rem;
+}
+
+.aui-palace {
+    padding: 0.5rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+/* 我的订单块 排版 */
+.aui-palace-grid {
+    position: relative;
+    float: left;
+    padding: 1px;
+    width: 25%;
+    box-sizing: border-box;
+    margin: 5px 0;
+}
+
+/* 我的资产块 排版 */
+.aui-palace-grid1{
+    position: relative;
+    float: left;
+    padding: 1px;
+    width: 20%;
+    box-sizing: border-box;
+    margin: 5px 0;
+}
+
+/* 我的收藏、足迹块 排版 */
+.aui-palace-grid2{
+    position: relative;
+    float: left;
+    padding: 1px;
+    width: 33%;
+    box-sizing: border-box;
+    margin: 5px 0;
+}
+
+.aui-palace-grid-icon {
+    width: 23px;
+    height: 23px;
+    margin: 0 auto;
+}
+.aui-palace-grid-icon img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+.aui-palace-grid-text {
+    display: block;
+    text-align: center;
+    color: #333;
+    font-size: 0.85rem;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    padding-top: 0.2rem;
+}
+.aui-palace-grid-text h2 {
+    font-size: 0.8rem;
+    font-weight: normal;
+    color: #666666;
+	line-height: 1.5rem;
+}
+
+/* 我的资产块 样式 */
+.aui-palace-one .aui-palace-grid-text p{
+    font-size:1.7rem;
+    /* font-weight:bold; */
+    color:#F23030;
+}
+
+.aui-palace-one .aui-palace-grid-text p em{
+    font-style:normal;
+    font-size:1.3rem;
+    font-weight:normal;
+}
+.aui-flex-boxUser h2{
+	font-size: 1.5rem;
+	color: #666666;
+}
+.aui-six-title h1{
+    text-align:center;
+    font-size:1.3rem;
+	font-weight: 600;
+    margin-bottom:0.9rem;
+}
+
+/*  推荐商品图片 块 type*/
+.aui-list-theme-box {
+    padding: 0 8px;
+    overflow: hidden;
+    position: relative;
+}
+.aui-list-item {
+    width: 48%;
+    float: left;
+    margin: 0 1% 2% 1%;
+    background:#fff;
+    display:block;
+    overflow:hidden;
+    border-radius:10px;
+}
+
+.aui-list-theme-img {
+    height: auto;
+    width: 100%;
+    position:relative;
+}
+
+.aui-list-theme-img img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border: none;
+}
+
+.aui-list-theme-message {
+    background: #fff;
+    padding-top:0.5rem;
+}
+.aui-list-theme-message .aui-flex {
+    padding:3px 10px 10px 10px;
+}
+
+.aui-list-theme-message .aui-flex-box h2 {
+    color: #f00d3a;
+    font-size: 1.8rem;
+    text-align:left;
+    margin-bottom:0.3rem;
+}
+
+.aui-list-theme-subtitle{
+    color: #323232;
+    font-size: 1.35rem;
+    font-weight: normal;
+    padding:0 0.4rem;
+    word-wrap: normal;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    text-align: justify;
+}
+
+.aui-flex-box h2 em {
+    color: #f31e4e;
+    font-style: normal;
+    font-size: 0.65rem;
+    font-weight: normal;
+}
+.aui-flex-box h2 i {
+    color: #747474;
+    text-decoration: line-through;
+    font-weight: normal;
+    font-style: normal;
+    font-size: 0.7rem;
+}
+
+
+.aui-flex-box span{
+    border:1px solid #e6908f;
+    color:#d0312e;
+    font-size:0.7rem;
+    border-radius:22px;
+    padding:0.1rem 0.3rem;
+}
+
+/* 底部固定导航块 */
+.aui-footer {
+    width: 100%;
+	height: 4rem;
+    position: relative;
+    z-index: 100;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    padding: 0.7rem 0.5rem 0.7rem 0.5rem;
+    background: #ffffff;
+	/* 边框阴影 样式 */
+	box-shadow: 0 2px 20px 0 #babacd;
+}
+
+.aui-footer:after {
+    content: '';
+    position: absolute;
+    z-index: 0;
+    top: -3px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    border-top: 1px solid #bbbbbb;
+    -webkit-transform: scaleY(0.5);
+    transform: scaleY(0.5);
+    -webkit-transform-origin: 0 100%;
+    transform-origin: 0 100%;
+}
+
+.aui-tabBar-item {
+	width: 19%;
+	height: 0.4rem;
+	margin: 0.9rem 0.5rem 0.8rem 0.5rem;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    color: #979797;
+}
+
+.aui-tabBar-item-text {
+    display: inline-block;
+    font-size: 0.65rem;
+    color: #757980;
+    padding-top: 2px;
+}
+
+.aui-footer-fixed {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 49;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

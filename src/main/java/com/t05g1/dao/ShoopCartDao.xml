@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.t05g1.dao.ShoopCartDao">
+  <resultMap id="BaseResultMap" type="com.t05g1.pojo.ShoopCart">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="price" jdbcType="DOUBLE" property="price" />
+    <result column="data" jdbcType="TIMESTAMP" property="data" />
+    <result column="uri" jdbcType="VARCHAR" property="uri" />
+    <result column="colour" jdbcType="VARCHAR" property="colour" />
+    <result column="edition" jdbcType="VARCHAR" property="edition" />
+    <result column="amount" jdbcType="INTEGER" property="amount" />
+    <result column="cid" jdbcType="INTEGER" property="cid" />
+    <result column="uid" jdbcType="INTEGER" property="uid" />
+    <result column="state" jdbcType="INTEGER" property="state" />
+    <result column="oid" jdbcType="INTEGER" property="oid" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, name, price, data, uri, colour, edition, amount, cid, uid, state, oid
+  </sql>
+  <select id="selectByExample" parameterType="com.t05g1.pojo.ShoopCartExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from jd_shoopc
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from jd_shoopc
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from jd_shoopc
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.t05g1.pojo.ShoopCart" useGeneratedKeys="true">
+    insert into jd_shoopc (name, price, data, 
+      uri, colour, edition, 
+      amount, cid, uid, state, 
+      oid)
+    values (#{name,jdbcType=VARCHAR}, #{price,jdbcType=DOUBLE}, #{data,jdbcType=TIMESTAMP}, 
+      #{uri,jdbcType=VARCHAR}, #{colour,jdbcType=VARCHAR}, #{edition,jdbcType=VARCHAR}, 
+      #{amount,jdbcType=INTEGER}, #{cid,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, #{state,jdbcType=INTEGER}, 
+      #{oid,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.t05g1.pojo.ShoopCart" useGeneratedKeys="true">
+    insert into jd_shoopc
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        name,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="data != null">
+        data,
+      </if>
+      <if test="uri != null">
+        uri,
+      </if>
+      <if test="colour != null">
+        colour,
+      </if>
+      <if test="edition != null">
+        edition,
+      </if>
+      <if test="amount != null">
+        amount,
+      </if>
+      <if test="cid != null">
+        cid,
+      </if>
+      <if test="uid != null">
+        uid,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
+      <if test="oid != null">
+        oid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="data != null">
+        #{data,jdbcType=TIMESTAMP},
+      </if>
+      <if test="uri != null">
+        #{uri,jdbcType=VARCHAR},
+      </if>
+      <if test="colour != null">
+        #{colour,jdbcType=VARCHAR},
+      </if>
+      <if test="edition != null">
+        #{edition,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null">
+        #{amount,jdbcType=INTEGER},
+      </if>
+      <if test="cid != null">
+        #{cid,jdbcType=INTEGER},
+      </if>
+      <if test="uid != null">
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="oid != null">
+        #{oid,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.t05g1.pojo.ShoopCart">
+    update jd_shoopc
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="data != null">
+        data = #{data,jdbcType=TIMESTAMP},
+      </if>
+      <if test="uri != null">
+        uri = #{uri,jdbcType=VARCHAR},
+      </if>
+      <if test="colour != null">
+        colour = #{colour,jdbcType=VARCHAR},
+      </if>
+      <if test="edition != null">
+        edition = #{edition,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null">
+        amount = #{amount,jdbcType=INTEGER},
+      </if>
+      <if test="cid != null">
+        cid = #{cid,jdbcType=INTEGER},
+      </if>
+      <if test="uid != null">
+        uid = #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="state != null">
+        state = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="oid != null">
+        oid = #{oid,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.t05g1.pojo.ShoopCart">
+    update jd_shoopc
+    set name = #{name,jdbcType=VARCHAR},
+      price = #{price,jdbcType=DOUBLE},
+      data = #{data,jdbcType=TIMESTAMP},
+      uri = #{uri,jdbcType=VARCHAR},
+      colour = #{colour,jdbcType=VARCHAR},
+      edition = #{edition,jdbcType=VARCHAR},
+      amount = #{amount,jdbcType=INTEGER},
+      cid = #{cid,jdbcType=INTEGER},
+      uid = #{uid,jdbcType=INTEGER},
+      state = #{state,jdbcType=INTEGER},
+      oid = #{oid,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

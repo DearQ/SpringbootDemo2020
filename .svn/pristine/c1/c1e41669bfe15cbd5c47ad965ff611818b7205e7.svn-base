@@ -1,0 +1,21 @@
+package com.t05g1.dao;
+
+import com.t05g1.pojo.Images;
+import com.t05g1.pojo.ImagesExample;
+import java.util.List;
+
+public interface ImagesMapper {
+    int deleteByPrimaryKey(Integer id);
+
+    int insert(Images record);
+
+    int insertSelective(Images record);
+
+    List<Images> selectByExample(ImagesExample example);
+
+    Images selectByPrimaryKey(Integer id);
+
+    int updateByPrimaryKeySelective(Images record);
+
+    int updateByPrimaryKey(Images record);
+}

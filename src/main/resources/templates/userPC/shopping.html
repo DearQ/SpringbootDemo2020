@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="/userPC/css/bootstrap.css" />
+		<link rel="stylesheet" type="text/css" href="/userPC/css/shopping.css" />
+		<link rel="stylesheet" type="text/css" href="/userPC/css/header.css"/>
+	</head>
+	<body>
+		<div id="shopping">
+			<div id="g-top">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-2 col-xs-2">
+						<ul class="g-left">
+							<li><span class="glyphicon glyphicon-home"
+								aria-hidden="true"></span> <a href="../" target="_blank">京东首页</a>
+							</li>
+							<li><span class="glyphicon glyphicon-map-marker"></span> 广西
+							</li>
+						</ul>
+					</div>
+					<div class="col-md-10 col-xs-10">
+						<ul class="g-right">
+							<li><a href="userPC/login.html"
+								th:if="${session.user==null}">请登录</a></li>
+							<li class="my" th:if="${session.user!=null}">
+								<a href="#">
+									<a href="javasript:;" th:text="${session.user.u_user}"></a> <span></span>
+									<div class="downjian1"></div>
+								</a>
+								<div class="m-main">
+									<a href="#">
+										<div class="media" style="border-bottom: 0.01rem solid #DDDDDD; padding: 0.1rem 0.1rem;">
+											<div class="media-left">
+												<a href="#"> 
+												<img src="img/no-img_mid_.jpg" class="img-circle" style="width: 0.6rem; height: 0.6rem;" />
+												</a>
+											</div>
+											<div class="media-body">
+												<a href="#"><span class="g-hui"></span></a> 
+												<a href="logout.do" style="float: right;">退出</a>
+												<p>
+													<a href="#">开通PLUS 平均省1012元/年></a>
+												</p>
+											</div>
+										</div>
+									</a>
+									<div class="c">
+										<a href="javascript:;" class="left-arrow"></a> <a
+											href="javascript:;" class="right-arrow"></a>
+										<div class="hu_c">
+											<div class="m-down">
+												<ul>
+													<li><a href="#" class="als m1"> <span></span>
+															<p>免费使用</p>
+													</a></li>
+													<li><a href="#" class="als m2"> <span></span>
+															<p>运费单免</p>
+													</a></li>
+													<li><a href="#" class="als m3"> <span></span>
+															<p>生日特权</p>
+													</a></li>
+												</ul>
+											</div>
+											<div class="m-down">
+												<ul>
+													<li><a href="#" class="als m4"> <span></span>
+															<p>闪电退款</p>
+													</a></li>
+													<li><a href="#" class="als m5"> <span></span>
+															<p>上门换新</p>
+													</a></li>
+													<li><a href="#" class="als m6"> <span></span>
+															<p>京享值礼包</p>
+													</a></li>
+												</ul>
+											</div>
+
+											<div class="m-down">
+												<ul>
+													<li><a href="#" class="als m7"> <span></span>
+															<p>贵宾专线</p>
+													</a></li>
+													<li><a href="#" class="als m8"> <span></span>
+															<p>运费双免</p>
+													</a></li>
+												</ul>
+											</div>
+
+
+										</div>
+									</div>
+								</div>
+							</li>
+							<li><span>|</span></li>
+							<li><a href="../showOrder.do">我的订单</a></li>
+							<li><a href="#">我的京东</a></li>
+							<li><span>|</span></li>
+							<li><a href="#">京东会员</a></li>
+							<li><span>|</span></li>
+							<li><a href="#">企业采购</a></li>
+							<li><span>|</span></li>
+							<li class="kefu">
+								<div class="cun">
+									<div class="a1">
+										<div class="kefuhide">
+											<span>客户服务</span>
+											<div class="downjian1"></div>
+											<ul>
+												<li><a href="">帮助中心</a></li>
+												<li><a href="">售后服务</a></li>
+												<li><a href="">在线客服</a></li>
+												<li><a href="">投诉中心</a></li>
+												<li><a href="">客服邮箱</a></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</li>
+							<li><span>|</span></li>
+							<li class="wangzhan">
+								<div class="cun">
+									<span>网站导航</span>
+									<div class="downjian1"></div>
+								</div>
+								<div class="wangzhanhide">
+									<div class="tese">
+										<span>特色栏目</span>
+									</div>
+									<div class="tesemain">
+										<a href="">京东通信</a> <a href="">校园之星</a> <a href="">视频购物</a> <a
+											href="">京东社区</a> <a href="">在线读书</a> <a href="">装机大师</a> <a
+											href="">京东E卡 </a> <a href="">家装城</a> <a href="">搭配购 </a> <a
+											href="">我喜欢 </a> <a href="">游戏社区</a>
+									</div>
+									<div class="tese">
+										<span>企业服务</span>
+									</div>
+									<div class="tesemain1">
+										<a href="">企业采购</a> <a href="">办公直通车</a>
+									</div>
+									<div class="tese">
+										<span>旗下网站</span>
+									</div>
+									<div class="tesemain2">
+										<a href="">English Site</a>
+									</div>
+								</div>
+							</li>
+							<li><span>|</span></li>
+							<li class="hidetu">
+								<div class="cun">
+									<a href="" class="dong">手机京东</a>
+									<div class="phonetu"></div>
+									<div class="downjian11"></div>
+								</div>
+								<div class="erwei">
+									<div class="bo">
+										<div class="shoudan"></div>
+									</div>
+									<div class="span1">
+										<span>手机京东</span>
+									</div>
+									<div class="apple"></div>
+									<div class="andr"></div>
+									<div class="bo">
+										<div class="jd"></div>
+									</div>
+									<div class="span1">
+										<span>关注京东微信</span>
+										<p>打开微信扫一扫</p>
+									</div>
+									<div class="bo">
+										<div class="ewtu"></div>
+									</div>
+									<div class="span1">
+										<span>京东金融客户端</span>
+									</div>
+									<div class="apple"></div>
+									<div class="andr"></div>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+			<input type="hidden" name="userid" th:value="${session.user.u_id}" />
+			<div id="s-head">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12 col-xs-12">
+							<a href="../"><img src="img/logo1.png"></a>
+							<form action="#" method="post" style="float: right;">
+								<div class="sou">
+									<div class="sousuo">
+										<input type="text" class="kuang" placeholder="跨界" style="color:#999;font-size:0.14rem" />
+										<div class="souzi">
+											<a href="">搜索</a>
+										</div>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="s-main" style="display: block;">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12 col-xs-12">
+							<h3>全部商品
+								<span style="float: right;font-size: 0.14rem;">配送至: 
+								<select name='address'>
+				                    <option value="">苏州市</option>
+				                    <option value="A">吴中区</option>
+				                    <option value="B">吴江区</option>
+				                    <option value="C">工业园区</option>
+				                    <option value="D">姑苏区</option>
+								</select>
+								</span>
+							</h3>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12 col-xs-12">
+							<table width="100%" border="0" cellspacing="0" cellpadding="0" id="shopping">
+								<thead>
+									<tr style="background-color: #ececec; height: 40px;text-align: center;">
+										<td class="title_1 tr-check" colspan="2"><input id="allCheckBox" type="checkbox" value="" style="margin-right: 0.15rem;" />全选</td>
+										<td class="title_2" colspan="1">商品</td>
+										<td class="title_4">单价（元）</td>
+										<td class="title_5" colspan="2">数量</td>
+										<td class="title_6">小计（元）</td>
+										<td class="title_7">操作</td>
+									</tr>
+									<tr>
+										<td colspan="8" class="line"></td>
+									</tr>
+								</thead>
+								 <tbody class="bd">
+									<tr id="product1 tr-check" style="background: #fff4e8;border-top: 0.02rem solid #DDDDDD;height: 1.3rem;" th:each="info:${shoopcList}">
+										<td class="cart_td_1 text-center"><input name="cartCheckBox" type="checkbox" th:value="${info.id}" /></td>
+										<td class="cart_td_2"><img th:src="${info.uri}" width="80" height="80" alt="尊禄Vanlord 女士真皮卡包 韩牛皮小零钱包名片夹机动车驾驶证皮套 红紫色" /></td>
+										<td class="cart_td_3">
+											<a href="#" th:text="${info.name}">尊禄Vanlord 女士真皮卡包 韩牛皮小零钱包名片夹机动车驾驶证皮套 红紫色</a>
+											<p><span th:text="${info.colour}"></span>&nbsp;&nbsp;&nbsp;<span th:text="${info.edition}"></span></p>
+										</td>
+										<td class="cart_td_5" th:text="${info.price}">68.00</td>
+										<td class="cart_td_6" colspan="2">
+											<input type="button" id="minus" class="minus" value="-" /><input id="num_1" type="text" th:value="${info.amount}" class="num_input"
+											 readonly="readonly" /><input type="button" id="add" class="add" value="+" /><input type="hidden" class="sid" th:value="${info.id}"/>
+										<td class="cart_td_7"></td>
+										<td class="cart_td_8"><a th:href="@{/selShoopc.do(sid=${info.id})}" class="aa">删除</a><br /><a href="#">移到我的关注</a></td>
+									</tr>
+								</tbody>
+								<tfoot>
+									<tr class="sc-pro-item">
+										<td colspan="3">
+											<input name="seltCheckBox" type="checkbox" value="product1" style="margin-right: 0.15rem;"  />全选
+											
+											<a id="deleteAll" href="javascript:void(0);" class="del">
+												删除选中商品
+											</a>
+											<a id="" href="javascript:void(0);">
+												移到关注
+											</a>
+											<a id="" href="javascript:void(0);" class="del">
+												清理购物车
+											</a>
+										</td>
+										<td colspan="5" class="shopend text-right" style="height: 0.8rem;">商品总价：<label id="total" class="yellow"></label> 元
+											<input name="jiesuan" type="button" id="jiesuan" value="去结算" style="text-align:center;outline: medium;width: 1rem;height: 0.35rem;border: none;background: red; color: #fff;line-height: 0.35rem;font-size: 0.15rem;" />
+										</td>
+									</tr>
+								</tfoot>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--地址-->
+			<div id="address" style="display: none;">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12 col-xs-12">
+							<div class="checkout-section address-section" style="position: relative;display:block;padding: 0.2rem;">
+								<h2 class="section-title" style="border: none;font-size: 0.24rem;">
+									收货人地址
+									<span style="float: right;font-size: 0.2rem;">
+										<a href="javascript:void(0)" class="addres" style="color: #333333;">新增地址</a>
+									</span>
+								</h2>
+								<div id="addressSection" class="section-content" style="padding: 0">
+									<div class="dzglkj" style="display: block;margin-top: 0.5rem;">
+										<ul>
+											<li class="addressi">
+											
+												<!-- 收货地址 -->
+												
+											</li>
+										</ul>
+									</div>
+									<div id="addressFormContainer" class="address-form-container addrssForm" style="display: none;padding: 0.5rem;background-image: url(img/mm00.jpg);background-size: 100%;">
+						
+										<form id="addressForm" name="" myform method="post" class="address-form" style="display: block;">
+											<div class="address-group">
+												<label class="group-label" for="firstname"><span style="color: red;">*&nbsp;&nbsp;</span>收货人姓名：</label>
+												<input id="firstname" name="ui_Name" type="text" placeholder="请填写真实姓名">
+												<span id="error-tips" style="color: red;margin-left: 0.2rem;"></span>
+						
+											</div>
+											<div class="address-group">
+												<label class="group-label"><span style="color: red;">*&nbsp;&nbsp;</span>收&nbsp;货&nbsp;地&nbsp;址&nbsp;：</label>
+						
+												<select id="region" name="province" class="input-select">
+													<option value="0">广西</option>
+						
+												</select>
+												<select id="city" name="cities">
+													<option value="0">桂林</option>
+												</select>
+												<select id="county" name="areas">
+													<option value="0">七星区</option>
+												</select>
+												<span class="error-tips">请您填写完整的地区信息</span>
+											</div>
+											<div class="address-group">
+												<label class="group-label"><span style="color: red;">*&nbsp;&nbsp;</span>地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;址：</label>
+												<textarea type="text" id="ui_Site" name="ui_Site" placeholder="请填写详细地址，确保准确送达" class="input-textarea" minlength="5" maxlength="120"></textarea>
+												<span id="error-tips" style="color: red;margin-left: 0.2rem;"></span>
+												<span class="error-tips">请您填写收货人详细地址，要求5-120个字符</span>
+											</div>
+											<div class="address-group">
+												<label class="group-label" for="telephone"><span style="color: red;">*&nbsp;&nbsp;</span>手&nbsp;机&nbsp;号&nbsp;码&nbsp;：</label>
+												<input id="telephone" name="ui_Phone" type="text" placeholder="请输入手机号码" class="input-text">
+												<span class="error-tips">请填写正确的手机号码</span>
+											</div>
+											<div class="address-group">
+												<label class="group-label" for="postcode"><span style="color: red;">*&nbsp;&nbsp;</span>邮&nbsp;政&nbsp;编&nbsp;码：&nbsp;</label>
+												<input id="postcode" name="ui_Post" type="text" placeholder="请输入邮政编码" class="input-text">
+												<span class="error-tips">请输入正确的邮政编码</span>
+											</div>
+											<div class="address-group">
+												<a href="javascript:void(0)" class="btn-save">保存</a>
+												<a href="javascript:void(0)" class="btn-cancel">取消</a>
+											</div>
+										</form>
+						
+									</div>
+									<!--显示商品信息-->
+									<div class="s-show" style="margin-top: 0.3rem;display:block;">
+										<table width="100%" border="0" cellspacing="0" cellpadding="0" id="shopping">
+											<thead>
+												<tr style="background-color: #ececec; height: 40px;text-align: center;">
+													<td class="title_1">商品图片</td>
+													<td class="" colspan="2">商品名称</td>
+													<td class="title_4">单价（元）</td>
+													<td class="title_5">数量</td>
+													<td class="title_6">小计（元）</td>
+												</tr>
+												<tr>
+													<td colspan="8" class="line"></td>
+												</tr>
+											</thead>
+											 <tbody class="bd settlement">
+												<tr id="product1 tr-check" style="background: #fff4e8;border-top: 0.02rem solid #DDDDDD;height: 1.3rem;">
+													<td class="cart_td_2 text-center"><img src="img/shopping01.jpg" width="80" height="80" alt="尊禄Vanlord 女士真皮卡包 韩牛皮小零钱包名片夹机动车驾驶证皮套 红紫色" /></td>
+													<td class="" colspan="2">
+														<a href="#">尊禄Vanlord 女士真皮卡包 韩牛皮小零钱包名片夹机动车驾驶证皮套 红紫色</a>
+														<p>红紫色</p>
+													</td>
+													<td class="cart_td_5 text-center">68.00</td>
+													<td class="cart_td_6 text-center"></td>
+													<td class="cart_td_7 text-center"></td>
+												</tr>
+											</tbody>
+										</table>
+										<div class="checkout-section settlement-section clearfix" id="checkout-section" style="margin-bottom: 0.5rem;text-align: right;margin-top: 0.3rem;">
+							                    <div class="settlement-price right">
+							                        <div id="settlementHandler">
+							                            <div class="price-group">
+							                                <span class="price-label"><span class="price-checked-count"></span>件商品，商品总金额：￥<span id="price_RMB" style="color: red;"></span></span>
+							                            </div>
+							                            <div class="price-group grandtotal-group">
+							                                <span class="price-label">应付总额：￥<span id="grandTotal" style="color: red;"></span></span>
+							                            </div>
+							                            <div class="price-group btn-group">
+							                                <a class="price-return" href="javascript:void(0)">返回购物车</a>
+							                                <a id="priceConfirm" href="javascript:;"  class="price-confirm btn-lg" data-toggle="modal" data-target="#myModal">确认，提交订单</a>
+							                            </div>
+							                           
+							                        </div>
+							                    </div>
+												<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="margin-top: 2rem;">
+												  <div class="modal-dialog" role="document">
+												    <div class="modal-content">
+												      <div class="modal-header">
+												        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+												        <h4 class="modal-title" id="myModalLabel" style="text-align: left;">请选择付款方式</h4> 
+												      </div>
+												      <div class="modal-body" style="height: 1rem;">
+															<div class="zhifu">
+																<input type="radio" name="" id="" value="" checked="checked" />
+																<span></span>
+															</div>
+														    <h2 class="orderTS" style="display: none;">订单出现异常此次交易失败！</h2>
+															<!-- <div class="weixin">
+																<input type="radio" name="" id="" value=""/>
+																<span></span>
+															</div>
+															<div class="yinhang">
+																<input type="radio" name="" id="" value="" />
+																<span></span>
+															</div> -->
+												      </div>
+												      <div class="modal-footer">
+												        <form action="/goAlipay.do" method="post">
+												        	<input type="hidden" value="" name="orderNumber">
+												        	<input type="hidden" value="" name="productName">
+												        	<input type="hidden" value="" name="money">
+												        	<input type="hidden" value="" name="amount">
+												        	<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+												        	<button type="submit" class="btn btn-primary">确定支付</button>
+												        </form>
+												        
+												      </div>
+												    </div>
+												  </div>
+												</div>
+							                </div>
+									</div>
+								</div>
+							</div>
+						
+						</div>
+					</div>
+				</div>
+			</div>
+			</div>
+			<div id="foots"></div>
+		</div>
+		
+		<script src="/userPC/js/jquery-1.12.4.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/userPC/js/bootstrap.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="/userPC/js/shopping.js"></script>
+		<script src="/userPC/js/header.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+	
+			$("#foots").load("footer.html");
+			
+			
+			$(function(){
+				var raid=0;
+				var str="";
+			
+				//用户结算显示结算商品
+				$("input[name='jiesuan']").on("click", function() {
+					$(".settlement").html("");
+	                var html = "";
+	                var htmi="";
+					$("input[name='cartCheckBox']:checked").each(function(index,item){
+						if($("input[name='cartCheckBox']:checked").length-1==index){
+							str+=$(this).val();
+						}else{
+							str+=$(this).val()+",";
+						}
+					});
+					if(str!=null&&str!=""){
+						//显示结算商品
+						$.post("/showShoopcById.do",{"str":str},function(ret){
+							//console.log(ret)
+							$.each(ret,function(i, info){
+								html += '<tr id="product1 tr-check" style="background: #fff4e8;border-top: 0.02rem solid #DDDDDD;height: 1.3rem;">';
+								html += '<td class="cart_td_2"><img src="'+info.uri+'" width="80" height="80" alt="'+info.name+'" /></td>';
+								html += '<td class="cart_td_3">';
+								html += '<a href="#">'+info.name+'</a>';
+								html += '<p><span>'+info.colour+'</span>&nbsp;&nbsp;&nbsp;<span>'+info.edition+'</span></p>';
+								html += '</td>';
+								html += '<td class="cart_td_6 text-center"></td>';
+								html += '<td class="cart_td_5">'+info.price+'</td>';
+								html += '<td class="cart_td_6 text-center">'+info.amount+'</td>';
+								html += '<td class="cart_td_7">'+info.amount*info.price+'</td>';
+								
+								html += '</tr>';
+							})
+
+							$(".settlement").append(html);	
+							$(".price-checked-count").html(ret.length);
+						})
+						
+					//显示收货地址
+					showAddress();
+					}else{
+						alert("请选择您要买的商品！");
+					}
+					
+					
+				})
+				//添加或修改收货地址
+				$(".btn-save").on("click",function(){
+					var name=$("input[name='ui_Name']").val();
+					var province= $("#region option:selected").text(); 
+					var city= $("#city option:selected").text(); 
+					var county= $("#county option:selected").text(); 
+					var detailedaddress=$("#ui_Site").val();
+					var phone=$("input[name='ui_Phone']").val();
+					var postalcode=$("input[name='ui_Post']").val();
+					
+					var data={
+							"id":raid,
+							"name":name,
+							"province":province,
+							"city":city,
+							"county":county,
+							"detailedaddress":detailedaddress,
+							"phone":phone,
+							"postalcode":postalcode
+					}
+					if(raid!=0){
+						//修改地址
+						$.post("/updateReceivingAddress.do",data,function(ret){
+							if(ret=="ok"){
+								showAddress();
+								$(".addrssForm").css("display","none");
+								$(".s-show").css("display","block");
+								$(".dzglkj").css("display","block");
+							}else{
+								alert("系统异常,修改失败！")
+							}
+						})
+						raid=0;
+						
+					}else{
+						//新增地址
+						$.post("/addReceivingAddress.do",data,function(ret){
+							if(ret=="ok"){
+								showAddress();
+								$(".addrssForm").css("display","none");
+								$(".s-show").css("display","block");
+								$(".dzglkj").css("display","block");
+							}else{
+								alert("系统异常,新增！")
+							}
+						})
+						raid=0;
+					}
+					
+				})
+				//显示要修改地址
+				$(".addressi").on("click",".update",function(){
+					raid=$(this).siblings(".raid").val();
+					$.post("/ReceivingAddressByidInfo.do",{"raid":raid},function(ret){
+						$("input[name='ui_Name']").val(ret.name);
+						$("#region option:selected").text(ret.province); 
+						$("#city option:selected").text(ret.city); 
+						$("#county option:selected").text(ret.county); 
+						$("#ui_Site").val(ret.detailedaddress);
+						$("input[name='ui_Phone']").val(ret.phone);
+						$("input[name='ui_Post']").val(ret.postalcode);
+						
+					})
+					$(".dzglkj").css("display","none");
+					$(".s-show").css("display","none");
+					$(".addrssForm").css("display","block");
+				})
+				
+				$(".addressi").on("click",".del",function(){
+					raid=$(this).siblings(".raid").val();
+					$.post("/delReceivingAddress.do",{"raid":raid},function(ret){
+						if(ret=="ok"){
+							showAddress();
+						}else{
+							alert("系统异常，删除错误！")
+						}
+						
+					})
+				})
+				
+			
+				
+				//用户确定，提交订单
+				$("body").on("click","#priceConfirm",function(){
+					let adders=$(".addressi").html();
+					
+					if(adders!=""){
+						let orderNumber=GetDateNow();
+						let productName="京东自营旗舰店";
+						let consignee=$(".bjtys1").find(".productName").text();
+						let money=$("#price_RMB").text();
+						let amount=$(".price-checked-count").text();
+						let shopAddress=$(".bjtys1").find(".shopAddress1").text()+$(".bjtys1").find(".shopAddress2").text();
+						let phone=$(".bjtys1").find(".phone").text();
+						let strs=str;
+						
+						$("input[name='orderNumber']").val(orderNumber);
+						$("input[name='productName']").val(productName);
+						$("input[name='money']").val(money);
+						$("input[name='amount']").val(amount);
+						//alert(shopAddress)
+						let data={
+								"orderNumber":orderNumber,
+								"productName":productName,
+								"consignee":consignee,
+								"money":money,
+								"amount":amount,
+								"shopAddress":shopAddress,
+								"phone":phone,
+								"str":str
+						}
+						
+						//提交订单
+						$.post("/addUserOrder.do",data,function(ret){
+							  if(ret=="no"){
+								 $("#myModalLabel").text("系统提示");
+								 $(".orderTS").show();
+								 $(".zhifu").hide();
+								 $(".btn-primary").hide();
+							}
+						})
+					}else{
+						alert("请先添加地址信息！")
+						
+					}
+					
+				})
+				
+				//用户取消支付
+				$("body").on("click",".btn-default",function(){
+					window.location="../showOrder.do";
+				})
+			})
+			
+			function showAddress(){
+				var htmi="";
+				$(".addressi").html("");
+				//显示收货地址
+				$.post("/showReceivingAddressByuid.do",function(ret){
+					//console.log(ret)
+					$.each(ret,function(i, info){
+						htmi += '<a href="javascript:;">';
+						htmi += '<div class="dykj bjtys2" id="dy1">';
+						htmi += '<div class="dznbk"><span style=" font-weight:bold;" class="shopAddress1">'+info.province+info.city+info.county+'</span><span>（</span><span class="productName">'+info.name+'</span><span> 收）</span></div>';
+						htmi += '<div class="dzdek">';
+						htmi += '<span style="font-size:0.1rem;" class="shopAddress2">'+info.detailedaddress+'</span><span class="phone">'+info.phone+'</span>';
+						htmi += '<p class="xgys2 update" id="xy">修改</p>';
+						htmi +='<span class="del" id="xy">删除</span>';
+						htmi += '<input type="hidden" value="'+info.id+'" class="raid"/>';
+						htmi += '</div>';
+						htmi += '</div>';
+						htmi += '</a>';
+					})
+					$(".addressi").append(htmi);
+			})
+		}
+		//生成订单编号
+		function GetDateNow() {
+			var vNow = new Date();
+			var sNow = "";
+			sNow += String(vNow.getFullYear());
+			sNow += String(vNow.getMonth() + 1);
+			sNow += String(vNow.getDate());
+			sNow += String(vNow.getHours());
+			sNow += String(vNow.getMinutes());
+			sNow += String(vNow.getSeconds());
+			sNow += String(vNow.getMilliseconds());
+			
+			return sNow;
+		}
+		</script>
+	</body>
+</html>

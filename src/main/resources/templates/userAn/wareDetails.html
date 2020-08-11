@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport"/>
+		
+		<title>京东商城-商品详情页面</title>
+		<link rel="stylesheet" type="text/css" href="/userAn/css/bootstrap.css"/>
+		<link rel="stylesheet" type="text/css" href="/userAn/css/communalStyle.css"/>
+		<link rel="stylesheet" type="text/css" href="/userAn/css/wareDetails.css"/>
+		<link rel="stylesheet" type="text/css" href="/userAn/css/address.css"/>
+	</head>
+	<body>
+		<section class="aui-flexView">
+			<!-- 头部导航块 -->
+			<header class="aui-navBar aui-navBar-fixed">
+			    <a href="../showcommodity.do" class="aui-navBar-item">
+			        <i class="icon icon-return"></i>
+			    </a>
+			    <div class="aui-center">
+			        <span class="aui-center-title"></span>
+			    </div>
+			    <a href="javascript:;" class="aui-navBar-item">
+			        <i class="icon icon-xin"></i>
+			        <i class="icon icon-shr"></i>
+			    </a>
+			</header>
+			<!-- 隐藏的商品详情-text -->
+			<div id="scrollBg">
+			    <div class="aui-link-me">
+			        <a href="#commodity">商品</a>
+			        <a href="#">评价</a>
+			        <a href="#">详情</a>
+			    </div>
+			</div>
+			<!-- 主体块-显示商品信息 -->
+			<section class="aui-scrollView">
+				<!-- 商品图片轮播块 -->
+				<div class="img_gallery" id="commodity">
+					<div class="main_img">
+					    <ul>
+					        <li th:each="info:${imagesList}">
+					            <img th:src="${info.uriDa}" alt="">
+					        </li>
+					    </ul>
+					</div>
+					<div class="img_font">
+					    <span>1/5</span>
+					    <span>2/5</span>
+					    <span>3/5</span>
+					    <span>4/5</span>
+					    <span>5/5</span>
+					</div>
+				</div>
+				<div class="aui-product-head aui-footer-flex">
+				    <h2>
+						<i>￥</i>
+						<i th:text="${uscomm.c_discountprice}" class="c_discountprice" style="font-size: 2rem"></i>
+					</h2>
+				    <span>￥<i th:text="${uscomm.c_price}"></i></span>
+				    <em>6.9折</em>
+				    <em>特价</em>
+				</div>
+				<div class="aui-product-title">
+				    <h2 th:text="${uscomm.c_name}" class="c_name">OnitsukaTiger 鬼冢虎 Mexico66 李宇春同款 经典烫金标男女运动休闲鞋经典烫金标男女运动休闲鞋 </h2>
+				</div>
+				<div class="aui-product-title aui-product-title-text">
+				    <h2 th:text="${uscomm.c_title}">鬼冢虎 Mexico66 李宇春同款OnitsukaTiger  经典烫金标男女运动休闲鞋经典烫金标男女运动休闲鞋</h2>
+				</div>
+				<!-- 类型样式选择 块 -->
+				<div class="aui-module-box">
+					<ul>
+						<li class="aui-footer-flex" data-ydui-actionsheet="{target:'#actionSheet1',closeElement:'#cancel1'}">
+						    <div class="aui-module-hd">促销</div>
+						    <div class="aui-module-bd">
+						        <span>[12期免息]</span>
+						        免费开通易支付 全场最低6期免息
+						    </div>
+						    <div class="aui-module-fr aui-footer-flex1"></div>
+						</li>
+						<li class="aui-footer-flex">
+							<label for="Addr" id="areaLabel" class="address">
+								<span style="font-size: 0.8rem; font-weight: normal; color: #7d7d7d;">送至</span>
+								<input type="text" name="Addr" id="Addr" style="font-size: 0.75rem; font-weight: normal; color: #333; width: 85%;" readonly placeholder="请选择地区"/>
+							</label>
+							<div class="aui-module-fr aui-footer-flex1"></div>
+						</li>
+						<li class="aui-footer-flex" data-ydui-actionsheet="{target:'#actionSheet3',closeElement:'#cancel3'}">
+						    <div class="aui-module-hd">运费</div>
+						    <div class="aui-module-bd">免运费</div>
+						    <div class="aui-module-fr aui-footer-flex1"></div>
+						</li>
+						<li class="aui-footer-flex" data-ydui-actionsheet="{target:'#actionSheet4',closeElement:'#cancel4'}">
+						    <div class="aui-module-hd">说明</div>
+						    <div class="aui-module-bd">假一赔十 | 7天无忧退货 | 自营发货</div>
+						    <div class="aui-module-fr aui-footer-flex1"></div>
+						</li>
+					</ul>
+				</div>
+				<!-- divHeight 此块表示隔行（上下）  -->
+				<div class="divHeight"></div>
+				<!--滑动1 商品评价块 -->
+				<div class="aui-evaluate-box">
+					<div class="aui-footer-flex aui-evaluate-item">
+					    <div class="aui-footer-flex1 aui-evaluate-hd">商品评价(4599)</div>
+					    <div class="aui-evaluate-fr">96.0%</div>
+					</div>
+					 <div class="aui-category-box-list">
+						<a href="javascript:;" class="aui-category-box-item">
+						    是正品 <em>(988)</em>
+						</a>
+						<a href="javascript:;" class="aui-category-box-item">
+						    很合脚 <em>(123)</em>
+						</a>
+						<a href="javascript:;" class="aui-category-box-item">
+						    物流快 <em>(356)</em>
+						</a>
+						<div class="aui-slide-list">
+							 <ul class="aui-slide-item-list">
+								<li class="aui-slide-item-item" >
+									<a href="javascript:;" class="aui-link clearfix" >
+										<div class="aui-page-hd">
+										    <img src="img/yuanImg/pic-001.jpg" alt="">
+										    <span>1张</span>
+										</div>
+										<div class="aui-page-bd">
+											<div class="aui-footer-flex aui-user-item">
+												<div class="aui-user-img">
+												    <img src="img/yuanImg/user.png" alt="">
+												</div>
+												<div class="aui-user-text">
+												    <h4>嘻哈杂货铺</h4>
+												</div>
+											</div>
+											<p>还好赶上活动买的 价格挺合适的 666 啊！！</p>
+											<!-- <p>
+											    <span class="aui-price">尺码: 42 颜色: 白色</span>
+											</p> -->
+										</div>
+									</a>
+								</li> 
+								<li class="aui-slide-item-item" >
+									<a href="javascript:;" class="aui-link clearfix" >
+										<div class="aui-page-hd">
+										    <img src="img/yuanImg/pic-001.jpg" alt="">
+										    <span>1张</span>
+										</div>
+										<div class="aui-page-bd">
+											<div class="aui-footer-flex aui-user-item">
+												<div class="aui-user-img">
+												    <img src="img/yuanImg/user.png" alt="">
+												</div>
+												<div class="aui-user-text">
+												    <h4>嘻哈杂货铺</h4>
+												</div>
+											</div>
+											<p>还好赶上活动买的 价格挺合适的 666 啊！！</p>
+											<!-- <p>
+											    <span class="aui-price">尺码: 42 颜色: 白色</span>
+											</p> -->
+										</div>
+									</a>
+								</li>
+								<li class="aui-slide-item-item" style="border:none">
+								    <a href="javascript:;" class="aui-link ">
+								        <div class="aui-link-more">
+								            <p>更多评论</p>
+								            <p>See more</p>
+								        </div>
+								    </a>
+								</li>
+							 </ul>
+						</div>
+					 </div>
+					<div class="aui-footer-flex aui-evaluate-item" style="padding-top:0.8rem">
+					    <div class="aui-footer-flex1 aui-evaluate-hd">问大家(199)</div>
+					    <div class="aui-evaluate-fr"></div>
+					</div>
+					<div class="aui-question">
+						<a href="javascript:;" class="aui-footer-flex">
+						    <div class="aui-footer-flex1">
+						        <i class="icon icon-qa"></i>
+						        是不是正品啊！
+						    </div>
+						    <div>5个回答</div>
+						</a> 
+						<a href="javascript:;" class="aui-footer-flex">
+						    <div class="aui-footer-flex1">
+						        <i class="icon icon-qa"></i>
+						        是自营的还是全球购
+						    </div>
+						    <div>5个回答</div>
+						</a>
+					</div>
+				</div>
+				<div class="divHeight"></div>
+				<!-- 店铺介绍 块-->
+				<div class="aui-footer-flex aui-pp-box">
+					<div class="aui-footer-flex1 aui-evaluate-hd">
+						<div class="aui-footer-flex">
+							<div class="aui-pp-box-img">
+							    <img src="img/yuanImg/logo-pp.png" alt="">
+							</div>
+							<div class="aui-pp-box-text">KickKs运动旗舰店</div>
+						</div>
+					</div>
+				</div>
+				<div class="aui-box-all">
+					<a href="javascript:;">
+					    <div>471</div>
+					    <span>全部商品</span>
+					</a>
+					<a href="javascript:;">
+					    <div>4.86</div>
+					    <span>综合评分</span>
+					</a>
+				</div>
+				<div class="aui-all-class">
+				    <a href="javascript:;">查看分类</a>
+				    <a href="javascript:;">进店看看</a>
+				</div>
+				<div class="divHeight"></div>
+				<div class="aui-footer-flex aui-pp-box">
+					<div class="aui-footer-flex1 aui-evaluate-hd">
+						<div class="aui-footer-flex">
+							<div class="aui-pp-box-img">
+							    <img src="img/yuanImg/logo-pp1.png" alt="">
+							</div>
+							<div class="aui-pp-box-text">
+							    <h2>鬼冢虎 OnitsukaTiger </h2>
+							    <p>
+							        在售商品 <em>289</em>
+							        件
+							    </p>
+							</div>	
+						</div>
+					</div> 
+					<div class="aui-evaluate-fr">进入品牌</div>
+				</div>
+				<!-- 滑动2 商品图片 块 -->
+				<div class="aui-vertical">
+					<div class="aui-slide-list">
+						<ul class="aui-slide-item-list">
+							<li class="aui-slide-item-item">
+								<a href="javascript:;" class="aui-link clearfix">
+									<div class="aui-page-hd ">
+									    <img src="img/yuanImg/icon-page-001.png" alt="">
+									    <span>9色可选</span>
+									</div>
+									<div class="aui-page-bd">
+									    <p>OnitsukaTiger 鬼冢虎 Mexico66  经典烫金标男女运动休闲鞋经典烫金标男女运动休闲鞋子</p>
+									    <p>
+									        <span class="aui-price">￥398</span>
+									    </p>
+									</div>
+								</a>
+							</li>
+							<li class="aui-slide-item-item">
+								<a href="javascript:;" class="aui-link clearfix">
+									<div class="aui-page-hd ">
+									    <img src="img/yuanImg/icon-page-002.png" alt="">
+									    <span>五折起</span>
+									</div>
+									<div class="aui-page-bd">
+									    <p>鬼冢虎 Mexico66  经典烫金标男女运动休闲鞋经典烫金标男女运动休闲鞋</p>
+									    <p>
+									        <span class="aui-price">￥498</span>
+									    </p>
+									</div>
+								</a>
+							</li>
+							<li class="aui-slide-item-item">
+								<a href="javascript:;" class="aui-link clearfix">
+									<div class="aui-page-hd ">
+									    <img src="img/yuanImg/icon-page-003.png" alt="">
+									    <span>限时</span>
+									</div>
+									<div class="aui-page-bd">
+									    <p>OnitsukaTiger 鬼冢虎 Mexico66  经典烫金标男女运动休闲鞋经典烫金标男女运动休闲鞋子</p>
+									    <p>
+									        <span class="aui-price">￥368</span>
+									    </p>
+									</div>
+								</a>
+							</li>
+							<li class="aui-slide-item-item">
+								<a href="javascript:;" class="aui-link clearfix">
+									<div class="aui-page-hd ">
+									    <img src="img/yuanImg/icon-page-004.png" alt="">
+									    <span>3色可选</span>
+									</div>
+									<div class="aui-page-bd">
+									    <p>鬼冢虎 Mexico66   经典烫金标男女运动休闲鞋经典烫金标男女运动休闲鞋</p>
+									    <p>
+									        <span class="aui-price">￥289</span>
+									    </p>
+									</div>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="divHeight"></div>
+				<!-- 滑动3 tab切换显示商品图片 -->
+				 <div class="aui-tab" data-ydui-tab>
+					<ul class="tab-nav">
+						<li class="tab-nav-item tab-active">
+						    <a href="javascript:;">相关推荐</a>
+						</li>
+						<li class="tab-nav-item">
+						    <a href="javascript:;">同类热销</a>
+						</li>
+					</ul> 
+					<div class="tab-panel ">
+						<!-- tab切换 相关推荐 -->
+						<div class="tab-panel-item tab-active">
+							 <div class="tab-item">
+								<!--tab切换 第一行商品图片 -->
+								<div class="aui-vertical">
+									<div class="aui-slide-list">
+										<ul class="aui-slide-item-list">
+											<li class="aui-slide-item-item">
+												<a href="javascript:;" class="aui-link clearfix">
+												    <div class="aui-page-hd">
+												        <img src="img/yuanImg/icon-page-005.png" alt="">
+												        <span>9色可选</span>
+												    </div>
+												    <div class="aui-page-bd">
+												        <p>经典烫金标男女运动休闲鞋经典烫金标男女运动休闲鞋</p>
+												        <p>
+												            <span class="aui-price">￥569</span>
+												        </p>
+												    </div>
+												</a>	
+											</li>
+											<li class="aui-slide-item-item">
+												<a href="javascript:;" class="aui-link clearfix">
+												    <div class="aui-page-hd">
+												        <img src="img/yuanImg/icon-page-006.png" alt="">
+												        <span>9色可选</span>
+												    </div>
+												    <div class="aui-page-bd">
+												        <p>OnitsukaTiger 鬼冢虎 Mexico66  经典烫金标男女运动休闲鞋经典烫金标男女运动休闲鞋子</p>
+												        <p>
+												            <span class="aui-price">￥509</span>
+												        </p>
+												    </div>
+												</a>	
+											</li>
+											<li class="aui-slide-item-item">
+												<a href="javascript:;" class="aui-link clearfix">
+												    <div class="aui-page-hd">
+												        <img src="img/yuanImg/icon-page-007.png" alt="">
+												        <span>9色可选</span>
+												    </div>
+												    <div class="aui-page-bd">
+												        <p>鬼冢虎 Mexico66   经典烫金标男女运动休闲鞋经典烫金标男女运动休闲鞋</p>
+												        <p>
+												            <span class="aui-price">￥398</span>
+												        </p>
+												    </div>
+												</a>	
+											</li>
+											<li class="aui-slide-item-item">
+												<a href="javascript:;" class="aui-link clearfix">
+												    <div class="aui-page-hd">
+												        <img src="img/yuanImg/icon-page-008.png" alt="">
+												        <span>9色可选</span>
+												    </div>
+												    <div class="aui-page-bd">
+												        <p>OnitsukaTiger 鬼冢虎 Mexico66  经典烫金标男女运动休闲鞋经典烫金标男女运动休闲鞋子</p>
+												        <p>
+												            <span class="aui-price">￥479</span>
+												        </p>
+												    </div>
+												</a>	
+											</li>
+										</ul>	
+									</div> 
+								</div>
+								<!--tab切换 第二行商品图片 -->
+								<div class="aui-vertical">
+									<div class="aui-slide-list">
+										<ul class="aui-slide-item-list">
+											<li class="aui-slide-item-item">
+												<a href="javascript:;" class="aui-link clearfix">
+												    <div class="aui-page-hd">
+												        <img src="img/productListImg/shoesImg25.jpg" alt="">
+												        <span>9色可选</span>
+												    </div>
+												    <div class="aui-page-bd">
+												        <p>OnitsukaTiger 鬼冢虎 Mexico66  经典烫金标男女运动休闲鞋经典烫金标男女运动休闲鞋子</p>
+												        <p>
+												            <span class="aui-price">￥179</span>
+												        </p>
+												    </div>
+												</a>	
+											</li>
+											<li class="aui-slide-item-item">
+												<a href="javascript:;" class="aui-link clearfix">
+												    <div class="aui-page-hd">
+												        <img src="img/productListImg/shoesImg26.jpg" alt="">
+												        <span>9色可选</span>
+												    </div>
+												    <div class="aui-page-bd">
+												        <p>鬼冢虎 Mexico66  经典烫金标男女运动休闲鞋经典烫金标男女运动休闲鞋子</p>
+												        <p>
+												            <span class="aui-price">￥1049</span>
+												        </p>
+												    </div>
+												</a>	
+											</li>
+											<li class="aui-slide-item-item">
+												<a href="javascript:;" class="aui-link clearfix">
+												    <div class="aui-page-hd">
+												        <img src="img/productListImg/shoesImg27.jpg" alt="">
+												        <span>9色可选</span>
+												    </div>
+												    <div class="aui-page-bd">
+												        <p> 经典烫金标男女运动休闲鞋经典烫金标男女运动休闲鞋子</p>
+												        <p>
+												            <span class="aui-price">￥199</span>
+												        </p>
+												    </div>
+												</a>	
+											</li>
+											<li class="aui-slide-item-item">
+												<a href="javascript:;" class="aui-link clearfix">
+												    <div class="aui-page-hd">
+												        <img src="img/productListImg/shoesImg28.jpg" alt="">
+												        <span>9色可选</span>
+												    </div>
+												    <div class="aui-page-bd">
+												        <p>OnitsukaTiger  经典烫金标男女运动休闲鞋经典烫金标男女运动休闲鞋子</p>
+												        <p>
+												            <span class="aui-price">￥398</span>
+												        </p>
+												    </div>
+												</a>	
+											</li>
+										</ul>	
+									</div> 
+								</div>  
+							 </div> 
+						</div>
+						<!-- tab切换 同类热销 -->
+						<div class="tab-panel-item">
+							 <div class="tab-item">
+								<!--tab切换 第一行商品图片 -->
+								<div class="aui-vertical">
+									<div class="aui-slide-list">
+										<ul class="aui-slide-item-list">
+											<li class="aui-slide-item-item">
+												<a href="javascript:;" class="aui-link clearfix">
+												    <div class="aui-page-hd">
+												        <img src="/img/productListImg/shoesImg16.jpg" alt="">
+												        <span>9色可选</span>
+												    </div>
+												    <div class="aui-page-bd">
+												        <p>2019秋季新款TanJun轻便运动鞋休闲训练缓震跑鞋812654-011 </p>
+												        <p>
+												            <span class="aui-price">￥398</span>
+												        </p>
+												    </div>
+												</a>	
+											</li>
+											<li class="aui-slide-item-item">
+												<a href="javascript:;" class="aui-link clearfix">
+												    <div class="aui-page-hd">
+												        <img src="/img/productListImg/shoesImg17.jpg" alt="">
+												        <span>9色可选</span>
+												    </div>
+												    <div class="aui-page-bd">
+												        <p>OnitsukaTiger  经典烫金标男女运动休闲鞋</p>
+												        <p>
+												            <span class="aui-price">￥205</span>
+												        </p>
+												    </div>
+												</a>	
+											</li>
+											<li class="aui-slide-item-item">
+												<a href="javascript:;" class="aui-link clearfix">
+												    <div class="aui-page-hd">
+												        <img src="/img/productListImg/shoesImg18.jpg" alt="">
+												        <span>9色可选</span>
+												    </div>
+												    <div class="aui-page-bd">
+												        <p>Oasinkel  经典烫金标男女运动休闲鞋经典烫金标男女运动休闲鞋子</p>
+												        <p>
+												            <span class="aui-price">￥320</span>
+												        </p>
+												    </div>
+												</a>	
+											</li>
+											<li class="aui-slide-item-item">
+												<a href="javascript:;" class="aui-link clearfix">
+												    <div class="aui-page-hd">
+												        <img src="/img/productListImg/shoesImg19.jpg" alt="">
+												        <span>9色可选</span>
+												    </div>
+												    <div class="aui-page-bd">
+												        <p>dOnitsukaTiger  经典烫金标男女运动休闲鞋经典烫金标男女运动休闲鞋子</p>
+												        <p>
+												            <span class="aui-price">￥200</span>
+												        </p>
+												    </div>
+												</a>	
+											</li>
+										</ul>	
+									</div> 
+								</div>
+								<!--tab切换 第二行商品图片 -->
+								<div class="aui-vertical">
+									<div class="aui-slide-list">
+										<ul class="aui-slide-item-list">
+											<li class="aui-slide-item-item">
+												<a href="javascript:;" class="aui-link clearfix">
+												    <div class="aui-page-hd">
+												        <img src="/img/productListImg/shoesImg20.jpg" alt="">
+												        <span>9色可选</span>
+												    </div>
+												    <div class="aui-page-bd">
+												        <p>男鞋新品冬季高帮鞋子男潮鞋椰子鞋加绒保暖棉鞋运动户外工装雪地靴男靴子休闲皮鞋老爹板鞋帆布增高鞋马丁靴</p>
+												        <p>
+												            <span class="aui-price">￥388</span>
+												        </p>
+												    </div>
+												</a>	
+											</li>
+											<li class="aui-slide-item-item">
+												<a href="javascript:;" class="aui-link clearfix">
+												    <div class="aui-page-hd">
+												        <img src="/img/productListImg/shoesImg21.jpg" alt="">
+												        <span>9色可选</span>
+												    </div>
+												    <div class="aui-page-bd">
+												        <p>男学生网红鞋子男潮鞋耐磨跑步鞋男旅游板鞋男潮流厚底增高老爹鞋男 YJ-WD886卡其色 42</p>
+												        <p>
+												            <span class="aui-price">￥198</span>
+												        </p>
+												    </div>
+												</a>	
+											</li>
+											<li class="aui-slide-item-item">
+												<a href="javascript:;" class="aui-link clearfix">
+												    <div class="aui-page-hd">
+												        <img src="/img/productListImg/shoesImg22.jpg" alt="">
+												        <span>9色可选</span>
+												    </div>
+												    <div class="aui-page-bd">
+												        <p>【加棉可选】鞋子男经典休闲鞋网红情侣板鞋潮流百搭高帮帆布鞋男学生帆布男鞋 高帮黑色 41（男）</p>
+												        <p>
+												            <span class="aui-price">￥168</span>
+												        </p>
+												    </div>
+												</a>	
+											</li>
+											<li class="aui-slide-item-item">
+												<a href="javascript:;" class="aui-link clearfix">
+												    <div class="aui-page-hd">
+												        <img src="/img/productListImg/shoesImg23.jpg" alt="">
+												        <span>9色可选</span>
+												    </div>
+												    <div class="aui-page-bd">
+												        <p>paddywood亚麻鞋男百搭低帮绑带帆布鞋板鞋休闲潮鞋 卡其色 41</p>
+												        <p>
+												            <span class="aui-price">￥298</span>
+												        </p>
+												    </div>
+												</a>	
+											</li>
+										</ul>	
+									</div> 
+								</div>  
+							 </div> 
+						</div>			
+					</div>
+				 </div>
+				<div class="divHeight"></div>
+				<!-- tab切换2 图文详情、问题答疑 块-->
+				<div class="aui-introduce">
+					<div class="aui-tab" data-ydui-tab>
+						<ul class="tab-nav">
+							<li class="tab-nav-item tab-active">
+							    <a href="javascript:;">图文详情</a>
+							</li>
+							<li class="tab-nav-item">
+							    <a href="javascript:;">问题答疑</a>
+							</li>	
+						</ul>
+						<div class="tab-panel">
+							<div class="tab-panel-item tab-active">
+								<div class="tab-item">
+									<div class="aui-page-img">
+										<img th:each="info:${imagesList}" th:src="${info.uriZ}" alt="">
+									</div>
+									<div class="aui-Written-text">
+									    <h3>不同版本信息说明</h3>
+									    <p>由于海淘商品是品牌方交由不同国家的生产厂家生产且出售国家地区不同，因此会出现同一商品多版本情况，不同版本的商品会存在细微的差异</p>
+									    <p>商城对每批商品都会经过5道程序仔细核对，确保发到您手中的商品100%正品，假一赔十，请您放心购买</p>
+									</div>
+									<div class="aui-Written-title">
+									    <h3>包装与生产日期</h3>
+									    <p>商品的包装，国外更注重环保和便捷性，而不是包装如何奢华。大部分国际一线品牌，奢侈品的包装也很简单，比如产自欧美，日韩的化妆品，大部分无外盒，不塑封，开口处也没有封口贴。</p>
+									    <p>国外的商品包装上一般不会单独列出保质期多长，通常只在产品包装上标准生产日期或有效日期，也有只标注出场批号的情况：比如日本和欧洲的洗护品，化妆品（有些品牌可以根据批号读取日期，在此不做一一列举）。但请放心，商城销售的国外商品都是符合规定的合格产品。有些喷印的日期，在运输过程中因为摩擦碰撞很容易糊掉或碰掉，是正常现象。</p>
+									    <p>国外食品一般表示"Best before date"，既最佳赏味日期。该日期不是"最终保质期"，意为在此日期前食用能保证食物新鲜，故在"最佳赏味日期"前食用风味更佳。</p>
+									    <p>各国商品有效期的书写方式，可在商城pc页面底部-新手指南-常见问题中查看详情。</p>
+									    <h3>价格说明</h3>
+									    <p>1、划线价、参考价：商品展示的划线价或参考价可能是品牌专柜价、商品吊牌价或由品牌供应商提供的正品零售价（如厂商指导价、建议零售价等）或该商品在商城上曾经展示过的销售价；由于地区、时间的差异性和市场行情的波动，品牌专柜标价、商品吊牌价等可能会与您购物时展示的不一致，该价格仅供您参考。</p>
+									    <p>2、促销价：如无特殊说明，促销价是销售商在参考价基础上给予的优惠价格。如有疑问，您可以与客服联系。</p>
+									    <p>3、商城价：商城非会员用户购买的商品详情页显示的售价，是非会员用户最终决定是否购买该商品的依据。</p>
+									    <p>4、会员价：在商城价的基础上给予会员用户的优惠价格，仅会员用户可以会员价购买该商品。</p>
+									    <p>5、价格异常：因可能存在系统缓存、页面更新延迟等不确定性情况，导致价格显示异常，商品具体售价请以订单结算页价格为准。如您发现异常情况出现，请立即联系我们补正，以便您能顺利购物。</p>
+									    <h3>消费者告知书</h3>
+									    <p>请您在购买前务必认真、详细阅读并完全理解本告知书的全部内容，并对资深风险承担做出客观判断</p>
+									    <p>1、您在商城商城上购买的境外商品等同于原产地直接销售商品，因此商品本身可能无中文标签，如果需要您可以通过网站查看相关商品标签中文翻译或者联系客服。</p>
+									    <p>2、促销价：如无特殊说明，促销价是销售商在参考价基础上给予的优惠价格。如有疑问，您可以与客服联系。</p>
+									    <p>3、商城价：商城非会员用户购买的商品详情页显示的售价，是非会员用户最终决定是否购买该商品的依据。</p>
+									    <p>4、会员价：在商城价的基础上给予会员用户的优惠价格，仅会员用户可以会员价购买该商品。</p>
+									    <p>5、价格异常：因可能存在系统缓存、页面更新延迟等不确定性情况，导致价格显示异常，商品具体售价请以订单结算页价格为准。如您发现异常情况出现，请立即联系我们补正，以便您能顺利购物。</p>
+									</div>
+								</div>
+							</div>
+							<div class="tab-panel-item">
+							    <div class="tab-item">
+							        <div class="tab-item-faq">
+							            <h2>
+							                <span>商品FAQ</span>
+							            </h2>
+							        </div>
+							        <div class="tab-item-faq-text">
+							            <h3>鞋子保养方法</h3>
+							            <ul>
+							                <li>
+							                    <h4>1、日常保养</h4>
+							                    <p>应有两双或两双以上鞋子交替穿着，避免因超负荷而使鞋的功能性和耐久性损耗。同时，尽量请勿雨天穿着。</p>
+							                </li>
+							                <li>
+							                    <h4>2、特殊保养</h4>
+							                    <p>（1）季节变换，保存暂不穿的鞋，请清洗干净，鞋内填充防潮纸，放入鞋盒内，同时最好能加入干燥剂，存放于阴凉通风处。</p>
+							                    <p>（2）淋雨后雨水对鞋有损害，请及时使用干布将雨水吸干，放置通风处吹干。</p>
+							                    <p>（3）每款鞋的材质不同，建议您去专业的球鞋清洗店清洗。</p>
+							                    <p>（4）真皮材质的鞋不可用水浸泡</p>
+							                </li>
+							            </ul>
+							        </div>
+							    </div>
+							</div>
+						</div> 
+					</div>
+				</div>
+				<!-- 弹窗块1 加入购物车 -->
+				<div class="m-actionsheet" id="actionSheet">
+				    <div class="aui-show-box">
+				        <div class="aui-show-box-title aui-footer-flex">
+				            <div class="aui-footer-flex1"><span th:text="${uscomm.c_color}"></span>、<span th:text="${uscomm.c_edition}"></span></div>
+				            <div>
+				                <a href="javascript:;" id="cancel" class="">
+				                    <i class="icon icon-close"></i>
+				                </a>
+				            </div>
+				        </div>
+				        <div class="aui-show-box-cp aui-footer-flex">
+				            <div class="aui-show-box-img imgs">
+				                <img th:src="${uscomm.c_uri}" alt="">
+				            </div>
+				            <div class="aui-show-box-text">
+				                <h2>
+				                    ￥<span th:text="${uscomm.c_discountprice}" class="prices">999</span><em>特价</em>
+				                </h2>
+				                <h3>
+				                    已选: <em>白色、38</em>
+				                </h3>
+				                <p>仅剩 <em th:text="${uscomm.c_Stock}">19</em> 件</p>
+				            </div>
+				        </div>
+				        <div class="aui-category-box" th:if="${uscomm.c_color!=null}">
+				            <p th:text="${uscomm.c_color}">颜色</p>
+				            <div class="aui-category-box-list boxs">
+				                <a href="javascript:;" class="aui-category-box-item" th:each="info:${colourList}">
+				                	<span th:text="${info.name}"></span>
+									<input type="hidden" name="" th:value="${info.id}"/>
+				                </a>
+				            </div>
+				        </div>
+				        <div class="aui-category-box" th:if="${uscomm.c_edition!=null}">
+				            <p th:text="${uscomm.c_edition}">尺码</p>
+				            <div class="aui-category-box-list  boxx">
+				                <a href="javascript:;" class="aui-category-box-item" th:each="info:${CommtypepricrList}">
+				                	<span th:text="${info.type}"></span>
+				                	<input type="hidden" name="" th:value="${info.id}"/>
+				                </a>
+				            </div>
+				        </div>
+				        <div class="aui-footer-group aui-footer-flex1">
+				            <div class="aui-footer-flex">
+				                <div class="aui-btn aui-btn-red che">
+				                    <span>确认</span>
+				                    <input type="hidden" class="c_id" th:value="${uscomm.c_id}"/>
+				                </div>
+				            </div>
+				        </div>
+				    </div>
+				</div>
+				<!-- 弹窗块2 促销 -->
+				<div class="m-actionsheet" id="actionSheet1">
+				    <div class="aui-show-box">
+				        <div class="aui-show-box-title aui-footer-flex">
+				            <div class="aui-footer-flex1">免费开通</div>
+				            <div>
+				                <a href="javascript:;" id="cancel1" class="">
+				                    <i class="icon icon-close"></i>
+				                </a>
+				            </div>
+				        </div>
+				        <div class="aui-text-info">
+				            <p>免费开通易支付 全场最低6期免息
+				            </p>
+				        </div>
+				    </div>
+				</div>
+				<!-- 弹窗块3 配送 -->
+				<div id="addressSelectWrapper">
+					<div id="addressSelect">
+						<div class="tip aui-show-box-title aui-footer-flex">
+							<h3>选择区域</h3>
+							<div>
+							    <a href="javascript:;" id="cancel3" >
+							        <i class="icon icon-close"></i>
+							    </a>
+							</div>
+						</div>
+						<div id="address">
+							<ul class="selected-address">
+								<li class="lastarea" id="lastprovince">请选择</li>
+								<li class="lastarea" id="lastcity">请选择</li>
+								<li class="lastarea" id="lastarea">请选择</li>
+								<li class="lastarea" id="lasttown">请选择</li>
+							</ul>
+							<div class="address-content">
+								<ul id="province"></ul>
+								<ul id="city"></ul>
+								<ul id="area"></ul>
+								<ul id="town"></ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- 弹窗块4 运费 -->
+				<div class="m-actionsheet" id="actionSheet3">
+				    <div class="aui-show-box">
+				        <div class="aui-show-box-title aui-footer-flex">
+				            <div class="aui-footer-flex1">运费说明</div>
+				            <div>
+				                <a href="javascript:;" id="cancel3" class="">
+				                    <i class="icon icon-close"></i>
+				                </a>
+				            </div>
+				        </div>
+				        <div class="aui-text-info">
+				            <p>免运费
+				            </p>
+				        </div>
+				    </div>
+				</div>
+				<!-- 弹窗块5 说明 -->
+				<div class="m-actionsheet" id="actionSheet4">
+				    <div class="aui-show-box">
+				        <div class="aui-show-box-title aui-footer-flex">
+				            <div class="aui-footer-flex1">商品说明</div>
+				            <div>
+				                <a href="javascript:;" id="cancel5" class="">
+				                    <i class="icon icon-close"></i>
+				                </a>
+				            </div>
+				        </div>
+				        <div class="aui-text-info">
+				            <p>假一赔十 | 7天无忧退货 | 自营发货
+				            </p>
+				        </div>
+				    </div>
+				</div>
+			</section>
+			<!-- 底部固定 导航块 -->
+			<footer class="aui-footer-button aui-footer-flex aui-footer-fixed footer-yinc">
+			    <div class="aui-footer-wrap">
+			        <i class="icon-shop"></i>
+			        <span>店铺</span>
+			    </div>
+			    <div class="aui-footer-wrap">
+			        <i class="icon-service"></i>
+			        <span>客服</span>
+			    </div>
+			    <div class="aui-footer-wrap showChe">
+			        <i class="icon-car"></i>
+			        <span>购物车</span>
+			    </div>
+			    <div class="aui-footer-group aui-footer-flex1">
+			        <div class="aui-footer-flex">
+			            <div class="aui-btn aui-btn-gray" data-ydui-actionsheet="{target:'#actionSheet',closeElement:'#cancel'}">
+			                <span>加入购物车</span>
+			            </div>
+			            <div class="aui-btn aui-btn-red">
+			                <span>立即购买</span>
+			            </div>
+			        </div>
+			    </div>
+			</footer>
+		</section>
+		
+		<script type="text/javascript" src="/userAn/js/jquery.min.js"></script>
+		<script type="text/javascript" src="/userAn/js/city.js"></script>
+		<script type="text/javascript" src="/userAn/js/tab.js"></script>
+		<script type="text/javascript" src="/userAn/js/layer.js"></script>
+		<script type="text/javascript" src="/userAn/js/touchSlider.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+			    $(".main_img").touchSlider({
+			        flexible: true,
+			        speed: 200,
+			        btn_prev: $("#btn_prev"),
+			        btn_next: $("#btn_next"),
+			        paging: $(".point a"),
+			        counter: function(e) {
+			            $(".point a").removeClass("on").eq(e.current - 1).addClass("on");
+			            $(".img_font span").hide().eq(e.current - 1).show();
+			        }
+			    });
+			});
+			$(function() {
+			    $(window).bind("scroll", function() {
+			        var sTop = $(window).scrollTop();
+			        var sTop = parseInt(sTop);
+			        if (sTop >= 44) {
+			            if (!$("#scrollBg").is(":visible")) {
+			                try {
+			                    $("#scrollBg").slideDown();
+			                } catch (e) {
+			                    $("#scrollBg").show();
+			                }
+			            }
+			        } else {
+			            if ($("#scrollBg").is(":visible")) {
+			                try {
+			                    $("#scrollBg").slideUp();
+			                } catch (e) {
+			                    $("#scrollBg").hide();
+			                }
+			            }
+			        }
+			    });
+			});
+			// 地址选择器遮罩层打开与关闭
+			$(function(){
+				$("#areaLabel").click(function(e){
+				    $("#addressSelectWrapper").show();
+					$(".footer-yinc").hide();
+				    e.stopPropagation();
+				});
+				$(document).click(function () {
+			        $("#addressSelectWrapper").hide();
+					$(".footer-yinc").show();
+			    });
+				$("#cancel3").click(function () {
+			        $("#addressSelectWrapper").hide();
+					$(".footer-yinc").show();
+			    });
+			    $("#addressSelect").click(function (e) {
+					e.stopPropagation();
+					
+			    });
+				
+			    initAddress();
+			});
+			
+			//多选 消失
+			$(function(){
+				$(".aui-category-box-list a").click(function(){
+					$(this).addClass("aui-category-box-items").siblings().removeClass("aui-category-box-items");
+				})
+				
+				$(".boxs a").eq(0).addClass("aui-category-box-items").siblings().removeClass("aui-category-box-items");
+			  	$(".boxx a").eq(0).addClass("aui-category-box-items").siblings().removeClass("aui-category-box-items");
+				
+				$(".boxx a").click(function(){
+					let typeId=$(this).children("input").val();
+					$.post("/CommtypepricrByprive.do",{"typeId":typeId},function(ret){
+						$(".prices").html(ret);
+					})
+				})
+				$(".boxs a").click(function(){
+									
+					let imgId=$(this).children("input").val();
+					$(".imgs").html("");
+	                var html = "";
+				 	$.post("/showImagesByUri.do",{"imgId":imgId},function(ret){
+						//console.log(ret)
+						html='<img src="'+ret[0].uriX+'" alt="">';
+						$(".imgs").append(html);		 
+						//alert(html)
+					})  
+					
+				})
+				
+				$(".che").click(function(){
+					var name=$(".c_name").html();
+					var price=$(".c_discountprice").html();
+					var img=$(".imgs img")[0].src;
+					var cid=$(".c_id").val();
+					var colour=$(".boxs a[class='aui-category-box-item aui-category-box-items']").children("span").html();
+					var edition=$(".boxx a[class='aui-category-box-item aui-category-box-items']").children("span").html();
+					var amount=1;
+					//alert(colour)
+					var data={
+							"name":name,
+							"price":price,
+							"img":img,
+							"cid":cid,
+							"colour":colour,
+							"edition":edition,
+							"amount":amount
+					}
+					$.post("/addShoopc.do",data,function(ret){
+						//console.log(ret)
+						if(ret=="uidNo"){
+							alert("请先登录！");
+						}else if(ret=="ok"){
+							alert("加入购物车成功！");
+						}else{
+							alert("系统异常,加入购物车失败！");
+						}
+					})
+				}) 
+				
+				$(".showChe").click(function(){
+					window.location.href="../userIdByShoopcInfo.do";
+				})
+			});
+			
+			//初始化地址选择(加载数据的)
+			function initAddress() {
+			    $("#Addr").cityLinkage({
+			        containerId: 'addressSelectWrapper',
+			        getSelectedCode:function(){return $("#Addr").data("code");},
+			        callback:function(data) {
+			            $("#Addr").val(data.addr).data("code",data.town.code);
+						$(".footer-yinc").show();
+			        }
+			    });
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,143 @@
+<html class="x-admin-sm" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8">
+    <title>欢迎页面-X-admin2.1</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+    <link rel="stylesheet" href="/admn/css/font.css">
+    <link rel="stylesheet" href="/admin/css/xadmin.css">
+    <script type="text/javascript" src="/admin/js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="/admin/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/admin/js/xadmin.js"></script>
+    <script type="text/javascript" src="admin/js/cookie.js"></script>
+    <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+      <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+<style>
+.layui-table-cell
+{
+  height:35px;
+  line-height:30px;
+}
+
+
+</style>
+  <body>
+<div class="x-body">
+        <form class="layui-form">
+          <input type="text" name="cid" id="demo" class="layui-input">
+        </form>
+</div>
+      <xblock>
+        <button class="layui-btn" id="add" lay-event="add"><i class="layui-icon"></i>添加</button>
+        <span class="x-right" style="line-height:40px">共有数据：88 条</span>
+      </xblock> 
+     
+<!-- 数据显示 -->
+    <div class="layui-card-body">
+    <table class="layui-hide" id="test" lay-filter="propertyTable"></table>
+	</div>    
+    
+<!-- 数据提取 -->
+<script>
+layui.use(['form','laydate','table','jquery','element','layer'], function(){
+	var form = layui.form 
+	,layer = layui.layer
+    ,table = layui.table;
+	$= layui.$,
+	element=layui.element,
+	laydate=layui.laydate,
+	//加载表格数据
+    tableIns=table.render({
+        elem: '#test'
+        ,height:500
+        ,url:'/adminCommodity/showPropertyData.do'
+        //,contentType:'application/json'
+        ,where: {
+        	'cid':$('#demo').val()
+        	}
+        ,limit:10//默认为10
+        ,cols: [
+	        	[
+	        	 {type:'checkbox', fixed: 'left'}
+	            ,{type:'numbers', width:'20%',title:'序号'}//sort：true页面可进行排序操作
+	            ,{field:'name', width:'35%',title: '属性名称',align:'center'}
+	            ,{fixed:'right',width:'40%',align:'center', toolbar: '#optBar'}
+	            ]
+        	      ]
+        ,page: true
+        
+    }); 
+$('#add').click(function(){
+	          var cids = $('#demo');
+	          var cid = cids.val();
+	         if(cid.length!=0){
+	    	  var index = layer.open({
+	    		  title : "添加属性",
+	    		  type : 2,
+	    		  offset: 'auto',
+	    		  area: ['800px', '600px'],
+	    		  content : "/adminCommodity/addProperty.do?cid="+cid,
+	    		  success:function(layero, index){
+	    			  console.log(cid);
+					}
+	    		  })
+	    		  //layer.full(index);
+	          }
+		});
+table.on('tool(propertyTable)',function(obj){
+	 var data = obj.data //获得当前行数据
+     var layEvent = obj.event; //获得 lay-event 对应的值
+	  if(layEvent === 'del'){
+	        layer.confirm('真的删除该属性吗?删除后数据不能恢复！',{icon:3,title:'提示'}, function(index){
+	        	$.post("/adminCommodity/delPropertyById.do",{"id":data.id},function(d){
+			  		if(d.res>0){
+			  			table.reload("test");
+			  			layer.msg("操作成功！");
+			  		}else{
+			  			layer.msg("操作失败！");
+			  		}
+			  	},"json");	
+	        });
+	      }else if(layEvent === 'edit'){
+	    	  var index = layer.open({
+	    		  title : "编辑品牌",
+	    		  type : 2,
+	    		  offset: 'auto',
+	    		  area: ['400px', '200px'],
+	    		  content : "/adminCommodity/propertyupdate.do",
+	    		  success:function(layero, index){
+	    			  console.log(data);
+	    			  layero.find('iframe').contents().find('input[name=id]').val(data.id);
+	    			  layero.find('iframe').contents().find('input[name=cid]').val(data.cid);
+	    			  layero.find('iframe').contents().find('input[name=name]').val(data.name);	    			 
+					}
+	    		  })
+	      }
+})
+
+});
+//重新加载table
+function load(obj){
+    tableIns.reload({
+        where: obj.field
+    });
+}
+</script>
+
+<!-- 商品样式 -->
+<script type="text/html" id="proDemo">
+  <a href=""><i class="layui-icon layui-icon-list" style="font-size:24px; color: #1E9FFF;"></i></a>
+</script>
+<!-- 操作样式 -->
+<script type="text/html" id="optBar"> 
+    <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+</script>
+</body>
+
+</html>

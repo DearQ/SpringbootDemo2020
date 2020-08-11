@@ -1,0 +1,267 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body,
+html {
+	font-size: 100px;
+	background-color: #f5f5f5;
+}
+
+ul li {
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+}
+
+input:focus {
+	outline: none;
+}
+
+#o-head {
+	font-size: 0.14rem;
+	width: 100%;
+	background-color: #e2231a;
+}
+
+#o-head a {
+	color: #FFFFFF;
+}
+
+#o-head a:hover {
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
+#o-head ul li {
+	margin-top: 0.2rem;
+}
+
+#shopping{
+	font-size: 0.14rem;
+}
+#s-head{
+	
+	padding: 0.2rem;
+}
+#s-head .sou .sousuo {
+	
+	width: 3.84rem;
+	height: 0.4rem;
+	float: left;
+	margin-top: 0.04rem;
+	border: 0.03rem solid #E4393C;
+}
+#s-head input:focus{outline: none;}
+
+#o-head span.return a,
+#o-head span.return a:hover {
+	display: inline-block;
+	font-size: 0.12rem;
+	margin: 0.05rem 0 0;
+	color: #ffb2b2;
+	border: 0.01rem solid #ffb2b2;
+	height: 0.18rem;
+	line-height: 0.18rem;
+	padding: 0 0.1rem;
+	border-radius: 0.1rem;
+}
+
+#o-head span.return a:hover {
+	background-color: #FFFFFF;
+	color: #E1251B;
+}
+
+#o-head span.o-left,
+#o-head span.o-right {
+	display: inline-block;
+	vertical-align: middle;
+	width: 0.09rem;
+	height: 0.06rem;
+	margin-left: 0.05rem;
+	background-image: url(../img/order-icon.png);
+	background-position: 0 -1.2rem;
+}
+
+.sou .sousuo {
+	width: 1.86rem;
+	height: 0.32rem;
+	float: left;
+	margin-top: 0.04rem;
+}
+
+.sou .kuang {
+	width: 1.36rem;
+	height: 0.32rem;
+	float: left;
+	padding: 0.04rem 0.04rem;
+	line-height: 0.2rem;
+	border: none;
+}
+
+.sou .souzi {
+	width: 0.5rem;
+	height: 0.32rem;
+
+	float: right;
+	background-color: #f7f7f7;
+}
+
+.sou .souzi a {
+	display: block;
+	font-size: 0.13rem;
+	text-align: center;
+	line-height: 0.35rem;
+}
+
+.gouwuche {
+	width: 1.42rem;
+	height: 0.35rem;
+	border: 0.01rem solid orange;
+	float: left;
+	background: #F7F7F7;
+	border: 0.01rem solid #ccc;
+	margin-left: 0.15rem;
+	/* margin-top: 0.05rem; */
+	position: relative;
+	font-size: 0.14rem;
+}
+
+#o-head .gouwuche .chetu {
+	width: 0.22rem;
+	height: 0.2rem;
+	background: url(../img/all.png) no-repeat -1.2rem -0.88rem;
+	position: absolute;
+	top: 0.1rem;
+	left: 0.08rem;
+}
+
+#o-head .gouwuche a {
+	display: block;
+	padding-left: 0.3rem;
+	padding-top: 0.05rem;
+	color: #666;
+	margin-left: 0.1rem;
+}
+
+#o-head .gouwuche a:hover {
+	color: #E4393C;
+	text-decoration: underline;
+}
+
+#o-head .gouwuche .jianleft {
+	width: 0.1rem;
+	height: 0.1rem;
+	background: url(../img/all.png) no-repeat -1.1rem -0.45rem;
+	position: absolute;
+	top: 0.1rem;
+	right: 0.05rem;
+}
+
+#o-head .gouwuche .num {
+	width: 0.17rem;
+	height: 0.2rem;
+	position: absolute;
+	top: 0rem;
+	left: 0.2rem;
+	background: url(../img/all.png) no-repeat -1.34rem -2.8rem;
+}
+
+#o-head .gouwuche .num .numright {
+	width: 0.1rem;
+	height: 0.2rem;
+	float: right;
+	/*border: 1px solid orange;*/
+	background: url(../img/all.png) no-repeat -1.32rem -2.51rem;
+}
+
+#o-head .gouwuche .num .numzi {
+	width: 0.1rem;
+	height: 0.1rem;
+	position: absolute;
+	top: 0rem;
+}
+
+#o-head .gouwuche .num span {
+	display: block;
+	margin-left: 0.03rem;
+	margin-top: -0.02rem;
+	font-size: 0.14rem;
+	color: #FFF;
+}
+
+#o-head .gouwuche .hideche {
+	width: 3.48rem;
+	height: 0.69rem;
+	background: white;
+	border: 0.01rem solid #ccc;
+	position: absolute;
+	top: 0.4rem;
+	left: -2.06rem;
+	display: none;
+	z-index: 22;
+}
+
+#o-head .gouwuche:hover .hideche {
+	display: block;
+}
+
+#o-head .gouwuche .hideche .kongche {
+	width: 0.56rem;
+	height: 0.49rem;
+	margin-left: 0.4rem;
+	margin-top: 0.07rem;
+	float: left;
+	background: url(../img/all.png) no-repeat 0rem 0rem;
+}
+
+#o-head .gouwuche .hideche span {
+	display: block;
+	margin-top: 0.3rem;
+	color: #999;
+}
+
+#o-main {
+	font-size: 0.14rem;
+	font-weight: 700;
+	color: #666;
+}
+
+.m-m_left ul {
+	font-size: 0.13rem;
+	text-align: center;
+	/* padding: 0.15rem 0.2rem; */
+}
+
+.m-m_left ul li h3 {
+	font-size: 0.15rem;
+	color: #000000;
+	font-weight: 700;
+}
+
+.m-m_left ul li a {
+	color: #666;
+	line-height: 0.3rem;
+}
+
+.m-m_left ul li a:hover {
+	text-decoration: none;
+	color: #E1251B;
+}
+
+.o-nav li {
+	float: left;
+}
+.o-nav li:not(:first-child){
+	margin-left: 0.2rem;
+}
+.o-nav li.active a {
+	padding-bottom: 0;
+	color: #e4393c;
+	border-bottom: 0.02rem solid #e4393c;
+	font-weight: 700;
+	text-decoration: none;
+}

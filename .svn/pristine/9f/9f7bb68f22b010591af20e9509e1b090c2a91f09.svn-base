@@ -1,0 +1,21 @@
+package com.t05g1.dao;
+
+import com.t05g1.pojo.Brand;
+import java.util.List;
+
+public interface BrandDao {
+	
+    int deleteByPrimaryKey(Integer b_id);
+
+    int insert(Brand record);
+
+    int insertSelective(Brand record);
+
+    List<Brand> selectByExample();
+
+    Brand selectByPrimaryKey(Integer b_id);
+
+    int updateByPrimaryKeySelective(Brand record);
+
+    int updateByPrimaryKey(Brand record);
+}

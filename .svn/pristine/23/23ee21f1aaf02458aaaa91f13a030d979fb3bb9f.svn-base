@@ -1,0 +1,64 @@
+package com.t05g1.service.impl;
+
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.t05g1.dao.CommodityDao;
+import com.t05g1.pojo.Commodity;
+import com.t05g1.service.CommodityService;
+
+@Service
+public class CommmodityServiceImpl implements CommodityService {
+	
+	@Autowired
+	private CommodityDao commodityDao;
+	
+	
+    //查看商品列表
+	@Override
+	public List<Commodity> findAllcommodityList() {
+		
+		return commodityDao.findAllcommodityList();
+	}
+
+    //查看商品带分页
+	@Override
+	public List<Commodity> findAllcommodityListPage(String c_name,int c_categoryId) {
+		return commodityDao.findAllcommodityListPage(c_name,c_categoryId);
+	}
+
+    //统计商品总数
+	@Override
+	public int commodityAllCountxx() {
+		
+		return commodityDao.commodityAllCountxx();
+	}
+	
+	//查看商品带分页
+	@Override
+	public List<Commodity> queryAllDataFromTable(int curr, int limit, String c_name,int c_categoryId) {
+        curr=(curr-1)*limit;
+		// TODO Auto-generated method stub
+		return commodityDao.queryAllDataFromTable(curr, limit, c_name, c_categoryId);
+	}
+	
+	 //统计商品总数
+	@Override
+	public int queryAllCount(String c_name,int c_categoryId) {
+		// TODO Auto-generated method stub
+		return commodityDao.queryAllCount(c_name,c_categoryId);
+	}
+    
+	//添加商品
+	@Override
+	public int addProduct(Commodity commodity) {
+		// TODO Auto-generated method stub
+		return commodityDao.addProduct(commodity);
+	}
+	
+	
+
+}

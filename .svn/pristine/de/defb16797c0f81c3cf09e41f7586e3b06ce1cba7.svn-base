@@ -1,0 +1,5 @@
+package com.t05g1.service.impl;
+
+public class UserServiceImpl {
+	
+}

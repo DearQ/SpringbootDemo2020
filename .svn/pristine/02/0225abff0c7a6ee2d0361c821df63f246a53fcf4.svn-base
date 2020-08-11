@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html class="x-admin-sm" xmlns:th="http://www.thymeleaf.org">
+  
+  <head>
+    <meta charset="UTF-8">
+    <title>欢迎页面-X-admin2.1</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+    <link rel="stylesheet" href="/admin/css/font.css">
+    <link rel="stylesheet" href="/admin/css/xadmin.css">
+    <script type="text/javascript" src="/admin/js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="/admin/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/admin/js/xadmin.js"></script>
+    <script type="text/javascript" src="/admin/js/cookie.js"></script>
+    <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+      <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  
+  <body>
+    <div class="x-body">
+        <form class="layui-form" >
+			 <div class="layui-form-item"> 
+			      <div class="layui-inline">
+					<div class="layui-upload">
+		                <label class="layui-form-label">上传图片:</label>
+		                <div class="layui-upload layui-input-block">
+		               <div style="width:100px;"> <img class="layui-upload-img" id="demo1" width="160px"></div>
+		                    <input type="hidden" name="c_uri" id="c_uri"  required lay-verify="required" />
+		                    <button type="button" class="layui-btn layui-btn-primary" id="fileBtn"><i class="layui-icon">&#xe67c;</i>选择文件</button>
+		                    <button type="button" class="layui-btn layui-btn-warm" id="uploadBtn">开始上传</button>
+                </div>
+            </div>
+			      </div>
+			</div>  
+          <div class="layui-form-item">
+                 <label class="layui-form-label">产品名称：</label>
+							    <div class="layui-input-block">
+							      <input type="text" name="c_name" id="c_name" required  lay-verify="required" 
+							      	placeholder="请输入产品名称" autocomplete="off" class="layui-input">
+							    </div>
+          </div>
+          <div class="layui-form-item">
+              <label for="L_username" class="layui-form-label">小标题</label>
+              <div class="layui-input-block">
+                  <input type="text" id="c_name" name="c_title" required="" lay-verify="nikename"
+                     placeholder="请输入产品标题"   autocomplete="off" class="layui-input">
+              </div>
+          </div>
+          <div class="layui-form-item">
+              <label for="L_username" class="layui-form-label">品牌名称</label>
+               <div class="layui-input-block">
+					      <select name="c_brandId" lay-verify="required">
+					        <option th:text="选择品牌"></option>
+					         <option th:each="bra : ${braList}" th:value="${bra.b_id}" th:text="${bra.b_name}">
+					      </select>
+					    </div>
+          </div>
+          <div class="layui-form-item">
+             <label class="layui-form-label">商品分类</label>
+					    <div class="layui-input-block">
+					      <select name="c_categoryId" lay-verify="required">
+					        <option th:text="选择类型"></option>
+					         <option th:each="cat : ${catList}" th:value="${cat.id}" th:text="${cat.name}">
+					      </select>
+					    </div>
+          </div>
+          <div class="layui-form-item">
+             <label class="layui-form-label">颜色</label>
+					    <div class="layui-input-block">
+					       <input type="text"  name="c_color" required=""  
+					     autocomplete="off" class="layui-input">				       
+					    </div>
+          </div>
+          <div class="layui-form-item">
+             <label class="layui-form-label">版本</label>
+				<div class="layui-input-block">
+					<input type="text" id="" name="c_edition" required="" 
+                   autocomplete="off" class="layui-input">
+				</div>
+          </div>
+          <div class="layui-form-item">
+              <label for="L_repass" class="layui-form-label">价格</label>
+              <div class="layui-input-block">
+                  <input type="text" id="L_repass" name="c_price" required=""  lay-verify="price"
+                  autocomplete="off" class="layui-input">
+              </div>
+          </div>
+          <div class="layui-form-item">
+              <label for="L_repass" class="layui-form-label">优惠价格</label>
+              <div class="layui-input-block">
+                  <input type="text" id="" name="c_discountprice" required="" 
+                  autocomplete="off" class="layui-input">
+              </div>
+          </div>
+          <div class="layui-form-item">
+              <label for="L_repass" class="layui-form-label">库存</label>
+              <div class="layui-input-block">
+                  <input type="text" id="" name="c_Stock" required=""  lay-verify="stock" 
+                  autocomplete="off" class="layui-input">
+              </div>
+          </div>
+          <div class="layui-form-item">
+              <label for="L_repass" class="layui-form-label">
+              </label>
+              <button  class="layui-btn" lay-filter="add" lay-submit > 添加</button>
+          </div>
+      </form>
+    </div>
+    <script>
+   layui.use(['form','layer','upload'], function(){
+           $ = layui.jquery;
+          var form = layui.form
+          ,layer = layui.layer
+          ,upload = layui.upload;
+        
+          //自定义验证规则
+          form.verify({          
+            stock: function(value){
+              if(value.length < 0){
+                return '库存至少得一件';
+              }
+            },
+            price: function(value){
+                if(value.length < 0){
+                  return '价钱不能小于零';
+                }
+              }           
+          });
+
+          //监听提交
+          form.on('submit(add)', function(data){
+            console.log(data.elem);
+            console.log(data.field);
+            
+            $.ajax({
+                type: 'POST',
+                url: '/adminCommodity/addproduct.do',
+                async: false,
+                data: {
+                    'c_uri': $("[name=c_uri]").val(),
+                    'c_title': $("[name=c_title]").val(),
+                    'c_name': $("[name=c_name]").val(),                    
+                    'c_brandId': $("[name=c_brandId]").val(),
+                    'c_categoryId': $("[name=c_categoryId]").val(),
+                    'c_color': $("[name=c_color]").val(),
+                    'c_edition': $("[name=c_edition]").val(),
+                    'c_price': $("[name=c_price]").val(),
+                    'c_discountprice': $("[name=c_discountprice]").val(),
+                    'c_Stock': $("[name=c_Stock]").val()
+                },
+                success: function (data) {
+                    if (data.res >0) {
+
+                        layer.alert("添加成功", 
+                      	  {icon:0, yes:function () {
+                      		  //关闭当前frame
+                        		 var index=parent.layer.getFrameIndex(window.name);//获取当前弹出层的层级
+                       		   // 可以对父窗口进行刷新 
+                                 x_admin_father_reload();
+                                parent.layer.close(index);//关闭弹出层
+                      		  }
+                        });
+                        
+                    }else {
+                        layer.alert('添加失败',{time: 2000, icon:5})
+                    }  
+                }
+            });
+            
+            return false;
+          });
+        //普通图片上传
+    var uploadInst = upload.render({
+            elem: '#fileBtn'
+            ,url: '/adminCommodity/updateProductImg.do'
+            ,accept:'images'
+            ,size: 2048 //限制文件大小，单位 KB
+            ,auto: false
+            ,bindAction: '#uploadBtn'
+            ,before: function(obj){
+             //预读本地文件示例，不支持ie8
+            obj.preview(function(index, file, result){
+                $('#demo1').attr('src', result); //图片链接（base64）
+              });
+            }
+            ,done: function(res){
+
+                $("[name=c_uri]").val(res.data.src);
+              //如果上传失败
+              if(res.code > 0){
+                return layer.msg('上传失败');
+              }else{
+            	return layer.msg('上传成功');
+              }
+              //上传成功
+            }
+            ,error: function(){
+              //演示失败状态，并实现重传
+              var demoText = $('#demoText');
+              demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
+              demoText.find('.demo-reload').on('click', function(){
+                uploadInst.upload();
+              });
+            }
+          });
+		   
+        });
+    </script>
+  </body>
+
+</html>

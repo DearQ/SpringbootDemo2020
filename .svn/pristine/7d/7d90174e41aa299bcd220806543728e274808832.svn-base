@@ -1,0 +1,206 @@
+* {
+	padding: 0rem;
+	margin: 0rem;
+}
+
+body,
+html {
+	font-size: 100px;
+	width: 100%;
+}
+
+ul li {
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+	color: #666666;
+}
+
+#r-top {
+	width: 100%;
+	background: url(../img/headbg.jpg) repeat-x left bottom;
+
+}
+
+#r-top .lh {
+	font-size: 0.24rem;
+	color: #333333;
+}
+
+#r-top p {
+	font-size: 0.16rem;
+	float: right;
+	margin-top: 0.85rem;
+	color: #999;
+
+}
+
+#r-main ul li {
+	font-size: 0.12rem;
+	float: left;
+	color: #CCCCCC;
+
+}
+
+#r-main ul li span.sum,span.zhu {
+	display: inline-block;
+	width: 0.24rem;
+	height: 0.24rem;
+	line-height: 0.24rem;
+	font-weight: 700;
+}
+
+#r-main ul li span.num,#r-main ul li span.num3 {
+	background-image: url(../img/reg-icon.png);
+	background-position: 0 -2rem;
+	color: #FFFFFF;
+}
+#r-main ul li span.num1 {
+	background-image: url(../img/reg-icon.png);
+	background-position: -0.45rem -2rem;
+
+}
+#r-main ul li span.num2,span.zhu{
+	background-image: url(../img/reg-icon.png);
+	background-position: 0rem 0rem;
+	
+}
+
+
+#r-main ul li span.xian,#r-main ul li span.xian1 {
+	display: inline-block;
+	width: 1.25rem;
+	height: 0.24rem;
+	margin-top: 0.1rem;
+	vertical-align: middle;
+}
+#r-main ul li span.xian{
+	background-image: url(../img/reg-icon.png);
+	background-position: 0 -1rem;
+}
+#r-main ul li span.xian1{
+	background-image: url(../img/reg-icon.png);
+	background-position: 0 -1.3rem;
+}
+#r-main ul li p {
+	margin-top: 0.1rem;
+}
+
+#r-main ul li.active p {
+	color: #3b4;
+}
+
+#r-main .in {
+	font-size: 0.14rem;
+	width: 4.2rem;
+	height: 0.52rem;
+	border: 0.01rem solid #DDDDDD;
+	margin-top: 0.3rem;
+}
+#r-main .r-two .in span{
+	display: inline-block;
+	float: left;
+    width: 0.87rem;
+    height: 0.5rem;
+    line-height: 0.5rem;
+    padding-left: 0.2rem;
+}
+#r-main .r-two .t-inb input{
+    width: 3.3rem;
+    height: 0.5rem;
+    
+}
+#r-main .in input {
+	border: none;
+
+}
+
+#r-main .ins input {
+	width: 4rem;
+	height: 0.5rem;
+	line-height: 0.5rem;
+
+
+}
+
+#r-main .inb input {
+	width: 4.18rem;
+	height: 0.5rem;
+
+}
+
+#r-main .s input {
+	background: #FFFFFF;
+	color: #333333;
+}
+#r-main .s input[type=text]{
+	width: 3.1rem;
+	height: 0.5rem;
+	border-right: 0.01rem solid #DDDDDD;
+}
+#r-main .s .btns{
+	border: none;
+	height: 0.5rem;
+	text-align: center;
+	width: 1rem;
+	background: #FFFFFF;
+}
+#r-main .inb a:hover {
+	text-decoration: none;
+}
+
+#r-main .inu input {
+	background: #e2231a;
+	font-size: 0.2rem;
+	color: #FFFFFF;
+}
+
+#r-main .in input:focus,#r-main .s button.btns {
+	outline: none;
+}
+
+#r-main .qi {
+	font-size: 0.14rem;
+	
+}
+
+#r-main .qi span {
+	display: inline-block;
+	margin: 0 0.08rem 0.02rem 0;
+	vertical-align: middle;
+	width: 0.26rem;
+	height: 0.26rem;
+	
+	background-image: url(../img/reg-icon.png);
+}
+#r-main .ye span{
+	background-position: 0 -1.6rem;
+}
+#r-main .hai span{
+	background-position: -0.4rem -1.6rem;
+}
+
+
+#l-down{
+	border-top: solid 1px #e6e6e6;
+	margin-top: 0.8rem;
+	padding-top: 0.5rem;
+}
+#l-down ul li{
+	float: left;
+	font-size:0.14rem;
+	margin-left: 0.3rem;
+}
+#l-down ul li a:hover{
+	color: #E1251B;
+}
+#l-down ul li span{
+	margin-left: 0.1rem;
+	color: #333333;
+}
+#l-down p{
+	font-size: 0.14rem;
+	margin-top: 0.3rem;
+}

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.t05g1.dao.User_CommodityDao">
+	
+	<select id="showcommodity" resultType="com.t05g1.pojo.User_Commodity">
+		SELECT c_id,c_name,c_price,c_discountprice,c_uri FROM jd_commodity
+	</select>
+	
+	<select id="showcommoditybySeckill" resultType="com.t05g1.pojo.User_Commodity">
+		SELECT c_id,c_name,c_price,c_discountprice,c_uri FROM jd_commodity WHERE c_Seckill=1 LIMIT 0,4
+	</select>
+	
+	<resultMap type="com.t05g1.pojo.User_Commodity" id="commodityByIdInforesultMap">
+		<id column="c_id" property="c_id"/>
+		<result column="c_name" property="c_name"/>
+		<result column="c_title" property="c_title"/>
+		<result column="c_price" property="c_price"/>
+		<result column="c_discountprice" property="c_discountprice"/>
+		<result column="c_Stock" property="c_Stock"/>
+		<result column="c_salesvolume" property="c_salesvolume"/>
+		<result column="c_data" property="c_data"/>
+		<result column="c_uri" property="c_uri"/>
+		<result column="c_uriDa" property="c_uriDa"/>
+		<result column="c_color" property="c_color"/>
+		<result column="c_edition" property="c_edition"/>
+		<result column="c_categoryId" property="c_categoryId"/>
+		<result column="c_brandId" property="c_brandId"/>
+		<!-- 多对一 -->
+		<association property="category" javaType="com.t05g1.pojo.User_Category">
+		 	<id column="id" property="id"/>
+			<result column="name" property="name"/>
+		</association>
+		<association property="brand" javaType="com.t05g1.pojo.User_Brand">
+			<id column="b_id" property="b_id"/>
+			<result column="b_name" property="b_name"/>
+		</association>
+		
+	</resultMap>
+	<select id="commodityByIdInfo" resultMap="commodityByIdInforesultMap">
+		SELECT com.`c_id`,com.`c_name`,com.`c_title`,com.`c_price`,com.`c_discountprice`,com.`c_Stock`,com.`c_salesvolume`,com.`c_data`,
+		com.`c_uri`,com.`c_uriDa`,com.`c_color`,com.`c_edition`,com.`c_categoryId`,com.`c_brandId`,
+		cat.`id`,cat.`name`,bra.`b_id`,bra.`b_name`
+		FROM jd_commodity AS com,jd_category AS cat,jd_brand AS bra
+		WHERE cat.`id`=com.`c_categoryId` AND bra.`b_id`=com.`c_brandId` AND com.`c_id`=#{cId}
+	</select>
+	
+	<resultMap type="com.t05g1.pojo.User_Commodity" id="commodityByIdPropertyByValueInforesultMap">
+		<id column="c_id" property="c_id"/>
+		<!-- 一对多 -->
+		<collection property="properties" ofType="com.t05g1.pojo.User_Property">
+			<id column="id" property="id"/>
+			<result column="name" property="name"/>
+		</collection>
+		
+		<collection property="propertyValues" ofType="com.t05g1.pojo.User_PropertyValue">
+			<id column="id" property="id"/>
+			<result column="value" property="value"/>
+		</collection>
+		
+	</resultMap>
+	<select id="commodityByIdPropertyByValueInfo" resultMap="commodityByIdPropertyByValueInforesultMap">
+		SELECT com.c_id,pro.id,pro.name,pva.id,pva.value
+		FROM property AS pro,propertyvalue AS pva,jd_commodity AS com
+		WHERE pro.id=pva.ptid AND com.c_id=pva.commId AND pva.commId=#{cId} LIMIT 0,5
+	</select>
+	<select id="commodityByIdPropertyByValueInfo1" resultMap="commodityByIdPropertyByValueInforesultMap">
+		SELECT com.c_id,pro.id,pro.name,pva.id,pva.value
+		FROM property AS pro,propertyvalue AS pva,jd_commodity AS com
+		WHERE pro.id=pva.ptid AND com.c_id=pva.commId AND pva.commId=#{cId} LIMIT 5,5
+	</select>
+	<select id="commodityByIdPropertyByValueInfo2" resultMap="commodityByIdPropertyByValueInforesultMap">
+		SELECT com.c_id,pro.id,pro.name,pva.id,pva.value
+		FROM property AS pro,propertyvalue AS pva,jd_commodity AS com
+		WHERE pro.id=pva.ptid AND com.c_id=pva.commId AND pva.commId=#{cId} LIMIT 10,5
+	</select>
+	<select id="commodityByIdPropertyByValueInfo3" resultMap="commodityByIdPropertyByValueInforesultMap">
+		SELECT com.c_id,pro.id,pro.name,pva.id,pva.value
+		FROM property AS pro,propertyvalue AS pva,jd_commodity AS com
+		WHERE pro.id=pva.ptid AND com.c_id=pva.commId AND pva.commId=#{cId} LIMIT 15,5
+	</select>
+	
+	<select id="selCommodityByName" resultType="com.t05g1.pojo.User_Commodity">
+		SELECT * 
+		FROM jd_commodity AS com
+		WHERE com.c_name LIKE concat("%",#{c_name},"%")
+	</select>
+</mapper>

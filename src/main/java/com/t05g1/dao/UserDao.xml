@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.t05g1.dao.UserDao">
+	<!-- 用户账号密码登录 -->
+	<select id="login" resultType="com.t05g1.pojo.User">
+		SELECT * 
+		FROM jd_user
+		<trim prefix="where" prefixOverrides="and">
+			<if test="name!=null and name!=''">
+				and u_user=#{name}
+			</if>
+			<if test="phone!=null and phone!=''">
+				and u_phone=#{phone}
+			</if>
+			<if test="email!=null and email!=''">   
+				and u_email=#{email}
+			</if>
+			and u_pwd=#{pwd}
+		</trim>
+	</select>
+	<!-- 用户验证码登录 -->
+	<select id="loginYZ" resultType="com.t05g1.pojo.User">
+		SELECT *
+		FROM jd_user
+		WHERE u_phone=#{phone}
+	</select>
+	<!-- 查看用户是否注册 -->
+	<select id="countUserId" resultType="int">
+		SELECT COUNT(u_id) FROM jd_user WHERE u_phone=#{phone}
+	</select>
+	<!-- 用户注册 An -->
+	<insert id="register">
+		INSERT INTO jd_user VALUES(NULL,#{name},#{pwd},NULL,NULL,0,#{phone},NULL,NULL)
+	</insert>
+	
+	<!-- 用户注册  PC-->
+	<insert id="registerPC">
+		INSERT INTO jd_user VALUES(NULL,#{user},#{pwd},#{name},NULL,0,#{phone},NULL,NULL)
+	</insert>
+</mapper>

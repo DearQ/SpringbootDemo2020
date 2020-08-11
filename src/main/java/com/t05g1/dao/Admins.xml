@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+	<mapper namespace="com.t05g1.dao.Admins">
+	    <select id="getByName"  parameterType="string" resultType="com.t05g1.pojo.Admins">
+	        select * from jd_admin where a_adminName = #{0}
+	    </select>	    
+	</mapper>
+

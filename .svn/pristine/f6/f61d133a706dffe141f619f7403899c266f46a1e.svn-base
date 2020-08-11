@@ -1,0 +1,5 @@
+package com.t05g1.dao;
+
+public interface UserDao {
+
+}

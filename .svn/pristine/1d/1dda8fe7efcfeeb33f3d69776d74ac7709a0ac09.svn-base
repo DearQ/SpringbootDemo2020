@@ -1,0 +1,170 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+html,body{
+	font-size: 100px;
+}
+ul li{
+	list-style: none;
+	color: #999999;
+}
+a,a:hover{
+	text-decoration: none;
+	
+}
+
+#shopping{
+	font-size: 0.14rem;
+}
+#s-head{
+	
+	padding: 0.2rem;
+}
+#s-head .sou .sousuo {
+	
+	width: 3.84rem;
+	height: 0.4rem;
+	float: left;
+	margin-top: 0.04rem;
+	border: 0.03rem solid #E4393C;
+}
+.sou .kuang {
+	width: 3rem;
+	height: 0.35rem;
+	float: left;
+	padding: 0.04rem 0.04rem;
+	line-height: 0.2rem;
+	border: none;
+}
+.sou .souzi {
+	width: 0.78rem;
+	height: 0.35rem;
+	float: right;
+	background: #E4393C;
+}
+.sou .souzi a {
+	display: block;
+	font-size: 0.16rem;
+	font-weight: 700;
+	color: white;
+	text-align: center;
+	line-height: 0.35rem;
+}
+#s-head input:focus{outline: none;}
+#s-main{
+	margin-bottom: 0.5rem;
+}
+#s-main ul li{
+	float: left;
+}
+#num_1{
+	width: 0.3rem;
+	text-align: center;
+}
+#minus,#add{
+	width: 0.2rem;
+	text-align: center;
+}
+#s-main a{
+	color: #999999;
+}
+#s-main a:hover{
+	text-decoration: none;
+	color: #E1251B;
+}
+/*收货地址*/
+#address .dzglkj a{
+	color: #333333;
+}
+.addres:hover{
+	text-decoration: none;
+}
+#addressForm .address-group{
+	margin-top: 0.3rem;
+}
+a.btn-save,a.btn-cancel {
+    display: inline-block;
+    vertical-align: middle;
+    width: 0.9rem;
+    height: 0.26rem;
+    line-height: 0.26rem;
+    color: #FFF;
+    background: none repeat scroll 0% 0% #E1251B;
+    text-align: center;
+    border: 0.01rem solid #E1251B;
+    border-radius: 0.03rem;
+    font-size: 0.12rem;
+}
+a.btn-save:hover,.btn-cancel:hover,.btn-cancel:focus,a.btn-save:focus{
+	text-decoration: none;
+	color: #FFFFFF;
+}
+.settlement-price .price-group .price-return {
+    display: inline-block;
+    width: 1rem;
+    height: 0.5rem;
+    line-height: 0.5rem;
+    margin-right: 0.1rem;
+    color: #FFFFFF;
+	background: #E1251B;
+	text-align: center;
+}
+.settlement-price .price-group .price-confirm {
+    display: inline-block;
+    vertical-align: middle;
+    width: 1.75rem;
+    height: 0.5rem;
+    line-height: 0.3rem;
+    text-align: center;
+    color: #FFF;
+    font-weight: bold;
+    font-size: 0.16rem;
+    background-color: #1B1A19;
+}
+.price-return:hover,.price-confirm:hover{
+	text-decoration: none;
+}
+/*修改地址管理*/
+.dykj{ width:2.39rem; height:1.08rem;}
+.dzglkj ul li .dykj{ display:inline-block; margin-left:0.05rem;}
+.bjtys1{ background-image:url(../img/mm11.jpg);}
+.bjtys2{ background-image:url(../img/mm00.jpg);}
+.bjtys3{ background-image:url(../img/mm11.jpg);}
+.dznbk{ width:2.1rem; height:0.25rem; border-bottom:0.01rem #CCCCCC solid; margin-top:0.1rem; margin-left:0.12rem;}
+.dzdek{ width:2.1rem; height:0.65rem; margin-left:0.12rem; position:absolute;}
+.xgegegys1{ display:block;}
+.xgegegys2{ display:none;}
+#xy1{ display:none;}
+.xgys2{ color:#cc9977;}
+
+.zhifu,.weixin,.yinhang{
+	width: 1.5rem;
+	height: 0.8rem;
+	border: 0.01rem solid #DDDDDD;
+	background: #E1251B;
+	float: left;
+	line-height: 0.8rem;
+	text-align: left;
+	margin-left: 0.3rem;
+}
+.zhifu span,.weixin span,.yinhang span{
+	display: inline-block;
+	width: 1rem;
+	height: 0.3rem;
+	vertical-align: middle;
+	background-image: url(../img/payments.png);
+	
+	
+}
+.zhifu span{
+	margin-left: 0.1rem;
+	background-position: 0rem 0rem;
+}
+.weixin span{
+	background-position: 1rem 0rem;
+}
+.yinhang span{
+	width: 1.3rem;
+	background-position: -1rem 0rem;
+}

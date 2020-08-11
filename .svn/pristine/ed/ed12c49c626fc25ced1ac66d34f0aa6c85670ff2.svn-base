@@ -1,0 +1,75 @@
+package com.t05g1.pojo;
+
+public class Admins {
+	
+	private Long a_id;
+	
+	private String a_adminName;//管理员代号
+	
+	private String a_password;//管理员密码
+	
+	private String a_holder;//持有人
+	
+	private Long a_permissions;//管理权限
+	
+	private String a_headportrait;//头像
+
+	
+	public Long getA_id() {
+		return a_id;
+	}
+
+	public void setA_id(Long a_id) {
+		this.a_id = a_id;
+	}
+
+	public String getA_adminName() {
+		return a_adminName;
+	}
+
+	public void setA_adminName(String a_adminName) {
+		this.a_adminName = a_adminName;
+	}
+
+	public String getA_password() {
+		return a_password;
+	}
+
+	public void setA_password(String a_password) {
+		this.a_password = a_password;
+	}
+
+	public String getA_holder() {
+		return a_holder;
+	}
+
+	public void setA_holder(String a_holder) {
+		this.a_holder = a_holder;
+	}
+
+	public Long getA_permissions() {
+		return a_permissions;
+	}
+
+	public void setA_permissions(Long a_permissions) {
+		this.a_permissions = a_permissions;
+	}
+	
+	public String getA_headportrait() {
+		return a_headportrait;
+	}
+
+	public void setA_headportrait(String a_headportrait) {
+		this.a_headportrait = a_headportrait;
+	}
+
+	@Override
+	public String toString() {
+		return "Admins [a_id=" + a_id + ", a_adminName=" + a_adminName + ", a_password=" + a_password + ", a_holder="
+				+ a_holder + ", a_permissions=" + a_permissions + ", a_headportrait=" + a_headportrait + "]";
+	}
+     
+	
+	
+
+}

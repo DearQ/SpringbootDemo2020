@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+	<mapper namespace="com.t05g1.dao.PermissionDao">
+	    <select id="listPermissionsByUserName"  parameterType="string" resultType="com.t05g1.pojo.Permission">
+			SELECT p.id, p.name FROM jd_admin u 
+			LEFT JOIN jd_admin_user_role ru ON u.a_id = ru.aid 
+			LEFT JOIN jd_admin_role r ON r.id = ru.rid 
+			LEFT JOIN jd_admin_role_permission rp ON r.id = rp.rid 
+			LEFT JOIN jd_admin_permission p ON p.id = rp.pid 
+			WHERE u.a_adminName='#{0}'
+	    </select>
+	    
+	</mapper>
+

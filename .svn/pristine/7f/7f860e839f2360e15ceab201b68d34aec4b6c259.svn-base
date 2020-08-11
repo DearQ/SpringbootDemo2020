@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html class="x-admin-sm">
+  
+  <head>
+    <meta charset="UTF-8">
+    <title>欢迎页面-X-admin2.1</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+    <link rel="stylesheet" href="/admin/css/font.css">
+    <link rel="stylesheet" href="/admin/css/xadmin.css">
+    <script type="text/javascript" src="/admin/js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="/admin/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/admin/js/xadmin.js"></script>
+    <script type="text/javascript" src="/admin/js/cookie.js"></script>
+    <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+      <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <style>
+  .layui-table-cell
+{
+  height:50px;
+  line-height:45px;
+}
+  </style>
+  <body>
+    <div class="x-nav">
+      <span class="layui-breadcrumb">
+        <a href="">首页</a>
+        <a href="">演示</a>
+        <a>
+          <cite>导航元素</cite></a>
+      </span>
+      <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" href="javascript:location.replace(location.href);" title="刷新">
+        <i class="layui-icon" style="line-height:30px">ဂ</i></a>
+    </div>
+    <div class="x-body">
+      <!-- 数据显示 -->
+    <div class="layui-card-body">   
+    <table class="layui-hide" id="test" lay-filter="orderTable"></table>
+	</div>  
+    </div>
+    <script>
+    layui.use(['form','laydate','table','jquery','element','layer'], function(){
+		var form = layui.form 
+		,layer = layui.layer
+	    ,table = layui.table;
+		$= layui.jquery,
+		element=layui.element,
+		laydate=layui.laydate,
+		//加载表格数据
+	    tableIns=table.render({
+	        elem: '#test'
+	        ,height:588
+	        ,toolbar: '#toolbarDemo'
+	        ,url:'/admin/showRoleData'
+	        ,limit:10//默认为10
+	        ,cols: [
+		        	[
+		        	 {type:'checkbox', fixed: 'left'}		          
+		            ,{field:'id',width:'10%', title: '编号', sort: true}
+		            ,{field:'name', width:'25%', title: '角色名称'}
+		            ,{field:'desc_',width:'28%',title:'角色描述'}
+		            ,{fixed: 'right', width:'33%', align:'center',title:'操作', toolbar: '#optBar'}
+		            ]
+	        	      ]
+	        ,page: true
+	        ,done:function(res, curr, count){
+	            //数据的回调用，可不写	           
+	        }
+	    });
+	    //监听搜索框
+	    form.on('submit(searchSubmit)', function(data){
+	        //重新加载table
+	        load(data);
+	        return false;
+	    });	    
+	    //监听头部工具
+		  table.on('toolbar(orderTable)', function(obj){
+			  var checkStatus = table.checkStatus(obj.config.id);
+			  switch(obj.event){
+			    case 'add':
+			      layer.msg('添加');
+			    var index = layer.open({
+		    		  title : "添加角色",
+		    		  type : 2,
+		    		  offset: 'auto',
+		    		  area: ['600px', '400px'],	    		 
+		    		  content : "/addRole.do",
+			      })
+			    break;
+			    case 'permissions':
+			      layer.msg('分配权限');
+			      var array=table.checkStatus("test").data;
+		  	     	if(array.length!=0){	  	    			  	    			  	    		
+		  	    			$.post('/admin/delProductsById.do?c_id='+c_id,function(d){
+		  		    			if(d.res>0){
+		  		    				table.reload("test");
+		  			  				layer.msg("操作成功！");
+		  		    			}else{
+		  		    				layer.msg("操作失败！");
+		  		    			}
+		  		    		},'json');	  	    		
+		  	    	}else{
+		  	    		layer.msg("请选择一位的用户！");
+		  	    	}
+			    break;
+			    case 'update':
+			      layer.msg('编辑');
+			    break;
+			  };
+			});
+	     //监听工具条
+	     table.on('tool(orderTable)', function(obj){ //注：tool 是工具条事件名，articleTable是 table 原始容器的属性 lay-  filter="对应的值"
+		      var data = obj.data //获得当前行数据
+		      var layEvent = obj.event; //获得 lay-event 对应的值
+		      if(layEvent === 'del'){
+		        layer.confirm('真的删除该角色吗?',{icon:3,title:'提示'}, function(index){
+		        	$.post("/admin/delRoleById",{"id":data.id},function(d){
+				  		if(d.res>0){
+				  			table.reload("test");
+				  			layer.msg("操作成功！");
+				  		}else{
+				  			layer.msg("操作失败！");
+				  		}
+				  	},"json");	
+		        });
+		      }else if(layEvent === 'look'){
+		    	    var id= data.id;//获取当前行参数
+	  	    		console.log(id);
+		    	    var index = layer.open({
+		    		  title : "查看权限",
+		    		  type : 2,
+		    		  offset: 'auto',
+		    		  area: ['800px', '600px'],
+		    		  content : "/admin/showRolePermission.do?id="+id,
+		    		  success:function(layero, index){		    			   			 
+						}
+		    		  })
+		    		  //layer.full(index);
+		      }else if(layEvent === 'edit'){
+		    	    var id= data.id;//获取当前行参数
+	  	    		console.log(id);
+		    	    var index = layer.open({
+		    		  title : "配置权限",
+		    		  type : 2,
+		    		  offset: 'auto',
+		    		  area: ['800px', '600px'],
+		    		  content : "/admin/editRole.do?id="+id,
+		    		  success:function(layero, index){
+		    			  //console.log(data);
+		    			  layero.find('iframe').contents().find('input[name=name]').val(data.name);
+		    			  layero.find('iframe').contents().find('input[name=desc_]').val(data.desc_);    			 
+						}
+		    		  })
+		    		  //layer.full(index);
+		      }
+		    });
+	});
+   </script>
+  </body>
+  <!-- 操作样式 -->
+<script type="text/html" id="optBar"> 
+    <a class="layui-btn layui-btn-xs" lay-event="look">查看权限</a>
+    <a class="layui-btn layui-btn-xs" lay-event="edit"><i class="layui-icon">&#xe642;</i>编辑</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del"><i class="layui-icon">&#xe640;</i>删除</a>
+</script>
+<!-- 头部工具 -->
+<script type="text/html" id="toolbarDemo">
+   <div class="layui-btn-container">
+    <button class="layui-btn layui-btn-sm" lay-event="add"><i class="layui-icon"></i>添加</button>
+  </div>
+</script>
+<script type="text/html" id='ps'>
+{{# layui.each(d.data.psList, function(index,ps){ }}        
+<p>{{ ps.url[0] }}</p>                                           
+{{# }); }}    
+</script>
+</html>

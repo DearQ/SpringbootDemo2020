@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>个人中心</title>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+		<link rel="stylesheet" type="text/css" href="css/my.css" />
+		<link rel="stylesheet" type="text/css" href="/userPC/css/header.css"/>
+		<style type="text/css">
+			@media (max-width:768px) {
+
+				#m-head .fo,
+				#g-top {
+					display: none;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div id="">
+			<div id="g-top">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-2 col-xs-2">
+						<ul class="g-left">
+							<li><span class="glyphicon glyphicon-home"
+								aria-hidden="true"></span> <a href="../" target="_blank">京东首页</a>
+							</li>
+							<li><span class="glyphicon glyphicon-map-marker"></span> 广西
+							</li>
+						</ul>
+					</div>
+					<div class="col-md-10 col-xs-10">
+						<ul class="g-right">
+							<li><a href="userPC/login.html"
+								th:if="${session.user==null}">请登录</a></li>
+							<li class="my" th:if="${session.user!=null}">
+								<a href="#">
+									<a href="javasript:;" th:text="${session.user.u_user}"></a> <span></span>
+									<div class="downjian1"></div>
+								</a>
+								<div class="m-main">
+									<a href="#">
+										<div class="media" style="border-bottom: 0.01rem solid #DDDDDD; padding: 0.1rem 0.1rem;">
+											<div class="media-left">
+												<a href="#"> 
+												<img src="img/no-img_mid_.jpg" class="img-circle" style="width: 0.6rem; height: 0.6rem;" />
+												</a>
+											</div>
+											<div class="media-body">
+												<a href="#"><span class="g-hui"></span></a> 
+												<a href="logout.do" style="float: right;">退出</a>
+												<p>
+													<a href="#">开通PLUS 平均省1012元/年></a>
+												</p>
+											</div>
+										</div>
+									</a>
+									<div class="c">
+										<a href="javascript:;" class="left-arrow"></a> <a
+											href="javascript:;" class="right-arrow"></a>
+										<div class="hu_c">
+											<div class="m-down">
+												<ul>
+													<li><a href="#" class="als m1"> <span></span>
+															<p>免费使用</p>
+													</a></li>
+													<li><a href="#" class="als m2"> <span></span>
+															<p>运费单免</p>
+													</a></li>
+													<li><a href="#" class="als m3"> <span></span>
+															<p>生日特权</p>
+													</a></li>
+												</ul>
+											</div>
+											<div class="m-down">
+												<ul>
+													<li><a href="#" class="als m4"> <span></span>
+															<p>闪电退款</p>
+													</a></li>
+													<li><a href="#" class="als m5"> <span></span>
+															<p>上门换新</p>
+													</a></li>
+													<li><a href="#" class="als m6"> <span></span>
+															<p>京享值礼包</p>
+													</a></li>
+												</ul>
+											</div>
+
+											<div class="m-down">
+												<ul>
+													<li><a href="#" class="als m7"> <span></span>
+															<p>贵宾专线</p>
+													</a></li>
+													<li><a href="#" class="als m8"> <span></span>
+															<p>运费双免</p>
+													</a></li>
+												</ul>
+											</div>
+
+
+										</div>
+									</div>
+								</div>
+							</li>
+							<li><span>|</span></li>
+							<li><a href="../showOrder.do">我的订单</a></li>
+							<li><a href="#">我的京东</a></li>
+							<li><span>|</span></li>
+							<li><a href="#">京东会员</a></li>
+							<li><span>|</span></li>
+							<li><a href="#">企业采购</a></li>
+							<li><span>|</span></li>
+							<li class="kefu">
+								<div class="cun">
+									<div class="a1">
+										<div class="kefuhide">
+											<span>客户服务</span>
+											<div class="downjian1"></div>
+											<ul>
+												<li><a href="">帮助中心</a></li>
+												<li><a href="">售后服务</a></li>
+												<li><a href="">在线客服</a></li>
+												<li><a href="">投诉中心</a></li>
+												<li><a href="">客服邮箱</a></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</li>
+							<li><span>|</span></li>
+							<li class="wangzhan">
+								<div class="cun">
+									<span>网站导航</span>
+									<div class="downjian1"></div>
+								</div>
+								<div class="wangzhanhide">
+									<div class="tese">
+										<span>特色栏目</span>
+									</div>
+									<div class="tesemain">
+										<a href="">京东通信</a> <a href="">校园之星</a> <a href="">视频购物</a> <a
+											href="">京东社区</a> <a href="">在线读书</a> <a href="">装机大师</a> <a
+											href="">京东E卡 </a> <a href="">家装城</a> <a href="">搭配购 </a> <a
+											href="">我喜欢 </a> <a href="">游戏社区</a>
+									</div>
+									<div class="tese">
+										<span>企业服务</span>
+									</div>
+									<div class="tesemain1">
+										<a href="">企业采购</a> <a href="">办公直通车</a>
+									</div>
+									<div class="tese">
+										<span>旗下网站</span>
+									</div>
+									<div class="tesemain2">
+										<a href="">English Site</a>
+									</div>
+								</div>
+							</li>
+							<li><span>|</span></li>
+							<li class="hidetu">
+								<div class="cun">
+									<a href="" class="dong">手机京东</a>
+									<div class="phonetu"></div>
+									<div class="downjian11"></div>
+								</div>
+								<div class="erwei">
+									<div class="bo">
+										<div class="shoudan"></div>
+									</div>
+									<div class="span1">
+										<span>手机京东</span>
+									</div>
+									<div class="apple"></div>
+									<div class="andr"></div>
+									<div class="bo">
+										<div class="jd"></div>
+									</div>
+									<div class="span1">
+										<span>关注京东微信</span>
+										<p>打开微信扫一扫</p>
+									</div>
+									<div class="bo">
+										<div class="ewtu"></div>
+									</div>
+									<div class="span1">
+										<span>京东金融客户端</span>
+									</div>
+									<div class="apple"></div>
+									<div class="andr"></div>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+			<div id="m-head">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12 col-xs-12">
+							<nav class="navbar-inverse">
+								<div class="navbar-header">
+									<button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+										<span class="icon-bar"></span>
+										<span class="icon-bar"></span>
+										<span class="icon-bar"></span>
+										<span class="icon-bar"></span>
+									</button>
+									<a href="../"><img src="img/logo1.png"></a>
+								</div>
+								<div class="collapse navbar-collapse navbar-left">
+									<ul class="nav navbar-nav">
+										<li><a href="#" class="active">首页</a></li>
+										<li><a href="#" class="active">账户设置</a></li>
+										<li><a href="#" class="active">消息</a></li>
+									</ul>
+								</div>
+								<form class="navbar-form navbar-right fo" role="search">
+									<div class="sou">
+										<div class="sousuo"> <input type="text" class="kuang" value="跨界" style="color:#999;font-size:0.014rem" />
+											<div class="souzi">
+												<a href="">搜索</a>
+											</div>
+										</div>
+									</div>
+									<div class="gouwuche">
+										<div class="chetu"></div>
+										<a href="">去购物车结算</a>
+										<div class="jianleft"></div>
+										<div class="num">
+											<div class="numright"></div>
+											<div class="numzi"><span>0</span></div>
+										</div>
+										<div class="hideche">
+											<div class="kongche"></div> <span>购物车中还没有商品，赶紧选购吧！</span>
+										</div>
+									</div>
+								</form>
+							</nav>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="m-main">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-2 col-xs-2" style="background: white;">
+							<div class="m-m_left">
+								<ul>
+									<li>
+										<h3>订单中心</h3>
+									</li>
+									<li><a href="#">我的订单</a></li>
+									<li><a href="#">评价晒单</a></li>
+								</ul>
+								<ul>
+									<li>
+										<h3>我的钱包</h3>
+									</li>
+									<li><a href="#">优惠券</a></li>
+									<li><a href="#">京豆</a></li>
+									<li><a href="#">白条</a></li>
+									<li><a href="#">红包</a></li>
+									<li><a href="#">礼品卡</a></li>
+									<li><a href="#">更多></a></li>
+								</ul>
+								<ul>
+									<li>
+										<h3>我的关注</h3>
+									</li>
+									<li><a href="#">关注商品</a></li>
+									<li><a href="#">关注店铺</a></li>
+									<li><a href="#">内容收藏</a></li>
+								</ul>
+								<ul>
+									<li>
+										<h3>我的活动</h3>
+									</li>
+									<li><a href="#">我的预约</a></li>
+									<li><a href="#">我的拍卖</a></li>
+									<li><a href="#">我的回收单</a></li>
+									<li><a href="#">我的必购码</a></li>
+									<li><a href="#">我的口令</a></li>
+									<li><a href="#">更多></a></li>
+								</ul>
+								<ul>
+									<li>
+										<h3>客户服务</h3>
+									</li>
+									<li><a href="#">返修退换货</a></li>
+									<li><a href="#">价格保护</a></li>
+									<li><a href="#">我的发票</a></li>
+									<li><a href="#">购买咨询</a></li>
+									<li><a href="#">交易纠纷</a></li>
+									<li><a href="#">更多></a></li>
+								</ul>
+								<ul>
+									<li>
+										<h3>特色服务</h3>
+									</li>
+									<li><a href="#">我的营业厅</a></li>
+									<li><a href="#">京东通信</a></li>
+									<li><a href="#">节能补贴</a></li>
+									<li><a href="#">医疗服务</a></li>
+									<li><a href="#">流量加油站</a></li>
+									<li><a href="#">更多></a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-md-10 col-xs-10" style="margin-top: 0.3rem;">
+							<div class="row">
+								<div class="col-md-12 col-xs-12" style="">
+									<div class="m-pic" style="float: left;">
+										<div class="mc">
+											<div class="mc-bef"></div>
+											<a href="#" class="ma" th:if="${user.u_photo==null}"><img src="img/no-img_mid_.jpg" class="img-responsive"></a>
+											<a href="#" class="ma" th:if="${user.u_photo!=null}"><img th:src="${user.u_photo}" class="img-responsive"></a>
+											<h3 style="color: white;margin-top: 0.3rem;" th:text="${user.u_user}"></h3>
+											<p>
+												<a href="#">京享值202</a>
+												<a href="#">信用领10元劵</a>
+											</p>
+										</div>
+										<div class="mb">
+											<ul>
+												<li>
+													<p style="font-weight: 700;">开通PLUS会员尊享</p>
+													<p>全年360元运费券礼包</p>
+												</li>
+												<li><a href="#">立即开通</a></li>
+											</ul>
+										</div>
+									</div>
+									<div style="float: right;padding: 0.1rem;background: white;height: 2.4rem;">
+										<div class="row">
+											<div class="col-md-12 col-xs-12">
+												<p style="border-bottom: 0.01rem solid #DDDDDD;padding: 0.1rem;">
+													我的钱包
+													<span style="display: inline-block;width: 0.2rem;height: 0.14rem;background-image: url(img/yan.png);background-position: -2rem -0.8rem;float: right;"></span>
+												</p>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-12 col-xs-12">
+												<ul class="m-mon">
+													<li>
+														<p>0</p>
+														<p>优惠劵</p>
+														<p><a href="#">领劵</a></p>
+													</li>
+													<li>
+														<p>0</p>
+														<p>京豆</p>
+														<p><a href="#">赚京豆</a></p>
+													</li>
+													<li>
+														<p>0.00</p>
+														<p>余额</p>
+														<p><a href="#">充值</a></p>
+													</li>
+													<li>
+														<p>————</p>
+														<p>暂未开通白条</p>
+														<p><a href="#">开通</a></p>
+													</li>
+													<li>
+														<p>0.00</p>
+														<p>昨日小金库收益</p>
+														<p><a href="#">转入小金库，马上赚钱</a></p>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row" style="margin-top: 0.2rem;">
+								<div class="col-md-8 col-xs-8">
+									<div class="" style="background: white;">
+										<div class="row">
+											<div class="col-md-12 col-xs-12">
+												<p style="padding: 0.2rem;border-bottom: 0.01rem solid #DDDDDD;">我的订单</p>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-12 col-xs-12">
+												<div class="">
+													<ul class="my-order">
+														<!-- <li>
+															<a href="../showUserInfo.do" class="thumbnail">
+																<span></span>
+																<div class="caption">
+																	待付款
+																</div>
+															</a>
+														</li>
+														<li>
+															<a href="../showUserInfo.do" class="thumbnail">
+																<span></span>
+																<div class="caption">
+																	待付款
+																</div>
+															</a>
+														</li>
+														<li>
+															<a href="../showUserInfo.do" class="thumbnail">
+																<span></span>
+																<div class="caption">
+																	待付款
+																</div>
+															</a>
+														</li>
+														<li>
+															<a href="#" class="thumbnail">
+																<span></span>
+																<div class="caption">
+																	待付款
+																</div>
+															</a>
+														</li> -->
+														<li>
+															<a href="../showOrder.do" class="thumbnail">
+																<span></span>
+																<div class="caption">
+																	查看全部订单
+																</div>
+															</a>
+														</li>
+													</ul>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-4 col-xs-4">
+									<div style="background: white;">
+										<div class="row">
+											<div class="col-md-12 col-xs-12">
+												<p style="padding: 0.2rem;border-bottom: 0.01rem solid #DDDDDD;">我的关注</p>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-12 col-xs-12">
+												<ul class="m-follow">
+													<li>
+														<a href="#">
+															<p>0</p>
+															<p>商品关注</p>
+														</a>
+													</li>
+													<li>
+														<a href="#">
+															<p>0</p>
+															<p>商品关注</p>
+														</a>
+													</li>
+													<li>
+														<a href="#">
+															<p>0</p>
+															<p>商品关注</p>
+														</a>
+													</li>
+												</ul>
+											</div>
+										</div>
+
+
+									</div>
+								</div>
+							</div>
+							<div class="row" style="margin-top: 0.2rem;">
+								<div class="col-md-8 col-xs-8">
+									<div class="m-plus">
+										<div class="row">
+											<div class="col-md-12 col-xs-12">
+												<div class="plus"></div>
+												<p style="padding: 0.2rem 0.2rem 0.05rem;line-height: 0.27rem;position: relative;">
+													<span style="font-size: 0.16rem;">PLUS尊享</span>
+													<a href="#">开通PLUS会员<span style="margin-left: 0.05rem;">></span></a>
+												</p>
+												<div class="pl">
+													<a href="javascript:;" class="left-arrow"></a>
+													<a href="javascript:;" class="right-arrow"></a>
+													<div class="plus-ulist" style="">
+														<div class="m-one">
+															<ul>
+																<li>
+																	<a href="#">
+																		<img src="img/plus01.jpg" class="img-responsive">
+																		<p title="李宁速干T恤男运动短袖上衣吸汗透气健身训练跑步纯色体恤速干衣 黑色 XL/180">李宁速干T恤男运动短袖上衣吸汗透气健身训练</p>
+																		<p>￥65.00<span>PLUS</span></p>
+																		<p>京东价：￥69.00</p>
+																	</a>
+																</li>
+																<li>
+																	<a href="#">
+																		<img src="img/plus02.jpg" class="img-responsive">
+																		<p title="品牌特惠2019新款真皮钱包风琴卡包女多卡位银行卡夹鳄鱼纹牛皮小零钱包潮 绿色">品牌特惠2019新款真皮钱包风琴卡包女多卡位</p>
+																		<p>￥65.00<span>PLUS</span></p>
+																		<p>京东价：￥69.00</p>
+																	</a>
+																</li>
+																<li>
+																	<a href="#">
+																		<img src="img/plus03.jpg" class="img-responsive">
+																		<p title="第九城V.NINE 双肩包女士大容量13.3/14英寸电脑包多功能旅行背包大中学生情侣书包 VD8BV32989J 粉配灰">第九城V.NINE 双肩包女士大容量13.3/14英寸电</p>
+																		<p>￥65.00<span>PLUS</span></p>
+																		<p>京东价：￥69.00</p>
+																	</a>
+																</li>
+																<li>
+																	<a href="#">
+																		<img src="img/plus04.jpg" class="img-responsive">
+																		<p title="咪咕苹果7/8Plus手机壳iPhone7plus/8Plus漫威复联4正版保护套个性潮牌硅胶全包防摔壳 雷神">咪咕苹果7/8Plus手机壳iPhone7 plus/8Plus漫</p>
+																		<p>￥65.00<span>PLUS</span></p>
+																		<p>京东价：￥69.00</p>
+																	</a>
+																</li>
+															</ul>
+														</div>
+														<div class="m-one">
+															<ul>
+																<li>
+																	<a href="#">
+																		<img src="img/plus01.jpg" class="img-responsive">
+																		<p title="李宁速干T恤男运动短袖上衣吸汗透气健身训练跑步纯色体恤速干衣 黑色 XL/180">李宁速干T恤男运动短袖上衣吸汗透气健身训练</p>
+																		<p>￥65.00<span>PLUS</span></p>
+																		<p>京东价：￥69.00</p>
+																	</a>
+																</li>
+																<li>
+																	<a href="#">
+																		<img src="img/plus02.jpg" class="img-responsive">
+																		<p title="品牌特惠2019新款真皮钱包风琴卡包女多卡位银行卡夹鳄鱼纹牛皮小零钱包潮 绿色">品牌特惠2019新款真皮钱包风琴卡包女多卡位</p>
+																		<p>￥65.00<span>PLUS</span></p>
+																		<p>京东价：￥69.00</p>
+																	</a>
+																</li>
+																<li>
+																	<a href="#">
+																		<img src="img/plus03.jpg" class="img-responsive">
+																		<p title="第九城V.NINE 双肩包女士大容量13.3/14英寸电脑包多功能旅行背包大中学生情侣书包 VD8BV32989J 粉配灰">第九城V.NINE 双肩包女士大容量13.3/14英寸电</p>
+																		<p>￥65.00<span>PLUS</span></p>
+																		<p>京东价：￥69.00</p>
+																	</a>
+																</li>
+																<li>
+																	<a href="#">
+																		<img src="img/plus04.jpg" class="img-responsive">
+																		<p title="咪咕苹果7/8Plus手机壳iPhone7plus/8Plus漫威复联4正版保护套个性潮牌硅胶全包防摔壳 雷神">咪咕苹果7/8Plus手机壳iPhone7 plus/8Plus漫</p>
+																		<p>￥65.00<span>PLUS</span></p>
+																		<p>京东价：￥69.00</p>
+																	</a>
+																</li>
+															</ul>
+														</div>
+													</div>
+
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-4 col-xs-4" style="background: white;">
+									<div class="row">
+										<div class="col-md-12 col-xs-12">
+											<p style="padding: 0.2rem;border-bottom: 0.01rem solid #DDDDDD;">生活服务</p>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-12 col-xs-12">
+											<div class="m-live">
+												<!-- <a href="javascript:;" class="left-arrow"></a>
+												<a href="javascript:;" class="right-arrow"></a>-->
+												<div class="l-main">
+													<div class="live-lit">
+														<ul>
+															<li>
+																<a href="#">
+																	<span></span>
+																	<p>待付款</p>
+																</a>
+															</li>
+															<li>
+																<a href="#">
+																	<span></span>
+																	<p>待付款</p>
+																</a>
+															</li>
+															<li>
+																<a href="#">
+																	<span></span>
+																	<p>待付款</p>
+																</a>
+															</li>
+															<li>
+																<a href="#">
+																	<span></span>
+																	<p>待付款</p>
+																</a>
+															</li>
+															<li>
+																<a href="#">
+																	<span></span>
+																	<p>待付款</p>
+																</a>
+															</li>
+															<li>
+																<a href="#">
+																	<span></span>
+																	<p>待付款</p>
+																</a>
+															</li>
+														</ul>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row" style="margin-top: 0.2rem;">
+								<div class="col-md-8 col-xs-8">
+									<div class="m-buy" style="background: white;">
+										<div class="row">
+											<div class="col-md-12 col-xs-12">
+												<p style="padding: 0.2rem;border-bottom: 0.01rem solid #DDDDDD;">
+													买什么
+													<span style="color: #666;font-size: 0.13rem;">看看达人们都在买的商品</span>
+													<span style="float: right;">更多></span>
+												</p>
+											</div>
+										</div>
+										<div class="row" style="padding: 0.2rem;">
+											<div class="col-md-6 col-xs-6" style="border: 0.01rem solid #DDDDDD;padding: 0.1rem;">
+												<a href="#"><p>如何带妹子吃鸡</p></a>
+												<a href="#"><p>五个橘子的故事</p></a>
+												<a href="#"><img src="img/my.jpg"></a>
+											</div>
+											<div class="col-md-6 col-xs-6" style="border: 0.01rem solid #DDDDDD;padding: 0.1rem;">
+												<a href="#"><p>如何带妹子吃鸡</p></a>
+												<a href="#"><p>五个橘子的故事</p></a>
+												<a href="#"><img src="img/my.jpg"></a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="foots"></div>
+		</div>
+		<script src="js/jquery-1.12.4.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/bootstrap.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/my.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/userPC/js/header.js" type="text/javascript" charset="utf-8"></script>
+		<script>
+			$("#foots").load("footer.html");
+		</script>
+	</body>
+</html>

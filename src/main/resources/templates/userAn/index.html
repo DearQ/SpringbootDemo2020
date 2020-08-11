@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport"/>
+		<title>多快好省，购物上京东！</title>
+		<link rel="stylesheet" type="text/css" href="/userAn/css/communalStyle.css"/>
+		<link rel="stylesheet" type="text/css" href="/userAn/css/index.css"/>
+	</head>
+	<body>
+		<section id="jdIndex" class="aui-flexView" style="height: auto;">
+			<!-- 1.搜索块-->
+			<header class="jd_search">
+				<a href="#" class="jd_logo"></a>
+				<form action="selCommodityByName.do" class="jd_searchBox">
+					<i class="icon icon-search indexSearch"></i>
+					<input type="text" name="c_name" placeholder="请输入商品名称">
+				</form>
+				<a href="userAn/login.html" class="jd_login" th:if="${session.user==null}">登录</a>
+			</header>
+			<section class="aui-scrollView2">
+				<div class="aui-shop-box"></div>
+				<!-- 轮播图 -->
+				<div class="m-slider" data-ydui-slider>
+				    <div class="slider-wrapper">
+				        <div class="slider-item">
+				            <a href="javascript:;">
+				               <img src="img/uploads/l1.jpg"/>
+				            </a>
+				        </div>
+				        <div class="slider-item">
+				            <a href="javascript:;">
+				                 <img src="img/uploads/l2.jpg"/>
+				            </a>
+				        </div>
+				        <div class="slider-item">
+				            <a href="javascript:;">
+				                 <img src="img/uploads/l3.jpg"/>
+				            </a>
+				        </div>
+				        <div class="slider-item">
+				            <a href="javascript:;">
+				                 <img src="img/uploads/l4.jpg"/>
+				            </a>
+				        </div>
+						<div class="slider-item">
+						    <a href="javascript:;">
+						         <img src="img/uploads/l5.jpg"/>
+						    </a>
+						</div>
+						<div class="slider-item">
+						    <a href="javascript:;">
+						         <img src="img/uploads/l6.jpg"/>
+						    </a>
+						</div>
+						<div class="slider-item">
+						    <a href="javascript:;">
+						         <img src="img/uploads/l7.jpg"/>
+						    </a>
+						</div>
+						<div class="slider-item">
+						    <a href="javascript:;">
+						         <img src="img/uploads/l8.jpg"/>
+						    </a>
+						</div>
+				    </div>
+				    <div class="slider-pagination"></div>
+				</div>
+				<!-- 导航块 -->
+				<div class="container top-navigation">
+					<ul class="top-slither">
+						<li>
+							<div class="aui-palace clearfix">
+								<a href="javascript:;" class="aui-palace-grid">
+									<div class="aui-palace-grid-icon">
+										<img src="img/navigation/navImg01.png"/>
+									</div>
+									<div class="aui-palace-grid-text">
+										<h2>京东超市</h2>
+									</div>
+								</a>
+								<a href="javascript:;" class="aui-palace-grid">
+									<div class="aui-palace-grid-icon">
+									   <img src="img/navigation/navImg02.png"/>
+									</div>
+									<div class="aui-palace-grid-text">
+										<h2>数码电器</h2>
+									</div>
+								</a>
+								<a href="javascript:;" class="aui-palace-grid">
+									<div class="aui-palace-grid-icon">
+										<img src="img/navigation/navImg03.png"/>
+									</div>
+									<div class="aui-palace-grid-text">
+										<h2>京东服饰</h2>
+									</div>
+								</a>
+								<a href="javascript:;" class="aui-palace-grid">
+									<div class="aui-palace-grid-icon">
+										<img src="img/navigation/navImg04.png"/>
+									</div>
+									<div class="aui-palace-grid-text">
+										<h2>京东生鲜</h2>
+									</div>
+								</a>
+								<a href="javascript:;" class="aui-palace-grid">
+									<div class="aui-palace-grid-icon">
+									   <img src="img/navigation/navImg05.png"/>
+									</div>
+									<div class="aui-palace-grid-text">
+										<h2>京东到家</h2>
+									</div>
+								</a>
+								<a href="javascript:;" class="aui-palace-grid">
+									<div class="aui-palace-grid-icon">
+										<img src="img/navigation/navImg06.png"/>
+									</div>
+									<div class="aui-palace-grid-text">
+										<h2>充值缴费</h2>
+									</div>
+								</a>
+								<a href="javascript:;" class="aui-palace-grid">
+									<div class="aui-palace-grid-icon">
+									   <img src="img/navigation/navImg07.png"/>
+									</div>
+									<div class="aui-palace-grid-text">
+										<h2>9.9元拼</h2>
+									</div>
+								</a>
+								<a href="javascript:;" class="aui-palace-grid">
+									<div class="aui-palace-grid-icon">
+										<img src="img/navigation/navImg08.png"/>
+									</div>
+									<div class="aui-palace-grid-text">
+										<h2>领券</h2>
+									</div>
+								</a>
+								<a href="javascript:;" class="aui-palace-grid">
+									<div class="aui-palace-grid-icon">
+										<img src="img/navigation/navImg09.png"/>
+									</div>
+									<div class="aui-palace-grid-text">
+										<h2>赚钱</h2>
+									</div>
+								</a>
+								<a href="javascript:;" class="aui-palace-grid">
+									<div class="aui-palace-grid-icon">
+									   <img src="img/navigation/navImg10.png"/>
+									</div>
+									<div class="aui-palace-grid-text">
+										<h2>PLUS会员</h2>
+									</div>
+								</a>
+							</div>
+						</li>
+						<li>
+							<div class="aui-palace clearfix">
+								<a href="javascript:;" class="aui-palace-grid">
+									<div class="aui-palace-grid-icon">
+										<img src="img/navigation/navImg11.png"/>
+									</div>
+									<div class="aui-palace-grid-text">
+										<h2>京东国际</h2>
+									</div>
+								</a>
+								<a href="javascript:;" class="aui-palace-grid">
+									<div class="aui-palace-grid-icon">
+									   <img src="img/navigation/navImg12.png"/>
+									</div>
+									<div class="aui-palace-grid-text">
+										<h2>京东拍卖</h2>
+									</div>
+								</a>
+								<a href="javascript:;" class="aui-palace-grid">
+									<div class="aui-palace-grid-icon">
+										<img src="img/navigation/navImg13.png"/>
+									</div>
+									<div class="aui-palace-grid-text">
+										<h2>唯品会</h2>
+									</div>
+								</a>
+								<a href="javascript:;" class="aui-palace-grid">
+									<div class="aui-palace-grid-icon">
+										<img src="img/navigation/navImg14.png"/>
+									</div>
+									<div class="aui-palace-grid-text">
+										<h2>玩3C</h2>
+									</div>
+								</a>
+								<a href="javascript:;" class="aui-palace-grid">
+									<div class="aui-palace-grid-icon">
+									   <img src="img/navigation/navImg15.png"/>
+									</div>
+									<div class="aui-palace-grid-text">
+										<h2>沃尔玛</h2>
+									</div>
+								</a>
+								<a href="javascript:;" class="aui-palace-grid">
+									<div class="aui-palace-grid-icon">
+										<img src="img/navigation/navImg16.png"/>
+									</div>
+									<div class="aui-palace-grid-text">
+										<h2>美妆馆</h2>
+									</div>
+								</a>
+								<a href="javascript:;" class="aui-palace-grid">
+									<div class="aui-palace-grid-icon">
+									   <img src="img/navigation/navImg17.png"/>
+									</div>
+									<div class="aui-palace-grid-text">
+										<h2>京东旅行</h2>
+									</div>
+								</a>
+								<a href="javascript:;" class="aui-palace-grid">
+									<div class="aui-palace-grid-icon">
+										<img src="img/navigation/navImg18.png"/>
+									</div>
+									<div class="aui-palace-grid-text">
+										<h2>拍拍二手</h2>
+									</div>
+								</a>
+								<a href="javascript:;" class="aui-palace-grid">
+									<div class="aui-palace-grid-icon">
+										<img src="img/navigation/navImg19.png"/>
+									</div>
+									<div class="aui-palace-grid-text">
+										<h2>物流查询</h2>
+									</div>
+								</a>
+								<a href="javascript:;" class="aui-palace-grid">
+									<div class="aui-palace-grid-icon">
+									   <img src="img/navigation/navImg20.png"/>
+									</div>
+									<div class="aui-palace-grid-text">
+										<h2>全部</h2>
+									</div>
+								</a>
+							</div>
+						</li>
+					</ul>
+					<div class="dot-container"></div>
+				</div>	
+				<!-- 京东秒杀 -->
+				<div class="aui-flex-live-box">
+					<a href="#" class="aui-flex-live-box-one">
+						<img src="img/commodityImg/wareImg01.jpg"/>
+					</a>
+					<a href="#" class="aui-flex-live-box-one">
+						<img src="img/commodityImg/wareImg02.gif"/>
+					</a>
+					<a href="#" class="aui-flex-live-box-one">
+						<img src="img/commodityImg/wareImg03.jpg"/>
+					</a>
+					<div class="aui-white-box">
+						<div class="aui-news-box">
+						    <a href="javascript:;" class="aui-news-box-item">
+						        <div class="aui-news-box-item-hd">京东秒杀</div>
+						        <div class="aui-time-text">0点场</div>
+						        <div class="time-item">
+						            <span id="hour_show">00</span>
+						            <em>:</em>
+						            <span id="minute_show">00</span>
+						            <em>:</em>
+						            <span id="second_show">00</span>
+						        </div>
+						        <div class="aui-news-box-item-bh aui-news-box-item-fr">
+						            <p>更多秒杀</p>
+						        </div>
+						    </a>
+						</div>
+						<div class="aui-slide-list">
+						    <ul class="aui-slide-item-list">
+						        <li class="aui-slide-item-item">
+						            <a href="javascript:;" class="aui-link">
+						                <div class="aui-page-hd">
+						                   <img src="img/msImg/msImg01.jpg"/>
+						                </div>
+						                <div class="aui-page-bd">
+						                    <h3>￥8.91</h3>
+						                    <p>￥<em>9.9</em></p>
+						                </div>
+						            </a>
+						        </li>
+						        <li class="aui-slide-item-item">
+						            <a href="javascript:;" class="aui-link">
+						                <div class="aui-page-hd">
+						                    <img src="img/msImg/msImg02.jpg"/>
+						                </div>
+						                <div class="aui-page-bd">
+						                    <h3>￥36.9</h3>
+						                    <p>￥<em>99</em></p>
+						                </div>
+						            </a>
+						        </li>
+								<li class="aui-slide-item-item">
+								    <a href="javascript:;" class="aui-link">
+								        <div class="aui-page-hd">
+								            <img src="img/msImg/msImg03.png"/>
+								        </div>
+								        <div class="aui-page-bd">
+								            <h3>￥278.88</h3>
+								            <p>￥<em>349</em></p>
+								        </div>
+								    </a>
+								</li>
+								<li class="aui-slide-item-item">
+								    <a href="javascript:;" class="aui-link">
+								        <div class="aui-page-hd">
+								            <img src="img/msImg/msImg04.jpg"/>
+								        </div>
+								        <div class="aui-page-bd">
+								            <h3>￥134</h3>
+								            <p>￥<em>269</em></p>
+								        </div>
+								    </a>
+								</li>
+								<li class="aui-slide-item-item">
+								    <a href="javascript:;" class="aui-link">
+								        <div class="aui-page-hd">
+								           <img src="img/msImg/msImg05.jpg"/>
+								        </div>
+								        <div class="aui-page-bd">
+								            <h3>￥148</h3>
+								            <p>￥<em>198</em></p>
+								        </div>
+								    </a>
+								</li>
+								<li class="aui-slide-item-item">
+								    <a href="javascript:;" class="aui-link">
+								        <div class="aui-page-hd">
+								            <img src="img/msImg/msImg06.jpg"/>
+								        </div>
+								        <div class="aui-page-bd">
+								            <h3>￥49.9</h3>
+								            <p>￥<em>89.9</em></p>
+								        </div>
+								    </a>
+								</li>
+								<li class="aui-slide-item-item">
+								    <a href="javascript:;" class="aui-link">
+								        <div class="aui-page-hd">
+								           <img src="img/msImg/msImg07.jpg"/>
+								        </div>
+								        <div class="aui-page-bd">
+								            <h3>￥99</h3>
+								            <p>￥<em>299</em></p>
+								        </div>
+								    </a>
+								</li>
+								<li class="aui-slide-item-item">
+								    <a href="javascript:;" class="aui-link">
+								        <div class="aui-page-hd">
+								           <img src="img/msImg/msImg08.jpg"/>
+								        </div>
+								        <div class="aui-page-bd">
+								            <h3>￥1698</h3>
+								            <p>￥<em>1999</em></p>
+								        </div>
+								    </a>
+								</li>
+								<li class="aui-slide-item-item">
+								    <a href="javascript:;" class="aui-link">
+								        <div class="aui-page-hd">
+								           <img src="img/msImg/msImg09.jpg"/>
+								        </div>
+								        <div class="aui-page-bd">
+								            <h3>￥55.8</h3>
+								            <p>￥<em>159</em></p>
+								        </div>
+								    </a>
+								</li>
+								<li class="aui-slide-item-item">
+								    <a href="javascript:;" class="aui-link">
+								        <div class="aui-page-hd">
+								           <img src="img/msImg/msImg10.jpg"/>
+								        </div>
+								        <div class="aui-page-bd">
+								            <h3>￥2998</h3>
+								            <p>￥<em>3599</em></p>
+								        </div>
+								    </a>
+								</li>
+						    </ul>
+						</div>
+					</div>
+					<div class="aui-layout">
+					    <a href="javascript:;" class="aui-layout-item">
+					       <img  src="img/commodityImg/wareImg13.png"/>
+					    </a>
+					    <a href="javascript:;" class="aui-layout-item">
+					        <img  src="img/commodityImg/wareImg14.png"/>
+					    </a>
+					</div>
+					<!-- 今日主推 -->
+					<div class="aui-layout-img">
+						<a href="javascript:;">
+						   <img  src="img/djCourtImg/dongJia12.png"/>
+						</a>
+						<a href="javascript:;">
+						  <img src="img/commodityImg/wareImg15.png"/>
+						</a>
+					</div>
+					<div class="aui-layout">
+					    <a href="javascript:;" class="aui-layout-item2" style="margin-top: 1rem;">
+					       <img src="img/djCourtImg/dongJia14.png"/>
+					    </a>
+					    <a href="javascript:;" class="aui-layout-item2">
+					        <img src="img/djCourtImg/dongJia15.png"/>
+					    </a>
+						<a href="javascript:;" class="aui-layout-item2" style="margin-top: 1rem;">
+						    <img src="img/djCourtImg/dongJia16.png"/>
+						</a>
+					</div>
+					<!-- 东家小院 -->
+					<div class="aui-layout-img">
+						<a href="javascript:;">
+						   <img  src="img/djCourtImg/dongJia01.png"/>
+						</a>
+					</div>	
+					<div class="aui-grids-box">
+						<a href="javascript:;" class="aui-grids-box-item">
+						    <h3 style="color:#e54223">
+						        <i class="icon icon-sale"></i>
+						        酷乐潮玩
+						    </h3>
+						    <p>独特、有趣</p>
+						    <div class="aui-grids-img">
+						        <img src="img/djCourtImg/dongJia02.jpg"/>
+						    </div>
+						</a>
+						<a href="javascript:;" class="aui-grids-box-item">
+						    <h3 style="color:#08acee">
+						        <i class="icon icon-cai"></i>
+						        回家看看
+						    </h3>
+						    <p>常回家看看</p>
+						    <div class="aui-grids-img">
+						        <img src="img/djCourtImg/dongJia18.jpg"/>
+						    </div>
+						</a>
+						<a href="javascript:;" class="aui-grids-box-item">
+						    <h3 style="color:#8600dd">
+						        <i class="icon icon-pai"></i>
+						        徒步穿越
+						    </h3>
+						    <p>天地无疆</p>
+						    <div class="aui-grids-img">
+						         <img src="img/djCourtImg/dongJia19.jpg"/>
+						    </div>
+						</a>
+						<a href="javascript:;" class="aui-grids-box-item">
+						    <h3 style="color:#ffd300">
+						        <i class="icon icon-xin"></i>
+						        男得好货
+						    </h3>
+						    <p>高颜值好货</p>
+						    <div class="aui-grids-img">
+						        <img src="img/djCourtImg/dongJia05.jpg"/>
+						    </div>
+						</a>
+						<a href="javascript:;" class="aui-grids-box-item2">
+						    <h3 style="color:#ffd300">科技潮玩</h3>
+						    <p>科技好物</p>
+						    <div class="aui-grids-img">
+						        <img src="img/djCourtImg/dongJia06.jpg"/>
+						    </div>
+						</a>
+						<a href="javascript:;" class="aui-grids-box-item2">
+						    <h3 style="color:#8600dd">厨房焕新</h3>
+						    <p>纵享大餐</p>
+						    <div class="aui-grids-img">
+						        <img src="img/djCourtImg/dongJia20.jpg"/>
+						    </div>
+						</a>
+						<a href="javascript:;" class="aui-grids-box-item2">
+						    <h3 style="color:#e54223">限量出售</h3>
+						    <p>快来看看</p>
+						    <div class="aui-grids-img">
+						        <img src="img/djCourtImg/dongJia08.jpg"/>
+						    </div>
+						</a>
+						<a href="javascript:;" class="aui-grids-box-item2">
+						    <h3 style="color:#08acee">官方采购</h3>
+						    <p>爆款降价</p>
+						    <div class="aui-grids-img">
+						        <img src="img/djCourtImg/dongJia09.jpg"/>
+						    </div>
+						</a>
+					</div>
+					<!-- 每日逛 -->
+					<div class="aui-layout-img">
+						<a href="javascript:;">
+						   <img  src="img/djCourtImg/dongJia11.png"/>
+						</a>
+					</div>	
+					<div class="aui-grids-box">
+						<a href="javascript:;" class="aui-grids-box-item">
+						    <h3 style="color:#e54223">
+						        <i class="icon icon-sale"></i>
+						        免息星球
+						    </h3>
+						    <p>白条免息购</p>
+						    <div class="aui-grids-img">
+						        <img src="img/djCourtImg/dongJia21.jpg"/>
+						    </div>
+						</a>
+						<a href="javascript:;" class="aui-grids-box-item">
+						    <h3 style="color:#08acee">
+						        <i class="icon icon-cai"></i>
+						        每日特价
+						    </h3>
+						    <p>9块9疯抢</p>
+						    <div class="aui-grids-img">
+						        <img src="img/djCourtImg/dongJia22.jpg"/>
+						    </div>
+						</a>
+						<a href="javascript:;" class="aui-grids-box-item">
+						    <h3 style="color:#8600dd">
+						        <i class="icon icon-pai"></i>
+						        品牌闪购
+						    </h3>
+						    <p>汇大牌好价</p>
+						    <div class="aui-grids-img">
+						         <img src="img/djCourtImg/dongJia23.png"/>
+						    </div>
+						</a>
+						<a href="javascript:;" class="aui-grids-box-item">
+						    <h3 style="color:#ffd300">
+						        <i class="icon icon-xin"></i>
+						        京东直播
+						    </h3>
+						    <p>好货即刻买</p>
+						    <div class="aui-grids-img">
+						        <img src="img/djCourtImg/dongJia24.jpg"/>
+						    </div>
+						</a>
+						<a href="javascript:;" class="aui-grids-box-item2">
+						    <h3 style="color:#ffd300">排行榜</h3>
+						    <p>专属购物指南</p>
+						    <div class="aui-grids-img">
+						        <img src="img/djCourtImg/dongJia25.jpg"/>
+						    </div>
+						</a>
+						<a href="javascript:;" class="aui-grids-box-item2">
+						    <h3 style="color:#8600dd">拍拍好物</h3>
+						    <p>二手优品</p>
+						    <div class="aui-grids-img">
+						        <img src="img/djCourtImg/dongJia26.png"/>
+						    </div>
+						</a>
+						<a href="javascript:;" class="aui-grids-box-item2">
+						    <h3 style="color:#e54223">新品首发</h3>
+						    <p>京东小魔方</p>
+						    <div class="aui-grids-img">
+						        <img src="img/djCourtImg/dongJia27.jpg"/>
+						    </div>
+						</a>
+						<a href="javascript:;" class="aui-grids-box-item2">
+						    <h3 style="color:#08acee">发现好货</h3>
+						    <p>教你买买买</p>
+						    <div class="aui-grids-img">
+						        <img src="img/djCourtImg/dongJia28.jpg"/>
+						    </div>
+						</a>
+					</div>
+				</div>
+				<!-- 京东快报 -->
+				<div class="aui-flex aui-flex-color">
+					<div class="aui-news-sml">
+						<img src="img/djCourtImg/hot.png" alt="">
+					</div>
+					<div class="aui-flex-box">
+						<div class="box">
+							<div class="t_news">
+								<ul class="news_li">
+									<li>
+										<a href="javascript:return false;">大额贷款--最高可贷款8000万</a>
+									</li>
+									<li>
+										<a href="javascript:return false;">今天你赚了吗?今日完成任务可赚10000!</a>
+									</li>
+									<li>
+										<a href="javascript:return false;">今天你赚了吗?京东秒杀不容错过的好物！</a>
+									</li>
+									<li>
+										<a href="javascript:return false;">东家小院，别具一番风味！</a>
+									</li>
+									<li>
+										<a href="javascript:return false;">每日逛，意想不到的收货！</a>
+									</li>
+								</ul>
+								<ul class="swap"></ul>
+							</div>
+						</div>
+					</div>
+					<div class="aui-arrow"></div>
+				</div>
+				<!-- 为你推荐 -->
+				<div class="aui-title-img">
+					<img src="img/recommendImg/recommendImg31.png"/>
+				</div>
+				<div class="aui-list-theme-box aui-list-theme-one">
+					<a th:each="info:${ucomList}" th:href="@{/commodityInfo.do(cId=${info.c_id})}" class="aui-list-item">
+						<div class="aui-list-theme-img">
+							<img th:src="${info.c_uri}"/>
+						</div>
+						<div class="aui-list-theme-message">
+							<h3 class="aui-list-theme-title" th:text="${info.c_name}">Haier/海尔双开门冰箱 对开门576升 风冷无霜除味变频家用保鲜电冰箱 BCD-</h3>
+							<h4><i>￥</i><i th:text="${info.c_price}"></i> <em>看相似</em></h4>
+						</div>
+					</a>
+					<!-- <div class="aui-title">
+						<p>我是有底线的······</p>
+					</div> -->
+				</div>	
+			</section>
+			<!-- 底部固定导航块 -->
+			<footer class="aui-footer aui-footer-fixed">
+			    <a href="../" class="aui-tabBar-item jd_ms3">
+					<img src="img/yuanImg/bottomImg01.png"/>
+			    </a>
+				<a href="../showCategory.do" class="aui-tabBar-item jd_ms3">
+					<img src="img/yuanImg/bottomImg02.png"/>
+				</a>
+				<a href="javascript:;" class="aui-tabBar-item jd_ms3">
+					<img src="img/yuanImg/bottomImg03.gif"/>
+				</a>
+				<a href="../userIdByShoopcInfo.do" class="aui-tabBar-item jd_ms3">
+					<img src="img/yuanImg/bottomImg04.png"/>
+				</a>
+				<a href="../showOrder.do" class="aui-tabBar-item jd_ms3" th:if="${session.user == null}">
+					<img src="img/yuanImg/bottomImg05.png"/>
+				</a>
+				
+				<a href="../showUserInfo.do" class="aui-tabBar-item jd_ms3" th:if="${session.user != null}">
+					<img src="img/yuanImg/bottomImg10.png"/>
+				</a>
+			</footer>
+		</section>
+		<div class="aui-goTop">
+		    <a href="javascript:;" title="返回顶部"></a>
+		</div>
+		<script src="/userAn/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/userAn/js/slider.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/userAn/js/tab.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="/userAn/js/index.js"></script>
+		<script type="text/javascript" src="/userAn/js/main.js"></script>
+		<script type="text/javascript">
+			NavTouch('.top-navigation');
+			$(document).ready(function(){
+				// 返回顶部
+				$(window).scroll(function(){
+					if ($(window).scrollTop() >= 100) {
+					    //当滑动栏向下滑动时，按钮渐现的时间
+						$('.aui-goTop').fadeIn(300);
+					} else {
+						//当页面回到顶部时，按钮渐隐的时间
+					    $('.aui-goTop').fadeOut(300);
+					}
+				});		
+				$('.aui-goTop').click(function() {	
+				    $('html,body').animate({
+				        scrollTop: '0px'
+				    }, 800); //返回顶部所用的时间
+				});
+				
+				//搜索
+				$("body").on("click",".indexSearch",function(){
+					
+					$(".jd_searchBox").submit();
+				})
+			});
+			// 京东快报
+			function b() {
+				t = parseInt(x.css('top'));
+				y.css('top', '20px');
+				x.animate({
+					top: t - 20 + 'px'
+				}, 'slow');
+				if (Math.abs(t) == h - 20) {
+					y.animate({
+						top: '0px'
+					}, 'slow');
+					z = x;
+					x = y;
+					y = z;
+				}
+				setTimeout(b, 3000);
+			}
+			$(document).ready(function() {
+				$('.swap').html($('.news_li').html());
+				x = $('.news_li');
+				y = $('.swap');
+				h = $('.news_li li').length * 20;
+				setTimeout(b, 3000);
+			})
+		</script>
+	</body>
+</html>

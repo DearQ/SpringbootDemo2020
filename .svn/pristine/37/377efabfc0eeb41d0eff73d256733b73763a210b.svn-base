@@ -1,0 +1,241 @@
+<!doctype html>
+<html  class="x-admin-sm" xmlns:th="http://www.thymeleaf.org"  xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+	<meta charset="UTF-8">
+	<title>购物商场后台</title>
+	<meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="stylesheet" href="/admin/css/font.css">
+	<link rel="stylesheet" href="/admin/css/xadmin.css">
+    <script type="text/javascript" src="/admin/js/jquery-3.2.1.min.js"></script>
+    <script src="/admin/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/admin/js/xadmin.js"></script>
+    <script type="text/javascript" src="/admin/js/cookie.js"></script>
+    <script>
+        // 是否开启刷新记忆tab功能
+        // var is_remember = false;
+    </script>
+</head>
+<body>
+    <!-- 顶部开始 -->
+    <div class="container">
+        <div class="logo"><a href="#">商城管理系统</a></div>
+        <div class="left_open">
+            <i title="展开左侧栏" class="iconfont">&#xe699;</i>
+        </div>
+        <ul class="layui-nav right" lay-filter="">
+          <li class="layui-nav-item">
+            <a href="javascript:;"  th:text="${session.subject.principal}"></a>
+            <dl class="layui-nav-child"> <!-- 二级菜单 -->
+              <dd><a onclick="x_admin_show('个人信息','/personalinfomation.do','600','500')">个人信息</a></dd>
+              <dd><a href="/Logout">退出</a></dd>
+            </dl>
+          </li>
+          <li class="layui-nav-item to-index"><a href="/">前台首页</a></li>
+        </ul>
+        
+    </div>
+    <!-- 顶部结束 -->
+    <!-- 中部开始 -->
+     <!-- 左侧菜单开始 -->
+    <div class="left-nav">
+      <div id="side-nav">
+        <ul id="nav">
+        	 <li>
+                <a _href='/admin/home.do'>
+                    <i class="iconfont">&#xe696;</i>
+                    <cite>系统首页</cite>
+                </a>
+            </li>
+<!--商品管理-->          
+            <li>
+                <a href="javascript:;">
+                    <i class="iconfont">&#xe6db;</i>
+                    <cite>商品管理</cite>
+                    <i class="iconfont nav_right">&#xe697;</i>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a _href='/productlist.do'>
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>产品列表</cite>
+                        </a>
+                    </li >
+                    <li>
+                        <a _href="/brandlist.do">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>品牌管理</cite>
+                        </a>
+                    </li >
+                    <li>
+                        <a _href="/producttypelist.do">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>分类管理</cite>
+                        </a>
+                    </li >
+                </ul>
+            </li>
+<!--订单管理-->           
+            <li>
+                <a href="javascript:;">
+                    <i class="iconfont">&#xe74a;</i>
+                    <cite>订单管理</cite>
+                    <i class="iconfont nav_right">&#xe697;</i>
+                </a>
+                <ul class="sub-menu">
+                	<li>
+                    	<a _href="/order/orderList.do">
+                    		<i class="iconfont">&#xe6a7;</i>
+                    		 <cite>订单信息</cite>
+                    	</a>
+                    </li>
+                    <li>
+                        <a _href="/order/orderinfoList.do">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>订单列表</cite>
+                        </a>
+                    </li >
+                </ul>
+            </li>
+<!--活动管理-->             
+            <li>
+                <a href="javascript:;" id="undevel">
+                    <i class="iconfont">&#xe713;</i>
+                    <cite>活动管理</cite>
+                    <i class="iconfont nav_right">&#xe697;</i>
+                </a>
+                <ul class="sub-menu">                  
+                </ul>
+            </li>
+<!--消息管理-->            
+            <li>
+                <a href="javascript:;" id="undevel2">
+                    <i class="iconfont">&#xe69f;</i>
+                    <cite>消息管理</cite>
+                    <i class="iconfont nav_right">&#xe697;</i>
+                </a>
+                <ul class="sub-menu">  
+                </ul>
+            </li>
+<!--会员管理-->              
+            <li>
+                <a href="javascript:;">
+                    <i class="iconfont">&#xe735;</i>
+                    <cite>会员管理</cite>
+                    <i class="iconfont nav_right">&#xe697;</i>
+                </a>
+                <ul class="sub-menu">
+                    <li date-refresh="1">
+                        <a _href="/UsersList.do">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>会员列表</cite>                            
+                        </a>
+                    </li >                              
+                </ul>
+            </li>           
+<!--系统管理-->            
+            <li>
+                <a href="javascript:;" shiro:hasAnyRoles="admin">
+                    <i class="iconfont">&#xe6ae;</i>
+                    <cite>系统管理</cite>
+                    <i class="iconfont nav_right">&#xe697;</i>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a id="undevel">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>系统设置</cite>
+                        </a>
+                    </li >
+                    <li>
+                        <a _href="/showlog.do">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>系统日志</cite>
+                        </a>
+                    </li >               
+                </ul>
+            </li>
+<!--管理员管理-->             
+             <li>
+                <a href="javascript:;"  shiro:hasAnyRoles="admin">
+                    <i class="iconfont">&#xe726;</i>
+                    <cite>管理员管理</cite>
+                    <i class="iconfont nav_right">&#xe697;</i>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a _href="/adminlist.do">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>管理员列表</cite>
+                        </a>
+                    </li >
+                    <li>
+                        <a _href="/adminrole.do">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>角色管理</cite>
+                        </a>
+                    </li >                  
+                    <li>
+                        <a _href="/adminrule.do">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>权限管理</cite>
+                        </a>
+                    </li >
+                </ul>
+            </li>          
+        </ul>
+      </div>
+    </div>
+    <!-- <div class="x-slide_left"></div> -->
+    <!-- 左侧菜单结束 -->
+    <!-- 右侧主体开始 -->
+    <div class="page-content">
+        <div class="layui-tab tab" lay-filter="xbs_tab" lay-allowclose="false">
+          <ul class="layui-tab-title">
+            <li class="home"><i class="layui-icon">&#xe68e;</i>系统首页</li>
+          </ul>
+          <div class="layui-unselect layui-form-select layui-form-selected" id="tab_right">
+                <dl>
+                    <dd data-type="this">关闭当前</dd>
+                    <dd data-type="other">关闭其它</dd>
+                    <dd data-type="all">关闭全部</dd>
+                </dl>
+          </div>
+          <div class="layui-tab-content">
+            <div class="layui-tab-item layui-show">
+                <iframe src='/admin/home.do' frameborder="0" scrolling="yes" class="x-iframe"></iframe>
+            </div>
+          </div>
+          <div id="tab_show"></div>
+        </div>
+    </div>
+    <div class="page-content-bg"></div>
+    <!-- 右侧主体结束 -->
+    <!-- 中部结束 -->
+    <!-- 底部开始 -->
+    <div class="footer">
+        <div class="copyright">版权所有：湖云工作室 桂ICP备11011739号</div>
+        <div class="copyleft">地址：广西来宾象州  邮编：545811 技术支持：湖云</div>
+    </div>
+    <!-- 底部结束 -->
+</body>
+<script>
+layui.use(['form','laydate','table','jquery','element','layer'], function(){
+	var form = layui.form 
+	,layer = layui.layer,
+	$= layui.jquery;
+	element=layui.element,
+	laydate=layui.laydate,	
+    //未开发
+	  $("#undevel").click(function(){		  
+  	    		layer.msg('该功能开发中，敬请期待！');  	    		
+  	    	})
+  	//未开发
+	  $("#undevel2").click(function(){		  
+  	    		layer.msg('该功能开发中，敬请期待！');  	    		
+  	    	})
+  	    })
+</script>
+</html>

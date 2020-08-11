@@ -1,0 +1,319 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+body,
+html {
+	font-size: 100px;
+}
+
+ul li {
+	list-style: none;
+}
+
+/* 底部 */
+#xiang {
+	margin-bottom: 0.2rem;
+}
+
+#xiang .foot p {
+	height: 0.42rem;
+	line-height: 0.42rem;
+	font-size: 0.18rem;
+	font-weight: 700;
+	color: #444;
+	margin-left: 0.2rem;
+
+}
+
+#xiang .foot p span {
+	display: inline-block;
+	width: 0.4rem;
+	height: 0.47rem;
+	float: left;
+}
+
+#xiang .foot .fo-one span {
+	background-repeat: no-repeat;
+	background-image: url(../img/footer.png);
+	background-position: 0.1rem -1.9rem;
+}
+
+#xiang .foot .fo-two span {
+	background-repeat: no-repeat;
+	background-image: url(../img/footer.png);
+	background-position: -0.4rem -1.9rem;
+}
+
+#xiang .foot .fo-three span {
+	background-repeat: no-repeat;
+	background-image: url(../img/footer.png);
+	background-position: -0.8rem -1.9rem;
+}
+
+#xiang .foot .fo-four span {
+	background-repeat: no-repeat;
+	background-image: url(../img/footer.png);
+	background-position: -1.2rem -1.9rem;
+}
+
+#xiang .xi {
+	border-top: 0.01rem solid #ccc;
+	border-bottom: 0.01rem solid #ccc;
+	margin-bottom: 0.2rem;
+
+}
+
+#xiang .xleft {
+	font-size: 0.12rem;
+	color: #666;
+	float: left;
+	margin-top: 0.2rem;
+	margin-left: 0.2rem;
+	text-align: left;
+	width: 1.45rem;
+}
+
+#xiang .xleft ul li a,
+#xiang .xright p {
+	font-size: 0.14rem;
+	color: #666;
+}
+
+#xiang .xright h3,
+#xiang .xleft h3 {
+
+	font-weight: 700;
+	font-size: 0.14rem;
+	color: #666;
+
+}
+
+#xiang .xright a {
+	font-size: 0.14rem;
+	/* margin-top: 0.2rem; */
+	float: right;
+	color: #005EA7;
+}
+
+#xiang .xright a:hover {
+	text-decoration: underline;
+}
+
+/*底部*/
+#down {
+	font-size: 0.12rem;
+	margin: 0 auto;
+	margin-bottom: 0.3rem;
+	margin-top: 0.2rem;
+}
+
+#down .down_top {
+	width: 100%;
+	height: 0.18rem;
+	float: left;
+	text-align: center;
+}
+
+#down .down_top a {
+	padding-right: 0.1rem;
+	padding-left: 0.1rem;
+	line-height: 0.18rem;
+	border-right: 0.01rem solid #ccc;
+	color: #666;
+
+}
+
+#down .down_top a:hover {
+	color: #E4393C;
+	text-decoration: underline;
+}
+
+#down .down_center {
+	width: 100%;
+	height: 0.72rem;
+	float: left;
+	margin: 10px 0px;
+}
+
+#down .down_center span {
+	width: 100%;
+	height: 0.14rem;
+	float: left;
+	margin-top: 0.03rem;
+	text-align: center;
+	color: #666;
+}
+
+#down .down_center a {
+	padding-right: 0.05rem;
+	color: #666;
+}
+
+#down .down_center a:hover {
+	color: #E4393C;
+	text-decoration: underline;
+}
+
+#down .down_bot {
+	width: 100%;
+	height: 0.4rem;
+	float: left;
+	text-align: center;
+}
+
+#down .down_bot img {
+	margin-left: 0.1rem;
+}
+/* 右侧导航条 */
+
+.toolbars {
+	font-size: 0.14rem;
+	position: fixed;
+	top: 0;
+	right: 0;
+	height: 100%;
+	width: 0.06rem;
+	background-color: #7a6e6e;
+}
+
+.toolbars ul {
+	position: absolute;
+	top: 50%;
+	right: 0;
+	transform: translate(0, -40%);
+	z-index: 3;
+}
+
+.toolbars ul li {
+	width: 0.34rem;
+	height: 0.35rem;
+	margin-bottom: 0.02rem;
+	background-color: #7A6E6E;
+	position: relative;
+}
+
+.toolbars ul .jdvip .toolbars-ico {
+	display: block;
+	width: 0.34rem;
+	height: 0.35rem;
+	background: url(../img/toolbars.png)no-repeat -0.88rem -1.75rem;
+}
+
+.toolbars ul .cart .toolbars-ico {
+	display: block;
+	width: 0.34rem;
+	height: 0.35rem;
+	background: url(../img/toolbars.png)no-repeat -0.5rem 0;
+}
+
+.toolbars ul .follow .toolbars-ico {
+	display: block;
+	width: 0.34rem;
+	height: 0.35rem;
+	background: url(../img/toolbars.png)no-repeat -0.5rem -0.5rem;
+}
+
+.toolbars ul .message .toolbars-ico {
+	display: block;
+	width: 0.34rem;
+	height: 0.35rem;
+	background: url(../img/toolbars.png)no-repeat -1.9rem -1.5rem;
+}
+
+.toolbars ul .jimi .toolbars-ico {
+	display: block;
+	width: 0.34rem;
+	height: 0.35rem;
+	background: url(../img/we.png)no-repeat -0.03rem 0rem;
+}
+
+.toolbars ul .feedback .toolbars-ico {
+	display: block;
+	width: 0.34rem;
+	height: 0.35rem;
+	background: url(../img/toolbars.png)no-repeat -0.5rem -3rem;
+}
+
+.toolbars ul .jdvip i {
+	position: absolute;
+	top: 0.05rem;
+	right: 0.08rem;
+	width: 0.06rem;
+	height: 0.06rem;
+	background: url(../img/toolbars.png)no-repeat -1.5rem -1.5rem;
+}
+
+.toolbars-footer {
+	position: absolute;
+	bottom: 0.5rem;
+	right: 0;
+	background-color: #7A6E6E;
+	width: 0.34rem;
+	height: 0.35rem;
+	z-index: 3;
+}
+
+.toolbars-footer ul .headpiece .toolbars-ico {
+	display: block;
+	width: 0.34rem;
+	height: 0.35rem;
+	background: url(../img/toolbars.png)no-repeat -0.5rem -2.5rem;
+}
+
+/*鼠标悬浮后伸出的部分*/
+.toolbars .flex {
+	position: absolute;
+	top: 0;
+	right: 0.34rem;
+	width: 0;
+	overflow: hidden;
+	height: 0.35rem;
+	line-height: 0.35rem;
+	background-color: #b61d1d;
+	text-align: center;
+	color: #fff;
+	z-index: -1;
+	transition: width .3s;
+}
+
+.toolbars .flex1 {
+	display: none;
+	position: absolute;
+	bottom: 0;
+	right: 0.38rem;
+	width: 1.2rem;
+	height: 1.6rem;
+	font-size: 0.14rem;
+	line-height: 0.16rem;
+	color: rgb(255, 255, 255);
+	text-align: center;
+	padding: 0.08rem 0.1rem;
+	border-radius: 0.04rem;
+	overflow: hidden;
+	background: rgb(228, 57, 60);
+	text-align: center;
+	z-index: -1;
+	transition: width .3s;
+}
+
+/*鼠标悬浮后的效果*/
+.toolbars ul li:hover {
+	background-color: #b61d1d;
+}
+
+.toolbars ul li:hover .flex {
+	width: 0.62rem;
+	display: block;
+	background-color: #b61d1d;
+}
+
+.toolbars li:hover .flex1 {
+	width: 1.2rem;
+	display: block;
+	background: rgb(228, 57, 60);
+}
+
+.toolbars ul li:hover i {
+	display: none;
+}

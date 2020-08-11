@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport"/>
+		<title>京东商城-购物车页面</title>
+		<link rel="stylesheet" type="text/css" href="/userAn/css/bootstrap.css"/>
+		<link rel="stylesheet" type="text/css" href="/userAn/css/communalStyle.css"/>
+		<link rel="stylesheet" type="text/css" href="/userAn/css/shoppingCar.css"/>
+	</head>
+	<body>
+		<section class="aui-flexView">
+			<!-- 头部导航块 -->
+			<header class="aui-navBar aui-navBar-fixed">
+			    <a href="javascript:;" class="aui-navBar-item">
+			        <i class="icon icon-return"></i>
+			    </a>
+			    <div class="aui-center">
+			        <span class="aui-center-title">购物车</span>
+			    </div>
+			    <a href="javascript:;" class="aui-navBar-item">
+			        <i class="icon icon-xin"></i>
+			        <i class="icon icon-shr"></i>
+			    </a>
+			</header>
+			<section class="aui-scrollView2">
+				<!-- 购物商品及店铺块 -->
+				<div class="shopping ">
+					<!-- 店铺块1 -->
+					<div class="shop-group-item">
+						<div class="shop-name">
+							<input type="checkbox" class="check goods-check shopCheck"/>
+							<h4><a href="#">京东自营</a></h4>
+							<div class="coupons"><span>领券</span><em>|</em><span>编辑</span></div>
+						</div>
+						<ul>
+							<li th:each="info:${shoopcList}">
+								<div class="shop-info">
+									<input type="checkbox" name="cartCheckBox" class="check goods-check goodsCheck" th:value="${info.id}">
+										<div class="shop-info-img">
+											<a href="#"><img th:src="${info.uri}" /></a>
+										</div>
+										<div class="shop-info-text">
+											<h4 th:text="${info.name}">Apple MacBook Pro 13.3英寸笔记本电脑 银色(Core i5 处理器/8GB内存/128GB SSD闪存/Retina屏 MF839CH/A)</h4>
+											<div class="shop-brief">
+												<span th:text="${info.colour}">颜色:标配版</span>
+												<span th:text="${info.edition}">版本:13.3英寸</span>
+											</div>
+											<div class="shop-price">
+												<div class="shop-pices">￥<b class="price" th:text="${info.price}">100.00</b></div>
+												<div class="shop-arithmetic">
+													<a href="javascript:;" class="minus">-</a>
+													<span class="num" th:text="${info.amount}">1</span>
+													<a href="javascript:;" class="plus">+</a>
+													<input type="hidden" class="sid" th:value="${info.id}"/>
+												</div>
+											</div>
+											<div class="shop-price">
+												<div class="shop-option">
+													<a href="#" class="shop-guanzhu">移入关注</a>
+													<a href="javascript:;" class="shop-del">
+													删除
+													<input type="hidden" th:value="${info.id}"/>
+													</a>
+												</div>
+											</div>
+										</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+					<!-- 隔行块  -->
+					<!-- <div class="divHeight"></div> -->
+					<!-- 店铺块2-->
+					
+				<div class="divHeight"></div>
+				<!-- 商品推荐 -->
+				<div class="aui-six-title">
+					<h1>—— 猜你喜欢 ——</h1>
+				</div>
+				<div class="aui-list-theme-box">
+					<a href="javascript:;" class="aui-list-item">
+						<div class="aui-list-theme-img">
+							<img src="img/perCoreImg/ad-001.png" alt="">
+						</div>
+						<div class="aui-list-theme-message">
+							<h3 class="aui-list-theme-subtitle"> Levi's李维斯男士粉色Box Logo 印花短袖</h3>
+							<div class="aui-flex">
+								<div class="aui-flex-box">
+									<h2><em>￥</em>48 <i>￥89</i></h2>
+									<span>满折</span>
+								</div>
+							</div>
+						</div>
+					</a>
+					<a href="javascript:;" class="aui-list-item">
+						<div class="aui-list-theme-img">
+							<img src="img/perCoreImg/ad-002.png" alt="">
+						</div>
+						<div class="aui-list-theme-message">
+							<h3 class="aui-list-theme-subtitle"> Levi's李维斯男士蓝色Box Logo 印花短袖</h3>
+							<div class="aui-flex">
+								<div class="aui-flex-box">
+									<h2><em>￥</em>58 <i>￥68</i></h2>
+									<span>满折</span>
+								</div>
+							</div>
+						</div>
+					</a>
+					<a href="javascript:;" class="aui-list-item">
+						<div class="aui-list-theme-img">
+							<img src="img/perCoreImg/ad-003.png" alt="">
+						</div>
+						<div class="aui-list-theme-message">
+							<h3 class="aui-list-theme-subtitle"> Levi's Box Logo 印花抽纸</h3>
+							<div class="aui-flex">
+								<div class="aui-flex-box">
+									<h2><em>￥</em>15 <i>￥20</i></h2>
+									<span>满折</span>
+								</div>
+							</div>
+						</div>
+					</a>
+					<a href="javascript:;" class="aui-list-item">
+						<div class="aui-list-theme-img">
+							<img src="img/perCoreImg/ad-004.png" alt="">
+						</div>
+						<div class="aui-list-theme-message">
+							<h3 class="aui-list-theme-subtitle"> 24 盒装 纯牛奶</h3>
+							<div class="aui-flex">
+								<div class="aui-flex-box">
+									<h2><em>￥</em>45 <i>￥59</i></h2>
+									<span>满折</span>
+								</div>
+							</div>
+						</div>
+					</a>
+					<a href="javascript:;" class="aui-list-item">
+						<div class="aui-list-theme-img">
+							<img src="img/paySuccessImg/icon-page-004.png" alt="">
+						</div>
+						<div class="aui-list-theme-message">
+							<h3 class="aui-list-theme-subtitle"> adidas 男士黑色Box Logo 印花短袖</h3>
+							<div class="aui-flex">
+								<div class="aui-flex-box">
+									<h2><em>￥</em>648 <i>￥899</i></h2>
+									<span>满折</span>
+								</div>
+							</div>
+						</div>
+					</a>
+					<a href="javascript:;" class="aui-list-item">
+						<div class="aui-list-theme-img">
+							<img src="img/paySuccessImg/icon-page-003.png" alt="">
+						</div>
+						<div class="aui-list-theme-message">
+							<h3 class="aui-list-theme-subtitle"> adidas 女装黑色Box Logo 印花短袖</h3>
+							<div class="aui-flex">
+								<div class="aui-flex-box">
+									<h2><em>￥</em>648 <i>￥899</i></h2>
+									<span>满折</span>
+								</div>
+							</div>
+						</div>
+					</a>
+				</div>
+			</section>
+			<div class="payment-bar">
+				<div class="all-checkbox">
+					<input type="checkbox" class="check goods-check" id="AllCheck">
+					全选
+				</div>
+				<div class="shop-total">
+					<strong>总计：<i class="total" id="AllTotal">0.00</i></strong>
+					<!-- <span>减免：123.00</span> -->
+				</div>
+				<a href="javascript:;" class="settlement">结算</a>
+			</div>
+			<!-- 弹窗 -->
+			<div class="jd_win">
+				<div class="jd_win_box">
+					<div class="jd_win_tit">你确定要删除该商品吗？</div>
+					<div class="jd_btn clearfix">
+						<a href="javascript:;" class="cancle float_left">取消</a>
+						<a href="javascript:;" class="submit float_right">确定</a>  
+					</div>
+				</div>
+			</div>
+			<!--购物车空-->
+			<div class="kon-cat" th:if="${shoopcListL==0}">
+				<div class="catkon">
+					<div class="kon-box">
+						<div class="kon-hz">
+							<img src="img/yuanImg/cart-air.png" />
+							<span class="kon-wz">购物车什么都没有</span>
+							<a href="../" class="kon-lj">去逛逛</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<script type="text/javascript" src="/userAn/js/jquery.min.js"></script>
+		<script type="text/javascript" src="/userAn/js/shopping.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				var sid="";
+				$(".shop-del").on("click",function(){
+					sid=$(this).children("input").val();
+					
+				})
+				
+				$(".submit").on("click",function(){
+					//alert()
+					window.location.href="selShoopc.do?sid="+sid;
+				})
+				
+				$(".settlement").on("click",function(){
+					var str="";
+					$("input[name='cartCheckBox']:checked").each(function(index,item){
+						if($("input[name='cartCheckBox']:checked").length-1==index){
+							str+=$(this).val();
+						}else{
+							str+=$(this).val()+",";
+						}
+					});
+					if(str!=null&&str!=""){
+						let countPrice=$("#AllTotal").html();
+						window.location.href="showShoopcByIdAn.do?str="+str+"&countPrice="+countPrice;
+					}else{
+						alert("请选择您要买的商品！");
+					}
+				})
+			})
+		</script>
+	</body>
+</html>

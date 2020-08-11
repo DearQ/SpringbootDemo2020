@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.t05g1.dao.User_OrderDao">
+    <!-- 新增订单记录 -->
+ 	<insert id="addUserOrder">
+ 		INSERT INTO jd_order VALUE(NULL,#{orderNumber},#{productName},#{consignee},#{money},#{amount},#{uid},0,0,1,1,NOW(),#{shopAddress},#{phone})
+ 	</insert>
+ 	<!-- 查询最新订单id -->
+ 	<select id="orderInfoId" resultType="int">
+ 		SELECT id FROM jd_order WHERE orderNumber =#{orderNumber}
+ 	</select>
+ 	<!-- 为订单加入商品 -->
+ 	<update id="updateShooopcOid">
+ 		UPDATE jd_shoopc SET oid=#{oid},state=1 WHERE id IN(${str})
+ 	</update>
+ 	<!-- 订单支付成功 -->
+ 	<update id="updateOrderPayStatus">
+ 		UPDATE jd_order SET payStatus=1,payMode=1 WHERE orderNumber=#{out_trade_no}
+ 	</update>
+ 	
+ 	<!-- 查看用户所有订单 -->
+ 	<resultMap type="com.t05g1.pojo.User_Order" id="showOrderResultMap">
+		<id column="id" property="id"/>
+		<result column="orderNumber" property="orderNumber"/>
+		<result column="productName" property="productName"/>
+		<result column="consignee" property="consignee"/>
+		<result column="money" property="money"/>
+		<result column="amount" property="amount"/>
+		<result column="buyerId" property="buyerId"/>
+		<result column="orderStatus" property="orderStatus"/>
+		<result column="payStatus" property="payStatus"/>
+		<result column="payMode" property="payMode"/>
+		<result column="distrMode" property="distrMode"/>
+		<result column="orderTime" property="orderTime"/>
+		<result column="shopAddress" property="shopAddress"/>
+		<result column="phone" property="phone"/>
+		<!-- 1对多 -->
+		<collection property="shoopc" ofType="com.t05g1.pojo.User_Shoopc">
+			
+			<result column="name" property="name"/>
+			<result column="price" property="price"/>
+			<result column="uri" property="uri"/>
+			<result column="colour" property="colour"/>
+			<result column="edition" property="edition"/>
+			<result column="amount" property="amount"/>
+			<result column="cid" property="cid"/>
+		</collection>
+	</resultMap>
+    <select id="showOrder" resultMap="showOrderResultMap">
+    	SELECT * 
+		FROM jd_order AS o,jd_shoopc AS s
+		WHERE o.id=s.oid AND o.buyerId=#{u_id}
+    </select>
+    <!-- 查看用户未支付订单 -->
+ 	<resultMap type="com.t05g1.pojo.User_Order" id="showOrderPayStatusResultMap">
+		<id column="id" property="id"/>
+		<result column="orderNumber" property="orderNumber"/>
+		<result column="productName" property="productName"/>
+		<result column="consignee" property="consignee"/>
+		<result column="money" property="money"/>
+		<result column="amount" property="amount"/>
+		<result column="buyerId" property="buyerId"/>
+		<result column="orderStatus" property="orderStatus"/>
+		<result column="payStatus" property="payStatus"/>
+		<result column="payMode" property="payMode"/>
+		<result column="distrMode" property="distrMode"/>
+		<result column="orderTime" property="orderTime"/>
+		<result column="shopAddress" property="shopAddress"/>
+		<result column="phone" property="phone"/>
+		<!-- 1对多 -->
+		<collection property="shoopc" ofType="com.t05g1.pojo.User_Shoopc">
+			
+			<result column="name" property="name"/>
+			<result column="price" property="price"/>
+			<result column="uri" property="uri"/>
+			<result column="colour" property="colour"/>
+			<result column="edition" property="edition"/>
+			<result column="amount" property="amount"/>
+			<result column="cid" property="cid"/>
+		</collection>
+	</resultMap>
+    <select id="showOrderPayStatus" resultMap="showOrderPayStatusResultMap">
+    	SELECT * 
+		FROM jd_order AS o,jd_shoopc AS s
+		WHERE o.id=s.oid AND o.buyerId=#{u_id} AND orderStatus=0 AND payStatus=0
+    </select>
+    <!-- 查看用户未发货订单 -->
+ 	<resultMap type="com.t05g1.pojo.User_Order" id="showOrderOrderStatus0ResultMap">
+		<id column="id" property="id"/>
+		<result column="orderNumber" property="orderNumber"/>
+		<result column="productName" property="productName"/>
+		<result column="consignee" property="consignee"/>
+		<result column="money" property="money"/>
+		<result column="amount" property="amount"/>
+		<result column="buyerId" property="buyerId"/>
+		<result column="orderStatus" property="orderStatus"/>
+		<result column="payStatus" property="payStatus"/>
+		<result column="payMode" property="payMode"/>
+		<result column="distrMode" property="distrMode"/>
+		<result column="orderTime" property="orderTime"/>
+		<result column="shopAddress" property="shopAddress"/>
+		<result column="phone" property="phone"/>
+		<!-- 1对多 -->
+		<collection property="shoopc" ofType="com.t05g1.pojo.User_Shoopc">
+			
+			<result column="name" property="name"/>
+			<result column="price" property="price"/>
+			<result column="uri" property="uri"/>
+			<result column="colour" property="colour"/>
+			<result column="edition" property="edition"/>
+			<result column="amount" property="amount"/>
+			<result column="cid" property="cid"/>
+		</collection>
+	</resultMap>
+    <select id="showOrderOrderStatus0" resultMap="showOrderOrderStatus0ResultMap">
+    	SELECT * 
+		FROM jd_order AS o,jd_shoopc AS s
+		WHERE o.id=s.oid AND o.buyerId=#{u_id} AND orderStatus=0 AND payStatus=1
+    </select>
+    <!-- 查看用户未收货订单 -->
+ 	<resultMap type="com.t05g1.pojo.User_Order" id="showOrderOrderStatus1ResultMap">
+		<id column="id" property="id"/>
+		<result column="orderNumber" property="orderNumber"/>
+		<result column="productName" property="productName"/>
+		<result column="consignee" property="consignee"/>
+		<result column="money" property="money"/>
+		<result column="amount" property="amount"/>
+		<result column="buyerId" property="buyerId"/>
+		<result column="orderStatus" property="orderStatus"/>
+		<result column="payStatus" property="payStatus"/>
+		<result column="payMode" property="payMode"/>
+		<result column="distrMode" property="distrMode"/>
+		<result column="orderTime" property="orderTime"/>
+		<result column="shopAddress" property="shopAddress"/>
+		<result column="phone" property="phone"/>
+		<!-- 1对多 -->
+		<collection property="shoopc" ofType="com.t05g1.pojo.User_Shoopc">
+			
+			<result column="name" property="name"/>
+			<result column="price" property="price"/>
+			<result column="uri" property="uri"/>
+			<result column="colour" property="colour"/>
+			<result column="edition" property="edition"/>
+			<result column="amount" property="amount"/>
+			<result column="cid" property="cid"/>
+		</collection>
+	</resultMap>
+    <select id="showOrderOrderStatus1" resultMap="showOrderOrderStatus1ResultMap">
+    	SELECT * 
+		FROM jd_order AS o,jd_shoopc AS s
+		WHERE o.id=s.oid AND o.buyerId=6 AND orderStatus=1 AND payStatus=1
+    </select>
+</mapper>

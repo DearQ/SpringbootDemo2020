@@ -1,0 +1,11 @@
+package com.t05g1.dao;
+
+import java.util.List;
+
+import com.t05g1.pojo.User_Commodity;
+
+public interface User_CommodityDao {
+
+	List<User_Commodity> showcommodity();
+
+}

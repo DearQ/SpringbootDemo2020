@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="utf-8">
+		<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport"/>
+		<title>京东商城-商品分类</title>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
+		<link rel="stylesheet" type="text/css" href="css/communalStyle.css"/>
+		<link rel="stylesheet" type="text/css" href="css/classify.css"/>
+	</head>
+	<body>
+		<section id="home">
+			<!-- 头部导航块 -->
+			<header class="aui-navBar aui-navBar-fixed">
+			    <a href="../showcommodity.do" class="aui-navBar-item" style="min-width: 15%; margin-right: -36%;">
+			        <i class="icon icon-return"></i>
+			    </a>
+			    <div class="aui-center">
+			        <span class="aui-center-title">商品分类</span>
+			    </div>
+			    <a href="#" class="aui-navBar-item">
+			        <i class="icon icon-more"></i>
+			    </a>
+			</header>
+			<!-- 主体块 -->
+			<section class="aui-scrollView2">
+				<div class="m-scrolltab" data-ydui-scrolltab>
+					<!-- 左边导航栏 -->
+					<div class="scrolltab-nav">
+					 	<a href="#" class="scrolltab-item">
+					        <div class="scrolltab-title">为你推荐</div>
+					    </a>
+					    <a href="#" class="scrolltab-item" th:each="info:${ucat}">
+					        <div class="scrolltab-title" th:text="${info.name}"></div>
+					    </a>
+					</div>
+					<!-- 右边-显示商品信息块 -->
+					<div class="scrolltab-content">
+						<div class="scrolltab-content-item">
+						    <h2>排行榜</h2>
+						    <div>
+						        <div class="aui-ad-head clearfix">
+						            <a href="javascript:;">
+						                <img src="img/yuanImg/ad-head-001.png" alt="">
+						            </a>
+						            <a href="javascript:;">
+						                <img src="img/yuanImg/ad-head-002.png" alt="">
+						            </a>
+						            <a href="javascript:;" style="margin-right:0">
+						                <img src="img/yuanImg/ad-head-003.png" alt="">
+						            </a>
+						        </div>
+								<a class="aui-flex-box" href="javascript:;">
+								    <div class="aui-flex-box-bd">实时分类推荐</div>
+								    <div class="aui-flex-box-fr">热销榜</div>
+								</a>
+								<!-- 推荐-商品显示1 -->
+								<div class="aui-flex-links">
+									<a href="javascript:;" class="aui-flex-links-item" th:each="info:${ubra}">
+									    <div class="aui-flex-links-img">
+									        <img th:src="${info.b_img}" alt="">
+									    </div>
+									    <div class="aui-flex-links-text" th:text="${info.b_name}"></div>
+									</a>
+								</div>
+						    </div>
+						</div>
+						<div class="scrolltab-content-item" th:each="info:${ucat}">
+							<h2 th:text="${info.name}">女装</h2>
+							<div>
+								<div class="aui-class-ad-img">
+								    <a href="javascript:;">
+								        <img src="img/commodityImg/class-ad-001.jpg" alt="">
+								    </a>
+								</div>
+								<div class="aui-flex-links">
+									<a th:each="infos:${info.ucomm}" th:href="@{/commodityInfo.do(cId=${infos.c_id})}" class="aui-flex-links-item">
+									    <div class="aui-flex-links-img">
+									        <img th:src="${infos.c_uri}" alt="">
+									    </div>
+									    <div class="aui-flex-links-text" th:text="${infos.c_price}">沐浴露</div>
+									</a>
+								</div>	
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- 底部固定导航块 -->
+			<footer class="aui-footer aui-footer-fixed">
+			    <a href="../" class="aui-tabBar-item jd_ms3">
+					<img src="img/yuanImg/bottomImg01.png"/>
+			    </a>
+				<a href="../showCategory.do" class="aui-tabBar-item jd_ms3">
+					<img src="img/yuanImg/bottomImg02.png"/>
+				</a>
+				<a href="javascript:;" class="aui-tabBar-item jd_ms3">
+					<img src="img/yuanImg/bottomImg03.gif"/>
+				</a>
+				<a href="../userIdByShoopcInfo.do" class="aui-tabBar-item jd_ms3">
+					<img src="img/yuanImg/bottomImg04.png"/>
+				</a>
+				<a href="../showOrder.do" class="aui-tabBar-item jd_ms3" th:if="${session.user == null}">
+					<img src="img/yuanImg/bottomImg05.png"/>
+				</a>
+				
+				<a href="../showUserInfo.do" class="aui-tabBar-item jd_ms3" th:if="${session.user != null}">
+					<img src="img/yuanImg/bottomImg10.png"/>
+				</a>
+			</footer>
+		</section>
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<script type="text/javascript" src="js/scrollTab.js"></script>
+	</body>
+</html>
